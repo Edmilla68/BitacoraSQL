@@ -1,0 +1,126 @@
+server: CALW3BDCRM
+usuario: usr_trit
+pass:	0WMXPn
+
+
+SRW08AD01
+SERVIDORES VIRTUALES SERVER
+USER: ADMINISTRATOR
+PASS: Antares68$
+USER: edmilla.xtreme
+PASS: Macondo6844
+
+
+SRW08AD02
+SERVIDORES VIRTUALES SERVER
+USER: ADMINISTRATOR
+PASS: sinpass (vacio)
+USER: edmilla.xtreme
+PASS: Macondo6844
+
+SRWSQL12
+USER: ADMINISTRATOR
+PASS: Macondo68$
+
+
+
+COSMOS-DATA2\SQL2005
+dbadmin
+db4dm1n2017_
+
+
+
+
+
+DOMNEP\admincrm
+crm2009
+
+DOMNEP\Zeus
+$upportZeus13%
+
+varios
+User ID=gorepositorio
+PWD=repositorio
+
+Servidor: Neptunia1 – TERMINAL
+User: ofacturacion
+Pass: ofactur
+
+adminnavis
+sparcs2007 
+
+
+
+total recall
+pass zeus
+
+Administrador
+Neptunia$
+
+	
+/**** fono anx ****///
+871212 + #
+	
+	
+Ultimos scripts SQL 21/12/2015
+en carpeta :  projects (ubicala... pe)
+
+WF
+NPT INVITADOS  
+C15C02015
+
+NPTC15C017
+C15C0NPT17
+
+
+7105300  LA YAPA
+
+libros
+ THE MILLIONAIRE NEXT DOOR Thomas Stanley y 
+ E-MYTH Michael Gerber
+
+"El Mito del Emprendedor" - Michael Gerber
+"La Riqueza de las Naciones" - Adam Smith
+"Quien se ha robado el sueño americano" - Burke Hedges
+
+
+INFORMIX
+Macondo68
+el otro
+Macondo68$$
+
+Mysql
+root
+1234
+
+
+http://calw3bdsgc2/Reports
+http://calw3rep001/reports/
+
+
+
+
+
+
+Your Account Details
+
+Your account is now active.
+Main Hosting Details
+Control panel username
+b15_20282679
+Control panel password	Macondo68
+Control panel URL
+cpanel.byethost15.com
+MySQL username
+b15_20282679
+MySQL password Macondo68
+MySQL hostname
+sql210.byethost15.com
+FTP username
+b15_20282679
+FTP password Macondo68
+FTP host name	ftp.byethost15.com
+
+Your Website URL's
+Home page
+http://lulassystem.byethost15.com

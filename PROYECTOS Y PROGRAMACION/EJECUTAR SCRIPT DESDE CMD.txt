@@ -1,0 +1,4 @@
+sqlcmd -S dvw12mgrsql12 -i D:\MGRSCH\MGR005.sql
+
+
+

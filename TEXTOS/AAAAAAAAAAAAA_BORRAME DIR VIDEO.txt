@@ -1,0 +1,2 @@
+"C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\devenv.exe"
+https://www.youtube.com/watch?v=8XlG-OhLAuw

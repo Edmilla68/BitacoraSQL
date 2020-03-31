@@ -1,0 +1,4073 @@
+USE Balanza
+go
+
+ALTER TRIGGER T_DDGUITPC19_D ON DDGUITPC19
+FOR DELETE
+AS
+IF @@rowcount = 0
+	RETURN
+ELSE
+BEGIN
+	INSERT INTO TKTAUDIT00 (
+		nomtab00
+		,tipope00
+		,codusu00
+		,fecope00
+		,hostid00
+		,regupd00
+		,nrosal52
+		,fecsal52
+		)
+	SELECT 'DDGUICON73'
+		,'D'
+		,user_name()
+		,getdate()
+		,host_name()
+		,''
+		,nrogui19
+		,fecgui19
+	FROM deleted
+END
+GO
+ALTER TRIGGER DDGUITPC19_I ON dbo.DDGUITPC19
+FOR INSERT
+AS
+IF @@rowcount = 0
+	RETURN
+ELSE
+	UPDATE DDGUITPC19
+	SET CODUSU17 = USER_NAME()
+		,FECUSU00 = GETDATE()
+	FROM INSERTED
+	WHERE DDGUITPC19.NROGUI19 = INSERTED.NROGUI19
+GO
+--ALTER TRIGGER [dbo].[DRCTRTMC90_D] ON [dbo].[DRCTRTMC90]
+--FOR DELETE
+--AS
+--IF @@rowcount = 0
+--	RETURN
+--ELSE --|   INSERT INTO DRCTRTMC90_AUDIT01   SELECT    navvia11,   nrotkt28,   codcon04,   avipag90,   falpos90,   sucursal,   nropre90   FROM deleted   --|   
+--GO
+	ALTER TRIGGER TAT_DDTICKET18_I ON DDTICKET18
+	AFTER INSERT
+	AS
+	INSERT INTO TAT_NEPTUNIA2_BALANZA_DBO_DDTICKET18 (
+		[FECING18]
+		,[FECSAL18]
+		,[NROTKT18]
+		,[NROPLA18]
+		,[NAVVIA11]
+		,[CODCON04]
+		,[NROAUT14]
+		,[TIPOPE18]
+		,[TAT_Tipo_Trigger]
+		,[TAT_Fecha]
+		)
+	SELECT [FECING18]
+		,[FECSAL18]
+		,[NROTKT18]
+		,[NROPLA18]
+		,[NAVVIA11]
+		,[CODCON04]
+		,[NROAUT14]
+		,[TIPOPE18]
+		,1
+		,GETDATE()
+	FROM INSERTED;
+GO
+ALTER TRIGGER TAT_DRCTRTMC90_I ON DRCTRTMC90
+	AFTER INSERT
+	AS
+	INSERT INTO TAT_NEPTUNIA2_BALANZA_DBO_DRCTRTMC90 (
+		[NAVVIA11]
+		,[CODCON04]
+		,[NROTKT28]
+		,[TAT_Tipo_Trigger]
+		,[TAT_Fecha]
+		)
+	SELECT [NAVVIA11]
+		,[CODCON04]
+		,[NROTKT28]
+		,1
+		,GETDATE()
+	FROM INSERTED;
+GO
+	--Update  ALTER TRIGGER TAT_DDTICKET18_U ON DDTICKET18 AFTER UPDATE AS INSERT INTO  TAT_NEPTUNIA2_BALANZA_DBO_DDTICKET18 ([FECING18],[FECSAL18],[NROTKT18],[NROPLA18],[NAVVIA11],[CODCON04],[NROAUT14],[TIPOPE18],[TAT_Tipo_Trigger],[TAT_Fecha]) SELECT [FECING18],[FECSAL18],[NROTKT18],[NROPLA18],[NAVVIA11],[CODCON04],[NROAUT14],[TIPOPE18],2, GETDATE() FROM INSERTED;  
+ALTER TRIGGER TAT_DRCTRTMC90_U ON DRCTRTMC90
+	AFTER UPDATE
+	AS
+	INSERT INTO TAT_NEPTUNIA2_BALANZA_DBO_DRCTRTMC90 (
+		[NAVVIA11]
+		,[CODCON04]
+		,[NROTKT28]
+		,[TAT_Tipo_Trigger]
+		,[TAT_Fecha]
+		)
+	SELECT [NAVVIA11]
+		,[CODCON04]
+		,[NROTKT28]
+		,2
+		,GETDATE()
+	FROM INSERTED;
+GO
+	--Delete  ALTER TRIGGER TAT_DDTICKET18_D ON DDTICKET18 AFTER DELETE AS INSERT INTO  TAT_NEPTUNIA2_BALANZA_DBO_DDTICKET18 ([FECING18],[FECSAL18],[NROTKT18],[NROPLA18],[NAVVIA11],[CODCON04],[NROAUT14],[TIPOPE18],[TAT_Tipo_Trigger],[TAT_Fecha]) SELECT [FECING18],[FECSAL18],[NROTKT18],[NROPLA18],[NAVVIA11],[CODCON04],[NROAUT14],[TIPOPE18],3, GETDATE() FROM DELETED;  
+	ALTER TRIGGER [dbo].[DDTICKET18_U] ON [dbo].[DDTICKET18]
+	FOR UPDATE
+	AS
+	IF @@rowcount = 0
+		RETURN
+	ELSE
+		UPDATE DDTICKET18
+		SET CODUSU17 = USER_NAME()
+			,FECUSU00 = GETDATE()
+		FROM INSERTED
+		WHERE DDTICKET18.NROTKT18 = INSERTED.NROTKT18 --|FML 29-05-2015   --|ADUTORIA DE TICKET UPDATE   insert into TKTAUDIT00   (nrosal52, nomtab00, tipope00, codusu00, fecope00, hostid00, regupd00,nrotkt18)   Select navvia11,'DDTICKET18', 'U', user_name(), getdate(), host_name(),    regupd00=substring(   isnull(navvia11,'')+'|'+   isnull(nrotkt18,'')+'|'+   isnull(codcon04,'')+'|'+   isnull(tipope18,'')+'|'+   RTRIM(CONVERT(CHAR(10),isnull(pesbrt18,0)))+'|'+   RTRIM(CONVERT(CHAR(10),isnull(pestar18,0)))+'|'+   RTRIM(CONVERT(CHAR(10),isnull(pesnet18,0)))+'|'+   RTRIM(CONVERT(CHAR(10),isnull(nrotar18,0)))+'|'+   isnull(nrobal18,'')+'|'+   isnull(codemb06,'')+'|'+   isnull(nroaut14,'')+'|'+   isnull(nrosal52,'')+'|'+   isnull(CONVERT(VARCHAR,FECSAL18,126),'')   ,1,255),nrotkt18   from INSERTED   --|  
+GO
+	ALTER TRIGGER TAT_DRCTRTMC90_D ON DRCTRTMC90
+	AFTER DELETE
+	AS
+	INSERT INTO TAT_NEPTUNIA2_BALANZA_DBO_DRCTRTMC90 (
+		[NAVVIA11]
+		,[CODCON04]
+		,[NROTKT28]
+		,[TAT_Tipo_Trigger]
+		,[TAT_Fecha]
+		)
+	SELECT [NAVVIA11]
+		,[CODCON04]
+		,[NROTKT28]
+		,3
+		,GETDATE()
+	FROM DELETED;
+GO
+	ALTER TRIGGER [dbo].[DDTICKET18_IU] ON [dbo].[DDTICKET18]
+	FOR INSERT
+	AS
+	IF @@rowcount = 0
+		RETURN
+	ELSE
+		UPDATE DDTICKET18
+		SET CODUSU17 = USER_NAME()
+			,FECUSU00 = GETDATE()
+		FROM INSERTED
+		WHERE DDTICKET18.NROTKT18 = INSERTED.NROTKT18
+
+	UPDATE DDTICKET18
+	SET FLGTRA99 = 'U'
+		,FECTRA99 = GETDATE()
+	FROM INSERTED
+	WHERE DDTICKET18.NROTKT18 = INSERTED.NROTKT18
+		AND DDTICKET18.FLGTRA99 NOT IN ('C') --|FML 29-05-2015   --|ADUTORIA DE TICKET INSERT   insert into TKTAUDIT00   (nrosal52, nomtab00, tipope00, codusu00, fecope00, hostid00, regupd00,nrotkt18)   Select navvia11,'DDTICKET18', 'I', user_name(), getdate(), host_name(),    regupd00=substring(   isnull(navvia11,'')+'|'+   isnull(nrotkt18,'')+'|'+   isnull(codcon04,'')+'|'+   isnull(tipope18,'')+'|'+   RTRIM(CONVERT(CHAR(10),isnull(pesbrt18,0)))+'|'+   RTRIM(CONVERT(CHAR(10),isnull(pestar18,0)))+'|'+   RTRIM(CONVERT(CHAR(10),isnull(pesnet18,0)))+'|'+   RTRIM(CONVERT(CHAR(10),isnull(nrotar18,0)))+'|'+   isnull(nrobal18,'')+'|'+   isnull(codemb06,'')+'|'+   isnull(nroaut14,'')+'|'+   isnull(nrosal52,'')   ,1,255),nrotkt18   from INSERTED   --|
+		/****** Object:  Trigger dbo.DDTICKET18_OTCTRRF    Script Date: 08/09/2002 6:45:50 PM ******/
+GO
+	ALTER TRIGGER DDTICKET18_OTCTRRF ON dbo.DDTICKET18
+	FOR INSERT
+	AS
+	IF @@rowcount = 0
+		RETURN
+	ELSE
+		UPDATE DDTICKET18
+		SET CODUSU17 = USER_NAME()
+			,FECUSU00 = GETDATE()
+		FROM INSERTED
+		WHERE DDTICKET18.NROTKT18 = INSERTED.NROTKT18
+
+	DECLARE @tip CHAR(1)
+		,@navv CHAR(6)
+		,@ctr CHAR(11)
+		,@nrofor CHAR(12)
+		,@nrobook CHAR(6)
+		,@codarm CHAR(3)
+		,@codage CHAR(4)
+		,@flgbook CHAR(1)
+		,@tkt CHAR(8)
+	DECLARE @Nulo SMALLDATETIME
+		,@FecIng SMALLDATETIME
+		,@iVal INT
+		,@FecDir DATETIME
+		,@FecInd DATETIME
+		,@iDiaDif INT
+		,@FlgCieDir CHAR(1)
+		,@FlgCieInd CHAR(1)
+
+	SELECT @Tip = TIPOPE18
+	FROM INSERTED
+
+	IF @Tip = 'D'
+		OR @Tip = 'M'
+		OR @Tip = 'V'
+	BEGIN
+		SELECT @FecIng = FECING18
+			,@NavV = NAVVIA11
+			,@Ctr = CODCON04
+		FROM INSERTED
+
+		SELECT @Nulo = isnull(a.FECALM11, b.FECING18)
+			,@FecDir = isNull(a.FULTDI11, b.FECING18)
+			,@FlgCieDir = isNull(a.FLGCID11, '0')
+			,@FlgCieInd = isNull(a.FLGCII11, '0')
+		FROM descarga..DDCABMAN11 a
+			,INSERTED b
+		WHERE a.NAVVIA11 = b.NAVVIA11
+
+		IF @Nulo = @FecIng
+		BEGIN
+			UPDATE descarga..DDCABMAN11
+			SET FECALM11 = @FECING
+			FROM INSERTED
+			WHERE descarga..DDCABMAN11.NAVVIA11 = INSERTED.NAVVIA11
+		END
+
+		IF (@FecDir <> @FecIng)
+			AND (
+				@FlgCieDir = '0'
+				OR @FlgCieInd = '0'
+				) /* Si existe un Valor en Fecha Directa */
+		BEGIN
+			SELECT @iDiaDif = DATEDIFF(day, @FecDir, @FecIng)
+
+			IF @iDiaDif >= 2
+				AND @FlgCieInd = '0' /* Se Valida que sea una Descarga Indirecta */
+			BEGIN
+				UPDATE descarga..DDCABMAN11
+				SET FULTIN11 = @FecIng
+				WHERE descarga..DDCABMAN11.NAVVIA11 = @NavV
+			END
+
+			IF @iDiaDif < 2
+				AND @FlgCieDir = '0'
+			BEGIN
+				UPDATE descarga..DDCABMAN11
+				SET FULTDI11 = @FecIng
+				WHERE descarga..DDCABMAN11.NAVVIA11 = @NavV
+			END
+		END
+
+		IF @FecDir = @FecIng
+			AND @FlgCieDir = '0' /* Si @FecDir = @FecIng => Tiene Valor Null, Primer Ticket */
+		BEGIN
+			UPDATE descarga..DDCABMAN11
+			SET FULTDI11 = @FecIng
+			WHERE descarga..DDCABMAN11.NAVVIA11 = @NavV
+		END
+
+		IF @Tip = 'D'
+		BEGIN
+			SELECT @iVal = Count(*)
+			FROM descarga..DDCONTEN04 a(NOLOCK)
+			WHERE a.NAVVIA11 = @NavV
+				AND a.CODCON04 = @Ctr
+				AND (
+					a.CODTIP05 = 'RC'
+					OR a.CODTIP05 = 'R1'
+					)
+
+			IF @iVal > 0
+			BEGIN
+				SELECT @NroFor = RIGHT('000000' + CONVERT(VARCHAR, a.CONTAD00 + 1), 6)
+				FROM descarga..DCORDTRA67 a(NOLOCK)
+
+				INSERT descarga..DDORDTRA67 (
+					NROTRA67
+					,FECTRA67
+					,NAVVIA11
+					,FECEMI67
+					,STATUS67
+					,CODAGE19
+					)
+				VALUES (
+					@NroFor
+					,DateAdd(Minute, 30, getdate())
+					,@NavV
+					,getdate()
+					,'E'
+					,'3033'
+					)
+
+				INSERT descarga..DDDETTRA68 (
+					NROTRA67
+					,CODCON04
+					,TIPTRA68
+					)
+				VALUES (
+					@NroFor
+					,@Ctr
+					,'C'
+					)
+
+				UPDATE descarga..DCORDTRA67
+				SET CONTAD00 = convert(INT, @NroFor) + 1
+			END
+		END
+	END
+GO
+--	ALTER TRIGGER [dbo].[DCTICKET18_U] ON [dbo].[DCTICKET18]
+--	FOR UPDATE
+--	AS /*  IF @@rowcount = 0     RETURN  ELSE  */
+--	DECLARE @NROTICKET VARCHAR(8)
+
+--	SELECT TOP 1 @NROTICKET = RIGHT(nrotkt18, 7)
+--	FROM DDTICKET18 WITH (NOLOCK)
+--	ORDER BY nrotkt18 DESC
+
+--	IF (
+--			SELECT INSERTED.contad00
+--			FROM INSERTED
+--			) < CAST(@NROTICKET AS INT)
+--	--BEGIN --SET @NROCAR16=@NROCAR16 + 1   UPDATE DCTICKET18 set contad00=@NROTICKET  END
+--GO
+
+ALTER TRIGGER T_DDGUITPC19_D ON DDGUITPC19
+FOR DELETE
+AS
+IF @@rowcount = 0
+	RETURN
+ELSE
+BEGIN
+	INSERT INTO TKTAUDIT00 (
+		nomtab00
+		,tipope00
+		,codusu00
+		,fecope00
+		,hostid00
+		,regupd00
+		,nrosal52
+		,fecsal52
+		)
+	SELECT 'DDGUICON73'
+		,'D'
+		,user_name()
+		,getdate()
+		,host_name()
+		,''
+		,nrogui19
+		,fecgui19
+	FROM deleted
+END
+GO
+ALTER TRIGGER DDGUITPC19_I ON dbo.DDGUITPC19
+FOR INSERT
+AS
+IF @@rowcount = 0
+	RETURN
+ELSE
+	UPDATE DDGUITPC19
+	SET CODUSU17 = USER_NAME()
+		,FECUSU00 = GETDATE()
+	FROM INSERTED
+	WHERE DDGUITPC19.NROGUI19 = INSERTED.NROGUI19
+GO
+ALTER TRIGGER [dbo].[DRCTRTMC90_D] ON [dbo].[DRCTRTMC90]
+FOR DELETE
+AS
+IF @@rowcount = 0
+	RETURN
+--ELSE --|   INSERT INTO DRCTRTMC90_AUDIT01   SELECT    navvia11,   nrotkt28,   codcon04,   avipag90,   falpos90,   sucursal,   nropre90   FROM deleted   --|   
+GO
+	ALTER TRIGGER TAT_DDTICKET18_I ON DDTICKET18
+	AFTER INSERT
+	AS
+	INSERT INTO TAT_NEPTUNIA2_BALANZA_DBO_DDTICKET18 (
+		[FECING18]
+		,[FECSAL18]
+		,[NROTKT18]
+		,[NROPLA18]
+		,[NAVVIA11]
+		,[CODCON04]
+		,[NROAUT14]
+		,[TIPOPE18]
+		,[TAT_Tipo_Trigger]
+		,[TAT_Fecha]
+		)
+	SELECT [FECING18]
+		,[FECSAL18]
+		,[NROTKT18]
+		,[NROPLA18]
+		,[NAVVIA11]
+		,[CODCON04]
+		,[NROAUT14]
+		,[TIPOPE18]
+		,1
+		,GETDATE()
+	FROM INSERTED;
+GO
+ALTER TRIGGER TAT_DRCTRTMC90_I ON DRCTRTMC90
+	AFTER INSERT
+	AS
+	INSERT INTO TAT_NEPTUNIA2_BALANZA_DBO_DRCTRTMC90 (
+		[NAVVIA11]
+		,[CODCON04]
+		,[NROTKT28]
+		,[TAT_Tipo_Trigger]
+		,[TAT_Fecha]
+		)
+	SELECT [NAVVIA11]
+		,[CODCON04]
+		,[NROTKT28]
+		,1
+		,GETDATE()
+	FROM INSERTED;
+GO
+	--Update  ALTER TRIGGER TAT_DDTICKET18_U ON DDTICKET18 AFTER UPDATE AS INSERT INTO  TAT_NEPTUNIA2_BALANZA_DBO_DDTICKET18 ([FECING18],[FECSAL18],[NROTKT18],[NROPLA18],[NAVVIA11],[CODCON04],[NROAUT14],[TIPOPE18],[TAT_Tipo_Trigger],[TAT_Fecha]) SELECT [FECING18],[FECSAL18],[NROTKT18],[NROPLA18],[NAVVIA11],[CODCON04],[NROAUT14],[TIPOPE18],2, GETDATE() FROM INSERTED;  
+ALTER TRIGGER TAT_DRCTRTMC90_U ON DRCTRTMC90
+	AFTER UPDATE
+	AS
+	INSERT INTO TAT_NEPTUNIA2_BALANZA_DBO_DRCTRTMC90 (
+		[NAVVIA11]
+		,[CODCON04]
+		,[NROTKT28]
+		,[TAT_Tipo_Trigger]
+		,[TAT_Fecha]
+		)
+	SELECT [NAVVIA11]
+		,[CODCON04]
+		,[NROTKT28]
+		,2
+		,GETDATE()
+	FROM INSERTED;
+GO
+	--Delete  ALTER TRIGGER TAT_DDTICKET18_D ON DDTICKET18 AFTER DELETE AS INSERT INTO  TAT_NEPTUNIA2_BALANZA_DBO_DDTICKET18 ([FECING18],[FECSAL18],[NROTKT18],[NROPLA18],[NAVVIA11],[CODCON04],[NROAUT14],[TIPOPE18],[TAT_Tipo_Trigger],[TAT_Fecha]) SELECT [FECING18],[FECSAL18],[NROTKT18],[NROPLA18],[NAVVIA11],[CODCON04],[NROAUT14],[TIPOPE18],3, GETDATE() FROM DELETED;  
+	ALTER TRIGGER [dbo].[DDTICKET18_U] ON [dbo].[DDTICKET18]
+	FOR UPDATE
+	AS
+	IF @@rowcount = 0
+		RETURN
+	ELSE
+		UPDATE DDTICKET18
+		SET CODUSU17 = USER_NAME()
+			,FECUSU00 = GETDATE()
+		FROM INSERTED
+		WHERE DDTICKET18.NROTKT18 = INSERTED.NROTKT18 --|FML 29-05-2015   --|ADUTORIA DE TICKET UPDATE   insert into TKTAUDIT00   (nrosal52, nomtab00, tipope00, codusu00, fecope00, hostid00, regupd00,nrotkt18)   Select navvia11,'DDTICKET18', 'U', user_name(), getdate(), host_name(),    regupd00=substring(   isnull(navvia11,'')+'|'+   isnull(nrotkt18,'')+'|'+   isnull(codcon04,'')+'|'+   isnull(tipope18,'')+'|'+   RTRIM(CONVERT(CHAR(10),isnull(pesbrt18,0)))+'|'+   RTRIM(CONVERT(CHAR(10),isnull(pestar18,0)))+'|'+   RTRIM(CONVERT(CHAR(10),isnull(pesnet18,0)))+'|'+   RTRIM(CONVERT(CHAR(10),isnull(nrotar18,0)))+'|'+   isnull(nrobal18,'')+'|'+   isnull(codemb06,'')+'|'+   isnull(nroaut14,'')+'|'+   isnull(nrosal52,'')+'|'+   isnull(CONVERT(VARCHAR,FECSAL18,126),'')   ,1,255),nrotkt18   from INSERTED   --|  
+GO
+	ALTER TRIGGER TAT_DRCTRTMC90_D ON DRCTRTMC90
+	AFTER DELETE
+	AS
+	INSERT INTO TAT_NEPTUNIA2_BALANZA_DBO_DRCTRTMC90 (
+		[NAVVIA11]
+		,[CODCON04]
+		,[NROTKT28]
+		,[TAT_Tipo_Trigger]
+		,[TAT_Fecha]
+		)
+	SELECT [NAVVIA11]
+		,[CODCON04]
+		,[NROTKT28]
+		,3
+		,GETDATE()
+	FROM DELETED;
+GO
+	ALTER TRIGGER [dbo].[DDTICKET18_IU] ON [dbo].[DDTICKET18]
+	FOR INSERT
+	AS
+	IF @@rowcount = 0
+		RETURN
+	ELSE
+		UPDATE DDTICKET18
+		SET CODUSU17 = USER_NAME()
+			,FECUSU00 = GETDATE()
+		FROM INSERTED
+		WHERE DDTICKET18.NROTKT18 = INSERTED.NROTKT18
+
+	UPDATE DDTICKET18
+	SET FLGTRA99 = 'U'
+		,FECTRA99 = GETDATE()
+	FROM INSERTED
+	WHERE DDTICKET18.NROTKT18 = INSERTED.NROTKT18
+		AND DDTICKET18.FLGTRA99 NOT IN ('C') --|FML 29-05-2015   --|ADUTORIA DE TICKET INSERT   insert into TKTAUDIT00   (nrosal52, nomtab00, tipope00, codusu00, fecope00, hostid00, regupd00,nrotkt18)   Select navvia11,'DDTICKET18', 'I', user_name(), getdate(), host_name(),    regupd00=substring(   isnull(navvia11,'')+'|'+   isnull(nrotkt18,'')+'|'+   isnull(codcon04,'')+'|'+   isnull(tipope18,'')+'|'+   RTRIM(CONVERT(CHAR(10),isnull(pesbrt18,0)))+'|'+   RTRIM(CONVERT(CHAR(10),isnull(pestar18,0)))+'|'+   RTRIM(CONVERT(CHAR(10),isnull(pesnet18,0)))+'|'+   RTRIM(CONVERT(CHAR(10),isnull(nrotar18,0)))+'|'+   isnull(nrobal18,'')+'|'+   isnull(codemb06,'')+'|'+   isnull(nroaut14,'')+'|'+   isnull(nrosal52,'')   ,1,255),nrotkt18   from INSERTED   --|
+		/****** Object:  Trigger dbo.DDTICKET18_OTCTRRF    Script Date: 08/09/2002 6:45:50 PM ******/
+GO
+	ALTER TRIGGER DDTICKET18_OTCTRRF ON dbo.DDTICKET18
+	FOR INSERT
+	AS
+	IF @@rowcount = 0
+		RETURN
+	ELSE
+		UPDATE DDTICKET18
+		SET CODUSU17 = USER_NAME()
+			,FECUSU00 = GETDATE()
+		FROM INSERTED
+		WHERE DDTICKET18.NROTKT18 = INSERTED.NROTKT18
+
+	DECLARE @tip CHAR(1)
+		,@navv CHAR(6)
+		,@ctr CHAR(11)
+		,@nrofor CHAR(12)
+		,@nrobook CHAR(6)
+		,@codarm CHAR(3)
+		,@codage CHAR(4)
+		,@flgbook CHAR(1)
+		,@tkt CHAR(8)
+	DECLARE @Nulo SMALLDATETIME
+		,@FecIng SMALLDATETIME
+		,@iVal INT
+		,@FecDir DATETIME
+		,@FecInd DATETIME
+		,@iDiaDif INT
+		,@FlgCieDir CHAR(1)
+		,@FlgCieInd CHAR(1)
+
+	SELECT @Tip = TIPOPE18
+	FROM INSERTED
+
+	IF @Tip = 'D'
+		OR @Tip = 'M'
+		OR @Tip = 'V'
+	BEGIN
+		SELECT @FecIng = FECING18
+			,@NavV = NAVVIA11
+			,@Ctr = CODCON04
+		FROM INSERTED
+
+		SELECT @Nulo = isnull(a.FECALM11, b.FECING18)
+			,@FecDir = isNull(a.FULTDI11, b.FECING18)
+			,@FlgCieDir = isNull(a.FLGCID11, '0')
+			,@FlgCieInd = isNull(a.FLGCII11, '0')
+		FROM descarga..DDCABMAN11 a
+			,INSERTED b
+		WHERE a.NAVVIA11 = b.NAVVIA11
+
+		IF @Nulo = @FecIng
+		BEGIN
+			UPDATE descarga..DDCABMAN11
+			SET FECALM11 = @FECING
+			FROM INSERTED
+			WHERE descarga..DDCABMAN11.NAVVIA11 = INSERTED.NAVVIA11
+		END
+
+		IF (@FecDir <> @FecIng)
+			AND (
+				@FlgCieDir = '0'
+				OR @FlgCieInd = '0'
+				) /* Si existe un Valor en Fecha Directa */
+		BEGIN
+			SELECT @iDiaDif = DATEDIFF(day, @FecDir, @FecIng)
+
+			IF @iDiaDif >= 2
+				AND @FlgCieInd = '0' /* Se Valida que sea una Descarga Indirecta */
+			BEGIN
+				UPDATE descarga..DDCABMAN11
+				SET FULTIN11 = @FecIng
+				WHERE descarga..DDCABMAN11.NAVVIA11 = @NavV
+			END
+
+			IF @iDiaDif < 2
+				AND @FlgCieDir = '0'
+			BEGIN
+				UPDATE descarga..DDCABMAN11
+				SET FULTDI11 = @FecIng
+				WHERE descarga..DDCABMAN11.NAVVIA11 = @NavV
+			END
+		END
+
+		IF @FecDir = @FecIng
+			AND @FlgCieDir = '0' /* Si @FecDir = @FecIng => Tiene Valor Null, Primer Ticket */
+		BEGIN
+			UPDATE descarga..DDCABMAN11
+			SET FULTDI11 = @FecIng
+			WHERE descarga..DDCABMAN11.NAVVIA11 = @NavV
+		END
+
+		IF @Tip = 'D'
+		BEGIN
+			SELECT @iVal = Count(*)
+			FROM descarga..DDCONTEN04 a(NOLOCK)
+			WHERE a.NAVVIA11 = @NavV
+				AND a.CODCON04 = @Ctr
+				AND (
+					a.CODTIP05 = 'RC'
+					OR a.CODTIP05 = 'R1'
+					)
+
+			IF @iVal > 0
+			BEGIN
+				SELECT @NroFor = RIGHT('000000' + CONVERT(VARCHAR, a.CONTAD00 + 1), 6)
+				FROM descarga..DCORDTRA67 a(NOLOCK)
+
+				INSERT descarga..DDORDTRA67 (
+					NROTRA67
+					,FECTRA67
+					,NAVVIA11
+					,FECEMI67
+					,STATUS67
+					,CODAGE19
+					)
+				VALUES (
+					@NroFor
+					,DateAdd(Minute, 30, getdate())
+					,@NavV
+					,getdate()
+					,'E'
+					,'3033'
+					)
+
+				INSERT descarga..DDDETTRA68 (
+					NROTRA67
+					,CODCON04
+					,TIPTRA68
+					)
+				VALUES (
+					@NroFor
+					,@Ctr
+					,'C'
+					)
+
+				UPDATE descarga..DCORDTRA67
+				SET CONTAD00 = convert(INT, @NroFor) + 1
+			END
+		END
+	END
+GO
+--	ALTER TRIGGER [dbo].[DCTICKET18_U] ON [dbo].[DCTICKET18]
+--	FOR UPDATE
+--	AS /*  IF @@rowcount = 0     RETURN  ELSE  */
+--	DECLARE @NROTICKET VARCHAR(8)
+
+--	SELECT TOP 1 @NROTICKET = RIGHT(nrotkt18, 7)
+--	FROM DDTICKET18 WITH (NOLOCK)
+--	ORDER BY nrotkt18 DESC
+
+--	IF (
+--			SELECT INSERTED.contad00
+--			FROM INSERTED
+--			) < CAST(@NROTICKET AS INT)
+--	--BEGIN --SET @NROCAR16=@NROCAR16 + 1   UPDATE DCTICKET18 set contad00=@NROTICKET  END
+
+--GO
+		/****** Object:  Trigger dbo.tD_Mae_Age    Script Date: 08/09/2002 6:45:50 PM ******/
+		ALTER TRIGGER tD_Mae_Age ON Mae_Age
+		FOR DELETE
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* DELETE trigger on Mae_Age */
+		BEGIN
+			DECLARE @errno INT
+				,@errmsg VARCHAR(255) /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Age R/12 Mae_Aut ON PARENT DELETE SET NULL */
+
+			UPDATE Mae_Aut
+			SET /* %SetFK(Mae_Aut,NULL) */ Mae_Aut.Cod_Age = NULL
+			FROM Mae_Aut
+				,deleted
+			WHERE /* %JoinFKPK(Mae_Aut,deleted," = "," and") */ Mae_Aut.Cod_Age = deleted.Cod_Age /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+		/****** Object:  Trigger dbo.tD_Mae_Bal    Script Date: 08/09/2002 6:45:50 PM ******/
+		ALTER TRIGGER tD_Mae_Bal ON Mae_Bal
+		FOR DELETE
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* DELETE trigger on Mae_Bal */
+		BEGIN
+			DECLARE @errno INT
+				,@errmsg VARCHAR(255) /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Bal R/9 Pri_Tic ON PARENT DELETE SET NULL */
+
+			UPDATE Pri_Tic
+			SET /* %SetFK(Pri_Tic,NULL) */ Pri_Tic.Cod_Bal_02 = NULL
+			FROM Pri_Tic
+				,deleted
+			WHERE /* %JoinFKPK(Pri_Tic,deleted," = "," and") */ Pri_Tic.Cod_Bal_02 = deleted.Cod_Bal /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Bal R/8 Pri_Tic ON PARENT DELETE SET NULL */
+
+			UPDATE Pri_Tic
+			SET /* %SetFK(Pri_Tic,NULL) */ Pri_Tic.Cod_Bal_01 = NULL
+			FROM Pri_Tic
+				,deleted
+			WHERE /* %JoinFKPK(Pri_Tic,deleted," = "," and") */ Pri_Tic.Cod_Bal_01 = deleted.Cod_Bal /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+		/****** Object:  Trigger dbo.tD_Mae_Cho    Script Date: 08/09/2002 6:45:50 PM ******/
+		ALTER TRIGGER tD_Mae_Cho ON Mae_Cho
+		FOR DELETE
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* DELETE trigger on Mae_Cho */
+		BEGIN
+			DECLARE @errno INT
+				,@errmsg VARCHAR(255) /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Cho R/4 Pri_Tic ON PARENT DELETE SET NULL */
+
+			UPDATE Pri_Tic
+			SET /* %SetFK(Pri_Tic,NULL) */ Pri_Tic.Cod_Bre = NULL
+			FROM Pri_Tic
+				,deleted
+			WHERE /* %JoinFKPK(Pri_Tic,deleted," = "," and") */ Pri_Tic.Cod_Bre = deleted.Cod_Bre /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+		/****** Object:  Trigger dbo.tD_Mae_Lin    Script Date: 08/09/2002 6:45:50 PM ******/
+		ALTER TRIGGER tD_Mae_Lin ON Mae_Lin
+		FOR DELETE
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* DELETE trigger on Mae_Lin */
+		BEGIN
+			DECLARE @errno INT
+				,@errmsg VARCHAR(255) /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Lin R/17 Mae_Aut ON PARENT DELETE SET NULL */
+
+			UPDATE Mae_Aut
+			SET /* %SetFK(Mae_Aut,NULL) */ Mae_Aut.Cod_Lin = NULL
+			FROM Mae_Aut
+				,deleted
+			WHERE /* %JoinFKPK(Mae_Aut,deleted," = "," and") */ Mae_Aut.Cod_Lin = deleted.Cod_Lin /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+		/****** Object:  Trigger dbo.tD_Mae_Ope    Script Date: 08/09/2002 6:45:51 PM ******/
+		ALTER TRIGGER tD_Mae_Ope ON Mae_Ope
+		FOR DELETE
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* DELETE trigger on Mae_Ope */
+		BEGIN
+			DECLARE @errno INT
+				,@errmsg VARCHAR(255) /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Ope R/23 Pri_Tic ON PARENT DELETE SET NULL */
+
+			UPDATE Pri_Tic
+			SET /* %SetFK(Pri_Tic,NULL) */ Pri_Tic.Cod_Ope = NULL
+			FROM Pri_Tic
+				,deleted
+			WHERE /* %JoinFKPK(Pri_Tic,deleted," = "," and") */ Pri_Tic.Cod_Ope = deleted.Cod_Ope /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Ope R/22 Mae_Aut ON PARENT DELETE SET NULL */
+
+			UPDATE Mae_Aut
+			SET /* %SetFK(Mae_Aut,NULL) */ Mae_Aut.Cod_Ope = NULL
+			FROM Mae_Aut
+				,deleted
+			WHERE /* %JoinFKPK(Mae_Aut,deleted," = "," and") */ Mae_Aut.Cod_Ope = deleted.Cod_Ope /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+		/****** Object:  Trigger dbo.tD_Mae_Pla    Script Date: 08/09/2002 6:45:51 PM ******/
+		ALTER TRIGGER tD_Mae_Pla ON Mae_Pla
+		FOR DELETE
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* DELETE trigger on Mae_Pla */
+		BEGIN
+			DECLARE @errno INT
+				,@errmsg VARCHAR(255) /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Pla R/5 Pri_Tic ON PARENT DELETE SET NULL */
+
+			UPDATE Pri_Tic
+			SET /* %SetFK(Pri_Tic,NULL) */ Pri_Tic.Cod_Pla = NULL
+			FROM Pri_Tic
+				,deleted
+			WHERE /* %JoinFKPK(Pri_Tic,deleted," = "," and") */ Pri_Tic.Cod_Pla = deleted.Cod_Pla /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+		/****** Object:  Trigger dbo.tD_priusu    Script Date: 08/09/2002 6:45:51 PM ******/
+		ALTER TRIGGER tD_priusu ON priusu
+		FOR DELETE
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* DELETE trigger on priusu */
+		BEGIN
+			DECLARE @errno INT
+				,@errmsg VARCHAR(255) /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* priusu R/11 Pri_Tic ON PARENT DELETE SET NULL */
+
+			UPDATE Pri_Tic
+			SET /* %SetFK(Pri_Tic,NULL) */ Pri_Tic.Cod_Usu_01 = NULL
+			FROM Pri_Tic
+				,deleted
+			WHERE /* %JoinFKPK(Pri_Tic,deleted," = "," and") */ Pri_Tic.Cod_Usu_01 = deleted.CodUsu /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* priusu R/10 Pri_Tic ON PARENT DELETE SET NULL */
+
+			UPDATE Pri_Tic
+			SET /* %SetFK(Pri_Tic,NULL) */ Pri_Tic.Cod_Usu_02 = NULL
+			FROM Pri_Tic
+				,deleted
+			WHERE /* %JoinFKPK(Pri_Tic,deleted," = "," and") */ Pri_Tic.Cod_Usu_02 = deleted.CodUsu /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+		/****** Object:  Trigger dbo.tD_Terminal    Script Date: 08/09/2002 6:45:51 PM ******/
+		ALTER TRIGGER tD_Terminal ON Terminal
+		FOR DELETE
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* DELETE trigger on Terminal */
+		BEGIN
+			DECLARE @errno INT
+				,@errmsg VARCHAR(255) /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Terminal R/14 Mae_Aut ON PARENT DELETE SET NULL */
+
+			UPDATE Mae_Aut
+			SET /* %SetFK(Mae_Aut,NULL) */ Mae_Aut.Cod_Mod = NULL
+			FROM Mae_Aut
+				,deleted
+			WHERE /* %JoinFKPK(Mae_Aut,deleted," = "," and") */ Mae_Aut.Cod_Mod = deleted.Cod_Ter_Alm /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+		/****** Object:  Trigger dbo.tI_Mae_Aut    Script Date: 08/09/2002 6:45:51 PM ******/
+		ALTER TRIGGER tI_Mae_Aut ON Mae_Aut
+		FOR INSERT
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* INSERT trigger on Mae_Aut */
+		BEGIN
+			DECLARE @numrows INT
+				,@nullcnt INT
+				,@validcnt INT
+				,@errno INT
+				,@errmsg VARCHAR(255)
+
+			SELECT @numrows = @@rowcount /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Ope R/22 Mae_Aut ON CHILD INSERT SET NULL */
+
+			IF /* %ChildFK(" or",update) */
+				UPDATE (Cod_Ope)
+
+			BEGIN
+				UPDATE Mae_Aut
+				SET /* %SetFK(Mae_Aut,NULL) */ Mae_Aut.Cod_Ope = NULL
+				FROM Mae_Aut
+					,inserted
+				WHERE /* %JoinPKPK(Mae_Aut,inserted," = "," and") */ Mae_Aut.Cod_Mod = inserted.Cod_Mod
+					AND Mae_Aut.Num_Aut = inserted.Num_Aut
+					AND NOT EXISTS (
+						SELECT *
+						FROM Mae_Ope
+						WHERE /* %JoinFKPK(inserted,Mae_Ope," = "," and") */ inserted.Cod_Ope = Mae_Ope.Cod_Ope
+						)
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Lin R/17 Mae_Aut ON CHILD INSERT SET NULL */
+
+			IF /* %ChildFK(" or",update) */
+				UPDATE (Cod_Lin)
+
+			BEGIN
+				UPDATE Mae_Aut
+				SET /* %SetFK(Mae_Aut,NULL) */ Mae_Aut.Cod_Lin = NULL
+				FROM Mae_Aut
+					,inserted
+				WHERE /* %JoinPKPK(Mae_Aut,inserted," = "," and") */ Mae_Aut.Cod_Mod = inserted.Cod_Mod
+					AND Mae_Aut.Num_Aut = inserted.Num_Aut
+					AND NOT EXISTS (
+						SELECT *
+						FROM Mae_Lin
+						WHERE /* %JoinFKPK(inserted,Mae_Lin," = "," and") */ inserted.Cod_Lin = Mae_Lin.Cod_Lin
+						)
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Terminal R/14 Mae_Aut ON CHILD INSERT SET NULL */
+
+			IF /* %ChildFK(" or",update) */
+				UPDATE (Cod_Mod)
+
+			BEGIN
+				UPDATE Mae_Aut
+				SET /* %SetFK(Mae_Aut,NULL) */ Mae_Aut.Cod_Mod = NULL
+				FROM Mae_Aut
+					,inserted
+				WHERE /* %JoinPKPK(Mae_Aut,inserted," = "," and") */ Mae_Aut.Cod_Mod = inserted.Cod_Mod
+					AND Mae_Aut.Num_Aut = inserted.Num_Aut
+					AND NOT EXISTS (
+						SELECT *
+						FROM Terminal
+						WHERE /* %JoinFKPK(inserted,Terminal," = "," and") */ inserted.Cod_Mod = Terminal.Cod_Ter_Alm
+						)
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Age R/12 Mae_Aut ON CHILD INSERT SET NULL */
+
+			IF /* %ChildFK(" or",update) */
+				UPDATE (Cod_Age)
+
+			BEGIN
+				UPDATE Mae_Aut
+				SET /* %SetFK(Mae_Aut,NULL) */ Mae_Aut.Cod_Age = NULL
+				FROM Mae_Aut
+					,inserted
+				WHERE /* %JoinPKPK(Mae_Aut,inserted," = "," and") */ Mae_Aut.Cod_Mod = inserted.Cod_Mod
+					AND Mae_Aut.Num_Aut = inserted.Num_Aut
+					AND NOT EXISTS (
+						SELECT *
+						FROM Mae_Age
+						WHERE /* %JoinFKPK(inserted,Mae_Age," = "," and") */ inserted.Cod_Age = Mae_Age.Cod_Age
+						)
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+		/****** Object:  Trigger dbo.tI_Mae_Cho    Script Date: 08/09/2002 6:45:51 PM ******/
+		ALTER TRIGGER tI_Mae_Cho ON Mae_Cho
+		FOR INSERT
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* INSERT trigger on Mae_Cho */
+		BEGIN
+			DECLARE @numrows INT
+				,@nullcnt INT
+				,@validcnt INT
+				,@errno INT
+				,@errmsg VARCHAR(255)
+
+			SELECT @numrows = @@rowcount /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Est R/26 Mae_Cho ON CHILD INSERT SET NULL */
+
+			IF /* %ChildFK(" or",update) */
+				UPDATE (Cod_Est)
+
+			BEGIN
+				UPDATE Mae_Cho
+				SET /* %SetFK(Mae_Cho,NULL) */ Mae_Cho.Cod_Est = NULL
+				FROM Mae_Cho
+					,inserted
+				WHERE /* %JoinPKPK(Mae_Cho,inserted," = "," and") */ Mae_Cho.Cod_Bre = inserted.Cod_Bre
+					AND NOT EXISTS (
+						SELECT *
+						FROM Mae_Est
+						WHERE /* %JoinFKPK(inserted,Mae_Est," = "," and") */ inserted.Cod_Est = Mae_Est.Cod_Est
+						)
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+		/****** Object:  Trigger dbo.tI_Mae_Pla    Script Date: 08/09/2002 6:45:51 PM ******/
+		ALTER TRIGGER tI_Mae_Pla ON Mae_Pla
+		FOR INSERT
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* INSERT trigger on Mae_Pla */
+		BEGIN
+			DECLARE @numrows INT
+				,@nullcnt INT
+				,@validcnt INT
+				,@errno INT
+				,@errmsg VARCHAR(255)
+
+			SELECT @numrows = @@rowcount /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Est R/25 Mae_Pla ON CHILD INSERT SET NULL */
+
+			IF /* %ChildFK(" or",update) */
+				UPDATE (Cod_Est)
+
+			BEGIN
+				UPDATE Mae_Pla
+				SET /* %SetFK(Mae_Pla,NULL) */ Mae_Pla.Cod_Est = NULL
+				FROM Mae_Pla
+					,inserted
+				WHERE /* %JoinPKPK(Mae_Pla,inserted," = "," and") */ Mae_Pla.Cod_Pla = inserted.Cod_Pla
+					AND NOT EXISTS (
+						SELECT *
+						FROM Mae_Est
+						WHERE /* %JoinFKPK(inserted,Mae_Est," = "," and") */ inserted.Cod_Est = Mae_Est.Cod_Est
+						)
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+		/****** Object:  Trigger dbo.tU_Mae_Age    Script Date: 08/09/2002 6:45:51 PM ******/
+		ALTER TRIGGER tU_Mae_Age ON Mae_Age
+		FOR UPDATE
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* UPDATE trigger on Mae_Age */
+		BEGIN
+			DECLARE @numrows INT
+				,@nullcnt INT
+				,@validcnt INT
+				,@insCod_Age CHAR(5)
+				,@errno INT
+				,@errmsg VARCHAR(255)
+
+			SELECT @numrows = @@rowcount /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Age R/12 Mae_Aut ON PARENT UPDATE SET NULL */
+
+			IF /* %ParentPK(" or",update) */
+				UPDATE (Cod_Age)
+
+			BEGIN
+				UPDATE Mae_Aut
+				SET /* %SetFK(Mae_Aut,NULL) */ Mae_Aut.Cod_Age = NULL
+				FROM Mae_Aut
+					,deleted
+				WHERE /* %JoinFKPK(Mae_Aut,deleted," = "," and") */ Mae_Aut.Cod_Age = deleted.Cod_Age
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+		/****** Object:  Trigger dbo.tU_Mae_Bal    Script Date: 08/09/2002 6:45:51 PM ******/
+		ALTER TRIGGER tU_Mae_Bal ON Mae_Bal
+		FOR UPDATE
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* UPDATE trigger on Mae_Bal */
+		BEGIN
+			DECLARE @numrows INT
+				,@nullcnt INT
+				,@validcnt INT
+				,@insCod_Bal CHAR(2)
+				,@errno INT
+				,@errmsg VARCHAR(255)
+
+			SELECT @numrows = @@rowcount /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Bal R/9 Pri_Tic ON PARENT UPDATE SET NULL */
+
+			IF /* %ParentPK(" or",update) */
+				UPDATE (Cod_Bal)
+
+			BEGIN
+				UPDATE Pri_Tic
+				SET /* %SetFK(Pri_Tic,NULL) */ Pri_Tic.Cod_Bal_02 = NULL
+				FROM Pri_Tic
+					,deleted
+				WHERE /* %JoinFKPK(Pri_Tic,deleted," = "," and") */ Pri_Tic.Cod_Bal_02 = deleted.Cod_Bal
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Bal R/8 Pri_Tic ON PARENT UPDATE SET NULL */
+
+			IF /* %ParentPK(" or",update) */
+				UPDATE (Cod_Bal)
+
+			BEGIN
+				UPDATE Pri_Tic
+				SET /* %SetFK(Pri_Tic,NULL) */ Pri_Tic.Cod_Bal_01 = NULL
+				FROM Pri_Tic
+					,deleted
+				WHERE /* %JoinFKPK(Pri_Tic,deleted," = "," and") */ Pri_Tic.Cod_Bal_01 = deleted.Cod_Bal
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+		/****** Object:  Trigger dbo.tU_Mae_Cho    Script Date: 08/09/2002 6:45:51 PM ******/
+		ALTER TRIGGER tU_Mae_Cho ON Mae_Cho
+		FOR UPDATE
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* UPDATE trigger on Mae_Cho */
+		BEGIN
+			DECLARE @numrows INT
+				,@nullcnt INT
+				,@validcnt INT
+				,@insCod_Bre CHAR(9)
+				,@errno INT
+				,@errmsg VARCHAR(255)
+
+			SELECT @numrows = @@rowcount /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Cho R/4 Pri_Tic ON PARENT UPDATE SET NULL */
+
+			IF /* %ParentPK(" or",update) */
+				UPDATE (Cod_Bre)
+
+			BEGIN
+				UPDATE Pri_Tic
+				SET /* %SetFK(Pri_Tic,NULL) */ Pri_Tic.Cod_Bre = NULL
+				FROM Pri_Tic
+					,deleted
+				WHERE /* %JoinFKPK(Pri_Tic,deleted," = "," and") */ Pri_Tic.Cod_Bre = deleted.Cod_Bre
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Est R/26 Mae_Cho ON CHILD UPDATE SET NULL */
+
+			IF /* %ChildFK(" or",update) */
+				UPDATE (Cod_Est)
+
+			BEGIN
+				UPDATE Mae_Cho
+				SET /* %SetFK(Mae_Cho,NULL) */ Mae_Cho.Cod_Est = NULL
+				FROM Mae_Cho
+					,inserted
+				WHERE /* %JoinPKPK(Mae_Cho,inserted," = "," and") */ Mae_Cho.Cod_Bre = inserted.Cod_Bre
+					AND NOT EXISTS (
+						SELECT *
+						FROM Mae_Est
+						WHERE /* %JoinFKPK(inserted,Mae_Est," = "," and") */ inserted.Cod_Est = Mae_Est.Cod_Est
+						)
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+		/****** Object:  Trigger dbo.tU_Mae_Lin    Script Date: 08/09/2002 6:45:51 PM ******/
+		ALTER TRIGGER tU_Mae_Lin ON Mae_Lin
+		FOR UPDATE
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* UPDATE trigger on Mae_Lin */
+		BEGIN
+			DECLARE @numrows INT
+				,@nullcnt INT
+				,@validcnt INT
+				,@insCod_Lin CHAR(4)
+				,@errno INT
+				,@errmsg VARCHAR(255)
+
+			SELECT @numrows = @@rowcount /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Lin R/17 Mae_Aut ON PARENT UPDATE SET NULL */
+
+			IF /* %ParentPK(" or",update) */
+				UPDATE (Cod_Lin)
+
+			BEGIN
+				UPDATE Mae_Aut
+				SET /* %SetFK(Mae_Aut,NULL) */ Mae_Aut.Cod_Lin = NULL
+				FROM Mae_Aut
+					,deleted
+				WHERE /* %JoinFKPK(Mae_Aut,deleted," = "," and") */ Mae_Aut.Cod_Lin = deleted.Cod_Lin
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+		/****** Object:  Trigger dbo.tU_Mae_Ope    Script Date: 08/09/2002 6:45:51 PM ******/
+		ALTER TRIGGER tU_Mae_Ope ON Mae_Ope
+		FOR UPDATE
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* UPDATE trigger on Mae_Ope */
+		BEGIN
+			DECLARE @numrows INT
+				,@nullcnt INT
+				,@validcnt INT
+				,@insCod_Ope CHAR(3)
+				,@errno INT
+				,@errmsg VARCHAR(255)
+
+			SELECT @numrows = @@rowcount /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Ope R/23 Pri_Tic ON PARENT UPDATE SET NULL */
+
+			IF /* %ParentPK(" or",update) */
+				UPDATE (Cod_Ope)
+
+			BEGIN
+				UPDATE Pri_Tic
+				SET /* %SetFK(Pri_Tic,NULL) */ Pri_Tic.Cod_Ope = NULL
+				FROM Pri_Tic
+					,deleted
+				WHERE /* %JoinFKPK(Pri_Tic,deleted," = "," and") */ Pri_Tic.Cod_Ope = deleted.Cod_Ope
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Ope R/22 Mae_Aut ON PARENT UPDATE SET NULL */
+
+			IF /* %ParentPK(" or",update) */
+				UPDATE (Cod_Ope)
+
+			BEGIN
+				UPDATE Mae_Aut
+				SET /* %SetFK(Mae_Aut,NULL) */ Mae_Aut.Cod_Ope = NULL
+				FROM Mae_Aut
+					,deleted
+				WHERE /* %JoinFKPK(Mae_Aut,deleted," = "," and") */ Mae_Aut.Cod_Ope = deleted.Cod_Ope
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+		/****** Object:  Trigger dbo.tU_Mae_Pla    Script Date: 08/09/2002 6:45:51 PM ******/
+		ALTER TRIGGER tU_Mae_Pla ON Mae_Pla
+		FOR UPDATE
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* UPDATE trigger on Mae_Pla */
+		BEGIN
+			DECLARE @numrows INT
+				,@nullcnt INT
+				,@validcnt INT
+				,@insCod_Pla CHAR(8)
+				,@errno INT
+				,@errmsg VARCHAR(255)
+
+			SELECT @numrows = @@rowcount /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Pla R/5 Pri_Tic ON PARENT UPDATE SET NULL */
+
+			IF /* %ParentPK(" or",update) */
+				UPDATE (Cod_Pla)
+
+			BEGIN
+				UPDATE Pri_Tic
+				SET /* %SetFK(Pri_Tic,NULL) */ Pri_Tic.Cod_Pla = NULL
+				FROM Pri_Tic
+					,deleted
+				WHERE /* %JoinFKPK(Pri_Tic,deleted," = "," and") */ Pri_Tic.Cod_Pla = deleted.Cod_Pla
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Est R/25 Mae_Pla ON CHILD UPDATE SET NULL */
+
+			IF /* %ChildFK(" or",update) */
+				UPDATE (Cod_Est)
+
+			BEGIN
+				UPDATE Mae_Pla
+				SET /* %SetFK(Mae_Pla,NULL) */ Mae_Pla.Cod_Est = NULL
+				FROM Mae_Pla
+					,inserted
+				WHERE /* %JoinPKPK(Mae_Pla,inserted," = "," and") */ Mae_Pla.Cod_Pla = inserted.Cod_Pla
+					AND NOT EXISTS (
+						SELECT *
+						FROM Mae_Est
+						WHERE /* %JoinFKPK(inserted,Mae_Est," = "," and") */ inserted.Cod_Est = Mae_Est.Cod_Est
+						)
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+		/****** Object:  Trigger dbo.tU_priusu    Script Date: 08/09/2002 6:45:52 PM ******/
+		ALTER TRIGGER tU_priusu ON priusu
+		FOR UPDATE
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* UPDATE trigger on priusu */
+		BEGIN
+			DECLARE @numrows INT
+				,@nullcnt INT
+				,@validcnt INT
+				,@insCodUsu INT
+				,@errno INT
+				,@errmsg VARCHAR(255)
+
+			SELECT @numrows = @@rowcount /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* priusu R/11 Pri_Tic ON PARENT UPDATE SET NULL */
+
+			IF /* %ParentPK(" or",update) */
+				UPDATE (CodUsu)
+
+			BEGIN
+				UPDATE Pri_Tic
+				SET /* %SetFK(Pri_Tic,NULL) */ Pri_Tic.Cod_Usu_01 = NULL
+				FROM Pri_Tic
+					,deleted
+				WHERE /* %JoinFKPK(Pri_Tic,deleted," = "," and") */ Pri_Tic.Cod_Usu_01 = deleted.CodUsu
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* priusu R/10 Pri_Tic ON PARENT UPDATE SET NULL */
+
+			IF /* %ParentPK(" or",update) */
+				UPDATE (CodUsu)
+
+			BEGIN
+				UPDATE Pri_Tic
+				SET /* %SetFK(Pri_Tic,NULL) */ Pri_Tic.Cod_Usu_02 = NULL
+				FROM Pri_Tic
+					,deleted
+				WHERE /* %JoinFKPK(Pri_Tic,deleted," = "," and") */ Pri_Tic.Cod_Usu_02 = deleted.CodUsu
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+		/****** Object:  Trigger dbo.tU_Terminal    Script Date: 08/09/2002 6:45:52 PM ******/
+		ALTER TRIGGER tU_Terminal ON Terminal
+		FOR UPDATE
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* UPDATE trigger on Terminal */
+		BEGIN
+			DECLARE @numrows INT
+				,@nullcnt INT
+				,@validcnt INT
+				,@insCod_Ter_Alm CHAR(4)
+				,@errno INT
+				,@errmsg VARCHAR(255)
+
+			SELECT @numrows = @@rowcount /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Terminal R/14 Mae_Aut ON PARENT UPDATE SET NULL */
+
+			IF /* %ParentPK(" or",update) */
+				UPDATE (Cod_Ter_Alm)
+
+			BEGIN
+				UPDATE Mae_Aut
+				SET /* %SetFK(Mae_Aut,NULL) */ Mae_Aut.Cod_Mod = NULL
+				FROM Mae_Aut
+					,deleted
+				WHERE /* %JoinFKPK(Mae_Aut,deleted," = "," and") */ Mae_Aut.Cod_Mod = deleted.Cod_Ter_Alm
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+--		/****** Object:  Trigger dbo.tD_Embalaj    Script Date: 08/09/2002 6:45:52 PM ******/
+--		ALTER TRIGGER tD_Embalaj ON Embalaj
+--		FOR DELETE
+--		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* DELETE trigger on Embalaj */
+--		BEGIN
+--			DECLARE @errno INT
+--				,@errmsg VARCHAR(255) /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Embalaj R/18 Sec_det_Aut ON PARENT DELETE SET NULL */
+
+--			UPDATE Sec_det_Aut
+--			SET /* %SetFK(Sec_det_Aut,NULL) */ Sec_det_Aut.C¾d_Tip_Emb = NULL
+--			FROM Sec_det_Aut
+--				,deleted
+--			WHERE /* %JoinFKPK(Sec_det_Aut,deleted," = "," and") */ Sec_det_Aut.C¾d_Tip_Emb = deleted.Cod_Emb /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+--			RETURN
+
+--			error:
+
+--			--RAISERROR @errno @errmsg
+
+--			ROLLBACK TRANSACTION
+--		END
+--GO
+		/****** Object:  Trigger dbo.tD_Mae_Aut    Script Date: 08/09/2002 6:45:52 PM ******/
+		ALTER TRIGGER tD_Mae_Aut ON Mae_Aut
+		FOR DELETE
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* DELETE trigger on Mae_Aut */
+		BEGIN
+			DECLARE @errno INT
+				,@errmsg VARCHAR(255) /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Aut R/16 Sec_det_Aut ON PARENT DELETE SET NULL */
+
+			UPDATE Sec_det_Aut
+			SET /* %SetFK(Sec_det_Aut,NULL) */ Sec_det_Aut.Cod_Mod = NULL
+				,Sec_det_Aut.Num_Aut = NULL
+			FROM Sec_det_Aut
+				,deleted
+			WHERE /* %JoinFKPK(Sec_det_Aut,deleted," = "," and") */ Sec_det_Aut.Cod_Mod = deleted.Cod_Mod
+				AND Sec_det_Aut.Num_Aut = deleted.Num_Aut /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Aut R/1 Pri_Tic ON PARENT DELETE SET NULL */
+
+			UPDATE Pri_Tic
+			SET /* %SetFK(Pri_Tic,NULL) */ Pri_Tic.Cod_Mod = NULL
+				,Pri_Tic.Num_Aut = NULL
+			FROM Pri_Tic
+				,deleted
+			WHERE /* %JoinFKPK(Pri_Tic,deleted," = "," and") */ Pri_Tic.Cod_Mod = deleted.Cod_Mod
+				AND Pri_Tic.Num_Aut = deleted.Num_Aut /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+		/****** Object:  Trigger dbo.tD_Mae_Con_Con    Script Date: 08/09/2002 6:45:52 PM ******/
+		ALTER TRIGGER tD_Mae_Con_Con ON Mae_Con_Con
+		FOR DELETE
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* DELETE trigger on Mae_Con_Con */
+		BEGIN
+			DECLARE @errno INT
+				,@errmsg VARCHAR(255) /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Con_Con R/6 Sec_det_Aut ON PARENT DELETE SET NULL */
+
+			UPDATE Sec_det_Aut
+			SET /* %SetFK(Sec_det_Aut,NULL) */ Sec_det_Aut.Cod_Con_Con = NULL
+			FROM Sec_det_Aut
+				,deleted
+			WHERE /* %JoinFKPK(Sec_det_Aut,deleted," = "," and") */ Sec_det_Aut.Cod_Con_Con = deleted.Cod_Con_Con /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+		/****** Object:  Trigger dbo.tD_Mae_Est    Script Date: 08/09/2002 6:45:52 PM ******/
+		ALTER TRIGGER tD_Mae_Est ON Mae_Est
+		FOR DELETE
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* DELETE trigger on Mae_Est */
+		BEGIN
+			DECLARE @errno INT
+				,@errmsg VARCHAR(255) /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Est R/26 Mae_Cho ON PARENT DELETE SET NULL */
+
+			UPDATE Mae_Cho
+			SET /* %SetFK(Mae_Cho,NULL) */ Mae_Cho.Cod_Est = NULL
+			FROM Mae_Cho
+				,deleted
+			WHERE /* %JoinFKPK(Mae_Cho,deleted," = "," and") */ Mae_Cho.Cod_Est = deleted.Cod_Est /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Est R/25 Mae_Pla ON PARENT DELETE SET NULL */
+
+			UPDATE Mae_Pla
+			SET /* %SetFK(Mae_Pla,NULL) */ Mae_Pla.Cod_Est = NULL
+			FROM Mae_Pla
+				,deleted
+			WHERE /* %JoinFKPK(Mae_Pla,deleted," = "," and") */ Mae_Pla.Cod_Est = deleted.Cod_Est /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Est R/24 Sec_det_Aut ON PARENT DELETE SET NULL */
+
+			UPDATE Sec_det_Aut
+			SET /* %SetFK(Sec_det_Aut,NULL) */ Sec_det_Aut.Cod_Est = NULL
+			FROM Sec_det_Aut
+				,deleted
+			WHERE /* %JoinFKPK(Sec_det_Aut,deleted," = "," and") */ Sec_det_Aut.Cod_Est = deleted.Cod_Est /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+		/****** Object:  Trigger dbo.tD_Mae_Tip_Con    Script Date: 08/09/2002 6:45:52 PM ******/
+		ALTER TRIGGER tD_Mae_Tip_Con ON Mae_Tip_Con
+		FOR DELETE
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* DELETE trigger on Mae_Tip_Con */
+		BEGIN
+			DECLARE @errno INT
+				,@errmsg VARCHAR(255) /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Tip_Con R/7 Sec_det_Aut ON PARENT DELETE SET NULL */
+
+			UPDATE Sec_det_Aut
+			SET /* %SetFK(Sec_det_Aut,NULL) */ Sec_det_Aut.Cod_Tip_Con = NULL
+			FROM Sec_det_Aut
+				,deleted
+			WHERE /* %JoinFKPK(Sec_det_Aut,deleted," = "," and") */ Sec_det_Aut.Cod_Tip_Con = deleted.Cod_Tip_Con /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+		/****** Object:  Trigger dbo.tD_Pri_Tic    Script Date: 08/09/2002 6:45:52 PM ******/
+		ALTER TRIGGER tD_Pri_Tic ON Pri_Tic
+		FOR DELETE
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* DELETE trigger on Pri_Tic */
+		BEGIN
+			DECLARE @errno INT
+				,@errmsg VARCHAR(255) /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Pri_Tic R/21 Sec_det_Car_Bal ON PARENT DELETE SET NULL */
+
+			UPDATE Sec_det_Car_Bal
+			SET /* %SetFK(Sec_det_Car_Bal,NULL) */ Sec_det_Car_Bal.Cod_Mod = NULL
+				,Sec_det_Car_Bal.Cod_Ope = NULL
+				,Sec_det_Car_Bal.Num_Tic = NULL
+			FROM Sec_det_Car_Bal
+				,deleted
+			WHERE /* %JoinFKPK(Sec_det_Car_Bal,deleted," = "," and") */ Sec_det_Car_Bal.Cod_Mod = deleted.Cod_Mod
+				AND Sec_det_Car_Bal.Cod_Ope = deleted.Cod_Ope
+				AND Sec_det_Car_Bal.Num_Tic = deleted.Num_Tic /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+--		/****** Object:  Trigger dbo.tI_Sec_det_Aut    Script Date: 08/09/2002 6:45:52 PM ******/
+--		ALTER TRIGGER tI_Sec_det_Aut ON Sec_det_Aut
+--		FOR INSERT
+--		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* INSERT trigger on Sec_det_Aut */
+--		BEGIN
+--			DECLARE @numrows INT
+--				,@nullcnt INT
+--				,@validcnt INT
+--				,@errno INT
+--				,@errmsg VARCHAR(255)
+
+--			SELECT @numrows = @@rowcount /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Est R/24 Sec_det_Aut ON CHILD INSERT SET NULL */
+
+--			IF /* %ChildFK(" or",update) */
+--				UPDATE (Cod_Est)
+
+--			BEGIN
+--				UPDATE Sec_det_Aut
+--				SET /* %SetFK(Sec_det_Aut,NULL) */ Sec_det_Aut.Cod_Est = NULL
+--				FROM Sec_det_Aut
+--					,inserted
+--				WHERE /* %JoinPKPK(Sec_det_Aut,inserted," = "," and") */ Sec_det_Aut.Cod_Mod = inserted.Cod_Mod
+--					AND Sec_det_Aut.Num_Aut = inserted.Num_Aut
+--					AND Sec_det_Aut.Cor_Det = inserted.Cor_Det
+--					AND NOT EXISTS (
+--						SELECT *
+--						FROM Mae_Est
+--						WHERE /* %JoinFKPK(inserted,Mae_Est," = "," and") */ inserted.Cod_Est = Mae_Est.Cod_Est
+--						)
+--			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Embalaj R/18 Sec_det_Aut ON CHILD INSERT SET NULL */
+
+--			IF /* %ChildFK(" or",update) */
+--				UPDATE (Cod_Tip_Emb)
+
+--			BEGIN
+--				UPDATE Sec_det_Aut
+--				SET /* %SetFK(Sec_det_Aut,NULL) */ Sec_det_Aut.C¾d_Tip_Emb = NULL
+--				FROM Sec_det_Aut
+--					,inserted
+--				WHERE /* %JoinPKPK(Sec_det_Aut,inserted," = "," and") */ Sec_det_Aut.Cod_Mod = inserted.Cod_Mod
+--					AND Sec_det_Aut.Num_Aut = inserted.Num_Aut
+--					AND Sec_det_Aut.Cor_Det = inserted.Cor_Det
+--					AND NOT EXISTS (
+--						SELECT *
+--						FROM Embalaj
+--						WHERE /* %JoinFKPK(inserted,Embalaj," = "," and") */ inserted.C¾d_Tip_Emb = Embalaj.Cod_Emb
+--						)
+--			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Aut R/16 Sec_det_Aut ON CHILD INSERT SET NULL */
+
+--			IF /* %ChildFK(" or",update) */
+--				UPDATE (Cod_Mod)
+--					OR
+
+--			UPDATE (Num_Aut)
+
+--			BEGIN
+--				UPDATE Sec_det_Aut
+--				SET /* %SetFK(Sec_det_Aut,NULL) */ Sec_det_Aut.Cod_Mod = NULL
+--					,Sec_det_Aut.Num_Aut = NULL
+--				FROM Sec_det_Aut
+--					,inserted
+--				WHERE /* %JoinPKPK(Sec_det_Aut,inserted," = "," and") */ Sec_det_Aut.Cod_Mod = inserted.Cod_Mod
+--					AND Sec_det_Aut.Num_Aut = inserted.Num_Aut
+--					AND Sec_det_Aut.Cor_Det = inserted.Cor_Det
+--					AND NOT EXISTS (
+--						SELECT *
+--						FROM Mae_Aut
+--						WHERE /* %JoinFKPK(inserted,Mae_Aut," = "," and") */ inserted.Cod_Mod = Mae_Aut.Cod_Mod
+--							AND inserted.Num_Aut = Mae_Aut.Num_Aut
+--						)
+--			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Tip_Con R/7 Sec_det_Aut ON CHILD INSERT SET NULL */
+
+--			IF /* %ChildFK(" or",update) */
+--				UPDATE (Cod_Tip_Con)
+
+--			BEGIN
+--				UPDATE Sec_det_Aut
+--				SET /* %SetFK(Sec_det_Aut,NULL) */ Sec_det_Aut.Cod_Tip_Con = NULL
+--				FROM Sec_det_Aut
+--					,inserted
+--				WHERE /* %JoinPKPK(Sec_det_Aut,inserted," = "," and") */ Sec_det_Aut.Cod_Mod = inserted.Cod_Mod
+--					AND Sec_det_Aut.Num_Aut = inserted.Num_Aut
+--					AND Sec_det_Aut.Cor_Det = inserted.Cor_Det
+--					AND NOT EXISTS (
+--						SELECT *
+--						FROM Mae_Tip_Con
+--						WHERE /* %JoinFKPK(inserted,Mae_Tip_Con," = "," and") */ inserted.Cod_Tip_Con = Mae_Tip_Con.Cod_Tip_Con
+--						)
+--			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Con_Con R/6 Sec_det_Aut ON CHILD INSERT SET NULL */
+
+--			IF /* %ChildFK(" or",update) */
+--				UPDATE (Cod_Con_Con)
+
+--			BEGIN
+--				UPDATE Sec_det_Aut
+--				SET /* %SetFK(Sec_det_Aut,NULL) */ Sec_det_Aut.Cod_Con_Con = NULL
+--				FROM Sec_det_Aut
+--					,inserted
+--				WHERE /* %JoinPKPK(Sec_det_Aut,inserted," = "," and") */ Sec_det_Aut.Cod_Mod = inserted.Cod_Mod
+--					AND Sec_det_Aut.Num_Aut = inserted.Num_Aut
+--					AND Sec_det_Aut.Cor_Det = inserted.Cor_Det
+--					AND NOT EXISTS (
+--						SELECT *
+--						FROM Mae_Con_Con
+--						WHERE /* %JoinFKPK(inserted,Mae_Con_Con," = "," and") */ inserted.Cod_Con_Con = Mae_Con_Con.Cod_Con_Con
+--						)
+--			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+--			RETURN
+
+--			error:
+
+--			--RAISERROR @errno @errmsg
+
+--			ROLLBACK TRANSACTION
+--		END
+--GO
+		/****** Object:  Trigger dbo.tI_Sec_det_Car_Bal    Script Date: 08/09/2002 6:45:52 PM ******/
+		ALTER TRIGGER tI_Sec_det_Car_Bal ON Sec_det_Car_Bal
+		FOR INSERT
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* INSERT trigger on Sec_det_Car_Bal */
+		BEGIN
+			DECLARE @numrows INT
+				,@nullcnt INT
+				,@validcnt INT
+				,@errno INT
+				,@errmsg VARCHAR(255)
+
+			SELECT @numrows = @@rowcount /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Pri_Tic R/21 Sec_det_Car_Bal ON CHILD INSERT SET NULL */
+
+			IF /* %ChildFK(" or",update) */
+				UPDATE (Cod_Mod)
+					OR
+
+			UPDATE (Cod_Ope)
+				OR
+
+			UPDATE (Num_Tic)
+
+			BEGIN
+				UPDATE Sec_det_Car_Bal
+				SET /* %SetFK(Sec_det_Car_Bal,NULL) */ Sec_det_Car_Bal.Cod_Mod = NULL
+					,Sec_det_Car_Bal.Cod_Ope = NULL
+					,Sec_det_Car_Bal.Num_Tic = NULL
+				FROM Sec_det_Car_Bal
+					,inserted
+				WHERE /* %JoinPKPK(Sec_det_Car_Bal,inserted," = "," and") */ Sec_det_Car_Bal.Cod_Mod = inserted.Cod_Mod
+					AND Sec_det_Car_Bal.Cod_Ope = inserted.Cod_Ope
+					AND Sec_det_Car_Bal.Num_Tic = inserted.Num_Tic
+					AND Sec_det_Car_Bal.Cor_Det = inserted.Cor_Det
+					AND NOT EXISTS (
+						SELECT *
+						FROM Pri_Tic
+						WHERE /* %JoinFKPK(inserted,Pri_Tic," = "," and") */ inserted.Cod_Mod = Pri_Tic.Cod_Mod
+							AND inserted.Cod_Ope = Pri_Tic.Cod_Ope
+							AND inserted.Num_Tic = Pri_Tic.Num_Tic
+						)
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+--		/****** Object:  Trigger dbo.tU_Embalaj    Script Date: 08/09/2002 6:45:52 PM ******/
+--		ALTER TRIGGER tU_Embalaj ON Embalaj
+--		FOR UPDATE
+--		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* UPDATE trigger on Embalaj */
+--		BEGIN
+--			DECLARE @numrows INT
+--				,@nullcnt INT
+--				,@validcnt INT
+--				,@insCod_Emb CHAR(3)
+--				,@errno INT
+--				,@errmsg VARCHAR(255)
+
+--			SELECT @numrows = @@rowcount /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Embalaj R/18 Sec_det_Aut ON PARENT UPDATE SET NULL */
+
+--			IF /* %ParentPK(" or",update) */
+--				UPDATE (Cod_Emb)
+
+--			BEGIN
+--				UPDATE Sec_det_Aut
+--				SET /* %SetFK(Sec_det_Aut,NULL) */ Sec_det_Aut.C¾d_Tip_Emb = NULL
+--				FROM Sec_det_Aut
+--					,deleted
+--				WHERE /* %JoinFKPK(Sec_det_Aut,deleted," = "," and") */ Sec_det_Aut.C¾d_Tip_Emb = deleted.Cod_Emb
+--			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+--			RETURN
+
+--			error:
+
+--			--RAISERROR @errno @errmsg
+
+--			ROLLBACK TRANSACTION
+--		END
+--GO
+		/****** Object:  Trigger dbo.tU_Mae_Aut    Script Date: 08/09/2002 6:45:52 PM ******/
+		ALTER TRIGGER tU_Mae_Aut ON Mae_Aut
+		FOR UPDATE
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* UPDATE trigger on Mae_Aut */
+		BEGIN
+			DECLARE @numrows INT
+				,@nullcnt INT
+				,@validcnt INT
+				,@insCod_Mod CHAR(4)
+				,@insNum_Aut INT
+				,@errno INT
+				,@errmsg VARCHAR(255)
+
+			SELECT @numrows = @@rowcount /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Aut R/16 Sec_det_Aut ON PARENT UPDATE SET NULL */
+
+			IF /* %ParentPK(" or",update) */
+				UPDATE (Cod_Mod)
+					OR
+
+			UPDATE (Num_Aut)
+
+			BEGIN
+				UPDATE Sec_det_Aut
+				SET /* %SetFK(Sec_det_Aut,NULL) */ Sec_det_Aut.Cod_Mod = NULL
+					,Sec_det_Aut.Num_Aut = NULL
+				FROM Sec_det_Aut
+					,deleted
+				WHERE /* %JoinFKPK(Sec_det_Aut,deleted," = "," and") */ Sec_det_Aut.Cod_Mod = deleted.Cod_Mod
+					AND Sec_det_Aut.Num_Aut = deleted.Num_Aut
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Aut R/1 Pri_Tic ON PARENT UPDATE SET NULL */
+
+			IF /* %ParentPK(" or",update) */
+				UPDATE (Cod_Mod)
+					OR
+
+			UPDATE (Num_Aut)
+
+			BEGIN
+				UPDATE Pri_Tic
+				SET /* %SetFK(Pri_Tic,NULL) */ Pri_Tic.Cod_Mod = NULL
+					,Pri_Tic.Num_Aut = NULL
+				FROM Pri_Tic
+					,deleted
+				WHERE /* %JoinFKPK(Pri_Tic,deleted," = "," and") */ Pri_Tic.Cod_Mod = deleted.Cod_Mod
+					AND Pri_Tic.Num_Aut = deleted.Num_Aut
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Ope R/22 Mae_Aut ON CHILD UPDATE SET NULL */
+
+			IF /* %ChildFK(" or",update) */
+				UPDATE (Cod_Ope)
+
+			BEGIN
+				UPDATE Mae_Aut
+				SET /* %SetFK(Mae_Aut,NULL) */ Mae_Aut.Cod_Ope = NULL
+				FROM Mae_Aut
+					,inserted
+				WHERE /* %JoinPKPK(Mae_Aut,inserted," = "," and") */ Mae_Aut.Cod_Mod = inserted.Cod_Mod
+					AND Mae_Aut.Num_Aut = inserted.Num_Aut
+					AND NOT EXISTS (
+						SELECT *
+						FROM Mae_Ope
+						WHERE /* %JoinFKPK(inserted,Mae_Ope," = "," and") */ inserted.Cod_Ope = Mae_Ope.Cod_Ope
+						)
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Lin R/17 Mae_Aut ON CHILD UPDATE SET NULL */
+
+			IF /* %ChildFK(" or",update) */
+				UPDATE (Cod_Lin)
+
+			BEGIN
+				UPDATE Mae_Aut
+				SET /* %SetFK(Mae_Aut,NULL) */ Mae_Aut.Cod_Lin = NULL
+				FROM Mae_Aut
+					,inserted
+				WHERE /* %JoinPKPK(Mae_Aut,inserted," = "," and") */ Mae_Aut.Cod_Mod = inserted.Cod_Mod
+					AND Mae_Aut.Num_Aut = inserted.Num_Aut
+					AND NOT EXISTS (
+						SELECT *
+						FROM Mae_Lin
+						WHERE /* %JoinFKPK(inserted,Mae_Lin," = "," and") */ inserted.Cod_Lin = Mae_Lin.Cod_Lin
+						)
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Terminal R/14 Mae_Aut ON CHILD UPDATE SET NULL */
+
+			IF /* %ChildFK(" or",update) */
+				UPDATE (Cod_Mod)
+
+			BEGIN
+				UPDATE Mae_Aut
+				SET /* %SetFK(Mae_Aut,NULL) */ Mae_Aut.Cod_Mod = NULL
+				FROM Mae_Aut
+					,inserted
+				WHERE /* %JoinPKPK(Mae_Aut,inserted," = "," and") */ Mae_Aut.Cod_Mod = inserted.Cod_Mod
+					AND Mae_Aut.Num_Aut = inserted.Num_Aut
+					AND NOT EXISTS (
+						SELECT *
+						FROM Terminal
+						WHERE /* %JoinFKPK(inserted,Terminal," = "," and") */ inserted.Cod_Mod = Terminal.Cod_Ter_Alm
+						)
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Age R/12 Mae_Aut ON CHILD UPDATE SET NULL */
+
+			IF /* %ChildFK(" or",update) */
+				UPDATE (Cod_Age)
+
+			BEGIN
+				UPDATE Mae_Aut
+				SET /* %SetFK(Mae_Aut,NULL) */ Mae_Aut.Cod_Age = NULL
+				FROM Mae_Aut
+					,inserted
+				WHERE /* %JoinPKPK(Mae_Aut,inserted," = "," and") */ Mae_Aut.Cod_Mod = inserted.Cod_Mod
+					AND Mae_Aut.Num_Aut = inserted.Num_Aut
+					AND NOT EXISTS (
+						SELECT *
+						FROM Mae_Age
+						WHERE /* %JoinFKPK(inserted,Mae_Age," = "," and") */ inserted.Cod_Age = Mae_Age.Cod_Age
+						)
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+		/****** Object:  Trigger dbo.tU_Mae_Con_Con    Script Date: 08/09/2002 6:45:52 PM ******/
+		ALTER TRIGGER tU_Mae_Con_Con ON Mae_Con_Con
+		FOR UPDATE
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* UPDATE trigger on Mae_Con_Con */
+		BEGIN
+			DECLARE @numrows INT
+				,@nullcnt INT
+				,@validcnt INT
+				,@insCod_Con_Con CHAR(3)
+				,@errno INT
+				,@errmsg VARCHAR(255)
+
+			SELECT @numrows = @@rowcount /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Con_Con R/6 Sec_det_Aut ON PARENT UPDATE SET NULL */
+
+			IF /* %ParentPK(" or",update) */
+				UPDATE (Cod_Con_Con)
+
+			BEGIN
+				UPDATE Sec_det_Aut
+				SET /* %SetFK(Sec_det_Aut,NULL) */ Sec_det_Aut.Cod_Con_Con = NULL
+				FROM Sec_det_Aut
+					,deleted
+				WHERE /* %JoinFKPK(Sec_det_Aut,deleted," = "," and") */ Sec_det_Aut.Cod_Con_Con = deleted.Cod_Con_Con
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+		/****** Object:  Trigger dbo.tU_Mae_Est    Script Date: 08/09/2002 6:45:52 PM ******/
+		ALTER TRIGGER tU_Mae_Est ON Mae_Est
+		FOR UPDATE
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* UPDATE trigger on Mae_Est */
+		BEGIN
+			DECLARE @numrows INT
+				,@nullcnt INT
+				,@validcnt INT
+				,@insCod_Est CHAR(2)
+				,@errno INT
+				,@errmsg VARCHAR(255)
+
+			SELECT @numrows = @@rowcount /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Est R/26 Mae_Cho ON PARENT UPDATE SET NULL */
+
+			IF /* %ParentPK(" or",update) */
+				UPDATE (Cod_Est)
+
+			BEGIN
+				UPDATE Mae_Cho
+				SET /* %SetFK(Mae_Cho,NULL) */ Mae_Cho.Cod_Est = NULL
+				FROM Mae_Cho
+					,deleted
+				WHERE /* %JoinFKPK(Mae_Cho,deleted," = "," and") */ Mae_Cho.Cod_Est = deleted.Cod_Est
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Est R/25 Mae_Pla ON PARENT UPDATE SET NULL */
+
+			IF /* %ParentPK(" or",update) */
+				UPDATE (Cod_Est)
+
+			BEGIN
+				UPDATE Mae_Pla
+				SET /* %SetFK(Mae_Pla,NULL) */ Mae_Pla.Cod_Est = NULL
+				FROM Mae_Pla
+					,deleted
+				WHERE /* %JoinFKPK(Mae_Pla,deleted," = "," and") */ Mae_Pla.Cod_Est = deleted.Cod_Est
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Est R/24 Sec_det_Aut ON PARENT UPDATE SET NULL */
+
+			IF /* %ParentPK(" or",update) */
+				UPDATE (Cod_Est)
+
+			BEGIN
+				UPDATE Sec_det_Aut
+				SET /* %SetFK(Sec_det_Aut,NULL) */ Sec_det_Aut.Cod_Est = NULL
+				FROM Sec_det_Aut
+					,deleted
+				WHERE /* %JoinFKPK(Sec_det_Aut,deleted," = "," and") */ Sec_det_Aut.Cod_Est = deleted.Cod_Est
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+		/****** Object:  Trigger dbo.tU_Mae_Tip_Con    Script Date: 08/09/2002 6:45:53 PM ******/
+		ALTER TRIGGER tU_Mae_Tip_Con ON Mae_Tip_Con
+		FOR UPDATE
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* UPDATE trigger on Mae_Tip_Con */
+		BEGIN
+			DECLARE @numrows INT
+				,@nullcnt INT
+				,@validcnt INT
+				,@insCod_Tip_Con CHAR(2)
+				,@errno INT
+				,@errmsg VARCHAR(255)
+
+			SELECT @numrows = @@rowcount /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Tip_Con R/7 Sec_det_Aut ON PARENT UPDATE SET NULL */
+
+			IF /* %ParentPK(" or",update) */
+				UPDATE (Cod_Tip_Con)
+
+			BEGIN
+				UPDATE Sec_det_Aut
+				SET /* %SetFK(Sec_det_Aut,NULL) */ Sec_det_Aut.Cod_Tip_Con = NULL
+				FROM Sec_det_Aut
+					,deleted
+				WHERE /* %JoinFKPK(Sec_det_Aut,deleted," = "," and") */ Sec_det_Aut.Cod_Tip_Con = deleted.Cod_Tip_Con
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+		/****** Object:  Trigger dbo.tU_Pri_Tic    Script Date: 08/09/2002 6:45:53 PM ******/
+		ALTER TRIGGER tU_Pri_Tic ON Pri_Tic
+		FOR UPDATE
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* UPDATE trigger on Pri_Tic */
+		BEGIN
+			DECLARE @numrows INT
+				,@nullcnt INT
+				,@validcnt INT
+				,@insCod_Mod CHAR(4)
+				,@insCod_Ope CHAR(3)
+				,@insNum_Tic NUMERIC(10)
+				,@errno INT
+				,@errmsg VARCHAR(255)
+
+			SELECT @numrows = @@rowcount /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Pri_Tic R/21 Sec_det_Car_Bal ON PARENT UPDATE SET NULL */
+
+			IF /* %ParentPK(" or",update) */
+				UPDATE (Cod_Mod)
+					OR
+
+			UPDATE (Cod_Ope)
+				OR
+
+			UPDATE (Num_Tic)
+
+			BEGIN
+				UPDATE Sec_det_Car_Bal
+				SET /* %SetFK(Sec_det_Car_Bal,NULL) */ Sec_det_Car_Bal.Cod_Mod = NULL
+					,Sec_det_Car_Bal.Cod_Ope = NULL
+					,Sec_det_Car_Bal.Num_Tic = NULL
+				FROM Sec_det_Car_Bal
+					,deleted
+				WHERE /* %JoinFKPK(Sec_det_Car_Bal,deleted," = "," and") */ Sec_det_Car_Bal.Cod_Mod = deleted.Cod_Mod
+					AND Sec_det_Car_Bal.Cod_Ope = deleted.Cod_Ope
+					AND Sec_det_Car_Bal.Num_Tic = deleted.Num_Tic
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Ope R/23 Pri_Tic ON CHILD UPDATE SET NULL */
+
+			IF /* %ChildFK(" or",update) */
+				UPDATE (Cod_Ope)
+
+			BEGIN
+				UPDATE Pri_Tic
+				SET /* %SetFK(Pri_Tic,NULL) */ Pri_Tic.Cod_Ope = NULL
+				FROM Pri_Tic
+					,inserted
+				WHERE /* %JoinPKPK(Pri_Tic,inserted," = "," and") */ Pri_Tic.Cod_Mod = inserted.Cod_Mod
+					AND Pri_Tic.Cod_Ope = inserted.Cod_Ope
+					AND Pri_Tic.Num_Tic = inserted.Num_Tic
+					AND NOT EXISTS (
+						SELECT *
+						FROM Mae_Ope
+						WHERE /* %JoinFKPK(inserted,Mae_Ope," = "," and") */ inserted.Cod_Ope = Mae_Ope.Cod_Ope
+						)
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* priusu R/11 Pri_Tic ON CHILD UPDATE SET NULL */
+
+			IF /* %ChildFK(" or",update) */
+				UPDATE (Cod_Usu_01)
+
+			BEGIN
+				UPDATE Pri_Tic
+				SET /* %SetFK(Pri_Tic,NULL) */ Pri_Tic.Cod_Usu_01 = NULL
+				FROM Pri_Tic
+					,inserted
+				WHERE /* %JoinPKPK(Pri_Tic,inserted," = "," and") */ Pri_Tic.Cod_Mod = inserted.Cod_Mod
+					AND Pri_Tic.Cod_Ope = inserted.Cod_Ope
+					AND Pri_Tic.Num_Tic = inserted.Num_Tic
+					AND NOT EXISTS (
+						SELECT *
+						FROM priusu
+						WHERE /* %JoinFKPK(inserted,priusu," = "," and") */ inserted.Cod_Usu_01 = priusu.CodUsu
+						)
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* priusu R/10 Pri_Tic ON CHILD UPDATE SET NULL */
+
+			IF /* %ChildFK(" or",update) */
+				UPDATE (Cod_Usu_02)
+
+			BEGIN
+				UPDATE Pri_Tic
+				SET /* %SetFK(Pri_Tic,NULL) */ Pri_Tic.Cod_Usu_02 = NULL
+				FROM Pri_Tic
+					,inserted
+				WHERE /* %JoinPKPK(Pri_Tic,inserted," = "," and") */ Pri_Tic.Cod_Mod = inserted.Cod_Mod
+					AND Pri_Tic.Cod_Ope = inserted.Cod_Ope
+					AND Pri_Tic.Num_Tic = inserted.Num_Tic
+					AND NOT EXISTS (
+						SELECT *
+						FROM priusu
+						WHERE /* %JoinFKPK(inserted,priusu," = "," and") */ inserted.Cod_Usu_02 = priusu.CodUsu
+						)
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Bal R/9 Pri_Tic ON CHILD UPDATE SET NULL */
+
+			IF /* %ChildFK(" or",update) */
+				UPDATE (Cod_Bal_02)
+
+			BEGIN
+				UPDATE Pri_Tic
+				SET /* %SetFK(Pri_Tic,NULL) */ Pri_Tic.Cod_Bal_02 = NULL
+				FROM Pri_Tic
+					,inserted
+				WHERE /* %JoinPKPK(Pri_Tic,inserted," = "," and") */ Pri_Tic.Cod_Mod = inserted.Cod_Mod
+					AND Pri_Tic.Cod_Ope = inserted.Cod_Ope
+					AND Pri_Tic.Num_Tic = inserted.Num_Tic
+					AND NOT EXISTS (
+						SELECT *
+						FROM Mae_Bal
+						WHERE /* %JoinFKPK(inserted,Mae_Bal," = "," and") */ inserted.Cod_Bal_02 = Mae_Bal.Cod_Bal
+						)
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Bal R/8 Pri_Tic ON CHILD UPDATE SET NULL */
+
+			IF /* %ChildFK(" or",update) */
+				UPDATE (Cod_Bal_01)
+
+			BEGIN
+				UPDATE Pri_Tic
+				SET /* %SetFK(Pri_Tic,NULL) */ Pri_Tic.Cod_Bal_01 = NULL
+				FROM Pri_Tic
+					,inserted
+				WHERE /* %JoinPKPK(Pri_Tic,inserted," = "," and") */ Pri_Tic.Cod_Mod = inserted.Cod_Mod
+					AND Pri_Tic.Cod_Ope = inserted.Cod_Ope
+					AND Pri_Tic.Num_Tic = inserted.Num_Tic
+					AND NOT EXISTS (
+						SELECT *
+						FROM Mae_Bal
+						WHERE /* %JoinFKPK(inserted,Mae_Bal," = "," and") */ inserted.Cod_Bal_01 = Mae_Bal.Cod_Bal
+						)
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Pla R/5 Pri_Tic ON CHILD UPDATE SET NULL */
+
+			IF /* %ChildFK(" or",update) */
+				UPDATE (Cod_Pla)
+
+			BEGIN
+				UPDATE Pri_Tic
+				SET /* %SetFK(Pri_Tic,NULL) */ Pri_Tic.Cod_Pla = NULL
+				FROM Pri_Tic
+					,inserted
+				WHERE /* %JoinPKPK(Pri_Tic,inserted," = "," and") */ Pri_Tic.Cod_Mod = inserted.Cod_Mod
+					AND Pri_Tic.Cod_Ope = inserted.Cod_Ope
+					AND Pri_Tic.Num_Tic = inserted.Num_Tic
+					AND NOT EXISTS (
+						SELECT *
+						FROM Mae_Pla
+						WHERE /* %JoinFKPK(inserted,Mae_Pla," = "," and") */ inserted.Cod_Pla = Mae_Pla.Cod_Pla
+						)
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Cho R/4 Pri_Tic ON CHILD UPDATE SET NULL */
+
+			IF /* %ChildFK(" or",update) */
+				UPDATE (Cod_Bre)
+
+			BEGIN
+				UPDATE Pri_Tic
+				SET /* %SetFK(Pri_Tic,NULL) */ Pri_Tic.Cod_Bre = NULL
+				FROM Pri_Tic
+					,inserted
+				WHERE /* %JoinPKPK(Pri_Tic,inserted," = "," and") */ Pri_Tic.Cod_Mod = inserted.Cod_Mod
+					AND Pri_Tic.Cod_Ope = inserted.Cod_Ope
+					AND Pri_Tic.Num_Tic = inserted.Num_Tic
+					AND NOT EXISTS (
+						SELECT *
+						FROM Mae_Cho
+						WHERE /* %JoinFKPK(inserted,Mae_Cho," = "," and") */ inserted.Cod_Bre = Mae_Cho.Cod_Bre
+						)
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Aut R/1 Pri_Tic ON CHILD UPDATE SET NULL */
+
+			IF /* %ChildFK(" or",update) */
+				UPDATE (Cod_Mod)
+					OR
+
+			UPDATE (Num_Aut)
+
+			BEGIN
+				UPDATE Pri_Tic
+				SET /* %SetFK(Pri_Tic,NULL) */ Pri_Tic.Cod_Mod = NULL
+					,Pri_Tic.Num_Aut = NULL
+				FROM Pri_Tic
+					,inserted
+				WHERE /* %JoinPKPK(Pri_Tic,inserted," = "," and") */ Pri_Tic.Cod_Mod = inserted.Cod_Mod
+					AND Pri_Tic.Cod_Ope = inserted.Cod_Ope
+					AND Pri_Tic.Num_Tic = inserted.Num_Tic
+					AND NOT EXISTS (
+						SELECT *
+						FROM Mae_Aut
+						WHERE /* %JoinFKPK(inserted,Mae_Aut," = "," and") */ inserted.Cod_Mod = Mae_Aut.Cod_Mod
+							AND inserted.Num_Aut = Mae_Aut.Num_Aut
+						)
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+--		/****** Object:  Trigger dbo.tU_Sec_det_Aut    Script Date: 08/09/2002 6:45:53 PM ******/
+--		ALTER TRIGGER tU_Sec_det_Aut ON Sec_det_Aut
+--		FOR UPDATE
+--		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* UPDATE trigger on Sec_det_Aut */
+--		BEGIN
+--			DECLARE @numrows INT
+--				,@nullcnt INT
+--				,@validcnt INT
+--				,@insCod_Mod CHAR(4)
+--				,@insNum_Aut INT
+--				,@insCor_Det INT
+--				,@errno INT
+--				,@errmsg VARCHAR(255)
+
+--			SELECT @numrows = @@rowcount /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Est R/24 Sec_det_Aut ON CHILD UPDATE SET NULL */
+
+--			IF /* %ChildFK(" or",update) */
+--				UPDATE (Cod_Est)
+
+--			BEGIN
+--				UPDATE Sec_det_Aut
+--				SET /* %SetFK(Sec_det_Aut,NULL) */ Sec_det_Aut.Cod_Est = NULL
+--				FROM Sec_det_Aut
+--					,inserted
+--				WHERE /* %JoinPKPK(Sec_det_Aut,inserted," = "," and") */ Sec_det_Aut.Cod_Mod = inserted.Cod_Mod
+--					AND Sec_det_Aut.Num_Aut = inserted.Num_Aut
+--					AND Sec_det_Aut.Cor_Det = inserted.Cor_Det
+--					AND NOT EXISTS (
+--						SELECT *
+--						FROM Mae_Est
+--						WHERE /* %JoinFKPK(inserted,Mae_Est," = "," and") */ inserted.Cod_Est = Mae_Est.Cod_Est
+--						)
+--			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Embalaj R/18 Sec_det_Aut ON CHILD UPDATE SET NULL */
+
+--			IF /* %ChildFK(" or",update) */
+--				UPDATE (C¾d_Tip_Emb)
+
+--			BEGIN
+--				UPDATE Sec_det_Aut
+--				SET /* %SetFK(Sec_det_Aut,NULL) */ Sec_det_Aut.C¾d_Tip_Emb = NULL
+--				FROM Sec_det_Aut
+--					,inserted
+--				WHERE /* %JoinPKPK(Sec_det_Aut,inserted," = "," and") */ Sec_det_Aut.Cod_Mod = inserted.Cod_Mod
+--					AND Sec_det_Aut.Num_Aut = inserted.Num_Aut
+--					AND Sec_det_Aut.Cor_Det = inserted.Cor_Det
+--					AND NOT EXISTS (
+--						SELECT *
+--						FROM Embalaj
+--						WHERE /* %JoinFKPK(inserted,Embalaj," = "," and") */ inserted.C¾d_Tip_Emb = Embalaj.Cod_Emb
+--						)
+--			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Aut R/16 Sec_det_Aut ON CHILD UPDATE SET NULL */
+
+--			IF /* %ChildFK(" or",update) */
+--				UPDATE (Cod_Mod)
+--					OR
+
+--			UPDATE (Num_Aut)
+
+--			BEGIN
+--				UPDATE Sec_det_Aut
+--				SET /* %SetFK(Sec_det_Aut,NULL) */ Sec_det_Aut.Cod_Mod = NULL
+--					,Sec_det_Aut.Num_Aut = NULL
+--				FROM Sec_det_Aut
+--					,inserted
+--				WHERE /* %JoinPKPK(Sec_det_Aut,inserted," = "," and") */ Sec_det_Aut.Cod_Mod = inserted.Cod_Mod
+--					AND Sec_det_Aut.Num_Aut = inserted.Num_Aut
+--					AND Sec_det_Aut.Cor_Det = inserted.Cor_Det
+--					AND NOT EXISTS (
+--						SELECT *
+--						FROM Mae_Aut
+--						WHERE /* %JoinFKPK(inserted,Mae_Aut," = "," and") */ inserted.Cod_Mod = Mae_Aut.Cod_Mod
+--							AND inserted.Num_Aut = Mae_Aut.Num_Aut
+--						)
+--			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Tip_Con R/7 Sec_det_Aut ON CHILD UPDATE SET NULL */
+
+--			IF /* %ChildFK(" or",update) */
+--				UPDATE (Cod_Tip_Con)
+
+--			BEGIN
+--				UPDATE Sec_det_Aut
+--				SET /* %SetFK(Sec_det_Aut,NULL) */ Sec_det_Aut.Cod_Tip_Con = NULL
+--				FROM Sec_det_Aut
+--					,inserted
+--				WHERE /* %JoinPKPK(Sec_det_Aut,inserted," = "," and") */ Sec_det_Aut.Cod_Mod = inserted.Cod_Mod
+--					AND Sec_det_Aut.Num_Aut = inserted.Num_Aut
+--					AND Sec_det_Aut.Cor_Det = inserted.Cor_Det
+--					AND NOT EXISTS (
+--						SELECT *
+--						FROM Mae_Tip_Con
+--						WHERE /* %JoinFKPK(inserted,Mae_Tip_Con," = "," and") */ inserted.Cod_Tip_Con = Mae_Tip_Con.Cod_Tip_Con
+--						)
+--			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Con_Con R/6 Sec_det_Aut ON CHILD UPDATE SET NULL */
+
+--			IF /* %ChildFK(" or",update) */
+--				UPDATE (Cod_Con_Con)
+
+--			BEGIN
+--				UPDATE Sec_det_Aut
+--				SET /* %SetFK(Sec_det_Aut,NULL) */ Sec_det_Aut.Cod_Con_Con = NULL
+--				FROM Sec_det_Aut
+--					,inserted
+--				WHERE /* %JoinPKPK(Sec_det_Aut,inserted," = "," and") */ Sec_det_Aut.Cod_Mod = inserted.Cod_Mod
+--					AND Sec_det_Aut.Num_Aut = inserted.Num_Aut
+--					AND Sec_det_Aut.Cor_Det = inserted.Cor_Det
+--					AND NOT EXISTS (
+--						SELECT *
+--						FROM Mae_Con_Con
+--						WHERE /* %JoinFKPK(inserted,Mae_Con_Con," = "," and") */ inserted.Cod_Con_Con = Mae_Con_Con.Cod_Con_Con
+--						)
+--			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+--			RETURN
+
+--			error:
+
+--			--RAISERROR @errno @errmsg
+
+--			ROLLBACK TRANSACTION
+--		END
+--GO
+		/****** Object:  Trigger dbo.tU_Sec_det_Car_Bal    Script Date: 08/09/2002 6:45:53 PM ******/
+		ALTER TRIGGER tU_Sec_det_Car_Bal ON Sec_det_Car_Bal
+		FOR UPDATE
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* UPDATE trigger on Sec_det_Car_Bal */
+		BEGIN
+			DECLARE @numrows INT
+				,@nullcnt INT
+				,@validcnt INT
+				,@insCod_Mod CHAR(4)
+				,@insCod_Ope CHAR(3)
+				,@insNum_Tic NUMERIC(10)
+				,@insCor_Det INT
+				,@errno INT
+				,@errmsg VARCHAR(255)
+
+			SELECT @numrows = @@rowcount /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Pri_Tic R/21 Sec_det_Car_Bal ON CHILD UPDATE SET NULL */
+
+			IF /* %ChildFK(" or",update) */
+				UPDATE (Cod_Mod)
+					OR
+
+			UPDATE (Cod_Ope)
+				OR
+
+			UPDATE (Num_Tic)
+
+			BEGIN
+				UPDATE Sec_det_Car_Bal
+				SET /* %SetFK(Sec_det_Car_Bal,NULL) */ Sec_det_Car_Bal.Cod_Mod = NULL
+					,Sec_det_Car_Bal.Cod_Ope = NULL
+					,Sec_det_Car_Bal.Num_Tic = NULL
+				FROM Sec_det_Car_Bal
+					,inserted
+				WHERE /* %JoinPKPK(Sec_det_Car_Bal,inserted," = "," and") */ Sec_det_Car_Bal.Cod_Mod = inserted.Cod_Mod
+					AND Sec_det_Car_Bal.Cod_Ope = inserted.Cod_Ope
+					AND Sec_det_Car_Bal.Num_Tic = inserted.Num_Tic
+					AND Sec_det_Car_Bal.Cor_Det = inserted.Cor_Det
+					AND NOT EXISTS (
+						SELECT *
+						FROM Pri_Tic
+						WHERE /* %JoinFKPK(inserted,Pri_Tic," = "," and") */ inserted.Cod_Mod = Pri_Tic.Cod_Mod
+							AND inserted.Cod_Ope = Pri_Tic.Cod_Ope
+							AND inserted.Num_Tic = Pri_Tic.Num_Tic
+						)
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+		ALTER TRIGGER [dbo].[DDTICKET18_D] ON [dbo].[DDTICKET18]
+		FOR DELETE
+		AS
+		IF @@rowcount = 0
+			RETURN
+		ELSE
+			INSERT INTO TKTAUDIT00 (
+				nrosal52
+				,nomtab00
+				,tipope00
+				,codusu00
+				,fecope00
+				,hostid00
+				,regupd00
+				,nrotkt18
+				,codcon04
+				,tipope18
+				)
+			SELECT navvia11
+				,'DDTICKET18'
+				,'E'
+				,user_name()
+				,getdate()
+				,host_name()
+				,regupd00 = substring(isnull(navvia11, '') + '|' + isnull(nrotkt18, '') + '|' + isnull(codcon04, '') + '|' + isnull(tipope18, '') + '|' + RTRIM(CONVERT(CHAR(10), isnull(pesbrt18, 0))) + '|' + RTRIM(CONVERT(CHAR(10), isnull(pestar18, 0))) + '|' + RTRIM(CONVERT(CHAR(10), isnull(pesnet18, 0))) + '|' + RTRIM(CONVERT(CHAR(10), isnull(nrotar18, 0))) + '|' + isnull(nrobal18, '') + '|' + isnull(codemb06, '') + '|' + isnull(nroaut14, ''), 1, 255)
+				,nrotkt18
+				,isnull(codcon04, '')
+				,isnull(tipope18, '')
+			FROM deleted --|   INSERT INTO DDTICKET18_AUDIT   SELECT    nrotkt18,   nropla18,   codcon04,   nrotar18,   pesbrt18,   pestar18,   pesnet18,   navvia11,   nrosec18,   nrocha14,   tipope18,   fecing18,   fecsal18,   codusu17 = USER_NAME(),   fecusu00 = GETDATE(),   fimprv18,   fimprc18,   fimprm18,   fimpri18,   nrobal18,   status18,   mertot18,   nroord41,   observ18,   codemb06,   nrosal52,   buling18,   bulret18,   fimpre18,   fimprt18,   pesacu18,   ftrans18,   fcorre18,   faduan18,   nroaut14,   marcas16,   nrotra60,   traseg18,   pesena18,   fpesen18,   tktkman18,   sbpeso18,   flgtra99,   fectra99,   sucursal,   nrocar18,   codbre18,   flgtransito18,   nrotar18Pre,   fecTar18Pre,   HOST_NAME()   FROM deleted   --|   
+GO
+		/****** Object:  Trigger dbo.tD_Mae_Age    Script Date: 08/09/2002 6:45:50 PM ******/
+		ALTER TRIGGER tD_Mae_Age ON Mae_Age
+		FOR DELETE
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* DELETE trigger on Mae_Age */
+		BEGIN
+			DECLARE @errno INT
+				,@errmsg VARCHAR(255) /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Age R/12 Mae_Aut ON PARENT DELETE SET NULL */
+
+			UPDATE Mae_Aut
+			SET /* %SetFK(Mae_Aut,NULL) */ Mae_Aut.Cod_Age = NULL
+			FROM Mae_Aut
+				,deleted
+			WHERE /* %JoinFKPK(Mae_Aut,deleted," = "," and") */ Mae_Aut.Cod_Age = deleted.Cod_Age /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+		/****** Object:  Trigger dbo.tD_Mae_Bal    Script Date: 08/09/2002 6:45:50 PM ******/
+		ALTER TRIGGER tD_Mae_Bal ON Mae_Bal
+		FOR DELETE
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* DELETE trigger on Mae_Bal */
+		BEGIN
+			DECLARE @errno INT
+				,@errmsg VARCHAR(255) /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Bal R/9 Pri_Tic ON PARENT DELETE SET NULL */
+
+			UPDATE Pri_Tic
+			SET /* %SetFK(Pri_Tic,NULL) */ Pri_Tic.Cod_Bal_02 = NULL
+			FROM Pri_Tic
+				,deleted
+			WHERE /* %JoinFKPK(Pri_Tic,deleted," = "," and") */ Pri_Tic.Cod_Bal_02 = deleted.Cod_Bal /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Bal R/8 Pri_Tic ON PARENT DELETE SET NULL */
+
+			UPDATE Pri_Tic
+			SET /* %SetFK(Pri_Tic,NULL) */ Pri_Tic.Cod_Bal_01 = NULL
+			FROM Pri_Tic
+				,deleted
+			WHERE /* %JoinFKPK(Pri_Tic,deleted," = "," and") */ Pri_Tic.Cod_Bal_01 = deleted.Cod_Bal /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+		/****** Object:  Trigger dbo.tD_Mae_Cho    Script Date: 08/09/2002 6:45:50 PM ******/
+		ALTER TRIGGER tD_Mae_Cho ON Mae_Cho
+		FOR DELETE
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* DELETE trigger on Mae_Cho */
+		BEGIN
+			DECLARE @errno INT
+				,@errmsg VARCHAR(255) /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Cho R/4 Pri_Tic ON PARENT DELETE SET NULL */
+
+			UPDATE Pri_Tic
+			SET /* %SetFK(Pri_Tic,NULL) */ Pri_Tic.Cod_Bre = NULL
+			FROM Pri_Tic
+				,deleted
+			WHERE /* %JoinFKPK(Pri_Tic,deleted," = "," and") */ Pri_Tic.Cod_Bre = deleted.Cod_Bre /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+		/****** Object:  Trigger dbo.tD_Mae_Lin    Script Date: 08/09/2002 6:45:50 PM ******/
+		ALTER TRIGGER tD_Mae_Lin ON Mae_Lin
+		FOR DELETE
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* DELETE trigger on Mae_Lin */
+		BEGIN
+			DECLARE @errno INT
+				,@errmsg VARCHAR(255) /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Lin R/17 Mae_Aut ON PARENT DELETE SET NULL */
+
+			UPDATE Mae_Aut
+			SET /* %SetFK(Mae_Aut,NULL) */ Mae_Aut.Cod_Lin = NULL
+			FROM Mae_Aut
+				,deleted
+			WHERE /* %JoinFKPK(Mae_Aut,deleted," = "," and") */ Mae_Aut.Cod_Lin = deleted.Cod_Lin /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+		/****** Object:  Trigger dbo.tD_Mae_Ope    Script Date: 08/09/2002 6:45:51 PM ******/
+		ALTER TRIGGER tD_Mae_Ope ON Mae_Ope
+		FOR DELETE
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* DELETE trigger on Mae_Ope */
+		BEGIN
+			DECLARE @errno INT
+				,@errmsg VARCHAR(255) /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Ope R/23 Pri_Tic ON PARENT DELETE SET NULL */
+
+			UPDATE Pri_Tic
+			SET /* %SetFK(Pri_Tic,NULL) */ Pri_Tic.Cod_Ope = NULL
+			FROM Pri_Tic
+				,deleted
+			WHERE /* %JoinFKPK(Pri_Tic,deleted," = "," and") */ Pri_Tic.Cod_Ope = deleted.Cod_Ope /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Ope R/22 Mae_Aut ON PARENT DELETE SET NULL */
+
+			UPDATE Mae_Aut
+			SET /* %SetFK(Mae_Aut,NULL) */ Mae_Aut.Cod_Ope = NULL
+			FROM Mae_Aut
+				,deleted
+			WHERE /* %JoinFKPK(Mae_Aut,deleted," = "," and") */ Mae_Aut.Cod_Ope = deleted.Cod_Ope /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+		/****** Object:  Trigger dbo.tD_Mae_Pla    Script Date: 08/09/2002 6:45:51 PM ******/
+		ALTER TRIGGER tD_Mae_Pla ON Mae_Pla
+		FOR DELETE
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* DELETE trigger on Mae_Pla */
+		BEGIN
+			DECLARE @errno INT
+				,@errmsg VARCHAR(255) /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Pla R/5 Pri_Tic ON PARENT DELETE SET NULL */
+
+			UPDATE Pri_Tic
+			SET /* %SetFK(Pri_Tic,NULL) */ Pri_Tic.Cod_Pla = NULL
+			FROM Pri_Tic
+				,deleted
+			WHERE /* %JoinFKPK(Pri_Tic,deleted," = "," and") */ Pri_Tic.Cod_Pla = deleted.Cod_Pla /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+		/****** Object:  Trigger dbo.tD_priusu    Script Date: 08/09/2002 6:45:51 PM ******/
+		ALTER TRIGGER tD_priusu ON priusu
+		FOR DELETE
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* DELETE trigger on priusu */
+		BEGIN
+			DECLARE @errno INT
+				,@errmsg VARCHAR(255) /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* priusu R/11 Pri_Tic ON PARENT DELETE SET NULL */
+
+			UPDATE Pri_Tic
+			SET /* %SetFK(Pri_Tic,NULL) */ Pri_Tic.Cod_Usu_01 = NULL
+			FROM Pri_Tic
+				,deleted
+			WHERE /* %JoinFKPK(Pri_Tic,deleted," = "," and") */ Pri_Tic.Cod_Usu_01 = deleted.CodUsu /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* priusu R/10 Pri_Tic ON PARENT DELETE SET NULL */
+
+			UPDATE Pri_Tic
+			SET /* %SetFK(Pri_Tic,NULL) */ Pri_Tic.Cod_Usu_02 = NULL
+			FROM Pri_Tic
+				,deleted
+			WHERE /* %JoinFKPK(Pri_Tic,deleted," = "," and") */ Pri_Tic.Cod_Usu_02 = deleted.CodUsu /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+		/****** Object:  Trigger dbo.tD_Terminal    Script Date: 08/09/2002 6:45:51 PM ******/
+		ALTER TRIGGER tD_Terminal ON Terminal
+		FOR DELETE
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* DELETE trigger on Terminal */
+		BEGIN
+			DECLARE @errno INT
+				,@errmsg VARCHAR(255) /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Terminal R/14 Mae_Aut ON PARENT DELETE SET NULL */
+
+			UPDATE Mae_Aut
+			SET /* %SetFK(Mae_Aut,NULL) */ Mae_Aut.Cod_Mod = NULL
+			FROM Mae_Aut
+				,deleted
+			WHERE /* %JoinFKPK(Mae_Aut,deleted," = "," and") */ Mae_Aut.Cod_Mod = deleted.Cod_Ter_Alm /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+		/****** Object:  Trigger dbo.tI_Mae_Aut    Script Date: 08/09/2002 6:45:51 PM ******/
+		ALTER TRIGGER tI_Mae_Aut ON Mae_Aut
+		FOR INSERT
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* INSERT trigger on Mae_Aut */
+		BEGIN
+			DECLARE @numrows INT
+				,@nullcnt INT
+				,@validcnt INT
+				,@errno INT
+				,@errmsg VARCHAR(255)
+
+			SELECT @numrows = @@rowcount /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Ope R/22 Mae_Aut ON CHILD INSERT SET NULL */
+
+			IF /* %ChildFK(" or",update) */
+				UPDATE (Cod_Ope)
+
+			BEGIN
+				UPDATE Mae_Aut
+				SET /* %SetFK(Mae_Aut,NULL) */ Mae_Aut.Cod_Ope = NULL
+				FROM Mae_Aut
+					,inserted
+				WHERE /* %JoinPKPK(Mae_Aut,inserted," = "," and") */ Mae_Aut.Cod_Mod = inserted.Cod_Mod
+					AND Mae_Aut.Num_Aut = inserted.Num_Aut
+					AND NOT EXISTS (
+						SELECT *
+						FROM Mae_Ope
+						WHERE /* %JoinFKPK(inserted,Mae_Ope," = "," and") */ inserted.Cod_Ope = Mae_Ope.Cod_Ope
+						)
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Lin R/17 Mae_Aut ON CHILD INSERT SET NULL */
+
+			IF /* %ChildFK(" or",update) */
+				UPDATE (Cod_Lin)
+
+			BEGIN
+				UPDATE Mae_Aut
+				SET /* %SetFK(Mae_Aut,NULL) */ Mae_Aut.Cod_Lin = NULL
+				FROM Mae_Aut
+					,inserted
+				WHERE /* %JoinPKPK(Mae_Aut,inserted," = "," and") */ Mae_Aut.Cod_Mod = inserted.Cod_Mod
+					AND Mae_Aut.Num_Aut = inserted.Num_Aut
+					AND NOT EXISTS (
+						SELECT *
+						FROM Mae_Lin
+						WHERE /* %JoinFKPK(inserted,Mae_Lin," = "," and") */ inserted.Cod_Lin = Mae_Lin.Cod_Lin
+						)
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Terminal R/14 Mae_Aut ON CHILD INSERT SET NULL */
+
+			IF /* %ChildFK(" or",update) */
+				UPDATE (Cod_Mod)
+
+			BEGIN
+				UPDATE Mae_Aut
+				SET /* %SetFK(Mae_Aut,NULL) */ Mae_Aut.Cod_Mod = NULL
+				FROM Mae_Aut
+					,inserted
+				WHERE /* %JoinPKPK(Mae_Aut,inserted," = "," and") */ Mae_Aut.Cod_Mod = inserted.Cod_Mod
+					AND Mae_Aut.Num_Aut = inserted.Num_Aut
+					AND NOT EXISTS (
+						SELECT *
+						FROM Terminal
+						WHERE /* %JoinFKPK(inserted,Terminal," = "," and") */ inserted.Cod_Mod = Terminal.Cod_Ter_Alm
+						)
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Age R/12 Mae_Aut ON CHILD INSERT SET NULL */
+
+			IF /* %ChildFK(" or",update) */
+				UPDATE (Cod_Age)
+
+			BEGIN
+				UPDATE Mae_Aut
+				SET /* %SetFK(Mae_Aut,NULL) */ Mae_Aut.Cod_Age = NULL
+				FROM Mae_Aut
+					,inserted
+				WHERE /* %JoinPKPK(Mae_Aut,inserted," = "," and") */ Mae_Aut.Cod_Mod = inserted.Cod_Mod
+					AND Mae_Aut.Num_Aut = inserted.Num_Aut
+					AND NOT EXISTS (
+						SELECT *
+						FROM Mae_Age
+						WHERE /* %JoinFKPK(inserted,Mae_Age," = "," and") */ inserted.Cod_Age = Mae_Age.Cod_Age
+						)
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+		/****** Object:  Trigger dbo.tI_Mae_Cho    Script Date: 08/09/2002 6:45:51 PM ******/
+		ALTER TRIGGER tI_Mae_Cho ON Mae_Cho
+		FOR INSERT
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* INSERT trigger on Mae_Cho */
+		BEGIN
+			DECLARE @numrows INT
+				,@nullcnt INT
+				,@validcnt INT
+				,@errno INT
+				,@errmsg VARCHAR(255)
+
+			SELECT @numrows = @@rowcount /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Est R/26 Mae_Cho ON CHILD INSERT SET NULL */
+
+			IF /* %ChildFK(" or",update) */
+				UPDATE (Cod_Est)
+
+			BEGIN
+				UPDATE Mae_Cho
+				SET /* %SetFK(Mae_Cho,NULL) */ Mae_Cho.Cod_Est = NULL
+				FROM Mae_Cho
+					,inserted
+				WHERE /* %JoinPKPK(Mae_Cho,inserted," = "," and") */ Mae_Cho.Cod_Bre = inserted.Cod_Bre
+					AND NOT EXISTS (
+						SELECT *
+						FROM Mae_Est
+						WHERE /* %JoinFKPK(inserted,Mae_Est," = "," and") */ inserted.Cod_Est = Mae_Est.Cod_Est
+						)
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+		/****** Object:  Trigger dbo.tI_Mae_Pla    Script Date: 08/09/2002 6:45:51 PM ******/
+		ALTER TRIGGER tI_Mae_Pla ON Mae_Pla
+		FOR INSERT
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* INSERT trigger on Mae_Pla */
+		BEGIN
+			DECLARE @numrows INT
+				,@nullcnt INT
+				,@validcnt INT
+				,@errno INT
+				,@errmsg VARCHAR(255)
+
+			SELECT @numrows = @@rowcount /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Est R/25 Mae_Pla ON CHILD INSERT SET NULL */
+
+			IF /* %ChildFK(" or",update) */
+				UPDATE (Cod_Est)
+
+			BEGIN
+				UPDATE Mae_Pla
+				SET /* %SetFK(Mae_Pla,NULL) */ Mae_Pla.Cod_Est = NULL
+				FROM Mae_Pla
+					,inserted
+				WHERE /* %JoinPKPK(Mae_Pla,inserted," = "," and") */ Mae_Pla.Cod_Pla = inserted.Cod_Pla
+					AND NOT EXISTS (
+						SELECT *
+						FROM Mae_Est
+						WHERE /* %JoinFKPK(inserted,Mae_Est," = "," and") */ inserted.Cod_Est = Mae_Est.Cod_Est
+						)
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+		/****** Object:  Trigger dbo.tU_Mae_Age    Script Date: 08/09/2002 6:45:51 PM ******/
+		ALTER TRIGGER tU_Mae_Age ON Mae_Age
+		FOR UPDATE
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* UPDATE trigger on Mae_Age */
+		BEGIN
+			DECLARE @numrows INT
+				,@nullcnt INT
+				,@validcnt INT
+				,@insCod_Age CHAR(5)
+				,@errno INT
+				,@errmsg VARCHAR(255)
+
+			SELECT @numrows = @@rowcount /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Age R/12 Mae_Aut ON PARENT UPDATE SET NULL */
+
+			IF /* %ParentPK(" or",update) */
+				UPDATE (Cod_Age)
+
+			BEGIN
+				UPDATE Mae_Aut
+				SET /* %SetFK(Mae_Aut,NULL) */ Mae_Aut.Cod_Age = NULL
+				FROM Mae_Aut
+					,deleted
+				WHERE /* %JoinFKPK(Mae_Aut,deleted," = "," and") */ Mae_Aut.Cod_Age = deleted.Cod_Age
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+		/****** Object:  Trigger dbo.tU_Mae_Bal    Script Date: 08/09/2002 6:45:51 PM ******/
+		ALTER TRIGGER tU_Mae_Bal ON Mae_Bal
+		FOR UPDATE
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* UPDATE trigger on Mae_Bal */
+		BEGIN
+			DECLARE @numrows INT
+				,@nullcnt INT
+				,@validcnt INT
+				,@insCod_Bal CHAR(2)
+				,@errno INT
+				,@errmsg VARCHAR(255)
+
+			SELECT @numrows = @@rowcount /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Bal R/9 Pri_Tic ON PARENT UPDATE SET NULL */
+
+			IF /* %ParentPK(" or",update) */
+				UPDATE (Cod_Bal)
+
+			BEGIN
+				UPDATE Pri_Tic
+				SET /* %SetFK(Pri_Tic,NULL) */ Pri_Tic.Cod_Bal_02 = NULL
+				FROM Pri_Tic
+					,deleted
+				WHERE /* %JoinFKPK(Pri_Tic,deleted," = "," and") */ Pri_Tic.Cod_Bal_02 = deleted.Cod_Bal
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Bal R/8 Pri_Tic ON PARENT UPDATE SET NULL */
+
+			IF /* %ParentPK(" or",update) */
+				UPDATE (Cod_Bal)
+
+			BEGIN
+				UPDATE Pri_Tic
+				SET /* %SetFK(Pri_Tic,NULL) */ Pri_Tic.Cod_Bal_01 = NULL
+				FROM Pri_Tic
+					,deleted
+				WHERE /* %JoinFKPK(Pri_Tic,deleted," = "," and") */ Pri_Tic.Cod_Bal_01 = deleted.Cod_Bal
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+		/****** Object:  Trigger dbo.tU_Mae_Cho    Script Date: 08/09/2002 6:45:51 PM ******/
+		ALTER TRIGGER tU_Mae_Cho ON Mae_Cho
+		FOR UPDATE
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* UPDATE trigger on Mae_Cho */
+		BEGIN
+			DECLARE @numrows INT
+				,@nullcnt INT
+				,@validcnt INT
+				,@insCod_Bre CHAR(9)
+				,@errno INT
+				,@errmsg VARCHAR(255)
+
+			SELECT @numrows = @@rowcount /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Cho R/4 Pri_Tic ON PARENT UPDATE SET NULL */
+
+			IF /* %ParentPK(" or",update) */
+				UPDATE (Cod_Bre)
+
+			BEGIN
+				UPDATE Pri_Tic
+				SET /* %SetFK(Pri_Tic,NULL) */ Pri_Tic.Cod_Bre = NULL
+				FROM Pri_Tic
+					,deleted
+				WHERE /* %JoinFKPK(Pri_Tic,deleted," = "," and") */ Pri_Tic.Cod_Bre = deleted.Cod_Bre
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Est R/26 Mae_Cho ON CHILD UPDATE SET NULL */
+
+			IF /* %ChildFK(" or",update) */
+				UPDATE (Cod_Est)
+
+			BEGIN
+				UPDATE Mae_Cho
+				SET /* %SetFK(Mae_Cho,NULL) */ Mae_Cho.Cod_Est = NULL
+				FROM Mae_Cho
+					,inserted
+				WHERE /* %JoinPKPK(Mae_Cho,inserted," = "," and") */ Mae_Cho.Cod_Bre = inserted.Cod_Bre
+					AND NOT EXISTS (
+						SELECT *
+						FROM Mae_Est
+						WHERE /* %JoinFKPK(inserted,Mae_Est," = "," and") */ inserted.Cod_Est = Mae_Est.Cod_Est
+						)
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+		/****** Object:  Trigger dbo.tU_Mae_Lin    Script Date: 08/09/2002 6:45:51 PM ******/
+		ALTER TRIGGER tU_Mae_Lin ON Mae_Lin
+		FOR UPDATE
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* UPDATE trigger on Mae_Lin */
+		BEGIN
+			DECLARE @numrows INT
+				,@nullcnt INT
+				,@validcnt INT
+				,@insCod_Lin CHAR(4)
+				,@errno INT
+				,@errmsg VARCHAR(255)
+
+			SELECT @numrows = @@rowcount /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Lin R/17 Mae_Aut ON PARENT UPDATE SET NULL */
+
+			IF /* %ParentPK(" or",update) */
+				UPDATE (Cod_Lin)
+
+			BEGIN
+				UPDATE Mae_Aut
+				SET /* %SetFK(Mae_Aut,NULL) */ Mae_Aut.Cod_Lin = NULL
+				FROM Mae_Aut
+					,deleted
+				WHERE /* %JoinFKPK(Mae_Aut,deleted," = "," and") */ Mae_Aut.Cod_Lin = deleted.Cod_Lin
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+		/****** Object:  Trigger dbo.tU_Mae_Ope    Script Date: 08/09/2002 6:45:51 PM ******/
+		ALTER TRIGGER tU_Mae_Ope ON Mae_Ope
+		FOR UPDATE
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* UPDATE trigger on Mae_Ope */
+		BEGIN
+			DECLARE @numrows INT
+				,@nullcnt INT
+				,@validcnt INT
+				,@insCod_Ope CHAR(3)
+				,@errno INT
+				,@errmsg VARCHAR(255)
+
+			SELECT @numrows = @@rowcount /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Ope R/23 Pri_Tic ON PARENT UPDATE SET NULL */
+
+			IF /* %ParentPK(" or",update) */
+				UPDATE (Cod_Ope)
+
+			BEGIN
+				UPDATE Pri_Tic
+				SET /* %SetFK(Pri_Tic,NULL) */ Pri_Tic.Cod_Ope = NULL
+				FROM Pri_Tic
+					,deleted
+				WHERE /* %JoinFKPK(Pri_Tic,deleted," = "," and") */ Pri_Tic.Cod_Ope = deleted.Cod_Ope
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Ope R/22 Mae_Aut ON PARENT UPDATE SET NULL */
+
+			IF /* %ParentPK(" or",update) */
+				UPDATE (Cod_Ope)
+
+			BEGIN
+				UPDATE Mae_Aut
+				SET /* %SetFK(Mae_Aut,NULL) */ Mae_Aut.Cod_Ope = NULL
+				FROM Mae_Aut
+					,deleted
+				WHERE /* %JoinFKPK(Mae_Aut,deleted," = "," and") */ Mae_Aut.Cod_Ope = deleted.Cod_Ope
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+		/****** Object:  Trigger dbo.tU_Mae_Pla    Script Date: 08/09/2002 6:45:51 PM ******/
+		ALTER TRIGGER tU_Mae_Pla ON Mae_Pla
+		FOR UPDATE
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* UPDATE trigger on Mae_Pla */
+		BEGIN
+			DECLARE @numrows INT
+				,@nullcnt INT
+				,@validcnt INT
+				,@insCod_Pla CHAR(8)
+				,@errno INT
+				,@errmsg VARCHAR(255)
+
+			SELECT @numrows = @@rowcount /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Pla R/5 Pri_Tic ON PARENT UPDATE SET NULL */
+
+			IF /* %ParentPK(" or",update) */
+				UPDATE (Cod_Pla)
+
+			BEGIN
+				UPDATE Pri_Tic
+				SET /* %SetFK(Pri_Tic,NULL) */ Pri_Tic.Cod_Pla = NULL
+				FROM Pri_Tic
+					,deleted
+				WHERE /* %JoinFKPK(Pri_Tic,deleted," = "," and") */ Pri_Tic.Cod_Pla = deleted.Cod_Pla
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Est R/25 Mae_Pla ON CHILD UPDATE SET NULL */
+
+			IF /* %ChildFK(" or",update) */
+				UPDATE (Cod_Est)
+
+			BEGIN
+				UPDATE Mae_Pla
+				SET /* %SetFK(Mae_Pla,NULL) */ Mae_Pla.Cod_Est = NULL
+				FROM Mae_Pla
+					,inserted
+				WHERE /* %JoinPKPK(Mae_Pla,inserted," = "," and") */ Mae_Pla.Cod_Pla = inserted.Cod_Pla
+					AND NOT EXISTS (
+						SELECT *
+						FROM Mae_Est
+						WHERE /* %JoinFKPK(inserted,Mae_Est," = "," and") */ inserted.Cod_Est = Mae_Est.Cod_Est
+						)
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+		/****** Object:  Trigger dbo.tU_priusu    Script Date: 08/09/2002 6:45:52 PM ******/
+		ALTER TRIGGER tU_priusu ON priusu
+		FOR UPDATE
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* UPDATE trigger on priusu */
+		BEGIN
+			DECLARE @numrows INT
+				,@nullcnt INT
+				,@validcnt INT
+				,@insCodUsu INT
+				,@errno INT
+				,@errmsg VARCHAR(255)
+
+			SELECT @numrows = @@rowcount /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* priusu R/11 Pri_Tic ON PARENT UPDATE SET NULL */
+
+			IF /* %ParentPK(" or",update) */
+				UPDATE (CodUsu)
+
+			BEGIN
+				UPDATE Pri_Tic
+				SET /* %SetFK(Pri_Tic,NULL) */ Pri_Tic.Cod_Usu_01 = NULL
+				FROM Pri_Tic
+					,deleted
+				WHERE /* %JoinFKPK(Pri_Tic,deleted," = "," and") */ Pri_Tic.Cod_Usu_01 = deleted.CodUsu
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* priusu R/10 Pri_Tic ON PARENT UPDATE SET NULL */
+
+			IF /* %ParentPK(" or",update) */
+				UPDATE (CodUsu)
+
+			BEGIN
+				UPDATE Pri_Tic
+				SET /* %SetFK(Pri_Tic,NULL) */ Pri_Tic.Cod_Usu_02 = NULL
+				FROM Pri_Tic
+					,deleted
+				WHERE /* %JoinFKPK(Pri_Tic,deleted," = "," and") */ Pri_Tic.Cod_Usu_02 = deleted.CodUsu
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+		/****** Object:  Trigger dbo.tU_Terminal    Script Date: 08/09/2002 6:45:52 PM ******/
+		ALTER TRIGGER tU_Terminal ON Terminal
+		FOR UPDATE
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* UPDATE trigger on Terminal */
+		BEGIN
+			DECLARE @numrows INT
+				,@nullcnt INT
+				,@validcnt INT
+				,@insCod_Ter_Alm CHAR(4)
+				,@errno INT
+				,@errmsg VARCHAR(255)
+
+			SELECT @numrows = @@rowcount /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Terminal R/14 Mae_Aut ON PARENT UPDATE SET NULL */
+
+			IF /* %ParentPK(" or",update) */
+				UPDATE (Cod_Ter_Alm)
+
+			BEGIN
+				UPDATE Mae_Aut
+				SET /* %SetFK(Mae_Aut,NULL) */ Mae_Aut.Cod_Mod = NULL
+				FROM Mae_Aut
+					,deleted
+				WHERE /* %JoinFKPK(Mae_Aut,deleted," = "," and") */ Mae_Aut.Cod_Mod = deleted.Cod_Ter_Alm
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+--		/****** Object:  Trigger dbo.tD_Embalaj    Script Date: 08/09/2002 6:45:52 PM ******/
+--		ALTER TRIGGER tD_Embalaj ON Embalaj
+--		FOR DELETE
+--		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* DELETE trigger on Embalaj */
+--		BEGIN
+--			DECLARE @errno INT
+--				,@errmsg VARCHAR(255) /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Embalaj R/18 Sec_det_Aut ON PARENT DELETE SET NULL */
+
+--			UPDATE Sec_det_Aut
+--			SET /* %SetFK(Sec_det_Aut,NULL) */ Sec_det_Aut.C¾d_Tip_Emb = NULL
+--			FROM Sec_det_Aut
+--				,deleted
+--			WHERE /* %JoinFKPK(Sec_det_Aut,deleted," = "," and") */ Sec_det_Aut.C¾d_Tip_Emb = deleted.Cod_Emb /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+--			RETURN
+
+--			error:
+
+--			--RAISERROR @errno @errmsg
+
+--			ROLLBACK TRANSACTION
+--		END
+--GO
+		/****** Object:  Trigger dbo.tD_Mae_Aut    Script Date: 08/09/2002 6:45:52 PM ******/
+		ALTER TRIGGER tD_Mae_Aut ON Mae_Aut
+		FOR DELETE
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* DELETE trigger on Mae_Aut */
+		BEGIN
+			DECLARE @errno INT
+				,@errmsg VARCHAR(255) /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Aut R/16 Sec_det_Aut ON PARENT DELETE SET NULL */
+
+			UPDATE Sec_det_Aut
+			SET /* %SetFK(Sec_det_Aut,NULL) */ Sec_det_Aut.Cod_Mod = NULL
+				,Sec_det_Aut.Num_Aut = NULL
+			FROM Sec_det_Aut
+				,deleted
+			WHERE /* %JoinFKPK(Sec_det_Aut,deleted," = "," and") */ Sec_det_Aut.Cod_Mod = deleted.Cod_Mod
+				AND Sec_det_Aut.Num_Aut = deleted.Num_Aut /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Aut R/1 Pri_Tic ON PARENT DELETE SET NULL */
+
+			UPDATE Pri_Tic
+			SET /* %SetFK(Pri_Tic,NULL) */ Pri_Tic.Cod_Mod = NULL
+				,Pri_Tic.Num_Aut = NULL
+			FROM Pri_Tic
+				,deleted
+			WHERE /* %JoinFKPK(Pri_Tic,deleted," = "," and") */ Pri_Tic.Cod_Mod = deleted.Cod_Mod
+				AND Pri_Tic.Num_Aut = deleted.Num_Aut /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+		/****** Object:  Trigger dbo.tD_Mae_Con_Con    Script Date: 08/09/2002 6:45:52 PM ******/
+		ALTER TRIGGER tD_Mae_Con_Con ON Mae_Con_Con
+		FOR DELETE
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* DELETE trigger on Mae_Con_Con */
+		BEGIN
+			DECLARE @errno INT
+				,@errmsg VARCHAR(255) /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Con_Con R/6 Sec_det_Aut ON PARENT DELETE SET NULL */
+
+			UPDATE Sec_det_Aut
+			SET /* %SetFK(Sec_det_Aut,NULL) */ Sec_det_Aut.Cod_Con_Con = NULL
+			FROM Sec_det_Aut
+				,deleted
+			WHERE /* %JoinFKPK(Sec_det_Aut,deleted," = "," and") */ Sec_det_Aut.Cod_Con_Con = deleted.Cod_Con_Con /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+		/****** Object:  Trigger dbo.tD_Mae_Est    Script Date: 08/09/2002 6:45:52 PM ******/
+		ALTER TRIGGER tD_Mae_Est ON Mae_Est
+		FOR DELETE
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* DELETE trigger on Mae_Est */
+		BEGIN
+			DECLARE @errno INT
+				,@errmsg VARCHAR(255) /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Est R/26 Mae_Cho ON PARENT DELETE SET NULL */
+
+			UPDATE Mae_Cho
+			SET /* %SetFK(Mae_Cho,NULL) */ Mae_Cho.Cod_Est = NULL
+			FROM Mae_Cho
+				,deleted
+			WHERE /* %JoinFKPK(Mae_Cho,deleted," = "," and") */ Mae_Cho.Cod_Est = deleted.Cod_Est /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Est R/25 Mae_Pla ON PARENT DELETE SET NULL */
+
+			UPDATE Mae_Pla
+			SET /* %SetFK(Mae_Pla,NULL) */ Mae_Pla.Cod_Est = NULL
+			FROM Mae_Pla
+				,deleted
+			WHERE /* %JoinFKPK(Mae_Pla,deleted," = "," and") */ Mae_Pla.Cod_Est = deleted.Cod_Est /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Est R/24 Sec_det_Aut ON PARENT DELETE SET NULL */
+
+			UPDATE Sec_det_Aut
+			SET /* %SetFK(Sec_det_Aut,NULL) */ Sec_det_Aut.Cod_Est = NULL
+			FROM Sec_det_Aut
+				,deleted
+			WHERE /* %JoinFKPK(Sec_det_Aut,deleted," = "," and") */ Sec_det_Aut.Cod_Est = deleted.Cod_Est /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+		/****** Object:  Trigger dbo.tD_Mae_Tip_Con    Script Date: 08/09/2002 6:45:52 PM ******/
+		ALTER TRIGGER tD_Mae_Tip_Con ON Mae_Tip_Con
+		FOR DELETE
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* DELETE trigger on Mae_Tip_Con */
+		BEGIN
+			DECLARE @errno INT
+				,@errmsg VARCHAR(255) /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Tip_Con R/7 Sec_det_Aut ON PARENT DELETE SET NULL */
+
+			UPDATE Sec_det_Aut
+			SET /* %SetFK(Sec_det_Aut,NULL) */ Sec_det_Aut.Cod_Tip_Con = NULL
+			FROM Sec_det_Aut
+				,deleted
+			WHERE /* %JoinFKPK(Sec_det_Aut,deleted," = "," and") */ Sec_det_Aut.Cod_Tip_Con = deleted.Cod_Tip_Con /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+		/****** Object:  Trigger dbo.tD_Pri_Tic    Script Date: 08/09/2002 6:45:52 PM ******/
+		ALTER TRIGGER tD_Pri_Tic ON Pri_Tic
+		FOR DELETE
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* DELETE trigger on Pri_Tic */
+		BEGIN
+			DECLARE @errno INT
+				,@errmsg VARCHAR(255) /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Pri_Tic R/21 Sec_det_Car_Bal ON PARENT DELETE SET NULL */
+
+			UPDATE Sec_det_Car_Bal
+			SET /* %SetFK(Sec_det_Car_Bal,NULL) */ Sec_det_Car_Bal.Cod_Mod = NULL
+				,Sec_det_Car_Bal.Cod_Ope = NULL
+				,Sec_det_Car_Bal.Num_Tic = NULL
+			FROM Sec_det_Car_Bal
+				,deleted
+			WHERE /* %JoinFKPK(Sec_det_Car_Bal,deleted," = "," and") */ Sec_det_Car_Bal.Cod_Mod = deleted.Cod_Mod
+				AND Sec_det_Car_Bal.Cod_Ope = deleted.Cod_Ope
+				AND Sec_det_Car_Bal.Num_Tic = deleted.Num_Tic /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+--		/****** Object:  Trigger dbo.tI_Sec_det_Aut    Script Date: 08/09/2002 6:45:52 PM ******/
+--		ALTER TRIGGER tI_Sec_det_Aut ON Sec_det_Aut
+--		FOR INSERT
+--		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* INSERT trigger on Sec_det_Aut */
+--		BEGIN
+--			DECLARE @numrows INT
+--				,@nullcnt INT
+--				,@validcnt INT
+--				,@errno INT
+--				,@errmsg VARCHAR(255)
+
+--			SELECT @numrows = @@rowcount /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Est R/24 Sec_det_Aut ON CHILD INSERT SET NULL */
+
+--			IF /* %ChildFK(" or",update) */
+--				UPDATE (Cod_Est)
+
+--			BEGIN
+--				UPDATE Sec_det_Aut
+--				SET /* %SetFK(Sec_det_Aut,NULL) */ Sec_det_Aut.Cod_Est = NULL
+--				FROM Sec_det_Aut
+--					,inserted
+--				WHERE /* %JoinPKPK(Sec_det_Aut,inserted," = "," and") */ Sec_det_Aut.Cod_Mod = inserted.Cod_Mod
+--					AND Sec_det_Aut.Num_Aut = inserted.Num_Aut
+--					AND Sec_det_Aut.Cor_Det = inserted.Cor_Det
+--					AND NOT EXISTS (
+--						SELECT *
+--						FROM Mae_Est
+--						WHERE /* %JoinFKPK(inserted,Mae_Est," = "," and") */ inserted.Cod_Est = Mae_Est.Cod_Est
+--						)
+--			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Embalaj R/18 Sec_det_Aut ON CHILD INSERT SET NULL */
+
+--			IF /* %ChildFK(" or",update) */
+--				UPDATE (C¾d_Tip_Emb)
+
+--			BEGIN
+--				UPDATE Sec_det_Aut
+--				SET /* %SetFK(Sec_det_Aut,NULL) */ Sec_det_Aut.C¾d_Tip_Emb = NULL
+--				FROM Sec_det_Aut
+--					,inserted
+--				WHERE /* %JoinPKPK(Sec_det_Aut,inserted," = "," and") */ Sec_det_Aut.Cod_Mod = inserted.Cod_Mod
+--					AND Sec_det_Aut.Num_Aut = inserted.Num_Aut
+--					AND Sec_det_Aut.Cor_Det = inserted.Cor_Det
+--					AND NOT EXISTS (
+--						SELECT *
+--						FROM Embalaj
+--						WHERE /* %JoinFKPK(inserted,Embalaj," = "," and") */ inserted.C¾d_Tip_Emb = Embalaj.Cod_Emb
+--						)
+--			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Aut R/16 Sec_det_Aut ON CHILD INSERT SET NULL */
+
+--			IF /* %ChildFK(" or",update) */
+--				UPDATE (Cod_Mod)
+--					OR
+
+--			UPDATE (Num_Aut)
+
+--			BEGIN
+--				UPDATE Sec_det_Aut
+--				SET /* %SetFK(Sec_det_Aut,NULL) */ Sec_det_Aut.Cod_Mod = NULL
+--					,Sec_det_Aut.Num_Aut = NULL
+--				FROM Sec_det_Aut
+--					,inserted
+--				WHERE /* %JoinPKPK(Sec_det_Aut,inserted," = "," and") */ Sec_det_Aut.Cod_Mod = inserted.Cod_Mod
+--					AND Sec_det_Aut.Num_Aut = inserted.Num_Aut
+--					AND Sec_det_Aut.Cor_Det = inserted.Cor_Det
+--					AND NOT EXISTS (
+--						SELECT *
+--						FROM Mae_Aut
+--						WHERE /* %JoinFKPK(inserted,Mae_Aut," = "," and") */ inserted.Cod_Mod = Mae_Aut.Cod_Mod
+--							AND inserted.Num_Aut = Mae_Aut.Num_Aut
+--						)
+--			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Tip_Con R/7 Sec_det_Aut ON CHILD INSERT SET NULL */
+
+--			IF /* %ChildFK(" or",update) */
+--				UPDATE (Cod_Tip_Con)
+
+--			BEGIN
+--				UPDATE Sec_det_Aut
+--				SET /* %SetFK(Sec_det_Aut,NULL) */ Sec_det_Aut.Cod_Tip_Con = NULL
+--				FROM Sec_det_Aut
+--					,inserted
+--				WHERE /* %JoinPKPK(Sec_det_Aut,inserted," = "," and") */ Sec_det_Aut.Cod_Mod = inserted.Cod_Mod
+--					AND Sec_det_Aut.Num_Aut = inserted.Num_Aut
+--					AND Sec_det_Aut.Cor_Det = inserted.Cor_Det
+--					AND NOT EXISTS (
+--						SELECT *
+--						FROM Mae_Tip_Con
+--						WHERE /* %JoinFKPK(inserted,Mae_Tip_Con," = "," and") */ inserted.Cod_Tip_Con = Mae_Tip_Con.Cod_Tip_Con
+--						)
+--			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Con_Con R/6 Sec_det_Aut ON CHILD INSERT SET NULL */
+
+--			IF /* %ChildFK(" or",update) */
+--				UPDATE (Cod_Con_Con)
+
+--			BEGIN
+--				UPDATE Sec_det_Aut
+--				SET /* %SetFK(Sec_det_Aut,NULL) */ Sec_det_Aut.Cod_Con_Con = NULL
+--				FROM Sec_det_Aut
+--					,inserted
+--				WHERE /* %JoinPKPK(Sec_det_Aut,inserted," = "," and") */ Sec_det_Aut.Cod_Mod = inserted.Cod_Mod
+--					AND Sec_det_Aut.Num_Aut = inserted.Num_Aut
+--					AND Sec_det_Aut.Cor_Det = inserted.Cor_Det
+--					AND NOT EXISTS (
+--						SELECT *
+--						FROM Mae_Con_Con
+--						WHERE /* %JoinFKPK(inserted,Mae_Con_Con," = "," and") */ inserted.Cod_Con_Con = Mae_Con_Con.Cod_Con_Con
+--						)
+--			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+--			RETURN
+
+--			error:
+
+--			--RAISERROR @errno @errmsg
+
+--			ROLLBACK TRANSACTION
+--		END
+--GO
+		/****** Object:  Trigger dbo.tI_Sec_det_Car_Bal    Script Date: 08/09/2002 6:45:52 PM ******/
+		ALTER TRIGGER tI_Sec_det_Car_Bal ON Sec_det_Car_Bal
+		FOR INSERT
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* INSERT trigger on Sec_det_Car_Bal */
+		BEGIN
+			DECLARE @numrows INT
+				,@nullcnt INT
+				,@validcnt INT
+				,@errno INT
+				,@errmsg VARCHAR(255)
+
+			SELECT @numrows = @@rowcount /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Pri_Tic R/21 Sec_det_Car_Bal ON CHILD INSERT SET NULL */
+
+			IF /* %ChildFK(" or",update) */
+				UPDATE (Cod_Mod)
+					OR
+
+			UPDATE (Cod_Ope)
+				OR
+
+			UPDATE (Num_Tic)
+
+			BEGIN
+				UPDATE Sec_det_Car_Bal
+				SET /* %SetFK(Sec_det_Car_Bal,NULL) */ Sec_det_Car_Bal.Cod_Mod = NULL
+					,Sec_det_Car_Bal.Cod_Ope = NULL
+					,Sec_det_Car_Bal.Num_Tic = NULL
+				FROM Sec_det_Car_Bal
+					,inserted
+				WHERE /* %JoinPKPK(Sec_det_Car_Bal,inserted," = "," and") */ Sec_det_Car_Bal.Cod_Mod = inserted.Cod_Mod
+					AND Sec_det_Car_Bal.Cod_Ope = inserted.Cod_Ope
+					AND Sec_det_Car_Bal.Num_Tic = inserted.Num_Tic
+					AND Sec_det_Car_Bal.Cor_Det = inserted.Cor_Det
+					AND NOT EXISTS (
+						SELECT *
+						FROM Pri_Tic
+						WHERE /* %JoinFKPK(inserted,Pri_Tic," = "," and") */ inserted.Cod_Mod = Pri_Tic.Cod_Mod
+							AND inserted.Cod_Ope = Pri_Tic.Cod_Ope
+							AND inserted.Num_Tic = Pri_Tic.Num_Tic
+						)
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+--		/****** Object:  Trigger dbo.tU_Embalaj    Script Date: 08/09/2002 6:45:52 PM ******/
+--		ALTER TRIGGER tU_Embalaj ON Embalaj
+--		FOR UPDATE
+--		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* UPDATE trigger on Embalaj */
+--		BEGIN
+--			DECLARE @numrows INT
+--				,@nullcnt INT
+--				,@validcnt INT
+--				,@insCod_Emb CHAR(3)
+--				,@errno INT
+--				,@errmsg VARCHAR(255)
+
+--			SELECT @numrows = @@rowcount /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Embalaj R/18 Sec_det_Aut ON PARENT UPDATE SET NULL */
+
+--			IF /* %ParentPK(" or",update) */
+--				UPDATE (Cod_Emb)
+
+--			BEGIN
+--				UPDATE Sec_det_Aut
+--				SET /* %SetFK(Sec_det_Aut,NULL) */ Sec_det_Aut.C¾d_Tip_Emb = NULL
+--				FROM Sec_det_Aut
+--					,deleted
+--				WHERE /* %JoinFKPK(Sec_det_Aut,deleted," = "," and") */ Sec_det_Aut.C¾d_Tip_Emb = deleted.Cod_Emb
+--			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+--			RETURN
+
+--			error:
+
+--			--RAISERROR @errno @errmsg
+
+--			ROLLBACK TRANSACTION
+--		END
+--GO
+		/****** Object:  Trigger dbo.tU_Mae_Aut    Script Date: 08/09/2002 6:45:52 PM ******/
+		ALTER TRIGGER tU_Mae_Aut ON Mae_Aut
+		FOR UPDATE
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* UPDATE trigger on Mae_Aut */
+		BEGIN
+			DECLARE @numrows INT
+				,@nullcnt INT
+				,@validcnt INT
+				,@insCod_Mod CHAR(4)
+				,@insNum_Aut INT
+				,@errno INT
+				,@errmsg VARCHAR(255)
+
+			SELECT @numrows = @@rowcount /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Aut R/16 Sec_det_Aut ON PARENT UPDATE SET NULL */
+
+			IF /* %ParentPK(" or",update) */
+				UPDATE (Cod_Mod)
+					OR
+
+			UPDATE (Num_Aut)
+
+			BEGIN
+				UPDATE Sec_det_Aut
+				SET /* %SetFK(Sec_det_Aut,NULL) */ Sec_det_Aut.Cod_Mod = NULL
+					,Sec_det_Aut.Num_Aut = NULL
+				FROM Sec_det_Aut
+					,deleted
+				WHERE /* %JoinFKPK(Sec_det_Aut,deleted," = "," and") */ Sec_det_Aut.Cod_Mod = deleted.Cod_Mod
+					AND Sec_det_Aut.Num_Aut = deleted.Num_Aut
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Aut R/1 Pri_Tic ON PARENT UPDATE SET NULL */
+
+			IF /* %ParentPK(" or",update) */
+				UPDATE (Cod_Mod)
+					OR
+
+			UPDATE (Num_Aut)
+
+			BEGIN
+				UPDATE Pri_Tic
+				SET /* %SetFK(Pri_Tic,NULL) */ Pri_Tic.Cod_Mod = NULL
+					,Pri_Tic.Num_Aut = NULL
+				FROM Pri_Tic
+					,deleted
+				WHERE /* %JoinFKPK(Pri_Tic,deleted," = "," and") */ Pri_Tic.Cod_Mod = deleted.Cod_Mod
+					AND Pri_Tic.Num_Aut = deleted.Num_Aut
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Ope R/22 Mae_Aut ON CHILD UPDATE SET NULL */
+
+			IF /* %ChildFK(" or",update) */
+				UPDATE (Cod_Ope)
+
+			BEGIN
+				UPDATE Mae_Aut
+				SET /* %SetFK(Mae_Aut,NULL) */ Mae_Aut.Cod_Ope = NULL
+				FROM Mae_Aut
+					,inserted
+				WHERE /* %JoinPKPK(Mae_Aut,inserted," = "," and") */ Mae_Aut.Cod_Mod = inserted.Cod_Mod
+					AND Mae_Aut.Num_Aut = inserted.Num_Aut
+					AND NOT EXISTS (
+						SELECT *
+						FROM Mae_Ope
+						WHERE /* %JoinFKPK(inserted,Mae_Ope," = "," and") */ inserted.Cod_Ope = Mae_Ope.Cod_Ope
+						)
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Lin R/17 Mae_Aut ON CHILD UPDATE SET NULL */
+
+			IF /* %ChildFK(" or",update) */
+				UPDATE (Cod_Lin)
+
+			BEGIN
+				UPDATE Mae_Aut
+				SET /* %SetFK(Mae_Aut,NULL) */ Mae_Aut.Cod_Lin = NULL
+				FROM Mae_Aut
+					,inserted
+				WHERE /* %JoinPKPK(Mae_Aut,inserted," = "," and") */ Mae_Aut.Cod_Mod = inserted.Cod_Mod
+					AND Mae_Aut.Num_Aut = inserted.Num_Aut
+					AND NOT EXISTS (
+						SELECT *
+						FROM Mae_Lin
+						WHERE /* %JoinFKPK(inserted,Mae_Lin," = "," and") */ inserted.Cod_Lin = Mae_Lin.Cod_Lin
+						)
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Terminal R/14 Mae_Aut ON CHILD UPDATE SET NULL */
+
+			IF /* %ChildFK(" or",update) */
+				UPDATE (Cod_Mod)
+
+			BEGIN
+				UPDATE Mae_Aut
+				SET /* %SetFK(Mae_Aut,NULL) */ Mae_Aut.Cod_Mod = NULL
+				FROM Mae_Aut
+					,inserted
+				WHERE /* %JoinPKPK(Mae_Aut,inserted," = "," and") */ Mae_Aut.Cod_Mod = inserted.Cod_Mod
+					AND Mae_Aut.Num_Aut = inserted.Num_Aut
+					AND NOT EXISTS (
+						SELECT *
+						FROM Terminal
+						WHERE /* %JoinFKPK(inserted,Terminal," = "," and") */ inserted.Cod_Mod = Terminal.Cod_Ter_Alm
+						)
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Age R/12 Mae_Aut ON CHILD UPDATE SET NULL */
+
+			IF /* %ChildFK(" or",update) */
+				UPDATE (Cod_Age)
+
+			BEGIN
+				UPDATE Mae_Aut
+				SET /* %SetFK(Mae_Aut,NULL) */ Mae_Aut.Cod_Age = NULL
+				FROM Mae_Aut
+					,inserted
+				WHERE /* %JoinPKPK(Mae_Aut,inserted," = "," and") */ Mae_Aut.Cod_Mod = inserted.Cod_Mod
+					AND Mae_Aut.Num_Aut = inserted.Num_Aut
+					AND NOT EXISTS (
+						SELECT *
+						FROM Mae_Age
+						WHERE /* %JoinFKPK(inserted,Mae_Age," = "," and") */ inserted.Cod_Age = Mae_Age.Cod_Age
+						)
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+		/****** Object:  Trigger dbo.tU_Mae_Con_Con    Script Date: 08/09/2002 6:45:52 PM ******/
+		ALTER TRIGGER tU_Mae_Con_Con ON Mae_Con_Con
+		FOR UPDATE
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* UPDATE trigger on Mae_Con_Con */
+		BEGIN
+			DECLARE @numrows INT
+				,@nullcnt INT
+				,@validcnt INT
+				,@insCod_Con_Con CHAR(3)
+				,@errno INT
+				,@errmsg VARCHAR(255)
+
+			SELECT @numrows = @@rowcount /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Con_Con R/6 Sec_det_Aut ON PARENT UPDATE SET NULL */
+
+			IF /* %ParentPK(" or",update) */
+				UPDATE (Cod_Con_Con)
+
+			BEGIN
+				UPDATE Sec_det_Aut
+				SET /* %SetFK(Sec_det_Aut,NULL) */ Sec_det_Aut.Cod_Con_Con = NULL
+				FROM Sec_det_Aut
+					,deleted
+				WHERE /* %JoinFKPK(Sec_det_Aut,deleted," = "," and") */ Sec_det_Aut.Cod_Con_Con = deleted.Cod_Con_Con
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+		/****** Object:  Trigger dbo.tU_Mae_Est    Script Date: 08/09/2002 6:45:52 PM ******/
+		ALTER TRIGGER tU_Mae_Est ON Mae_Est
+		FOR UPDATE
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* UPDATE trigger on Mae_Est */
+		BEGIN
+			DECLARE @numrows INT
+				,@nullcnt INT
+				,@validcnt INT
+				,@insCod_Est CHAR(2)
+				,@errno INT
+				,@errmsg VARCHAR(255)
+
+			SELECT @numrows = @@rowcount /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Est R/26 Mae_Cho ON PARENT UPDATE SET NULL */
+
+			IF /* %ParentPK(" or",update) */
+				UPDATE (Cod_Est)
+
+			BEGIN
+				UPDATE Mae_Cho
+				SET /* %SetFK(Mae_Cho,NULL) */ Mae_Cho.Cod_Est = NULL
+				FROM Mae_Cho
+					,deleted
+				WHERE /* %JoinFKPK(Mae_Cho,deleted," = "," and") */ Mae_Cho.Cod_Est = deleted.Cod_Est
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Est R/25 Mae_Pla ON PARENT UPDATE SET NULL */
+
+			IF /* %ParentPK(" or",update) */
+				UPDATE (Cod_Est)
+
+			BEGIN
+				UPDATE Mae_Pla
+				SET /* %SetFK(Mae_Pla,NULL) */ Mae_Pla.Cod_Est = NULL
+				FROM Mae_Pla
+					,deleted
+				WHERE /* %JoinFKPK(Mae_Pla,deleted," = "," and") */ Mae_Pla.Cod_Est = deleted.Cod_Est
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Est R/24 Sec_det_Aut ON PARENT UPDATE SET NULL */
+
+			IF /* %ParentPK(" or",update) */
+				UPDATE (Cod_Est)
+
+			BEGIN
+				UPDATE Sec_det_Aut
+				SET /* %SetFK(Sec_det_Aut,NULL) */ Sec_det_Aut.Cod_Est = NULL
+				FROM Sec_det_Aut
+					,deleted
+				WHERE /* %JoinFKPK(Sec_det_Aut,deleted," = "," and") */ Sec_det_Aut.Cod_Est = deleted.Cod_Est
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+		/****** Object:  Trigger dbo.tU_Mae_Tip_Con    Script Date: 08/09/2002 6:45:53 PM ******/
+		ALTER TRIGGER tU_Mae_Tip_Con ON Mae_Tip_Con
+		FOR UPDATE
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* UPDATE trigger on Mae_Tip_Con */
+		BEGIN
+			DECLARE @numrows INT
+				,@nullcnt INT
+				,@validcnt INT
+				,@insCod_Tip_Con CHAR(2)
+				,@errno INT
+				,@errmsg VARCHAR(255)
+
+			SELECT @numrows = @@rowcount /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Tip_Con R/7 Sec_det_Aut ON PARENT UPDATE SET NULL */
+
+			IF /* %ParentPK(" or",update) */
+				UPDATE (Cod_Tip_Con)
+
+			BEGIN
+				UPDATE Sec_det_Aut
+				SET /* %SetFK(Sec_det_Aut,NULL) */ Sec_det_Aut.Cod_Tip_Con = NULL
+				FROM Sec_det_Aut
+					,deleted
+				WHERE /* %JoinFKPK(Sec_det_Aut,deleted," = "," and") */ Sec_det_Aut.Cod_Tip_Con = deleted.Cod_Tip_Con
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+		/****** Object:  Trigger dbo.tU_Pri_Tic    Script Date: 08/09/2002 6:45:53 PM ******/
+		ALTER TRIGGER tU_Pri_Tic ON Pri_Tic
+		FOR UPDATE
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* UPDATE trigger on Pri_Tic */
+		BEGIN
+			DECLARE @numrows INT
+				,@nullcnt INT
+				,@validcnt INT
+				,@insCod_Mod CHAR(4)
+				,@insCod_Ope CHAR(3)
+				,@insNum_Tic NUMERIC(10)
+				,@errno INT
+				,@errmsg VARCHAR(255)
+
+			SELECT @numrows = @@rowcount /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Pri_Tic R/21 Sec_det_Car_Bal ON PARENT UPDATE SET NULL */
+
+			IF /* %ParentPK(" or",update) */
+				UPDATE (Cod_Mod)
+					OR
+
+			UPDATE (Cod_Ope)
+				OR
+
+			UPDATE (Num_Tic)
+
+			BEGIN
+				UPDATE Sec_det_Car_Bal
+				SET /* %SetFK(Sec_det_Car_Bal,NULL) */ Sec_det_Car_Bal.Cod_Mod = NULL
+					,Sec_det_Car_Bal.Cod_Ope = NULL
+					,Sec_det_Car_Bal.Num_Tic = NULL
+				FROM Sec_det_Car_Bal
+					,deleted
+				WHERE /* %JoinFKPK(Sec_det_Car_Bal,deleted," = "," and") */ Sec_det_Car_Bal.Cod_Mod = deleted.Cod_Mod
+					AND Sec_det_Car_Bal.Cod_Ope = deleted.Cod_Ope
+					AND Sec_det_Car_Bal.Num_Tic = deleted.Num_Tic
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Ope R/23 Pri_Tic ON CHILD UPDATE SET NULL */
+
+			IF /* %ChildFK(" or",update) */
+				UPDATE (Cod_Ope)
+
+			BEGIN
+				UPDATE Pri_Tic
+				SET /* %SetFK(Pri_Tic,NULL) */ Pri_Tic.Cod_Ope = NULL
+				FROM Pri_Tic
+					,inserted
+				WHERE /* %JoinPKPK(Pri_Tic,inserted," = "," and") */ Pri_Tic.Cod_Mod = inserted.Cod_Mod
+					AND Pri_Tic.Cod_Ope = inserted.Cod_Ope
+					AND Pri_Tic.Num_Tic = inserted.Num_Tic
+					AND NOT EXISTS (
+						SELECT *
+						FROM Mae_Ope
+						WHERE /* %JoinFKPK(inserted,Mae_Ope," = "," and") */ inserted.Cod_Ope = Mae_Ope.Cod_Ope
+						)
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* priusu R/11 Pri_Tic ON CHILD UPDATE SET NULL */
+
+			IF /* %ChildFK(" or",update) */
+				UPDATE (Cod_Usu_01)
+
+			BEGIN
+				UPDATE Pri_Tic
+				SET /* %SetFK(Pri_Tic,NULL) */ Pri_Tic.Cod_Usu_01 = NULL
+				FROM Pri_Tic
+					,inserted
+				WHERE /* %JoinPKPK(Pri_Tic,inserted," = "," and") */ Pri_Tic.Cod_Mod = inserted.Cod_Mod
+					AND Pri_Tic.Cod_Ope = inserted.Cod_Ope
+					AND Pri_Tic.Num_Tic = inserted.Num_Tic
+					AND NOT EXISTS (
+						SELECT *
+						FROM priusu
+						WHERE /* %JoinFKPK(inserted,priusu," = "," and") */ inserted.Cod_Usu_01 = priusu.CodUsu
+						)
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* priusu R/10 Pri_Tic ON CHILD UPDATE SET NULL */
+
+			IF /* %ChildFK(" or",update) */
+				UPDATE (Cod_Usu_02)
+
+			BEGIN
+				UPDATE Pri_Tic
+				SET /* %SetFK(Pri_Tic,NULL) */ Pri_Tic.Cod_Usu_02 = NULL
+				FROM Pri_Tic
+					,inserted
+				WHERE /* %JoinPKPK(Pri_Tic,inserted," = "," and") */ Pri_Tic.Cod_Mod = inserted.Cod_Mod
+					AND Pri_Tic.Cod_Ope = inserted.Cod_Ope
+					AND Pri_Tic.Num_Tic = inserted.Num_Tic
+					AND NOT EXISTS (
+						SELECT *
+						FROM priusu
+						WHERE /* %JoinFKPK(inserted,priusu," = "," and") */ inserted.Cod_Usu_02 = priusu.CodUsu
+						)
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Bal R/9 Pri_Tic ON CHILD UPDATE SET NULL */
+
+			IF /* %ChildFK(" or",update) */
+				UPDATE (Cod_Bal_02)
+
+			BEGIN
+				UPDATE Pri_Tic
+				SET /* %SetFK(Pri_Tic,NULL) */ Pri_Tic.Cod_Bal_02 = NULL
+				FROM Pri_Tic
+					,inserted
+				WHERE /* %JoinPKPK(Pri_Tic,inserted," = "," and") */ Pri_Tic.Cod_Mod = inserted.Cod_Mod
+					AND Pri_Tic.Cod_Ope = inserted.Cod_Ope
+					AND Pri_Tic.Num_Tic = inserted.Num_Tic
+					AND NOT EXISTS (
+						SELECT *
+						FROM Mae_Bal
+						WHERE /* %JoinFKPK(inserted,Mae_Bal," = "," and") */ inserted.Cod_Bal_02 = Mae_Bal.Cod_Bal
+						)
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Bal R/8 Pri_Tic ON CHILD UPDATE SET NULL */
+
+			IF /* %ChildFK(" or",update) */
+				UPDATE (Cod_Bal_01)
+
+			BEGIN
+				UPDATE Pri_Tic
+				SET /* %SetFK(Pri_Tic,NULL) */ Pri_Tic.Cod_Bal_01 = NULL
+				FROM Pri_Tic
+					,inserted
+				WHERE /* %JoinPKPK(Pri_Tic,inserted," = "," and") */ Pri_Tic.Cod_Mod = inserted.Cod_Mod
+					AND Pri_Tic.Cod_Ope = inserted.Cod_Ope
+					AND Pri_Tic.Num_Tic = inserted.Num_Tic
+					AND NOT EXISTS (
+						SELECT *
+						FROM Mae_Bal
+						WHERE /* %JoinFKPK(inserted,Mae_Bal," = "," and") */ inserted.Cod_Bal_01 = Mae_Bal.Cod_Bal
+						)
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Pla R/5 Pri_Tic ON CHILD UPDATE SET NULL */
+
+			IF /* %ChildFK(" or",update) */
+				UPDATE (Cod_Pla)
+
+			BEGIN
+				UPDATE Pri_Tic
+				SET /* %SetFK(Pri_Tic,NULL) */ Pri_Tic.Cod_Pla = NULL
+				FROM Pri_Tic
+					,inserted
+				WHERE /* %JoinPKPK(Pri_Tic,inserted," = "," and") */ Pri_Tic.Cod_Mod = inserted.Cod_Mod
+					AND Pri_Tic.Cod_Ope = inserted.Cod_Ope
+					AND Pri_Tic.Num_Tic = inserted.Num_Tic
+					AND NOT EXISTS (
+						SELECT *
+						FROM Mae_Pla
+						WHERE /* %JoinFKPK(inserted,Mae_Pla," = "," and") */ inserted.Cod_Pla = Mae_Pla.Cod_Pla
+						)
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Cho R/4 Pri_Tic ON CHILD UPDATE SET NULL */
+
+			IF /* %ChildFK(" or",update) */
+				UPDATE (Cod_Bre)
+
+			BEGIN
+				UPDATE Pri_Tic
+				SET /* %SetFK(Pri_Tic,NULL) */ Pri_Tic.Cod_Bre = NULL
+				FROM Pri_Tic
+					,inserted
+				WHERE /* %JoinPKPK(Pri_Tic,inserted," = "," and") */ Pri_Tic.Cod_Mod = inserted.Cod_Mod
+					AND Pri_Tic.Cod_Ope = inserted.Cod_Ope
+					AND Pri_Tic.Num_Tic = inserted.Num_Tic
+					AND NOT EXISTS (
+						SELECT *
+						FROM Mae_Cho
+						WHERE /* %JoinFKPK(inserted,Mae_Cho," = "," and") */ inserted.Cod_Bre = Mae_Cho.Cod_Bre
+						)
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Aut R/1 Pri_Tic ON CHILD UPDATE SET NULL */
+
+			IF /* %ChildFK(" or",update) */
+				UPDATE (Cod_Mod)
+					OR
+
+			UPDATE (Num_Aut)
+
+			BEGIN
+				UPDATE Pri_Tic
+				SET /* %SetFK(Pri_Tic,NULL) */ Pri_Tic.Cod_Mod = NULL
+					,Pri_Tic.Num_Aut = NULL
+				FROM Pri_Tic
+					,inserted
+				WHERE /* %JoinPKPK(Pri_Tic,inserted," = "," and") */ Pri_Tic.Cod_Mod = inserted.Cod_Mod
+					AND Pri_Tic.Cod_Ope = inserted.Cod_Ope
+					AND Pri_Tic.Num_Tic = inserted.Num_Tic
+					AND NOT EXISTS (
+						SELECT *
+						FROM Mae_Aut
+						WHERE /* %JoinFKPK(inserted,Mae_Aut," = "," and") */ inserted.Cod_Mod = Mae_Aut.Cod_Mod
+							AND inserted.Num_Aut = Mae_Aut.Num_Aut
+						)
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+--		/****** Object:  Trigger dbo.tU_Sec_det_Aut    Script Date: 08/09/2002 6:45:53 PM ******/
+--		ALTER TRIGGER tU_Sec_det_Aut ON Sec_det_Aut
+--		FOR UPDATE
+--		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* UPDATE trigger on Sec_det_Aut */
+--		BEGIN
+--			DECLARE @numrows INT
+--				,@nullcnt INT
+--				,@validcnt INT
+--				,@insCod_Mod CHAR(4)
+--				,@insNum_Aut INT
+--				,@insCor_Det INT
+--				,@errno INT
+--				,@errmsg VARCHAR(255)
+
+--			SELECT @numrows = @@rowcount /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Est R/24 Sec_det_Aut ON CHILD UPDATE SET NULL */
+
+--			IF /* %ChildFK(" or",update) */
+--				UPDATE (Cod_Est)
+
+--			BEGIN
+--				UPDATE Sec_det_Aut
+--				SET /* %SetFK(Sec_det_Aut,NULL) */ Sec_det_Aut.Cod_Est = NULL
+--				FROM Sec_det_Aut
+--					,inserted
+--				WHERE /* %JoinPKPK(Sec_det_Aut,inserted," = "," and") */ Sec_det_Aut.Cod_Mod = inserted.Cod_Mod
+--					AND Sec_det_Aut.Num_Aut = inserted.Num_Aut
+--					AND Sec_det_Aut.Cor_Det = inserted.Cor_Det
+--					AND NOT EXISTS (
+--						SELECT *
+--						FROM Mae_Est
+--						WHERE /* %JoinFKPK(inserted,Mae_Est," = "," and") */ inserted.Cod_Est = Mae_Est.Cod_Est
+--						)
+--			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Embalaj R/18 Sec_det_Aut ON CHILD UPDATE SET NULL */
+
+--			IF /* %ChildFK(" or",update) */
+--				UPDATE (C¾d_Tip_Emb)
+
+--			BEGIN
+--				UPDATE Sec_det_Aut
+--				SET /* %SetFK(Sec_det_Aut,NULL) */ Sec_det_Aut.C¾d_Tip_Emb = NULL
+--				FROM Sec_det_Aut
+--					,inserted
+--				WHERE /* %JoinPKPK(Sec_det_Aut,inserted," = "," and") */ Sec_det_Aut.Cod_Mod = inserted.Cod_Mod
+--					AND Sec_det_Aut.Num_Aut = inserted.Num_Aut
+--					AND Sec_det_Aut.Cor_Det = inserted.Cor_Det
+--					AND NOT EXISTS (
+--						SELECT *
+--						FROM Embalaj
+--						WHERE /* %JoinFKPK(inserted,Embalaj," = "," and") */ inserted.C¾d_Tip_Emb = Embalaj.Cod_Emb
+--						)
+--			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Aut R/16 Sec_det_Aut ON CHILD UPDATE SET NULL */
+
+--			IF /* %ChildFK(" or",update) */
+--				UPDATE (Cod_Mod)
+--					OR
+
+--			UPDATE (Num_Aut)
+
+--			BEGIN
+--				UPDATE Sec_det_Aut
+--				SET /* %SetFK(Sec_det_Aut,NULL) */ Sec_det_Aut.Cod_Mod = NULL
+--					,Sec_det_Aut.Num_Aut = NULL
+--				FROM Sec_det_Aut
+--					,inserted
+--				WHERE /* %JoinPKPK(Sec_det_Aut,inserted," = "," and") */ Sec_det_Aut.Cod_Mod = inserted.Cod_Mod
+--					AND Sec_det_Aut.Num_Aut = inserted.Num_Aut
+--					AND Sec_det_Aut.Cor_Det = inserted.Cor_Det
+--					AND NOT EXISTS (
+--						SELECT *
+--						FROM Mae_Aut
+--						WHERE /* %JoinFKPK(inserted,Mae_Aut," = "," and") */ inserted.Cod_Mod = Mae_Aut.Cod_Mod
+--							AND inserted.Num_Aut = Mae_Aut.Num_Aut
+--						)
+--			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Tip_Con R/7 Sec_det_Aut ON CHILD UPDATE SET NULL */
+
+--			IF /* %ChildFK(" or",update) */
+--				UPDATE (Cod_Tip_Con)
+
+--			BEGIN
+--				UPDATE Sec_det_Aut
+--				SET /* %SetFK(Sec_det_Aut,NULL) */ Sec_det_Aut.Cod_Tip_Con = NULL
+--				FROM Sec_det_Aut
+--					,inserted
+--				WHERE /* %JoinPKPK(Sec_det_Aut,inserted," = "," and") */ Sec_det_Aut.Cod_Mod = inserted.Cod_Mod
+--					AND Sec_det_Aut.Num_Aut = inserted.Num_Aut
+--					AND Sec_det_Aut.Cor_Det = inserted.Cor_Det
+--					AND NOT EXISTS (
+--						SELECT *
+--						FROM Mae_Tip_Con
+--						WHERE /* %JoinFKPK(inserted,Mae_Tip_Con," = "," and") */ inserted.Cod_Tip_Con = Mae_Tip_Con.Cod_Tip_Con
+--						)
+--			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Mae_Con_Con R/6 Sec_det_Aut ON CHILD UPDATE SET NULL */
+
+--			IF /* %ChildFK(" or",update) */
+--				UPDATE (Cod_Con_Con)
+
+--			BEGIN
+--				UPDATE Sec_det_Aut
+--				SET /* %SetFK(Sec_det_Aut,NULL) */ Sec_det_Aut.Cod_Con_Con = NULL
+--				FROM Sec_det_Aut
+--					,inserted
+--				WHERE /* %JoinPKPK(Sec_det_Aut,inserted," = "," and") */ Sec_det_Aut.Cod_Mod = inserted.Cod_Mod
+--					AND Sec_det_Aut.Num_Aut = inserted.Num_Aut
+--					AND Sec_det_Aut.Cor_Det = inserted.Cor_Det
+--					AND NOT EXISTS (
+--						SELECT *
+--						FROM Mae_Con_Con
+--						WHERE /* %JoinFKPK(inserted,Mae_Con_Con," = "," and") */ inserted.Cod_Con_Con = Mae_Con_Con.Cod_Con_Con
+--						)
+--			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+--			RETURN
+
+--			error:
+
+--			--RAISERROR @errno @errmsg
+
+--			ROLLBACK TRANSACTION
+--		END
+--GO
+		/****** Object:  Trigger dbo.tU_Sec_det_Car_Bal    Script Date: 08/09/2002 6:45:53 PM ******/
+		ALTER TRIGGER tU_Sec_det_Car_Bal ON Sec_det_Car_Bal
+		FOR UPDATE
+		AS /* ERwin Builtin Mon Sep 03 10:13:24 2001 *//* UPDATE trigger on Sec_det_Car_Bal */
+		BEGIN
+			DECLARE @numrows INT
+				,@nullcnt INT
+				,@validcnt INT
+				,@insCod_Mod CHAR(4)
+				,@insCod_Ope CHAR(3)
+				,@insNum_Tic NUMERIC(10)
+				,@insCor_Det INT
+				,@errno INT
+				,@errmsg VARCHAR(255)
+
+			SELECT @numrows = @@rowcount /* ERwin Builtin Mon Sep 03 10:13:24 2001 */ /* Pri_Tic R/21 Sec_det_Car_Bal ON CHILD UPDATE SET NULL */
+
+			IF /* %ChildFK(" or",update) */
+				UPDATE (Cod_Mod)
+					OR
+
+			UPDATE (Cod_Ope)
+				OR
+
+			UPDATE (Num_Tic)
+
+			BEGIN
+				UPDATE Sec_det_Car_Bal
+				SET /* %SetFK(Sec_det_Car_Bal,NULL) */ Sec_det_Car_Bal.Cod_Mod = NULL
+					,Sec_det_Car_Bal.Cod_Ope = NULL
+					,Sec_det_Car_Bal.Num_Tic = NULL
+				FROM Sec_det_Car_Bal
+					,inserted
+				WHERE /* %JoinPKPK(Sec_det_Car_Bal,inserted," = "," and") */ Sec_det_Car_Bal.Cod_Mod = inserted.Cod_Mod
+					AND Sec_det_Car_Bal.Cod_Ope = inserted.Cod_Ope
+					AND Sec_det_Car_Bal.Num_Tic = inserted.Num_Tic
+					AND Sec_det_Car_Bal.Cor_Det = inserted.Cor_Det
+					AND NOT EXISTS (
+						SELECT *
+						FROM Pri_Tic
+						WHERE /* %JoinFKPK(inserted,Pri_Tic," = "," and") */ inserted.Cod_Mod = Pri_Tic.Cod_Mod
+							AND inserted.Cod_Ope = Pri_Tic.Cod_Ope
+							AND inserted.Num_Tic = Pri_Tic.Num_Tic
+						)
+			END /* ERwin Builtin Mon Sep 03 10:13:24 2001 */
+
+			RETURN
+
+			error:
+
+			--RAISERROR @errno @errmsg
+
+			ROLLBACK TRANSACTION
+		END
+GO
+		ALTER TRIGGER [dbo].[DDTICKET18_D] ON [dbo].[DDTICKET18]
+		FOR DELETE
+		AS
+		IF @@rowcount = 0
+			RETURN
+		ELSE
+			INSERT INTO TKTAUDIT00 (
+				nrosal52
+				,nomtab00
+				,tipope00
+				,codusu00
+				,fecope00
+				,hostid00
+				,regupd00
+				,nrotkt18
+				,codcon04
+				,tipope18
+				)
+			SELECT navvia11
+				,'DDTICKET18'
+				,'E'
+				,user_name()
+				,getdate()
+				,host_name()
+				,regupd00 = substring(isnull(navvia11, '') + '|' + isnull(nrotkt18, '') + '|' + isnull(codcon04, '') + '|' + isnull(tipope18, '') + '|' + RTRIM(CONVERT(CHAR(10), isnull(pesbrt18, 0))) + '|' + RTRIM(CONVERT(CHAR(10), isnull(pestar18, 0))) + '|' + RTRIM(CONVERT(CHAR(10), isnull(pesnet18, 0))) + '|' + RTRIM(CONVERT(CHAR(10), isnull(nrotar18, 0))) + '|' + isnull(nrobal18, '') + '|' + isnull(codemb06, '') + '|' + isnull(nroaut14, ''), 1, 255)
+				,nrotkt18
+				,isnull(codcon04, '')
+				,isnull(tipope18, '')
+			FROM deleted --|   INSERT INTO DDTICKET18_AUDIT   SELECT    nrotkt18,   nropla18,   codcon04,   nrotar18,   pesbrt18,   pestar18,   pesnet18,   navvia11,   nrosec18,   nrocha14,   tipope18,   fecing18,   fecsal18,   codusu17 = USER_NAME(),   fecusu00 = GETDATE(),   fimprv18,   fimprc18,   fimprm18,   fimpri18,   nrobal18,   status18,   mertot18,   nroord41,   observ18,   codemb06,   nrosal52,   buling18,   bulret18,   fimpre18,   fimprt18,   pesacu18,   ftrans18,   fcorre18,   faduan18,   nroaut14,   marcas16,   nrotra60,   traseg18,   pesena18,   fpesen18,   tktkman18,   sbpeso18,   flgtra99,   fectra99,   sucursal,   nrocar18,   codbre18,   flgtransito18,   nrotar18Pre,   fecTar18Pre,   HOST_NAME()   FROM deleted   --|   
+GO

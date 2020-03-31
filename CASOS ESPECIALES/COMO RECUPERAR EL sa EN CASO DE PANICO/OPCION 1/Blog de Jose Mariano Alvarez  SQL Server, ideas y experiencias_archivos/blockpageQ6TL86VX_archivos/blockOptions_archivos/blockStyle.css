@@ -1,0 +1,45 @@
+BODY {
+	FONT-SIZE: 12pt; FONT-FAMILY: Arial, Helvetica, sans-serif; BACKGROUND: url(../../Images/block.png) #eef2f7 no-repeat 5px 5px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 5px 7px; PADDING-RIGHT: 0px
+}
+H1 {
+	FONT-SIZE: 1.2em; BORDER-BOTTOM: #8c8c8c 1px solid; PADDING-BOTTOM: 6px; MARGIN: 0px 0px 15px 30px
+}
+H1.security {
+	BORDER-LEFT-WIDTH: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND: url(../../Images/security_block.png) #faf8c9 no-repeat 5px 3px; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 7px; PADDING-TOP: 7px; PADDING-LEFT: 7px; MARGIN: 0px 0px 15px; PADDING-RIGHT: 7px; BORDER-TOP-WIDTH: 0px; TEXT-INDENT: 33px
+}
+P {
+	MARGIN-BOTTOM: 10px; FONT-SIZE: 90%; MARGIN-TOP: 0px
+}
+SPAN.warning {
+	BORDER-TOP: #c4c17b 1px solid; BORDER-RIGHT: #c4c17b 1px solid; BACKGROUND: #faf8c9; WHITE-SPACE: nowrap; BORDER-BOTTOM: #c4c17b 1px solid; PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; MARGIN-LEFT: 10px; BORDER-LEFT: #c4c17b 1px solid; PADDING-RIGHT: 2px
+}
+#options {
+	BORDER-TOP: #d7e1ec 1px solid; WIDTH: 100%; BACKGROUND: #ffffff; BORDER-BOTTOM: #d7e1ec 1px solid; PADDING-BOTTOM: 6px; PADDING-TOP: 6px; PADDING-LEFT: 0px; CLEAR: both; PADDING-RIGHT: 0px
+}
+* HTML #options {
+	WIDTH: 92%
+}
+.option {
+	BORDER-TOP: #999 1px dotted; PADDING-TOP: 6px; MARGIN: 4px 5px 0px 100px
+}
+.first-option {
+	PADDING-TOP: 1px; MARGIN: 0px 5px 10px 100px
+}
+.label {
+	WIDTH: 100px; FLOAT: left; FONT-WEIGHT: bold; DISPLAY: block
+}
+.black_overlay {
+	HEIGHT: 100%; WIDTH: 100%; POSITION: absolute; LEFT: 0%; FILTER: alpha(opacity=80); Z-INDEX: 1001; DISPLAY: none; TOP: 0%; BACKGROUND-COLOR: black; -moz-opacity: 0.8; opacity: .80
+}
+.white_content {
+	OVERFLOW: auto; HEIGHT: 280px; WIDTH: 55%; POSITION: absolute; LEFT: 15%; Z-INDEX: 1002; DISPLAY: none; TOP: 15%; BACKGROUND-COLOR: white
+}
+.header {
+	BACKGROUND: black; FONT-WEIGHT: bold; COLOR: white; PADDING-BOTTOM: 4px; PADDING-TOP: 4px; PADDING-LEFT: 4px; PADDING-RIGHT: 4px
+}
+.ws_btn {
+	WIDTH: 155px; MARGIN-RIGHT: 20px
+}
+.ws_btn_desc {
+	FONT-SIZE: 90%
+}

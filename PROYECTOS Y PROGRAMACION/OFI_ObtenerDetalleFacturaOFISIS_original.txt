@@ -1,0 +1,220 @@
+/*********************************************************                                                          
+Obj. : Obtener Detalle de Factura de OFISIS                                                      
+Autor: GOS(YQM)                                                          
+Fecha: 09/09/2009                                                          
+BD   : EXTENSION_CRM                                                          
+**********************************************************/                                                          
+--OFI_ObtenerDetalleFacturaOFISIS '0032-0000089727','SOL','20162348931',2,2                                                        
+CREATE PROCEDURE [dbo].[OFI_ObtenerDetalleFacturaOFISIS]                                                                
+@NUMFACTURA NVARCHAR(15),                                                        
+@TIPMONEDA NVARCHAR(3),                                   
+@RUCCODIGO NVARCHAR(11),                                                       
+@PARAM INT,                                                         
+@REFACTURA INT                          
+AS                          
+--@PARAM = 1 Todo                                                        
+--@PARAM = 2 Solo campos para CRM                                                        
+--@REFACTURA = 1 No Refactura                          
+--@REFACTURA = 2 Si Refactura                          
+BEGIN                                             
+IF (@TIPMONEDA = 'DÓL')                                        
+    SELECT @TIPMONEDA = 'DOL'                                        
+                                        
+IF (@PARAM=1)                                                        
+BEGIN                      
+ set @NUMFACTURA = right(@NUMFACTURA,len(@NUMFACTURA)-1)                                                
+   
+ SELECT  TCDOCU_CLIE.TI_DOCU TIPODOC,                                                             
+         TCDOCU_CLIE.NU_DOCU NUMDOCCOMPLETO,                                                             
+         MAX(SubString(TCDOCU_CLIE.NU_DOCU,1,4)) SERIEDOC,                                                          
+         MAX(SubString(TCDOCU_CLIE.NU_DOCU,6,10)) NUMERODOC,                                                          
+         MAX(TCDOCU_CLIE.CO_CLIE) RUCCODIGO,                                                             
+         MAX(TCDOCU_CLIE.CO_MONE) MONEDA,                                                             
+         TDDOCU_CLIE.CO_SERV CODSERVICIOOFISIS,                                             
+         TTSERV.DE_SERV NOMSERVICIOOFISIS,                                          
+         TDDOCU_CLIE.CO_UNNE UNIDADNEGOCIO,                                      
+         TTUNID_NEGO.DE_UNNE NOMUNIDADNEGOCIO,                                                         
+         TDDOCU_CLIE.CO_TIEN LOCALTIENDA,                                  
+         TMTIEN.DE_TIEN NOMLOCALTIENDA,                                                             
+         MAX(TCDOCU_CLIE.CO_IMP1) TIPOIMPUESTO1,                                                             
+         --MAX(TDDOCU_CLIE.ST_IMP1) AFECTOIMP1, -- 'S' AFECTOIMP1, --MAX(TDDOCU_CLIE.ST_IMP1) AFECTOIMP1,  GOS(YQM) Modificado por error en el OFISIS // 2011_04_05 modificado no jala como no afecto los no domiciliado                    
+        case when sum(TCDOCU_CLIE.IM_BRUT_AFEC) > 0 THEN 'S' ELSE 'N' END AFECTOIMP1,                     
+  case when MAX(TCDOCU_CLIE.FE_DOCU) >= '20110301' THEN MAX(TCDOCU_CLIE.PC_IMP1) ELSE 19 END IMPUESTO1,    --MAX(TCDOCU_CLIE.PC_IMP1) IMPUESTO1,                                                             
+         MAX(TCDOCU_CLIE.CO_IMP2) TIPOIMPUESTO2,                                                             
+         MAX(TDDOCU_CLIE.ST_IMP2) AFECTOIMP2,                                                             
+         MAX(TCDOCU_CLIE.PC_IMP2) IMPUESTO2,                
+         MAX(TCDOCU_CLIE.CO_IMP3) TIPOIMPUESTO3,                                   
+         MAX(TDDOCU_CLIE.ST_IMP3) AFECTOIMP3,                                                             
+         MAX(TCDOCU_CLIE.PC_IMP3) IMPUESTO3,                                                       
+         SUM(TDDOCU_CLIE.CA_DOCU) CANTIDAD,                                                           
+         SUM(TDDOCU_CLIE.PR_VENT)/count(*) PRECIOVENTASINIMP,                                                             
+         SUM(TDDOCU_CLIE.IM_TOTA_DETA) TOTALPORLINEA,                          
+         MAX(TCDOCU_CLIE.CO_ESTA_DOCU) ESTADODOC                       
+    FROM [COSMOS-DB].OFIRECA.dbo.TDDOCU_CLIE,                                                             
+       [COSMOS-DB].OFIRECA.dbo.TCDOCU_CLIE,                                          
+         [COSMOS-DB].OFIRECA.dbo.TTSERV,                                          
+         [COSMOS-DB].OFIRECA.dbo.TTUNID_NEGO,                                  
+         [COSMOS-DB].OFIRECA.dbo.TMTIEN                                        
+ WHERE ( TCDOCU_CLIE.NU_DOCU = TDDOCU_CLIE.NU_DOCU ) and                                                            
+         ( TCDOCU_CLIE.TI_DOCU = TDDOCU_CLIE.TI_DOCU ) and                                                            
+         ( TCDOCU_CLIE.CO_UNID = TDDOCU_CLIE.CO_UNID ) and                                                            
+         ( TCDOCU_CLIE.CO_EMPR = TDDOCU_CLIE.CO_EMPR )                                                           
+         AND (TDDOCU_CLIE.CO_EMPR = TTSERV.CO_EMPR)                            
+         AND (TDDOCU_CLIE.CO_SERV = TTSERV.CO_SERV)                                        
+         AND (TDDOCU_CLIE.CO_EMPR = TTUNID_NEGO.CO_EMPR)                                          
+         AND (TDDOCU_CLIE.CO_UNNE = TTUNID_NEGO.CO_UNNE)                                  
+         AND (TDDOCU_CLIE.CO_EMPR = TMTIEN.CO_EMPR)                                  
+         AND (TDDOCU_CLIE.CO_TIEN = TMTIEN.CO_TIEN)                                                 
+         AND ( ( TCDOCU_CLIE.CO_EMPR = '16' ) )                                                          
+     AND TCDOCU_CLIE.TI_DOCU = 'FAC'                                                
+         AND (TCDOCU_CLIE.CO_ESTA_DOCU = 'ACT' OR TCDOCU_CLIE.CO_ESTA_DOCU = 'PAG')                                              
+         AND TCDOCU_CLIE.NU_DOCU  like '%' + @NUMFACTURA                                                          
+         AND TCDOCU_CLIE.CO_MONE = @TIPMONEDA                                                          
+         AND TCDOCU_CLIE.CO_CLIE = @RUCCODIGO                   
+         AND TMTIEN.DE_TIEN <>  'OLI PLUSPETROL'                                
+ GROUP BY TCDOCU_CLIE.TI_DOCU, TCDOCU_CLIE.NU_DOCU, TDDOCU_CLIE.CO_SERV, TDDOCU_CLIE.CO_UNNE, TDDOCU_CLIE.CO_TIEN,TTSERV.DE_SERV,TTUNID_NEGO.DE_UNNE,TMTIEN.DE_TIEN                                
+ --ORDER BY TTSERV.DE_SERV  
+UNION  
+ SELECT  TCDOCU_CLIE.TI_DOCU TIPODOC,                                                             
+         TCDOCU_CLIE.NU_DOCU NUMDOCCOMPLETO,                                                             
+         MAX(SubString(TCDOCU_CLIE.NU_DOCU,1,4)) SERIEDOC,                                                          
+         MAX(SubString(TCDOCU_CLIE.NU_DOCU,6,10)) NUMERODOC,                                                          
+         MAX(TCDOCU_CLIE.CO_CLIE) RUCCODIGO,                                                             
+         MAX(TCDOCU_CLIE.CO_MONE) MONEDA,                                                             
+         TDDOCU_CLIE.CO_SERV CODSERVICIOOFISIS,                                             
+         TTSERV.DE_SERV NOMSERVICIOOFISIS,                                          
+         TDDOCU_CLIE.CO_UNNE UNIDADNEGOCIO,                                      
+         TTUNID_NEGO.DE_UNNE NOMUNIDADNEGOCIO,                                                         
+         TDDOCU_CLIE.CO_TIEN LOCALTIENDA,                                  
+         TMTIEN.DE_TIEN NOMLOCALTIENDA,                                                             
+         MAX(TCDOCU_CLIE.CO_IMP1) TIPOIMPUESTO1,                                                             
+         --MAX(TDDOCU_CLIE.ST_IMP1) AFECTOIMP1, -- 'S' AFECTOIMP1, --MAX(TDDOCU_CLIE.ST_IMP1) AFECTOIMP1,  GOS(YQM) Modificado por error en el OFISIS // 2011_04_05 modificado no jala como no afecto los no domiciliado                    
+        case when sum(TCDOCU_CLIE.IM_BRUT_AFEC) > 0 THEN 'S' ELSE 'N' END AFECTOIMP1,                     
+  case when MAX(TCDOCU_CLIE.FE_DOCU) >= '20110301' THEN MAX(TCDOCU_CLIE.PC_IMP1) ELSE 19 END IMPUESTO1,    --MAX(TCDOCU_CLIE.PC_IMP1) IMPUESTO1,                                                             
+         MAX(TCDOCU_CLIE.CO_IMP2) TIPOIMPUESTO2,                                                             
+         MAX(TDDOCU_CLIE.ST_IMP2) AFECTOIMP2,                                                             
+         MAX(TCDOCU_CLIE.PC_IMP2) IMPUESTO2,                
+         MAX(TCDOCU_CLIE.CO_IMP3) TIPOIMPUESTO3,                                   
+         MAX(TDDOCU_CLIE.ST_IMP3) AFECTOIMP3,                                                             
+         MAX(TCDOCU_CLIE.PC_IMP3) IMPUESTO3,                                                       
+         SUM(TDDOCU_CLIE.CA_DOCU) CANTIDAD,                                                           
+         SUM(TDDOCU_CLIE.PR_VENT)/count(*) PRECIOVENTASINIMP,                                                             
+         SUM(TDDOCU_CLIE.IM_TOTA_DETA) TOTALPORLINEA,                          
+         MAX(TCDOCU_CLIE.CO_ESTA_DOCU) ESTADODOC                       
+    FROM [CALW3ERP001].OFIRECA.dbo.TDDOCU_CLIE,                                                             
+       [CALW3ERP001].OFIRECA.dbo.TCDOCU_CLIE,                                          
+         [CALW3ERP001].OFIRECA.dbo.TTSERV,                                          
+         [CALW3ERP001].OFIRECA.dbo.TTUNID_NEGO,                                  
+         [CALW3ERP001].OFIRECA.dbo.TMTIEN                                        
+ WHERE ( TCDOCU_CLIE.NU_DOCU = TDDOCU_CLIE.NU_DOCU ) and                                                            
+         ( TCDOCU_CLIE.TI_DOCU = TDDOCU_CLIE.TI_DOCU ) and                                                            
+         ( TCDOCU_CLIE.CO_UNID = TDDOCU_CLIE.CO_UNID ) and                                                            
+         ( TCDOCU_CLIE.CO_EMPR = TDDOCU_CLIE.CO_EMPR )                                                           
+         AND (TDDOCU_CLIE.CO_EMPR = TTSERV.CO_EMPR)                            
+         AND (TDDOCU_CLIE.CO_SERV = TTSERV.CO_SERV)                                        
+         AND (TDDOCU_CLIE.CO_EMPR = TTUNID_NEGO.CO_EMPR)                                          
+         AND (TDDOCU_CLIE.CO_UNNE = TTUNID_NEGO.CO_UNNE)                                  
+         AND (TDDOCU_CLIE.CO_EMPR = TMTIEN.CO_EMPR)                                  
+         AND (TDDOCU_CLIE.CO_TIEN = TMTIEN.CO_TIEN)                                                 
+         AND ( ( TCDOCU_CLIE.CO_EMPR = '01' ) )                                                          
+     AND TCDOCU_CLIE.TI_DOCU = 'FAC'                                                
+         AND (TCDOCU_CLIE.CO_ESTA_DOCU = 'ACT' OR TCDOCU_CLIE.CO_ESTA_DOCU = 'PAG')                                              
+         AND TCDOCU_CLIE.NU_DOCU  like '%' + @NUMFACTURA                                                          
+         AND TCDOCU_CLIE.CO_MONE = @TIPMONEDA                                                          
+         AND TCDOCU_CLIE.CO_CLIE = @RUCCODIGO                   
+         AND TMTIEN.DE_TIEN <>  'OLI PLUSPETROL'                                
+ GROUP BY TCDOCU_CLIE.TI_DOCU, TCDOCU_CLIE.NU_DOCU, TDDOCU_CLIE.CO_SERV, TDDOCU_CLIE.CO_UNNE, TDDOCU_CLIE.CO_TIEN,TTSERV.DE_SERV,TTUNID_NEGO.DE_UNNE,TMTIEN.DE_TIEN                                
+ ORDER BY TTSERV.DE_SERV           
+           
+END                                                     
+ELSE                                                        
+    IF (@PARAM=2)                                                        
+ BEGIN                   
+               
+ set @NUMFACTURA = right(@NUMFACTURA,len(@NUMFACTURA)-1)              
+                                                    
+   SELECT Max(TCDOCU_CLIE.CO_CLIE) RUCCODIGO,                                                         
+          TCDOCU_CLIE.NU_DOCU NUMDOCCOMPLETO,                                                           
+          SUM(Convert(int,TDDOCU_CLIE.CA_DOCU)) CANTIDADSERVICIO,                                  
+          TTSERV.DE_SERV NOMSERVICIOOFISIS,                                       
+          TTUNID_NEGO.DE_UNNE NOMUNIDADNEGOCIO,                                
+          TMTIEN.DE_TIEN NOMLOCALTIENDA,                                           
+          SUM(TDDOCU_CLIE.IM_TOTA_DETA) TOTALPORLINEA, --Esta es sin IGV                                                   
+          SUM(TDDOCU_CLIE.IM_TOTA_DETA) MONTODEVOLVER, --Este es el Monto Correcto     
+          CASE @Refactura WHEN 1 THEN 0 ELSE SUM(TDDOCU_CLIE.IM_TOTA_DETA) END MONTOCORRECTODEVOLVER, --Este es el Monto a Devolver                          
+          --'S' AFECTOIMP1,--MAX(TDDOCU_CLIE.ST_IMP1) AFECTOIMP1,  GOS(YQM) Modificado por error en el OFISIS                           
+        case when sum(TCDOCU_CLIE.IM_BRUT_AFEC) > 0 THEN 'S' ELSE 'N' END AFECTOIMP1,                       
+  case when MAX(TCDOCU_CLIE.FE_DOCU) >= '20110301' THEN MAX(TCDOCU_CLIE.PC_IMP1) ELSE 19 END IMPUESTO1, --MAX(TCDOCU_CLIE.PC_IMP1) IMPUESTO1,            
+          CASE @Refactura WHEN 1 THEN 0                           
+          ELSE CASE MAX(TDDOCU_CLIE.ST_IMP1) WHEN 'N' THEN SUM(TDDOCU_CLIE.IM_TOTA_DETA) + MAX(TCDOCU_CLIE.PC_IMP1) * SUM(TDDOCU_CLIE.IM_TOTA_DETA)/100 --SUM(TDDOCU_CLIE.IM_TOTA_DETA)--GOS(YQM) Modificado por Error en OFISIS                      
+               ELSE SUM(TDDOCU_CLIE.IM_TOTA_DETA) + MAX(TCDOCU_CLIE.PC_IMP1) * SUM(TDDOCU_CLIE.IM_TOTA_DETA)/100 END                          
+ END MONTOCORRECTODEVOLVERIGV                                                                                  
+   FROM [COSMOS-DB].OFIRECA.dbo.TDDOCU_CLIE,                                                             
+        [COSMOS-DB].OFIRECA.dbo.TCDOCU_CLIE,                                          
+        [COSMOS-DB].OFIRECA.dbo.TTSERV,                                  
+        [COSMOS-DB].OFIRECA.dbo.TTUNID_NEGO,                                  
+        [COSMOS-DB].OFIRECA.dbo.TMTIEN                                                          
+   WHERE ( TCDOCU_CLIE.NU_DOCU = TDDOCU_CLIE.NU_DOCU ) and                                                            
+   ( TCDOCU_CLIE.TI_DOCU = TDDOCU_CLIE.TI_DOCU ) and                           
+   ( TCDOCU_CLIE.CO_UNID = TDDOCU_CLIE.CO_UNID ) and                                                            
+   ( TCDOCU_CLIE.CO_EMPR = TDDOCU_CLIE.CO_EMPR )                                    
+   AND (TDDOCU_CLIE.CO_EMPR = TTSERV.CO_EMPR)                                          
+   AND (TDDOCU_CLIE.CO_SERV = TTSERV.CO_SERV)                                   
+   AND (TDDOCU_CLIE.CO_EMPR = TTUNID_NEGO.CO_EMPR)                                          
+   AND (TDDOCU_CLIE.CO_UNNE = TTUNID_NEGO.CO_UNNE)                                  
+   AND (TDDOCU_CLIE.CO_EMPR = TMTIEN.CO_EMPR)                                  
+   AND (TDDOCU_CLIE.CO_TIEN = TMTIEN.CO_TIEN)                                                           
+   AND ( ( TCDOCU_CLIE.CO_EMPR = '16' ) )                                                   
+   AND TCDOCU_CLIE.TI_DOCU = 'FAC'                                                       
+   AND (TCDOCU_CLIE.CO_ESTA_DOCU = 'ACT' OR TCDOCU_CLIE.CO_ESTA_DOCU = 'PAG')               
+   AND TCDOCU_CLIE.NU_DOCU  like '%' + @NUMFACTURA                                                          
+   AND TCDOCU_CLIE.CO_MONE = @TIPMONEDA                                  
+   AND TCDOCU_CLIE.CO_CLIE = @RUCCODIGO                   
+    AND TMTIEN.DE_TIEN <>  'OLI PLUSPETROL'                                                          
+   GROUP BY TCDOCU_CLIE.TI_DOCU, TCDOCU_CLIE.NU_DOCU, TDDOCU_CLIE.CO_SERV, TDDOCU_CLIE.CO_UNNE, TDDOCU_CLIE.CO_TIEN,TTSERV.DE_SERV,TTUNID_NEGO.DE_UNNE,TMTIEN.DE_TIEN                                
+   --ORDER BY TTSERV.DE_SERV  ,TTUNID_NEGO.DE_UNNE      
+   UNION  
+      SELECT Max(TCDOCU_CLIE.CO_CLIE) RUCCODIGO,                                                         
+          TCDOCU_CLIE.NU_DOCU NUMDOCCOMPLETO,                                                           
+          SUM(Convert(int,TDDOCU_CLIE.CA_DOCU)) CANTIDADSERVICIO,                                  
+          TTSERV.DE_SERV NOMSERVICIOOFISIS,                                       
+          TTUNID_NEGO.DE_UNNE NOMUNIDADNEGOCIO,                                
+          TMTIEN.DE_TIEN NOMLOCALTIENDA,                                           
+          SUM(TDDOCU_CLIE.IM_TOTA_DETA) TOTALPORLINEA, --Esta es sin IGV                                                   
+          SUM(TDDOCU_CLIE.IM_TOTA_DETA) MONTODEVOLVER, --Este es el Monto Correcto     
+          CASE @Refactura WHEN 1 THEN 0 ELSE SUM(TDDOCU_CLIE.IM_TOTA_DETA) END MONTOCORRECTODEVOLVER, --Este es el Monto a Devolver                          
+          --'S' AFECTOIMP1,--MAX(TDDOCU_CLIE.ST_IMP1) AFECTOIMP1,  GOS(YQM) Modificado por error en el OFISIS                           
+        case when sum(TCDOCU_CLIE.IM_BRUT_AFEC) > 0 THEN 'S' ELSE 'N' END AFECTOIMP1,                       
+  case when MAX(TCDOCU_CLIE.FE_DOCU) >= '20110301' THEN MAX(TCDOCU_CLIE.PC_IMP1) ELSE 19 END IMPUESTO1, --MAX(TCDOCU_CLIE.PC_IMP1) IMPUESTO1,            
+          CASE @Refactura WHEN 1 THEN 0                           
+          ELSE CASE MAX(TDDOCU_CLIE.ST_IMP1) WHEN 'N' THEN SUM(TDDOCU_CLIE.IM_TOTA_DETA) + MAX(TCDOCU_CLIE.PC_IMP1) * SUM(TDDOCU_CLIE.IM_TOTA_DETA)/100 --SUM(TDDOCU_CLIE.IM_TOTA_DETA)--GOS(YQM) Modificado por Error en OFISIS                      
+               ELSE SUM(TDDOCU_CLIE.IM_TOTA_DETA) + MAX(TCDOCU_CLIE.PC_IMP1) * SUM(TDDOCU_CLIE.IM_TOTA_DETA)/100 END                          
+ END MONTOCORRECTODEVOLVERIGV                                                                                  
+   FROM [CALW3ERP001].OFIRECA.dbo.TDDOCU_CLIE,                                                             
+        [CALW3ERP001].OFIRECA.dbo.TCDOCU_CLIE,                                          
+        [CALW3ERP001].OFIRECA.dbo.TTSERV,                                  
+        [CALW3ERP001].OFIRECA.dbo.TTUNID_NEGO,                                  
+        [CALW3ERP001].OFIRECA.dbo.TMTIEN                                                          
+   WHERE ( TCDOCU_CLIE.NU_DOCU = TDDOCU_CLIE.NU_DOCU ) and                                                            
+   ( TCDOCU_CLIE.TI_DOCU = TDDOCU_CLIE.TI_DOCU ) and                           
+   ( TCDOCU_CLIE.CO_UNID = TDDOCU_CLIE.CO_UNID ) and                                                            
+   ( TCDOCU_CLIE.CO_EMPR = TDDOCU_CLIE.CO_EMPR )                                    
+   AND (TDDOCU_CLIE.CO_EMPR = TTSERV.CO_EMPR)                                          
+   AND (TDDOCU_CLIE.CO_SERV = TTSERV.CO_SERV)                                   
+   AND (TDDOCU_CLIE.CO_EMPR = TTUNID_NEGO.CO_EMPR)                                          
+   AND (TDDOCU_CLIE.CO_UNNE = TTUNID_NEGO.CO_UNNE)                                  
+   AND (TDDOCU_CLIE.CO_EMPR = TMTIEN.CO_EMPR)                                  
+   AND (TDDOCU_CLIE.CO_TIEN = TMTIEN.CO_TIEN)                                                           
+   AND ( ( TCDOCU_CLIE.CO_EMPR = '01' ) )                                                   
+   AND TCDOCU_CLIE.TI_DOCU = 'FAC'                                               
+   AND (TCDOCU_CLIE.CO_ESTA_DOCU = 'ACT' OR TCDOCU_CLIE.CO_ESTA_DOCU = 'PAG')                                                   
+   AND TCDOCU_CLIE.NU_DOCU  like '%' + @NUMFACTURA                                                          
+   AND TCDOCU_CLIE.CO_MONE = @TIPMONEDA                                  
+   AND TCDOCU_CLIE.CO_CLIE = @RUCCODIGO                   
+    AND TMTIEN.DE_TIEN <>  'OLI PLUSPETROL'                                                          
+   GROUP BY TCDOCU_CLIE.TI_DOCU, TCDOCU_CLIE.NU_DOCU, TDDOCU_CLIE.CO_SERV, TDDOCU_CLIE.CO_UNNE, TDDOCU_CLIE.CO_TIEN,TTSERV.DE_SERV,TTUNID_NEGO.DE_UNNE,TMTIEN.DE_TIEN                                
+   ORDER BY TTSERV.DE_SERV  ,TTUNID_NEGO.DE_UNNE   
+       
+ END                                           
+END   
+  

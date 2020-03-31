@@ -1,0 +1,41 @@
+System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+
+
+// chart3
+// 
+      chartArea3.Name = "ChartArea1";
+      this.chart3.ChartAreas.Add(chartArea3);
+      legend3.Name = "Legend1";
+      this.chart3.Legends.Add(legend3);
+      this.chart3.Location = new System.Drawing.Point(19, 17);
+      this.chart3.Name = "chart3";
+      series3.ChartArea = "ChartArea1";
+      series3.Legend = "Legend1";
+      series3.Name = "Series1";
+      this.chart3.Series.Add(series3);
+      this.chart3.Size = new System.Drawing.Size(284, 184);
+      this.chart3.TabIndex = 0;
+      this.chart3.Text = "chart3";
+	  
+	  
+	  
+System.Windows.Forms.DataVisualization.Charting.Chart();
+this.button4 = new System.Windows.Forms.Button();
+this.chart3 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+
+ejemplo:
+
+
+	  int horizotal = 30;
+      int vertical = 30;
+      Button[] buttonArray = new Button[81];
+
+      for (int i = 0; i < buttonArray.Length; i++)
+      {
+        buttonArray[i] = new Button();
+        buttonArray[i].Size = new Size(60, 23);
+        buttonArray[i].Location = new Point(horizotal, vertical);
+        if ((i+1)%9==0) horizotal =+ 80;
+        else vertical += 30;
+        this.Controls.Add(buttonArray[i]);
+      }

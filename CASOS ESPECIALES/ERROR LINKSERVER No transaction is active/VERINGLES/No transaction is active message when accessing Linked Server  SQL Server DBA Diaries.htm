@@ -1,0 +1,539 @@
+﻿<!DOCTYPE HTML>
+<!-- saved from url=(0102)http://www.sqldbadiaries.com/2014/09/24/no-transaction-is-active-message-when-accessing-linked-server/ -->
+<!DOCTYPE html PUBLIC "" ""><!--[if IE 7]>
+<html class="ie ie7" lang="en-US">
+<![endif]--><!--[if IE 8]>
+<html class="ie ie8" lang="en-US">
+<![endif]--><!--[if !(IE 7) & !(IE 8)]><!--><HTML 
+lang="en-US"><!--<![endif]--><HEAD><META content="IE=11.0000" 
+http-equiv="X-UA-Compatible">
+ 
+<META charset="UTF-8"> 
+<META name="viewport" content="width=device-width"> <TITLE>No transaction is 
+active message when accessing Linked Server | SQL Server DBA Diaries</TITLE> 
+<LINK href="http://gmpg.org/xfn/11" rel="profile"> <LINK href="http://www.sqldbadiaries.com/xmlrpc.php" 
+rel="pingback"> <!--[if lt IE 9]>
+<script src="http://sqldbadiaries.blob.core.windows.net/sqldbadiaries/wp-content/themes/twentytwelve/js/html5.js.gzip" type="text/javascript"></script>
+<![endif]--> <!-- All in One SEO Pack 2.2.7.1 by Michael Torbert of Semper Fi Web Design[298,391] --> 
+<LINK href="https://plus.google.com/108497990114489507302" rel="author"> 
+<META name="keywords" content="dtc,sql,sql server,linked server,transaction,configure,windows"> 
+<LINK href="http://www.sqldbadiaries.com/2014/09/24/no-transaction-is-active-message-when-accessing-linked-server/" 
+rel="canonical"> <!-- /all in one seo pack --> <LINK title="SQL Server DBA Diaries » Feed" 
+href="http://www.sqldbadiaries.com/feed/" rel="alternate" type="application/rss+xml"> 
+<LINK title="SQL Server DBA Diaries » Comments Feed" href="http://www.sqldbadiaries.com/comments/feed/" 
+rel="alternate" type="application/rss+xml"> <LINK title="SQL Server DBA Diaries » No transaction is active message when accessing Linked Server Comments Feed" 
+href="http://www.sqldbadiaries.com/2014/09/24/no-transaction-is-active-message-when-accessing-linked-server/feed/" 
+rel="alternate" type="application/rss+xml">		 
+<SCRIPT type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"http:\/\/s.w.org\/images\/core\/emoji\/72x72\/","ext":".png","source":{"concatemoji":"http:\/\/www.sqldbadiaries.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.2.4"}};
+			!function(a,b,c){function d(a){var c=b.createElement("canvas"),d=c.getContext&&c.getContext("2d");return d&&d.fillText?(d.textBaseline="top",d.font="600 32px Arial","flag"===a?(d.fillText(String.fromCharCode(55356,56812,55356,56807),0,0),c.toDataURL().length>3e3):(d.fillText(String.fromCharCode(55357,56835),0,0),0!==d.getImageData(16,16,1,1).data[0])):!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g;c.supports={simple:d("simple"),flag:d("flag")},c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.simple&&c.supports.flag||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</SCRIPT>
+		 
+<STYLE type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</STYLE>
+ <LINK id="yarppWidgetCss-css" href="No%20transaction%20is%20active%20message%20when%20accessing%20Linked%20Server%20%20SQL%20Server%20DBA%20Diaries_archivos/widget.css.css" 
+rel="stylesheet" type="text/css" media="all"> <LINK id="wpt-twitter-feed-css" 
+href="No%20transaction%20is%20active%20message%20when%20accessing%20Linked%20Server%20%20SQL%20Server%20DBA%20Diaries_archivos/twitter-feed.css.css" 
+rel="stylesheet" type="text/css" media="all"> <LINK id="twentytwelve-fonts-css" 
+href="No%20transaction%20is%20active%20message%20when%20accessing%20Linked%20Server%20%20SQL%20Server%20DBA%20Diaries_archivos/css.css" 
+rel="stylesheet" type="text/css" media="all"> <LINK id="twentytwelve-style-css" 
+href="No%20transaction%20is%20active%20message%20when%20accessing%20Linked%20Server%20%20SQL%20Server%20DBA%20Diaries_archivos/style.css.css" 
+rel="stylesheet" type="text/css" media="all"> <!--[if lt IE 9]>
+<link rel='stylesheet' id='twentytwelve-ie-css'  href='http://sqldbadiaries.blob.core.windows.net/sqldbadiaries/wp-content/themes/twentytwelve/css/ie.css.gzip?ver=20121010' type='text/css' media='all' />
+<![endif]--> 
+<LINK id="jetpack_css-css" href="http://sqldbadiaries.blob.core.windows.net/sqldbadiaries/wp-content/plugins/jetpack/css/jetpack.css.gzip?ver=3.6.1" 
+rel="stylesheet" type="text/css" media="all"> 
+<SCRIPT src="No%20transaction%20is%20active%20message%20when%20accessing%20Linked%20Server%20%20SQL%20Server%20DBA%20Diaries_archivos/jquery.js.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT src="No%20transaction%20is%20active%20message%20when%20accessing%20Linked%20Server%20%20SQL%20Server%20DBA%20Diaries_archivos/jquery-migrate.min.js.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT src="No%20transaction%20is%20active%20message%20when%20accessing%20Linked%20Server%20%20SQL%20Server%20DBA%20Diaries_archivos/external-tracking.min.js.js" type="text/javascript"></SCRIPT>
+ <LINK title="RSD" href="http://www.sqldbadiaries.com/xmlrpc.php?rsd" rel="EditURI" 
+type="application/rsd+xml"> <LINK href="http://sqldbadiaries.blob.core.windows.net/sqldbadiaries/wp-includes/wlwmanifest.xml.gzip" 
+rel="wlwmanifest" type="application/wlwmanifest+xml"> <LINK title="Application timing out due to excessive blocking on tempdb PFS" 
+href="http://www.sqldbadiaries.com/2014/09/17/application-timing-out-due-to-excessive-blocking-on-tempdb-pfs/" 
+rel="prev"> 
+<META name="GENERATOR" content="MSHTML 11.00.9600.17924"> <LINK href="http://wp.me/p1jrQr-Gb" 
+rel="shortlink"> 
+<SCRIPT src="No%20transaction%20is%20active%20message%20when%20accessing%20Linked%20Server%20%20SQL%20Server%20DBA%20Diaries_archivos/bubble.js.js" type="text/javascript"></SCRIPT>
+ <LINK href="No%20transaction%20is%20active%20message%20when%20accessing%20Linked%20Server%20%20SQL%20Server%20DBA%20Diaries_archivos/style.css(1).css" 
+rel="stylesheet" type="text/css">	 <!-- START: Syntax Highlighter ComPress --> 
+<SCRIPT src="No%20transaction%20is%20active%20message%20when%20accessing%20Linked%20Server%20%20SQL%20Server%20DBA%20Diaries_archivos/shCore.js.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT src="No%20transaction%20is%20active%20message%20when%20accessing%20Linked%20Server%20%20SQL%20Server%20DBA%20Diaries_archivos/shAutoloader.js.js" type="text/javascript"></SCRIPT>
+ <LINK href="No%20transaction%20is%20active%20message%20when%20accessing%20Linked%20Server%20%20SQL%20Server%20DBA%20Diaries_archivos/shCoreDefault.css.css" 
+rel="stylesheet" type="text/css"> <!-- END: Syntax Highlighter ComPress -->   
+<LINK href="//jetpack.wordpress.com" rel="dns-prefetch"> <LINK href="//s0.wp.com" 
+rel="dns-prefetch"> <LINK href="//s1.wp.com" rel="dns-prefetch"> <LINK href="//s2.wp.com" 
+rel="dns-prefetch"> <LINK href="//public-api.wordpress.com" rel="dns-prefetch"> 
+<LINK href="//0.gravatar.com" rel="dns-prefetch"> <LINK href="//1.gravatar.com" 
+rel="dns-prefetch"> <LINK href="//2.gravatar.com" rel="dns-prefetch">	 
+<STYLE id="twentytwelve-header-css" type="text/css">
+			.site-header h1 a,
+		.site-header h2 {
+			color: #444;
+		}
+		</STYLE>
+	 <!-- Jetpack Open Graph Tags --> 
+<META content="article" property="og:type"> 
+<META content="No transaction is active message when accessing Linked Server" 
+property="og:title"> 
+<META content="http://www.sqldbadiaries.com/2014/09/24/no-transaction-is-active-message-when-accessing-linked-server/" 
+property="og:url"> 
+<META content="Last week I had worked on an issue related to Linked Server. The customer had migrated the SQL Server Instances to&nbsp;Virtual Servers. They had quite a few Linked Servers setup. After migration any Di..." 
+property="og:description"> 
+<META content="2014-09-24T11:35:19+00:00" property="article:published_time"> 
+<META content="2014-09-20T18:09:57+00:00" property="article:modified_time"> 
+<META content="SQL Server DBA Diaries" property="og:site_name"> 
+<META content="http://sqldbadiaries.blob.core.windows.net/sqldbadiaries/2014/09/LocalDTCProperties.png" 
+property="og:image"> 
+<META content="516" property="og:image:width"> 
+<META content="356" property="og:image:height"> 
+<META content="en_US" property="og:locale"> 
+<META name="twitter:card" content="summary"> <!-- Google Analytics Tracking by Google Analyticator 6.4.9: http://www.videousermanuals.com/google-analyticator/ --> 
+<SCRIPT type="text/javascript">
+    var analyticsFileTypes = [''];
+    var analyticsSnippet = 'enabled';
+    var analyticsEventTracking = 'enabled';
+</SCRIPT>
+ 
+<SCRIPT type="text/javascript">
+	var _gaq = _gaq || [];
+  
+	_gaq.push(['_setAccount', 'UA-17356497-1']);
+    _gaq.push(['_addDevId', 'i9k95']); // Google Analyticator App ID with Google
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</SCRIPT>
+ </HEAD> 
+<BODY class="single single-post postid-2615 single-format-standard custom-font-enabled single-author">
+<DIV class="hfeed site" id="page"><HEADER class="site-header" id="masthead" 
+role="banner"><HGROUP>
+<H1 class="site-title"><A title="SQL Server DBA Diaries" href="http://www.sqldbadiaries.com/" 
+rel="home">SQL Server DBA Diaries</A></H1>
+<H2 class="site-description"></H2></HGROUP><NAV class="main-navigation" id="site-navigation" 
+role="navigation"><BUTTON class="menu-toggle">Menu</BUTTON>			 <A title="Skip to content" 
+class="assistive-text" href="http://www.sqldbadiaries.com/2014/09/24/no-transaction-is-active-message-when-accessing-linked-server/#content">Skip 
+to content</A>			 
+<DIV class="nav-menu">
+<UL>
+  <LI><A href="http://www.sqldbadiaries.com/">Home</A></LI>
+  <LI class="page_item page-item-1831"><A href="http://www.sqldbadiaries.com/me/">About</A></LI></UL></DIV></NAV><!-- #site-navigation -->
+			 </HEADER><!-- #masthead -->	 
+<DIV class="wrapper" id="main">
+<DIV class="site-content" id="primary">
+<DIV id="content" role="main"><ARTICLE class="post-2615 post type-post status-publish format-standard hentry category-sqlserverpedia-syndication category-troubleshoot-2 tag-configure-2 tag-windows" 
+id="post-2615"><HEADER class="entry-header">
+<H1 class="entry-title">No transaction is active message when accessing Linked 
+Server</H1>
+<DIV class="comments-link"><A href="http://www.sqldbadiaries.com/2014/09/24/no-transaction-is-active-message-when-accessing-linked-server/#respond"><SPAN 
+class="leave-reply">Leave a reply</SPAN></A>				</DIV><!-- .comments-link -->
+					 </HEADER><!-- .entry-header -->				 
+<DIV class="entry-content">
+<P style="text-align: justify;">Last week I had worked on an issue related to 
+Linked Server. The customer had migrated the SQL Server Instances 
+to&nbsp;Virtual Servers. They had quite a few Linked Servers setup. After 
+migration any Distributed Transaction like the one below across the linked 
+servers would fail immediately.</P>
+<P><CODE>begin distributed tran<BR>select * from 
+RemoteServer.DBName.dbo.TableName<BR>commit tran</CODE></P>
+<P style="text-align: justify;">Error message</P>
+<P><CODE>OLE DB provider "SQLNCLI11" for linked server "linkedservername" 
+returned message "No transaction is active.".<BR>Msg 7391, Level 16, State 2, 
+Line 2<BR>The operation could not be performed because OLE DB provider 
+"SQLNCLI11" for linked server "linkedservername" was unable to begin a 
+distributed transaction.<BR></CODE></P>
+<P style="text-align: justify;">The first place I checked for problems was the 
+Component Services (run –&gt; dcomcnfg).</P>
+<P style="text-align: justify;"><A href="No%20transaction%20is%20active%20message%20when%20accessing%20Linked%20Server%20%20SQL%20Server%20DBA%20Diaries_archivos/LocalDTCProperties.png"><IMG 
+width="516" height="356" class="aligncenter size-full wp-image-2616" alt="LocalDTCProperties" 
+src="No%20transaction%20is%20active%20message%20when%20accessing%20Linked%20Server%20%20SQL%20Server%20DBA%20Diaries_archivos/LocalDTCProperties.png"></A></P>
+<P style="text-align: justify;">The options in the Local DTC Properties were 
+correctly set as seen in this screenshot.</P>
+<P style="text-align: justify;"><A href="No%20transaction%20is%20active%20message%20when%20accessing%20Linked%20Server%20%20SQL%20Server%20DBA%20Diaries_archivos/DTCProperties.png"><IMG 
+width="477" height="520" class="aligncenter size-full wp-image-2617" alt="DTCProperties" 
+src="No%20transaction%20is%20active%20message%20when%20accessing%20Linked%20Server%20%20SQL%20Server%20DBA%20Diaries_archivos/DTCProperties.png"></A></P>
+<P style="text-align: justify;">Restarting the “Distributed Transaction 
+Coordinator (MSDTC)” service didn’t help either.</P>
+<P style="text-align: justify;">The next step was to look for possible error 
+messages in the Event Log. In the Application Event Log, the following error 
+message was logged.</P>
+<P><CODE><STRONG>The local MS DTC detected that the MS DTC on ServerName has the 
+same unique identity as the local MS DTC</STRONG>.<BR>This means that the two MS 
+DTC will not be able to communicate with each other.<BR>This problem typically 
+occurs if one of the systems were cloned using unsupported cloning tools.<BR>MS 
+DTC requires that the systems be cloned using supported cloning tools such as 
+SYSPREP. Running 'msdtc -uninstall' and then 'msdtc -install' from the command 
+prompt will fix the problem.<BR>Note: Running 'msdtc -uninstall' will result in 
+the system losing all MS DTC configuration information.</CODE></P>
+<P style="text-align: justify;">The error message in bold indicates that the 
+Unique Identity for the MS DTC (SID) was same on both the local and the 
+destination servers. How is this possible? While the new servers were being 
+built they had <A href="http://technet.microsoft.com/en-us/library/hh824938.aspx" 
+target="_blank">syspreped</A>&nbsp;servers. Hence the configuration of MS DTC 
+was also propagated to all the servers where the same image was used.</P>
+<P style="text-align: justify;">Now that we knew the root cause, the resolution 
+was pretty straight forward.&nbsp;Executed the following steps as explained in 
+<A href="http://blogs.msdn.com/b/distributedservices/archive/2009/04/01/instructions-to-reinstall-the-microsoft-distributed-transaction-coordinator-msdtc-service.aspx" 
+target="_blank">this article</A>.</P>
+<OL>
+  <UL>
+    <LI style="text-align: justify;">Opened the Command Prompt as an 
+    Administrator and executed “msdtc -uninstall”</LI>
+    <LI style="text-align: justify;">Deleted the following registry keys (after 
+    exporting them as a precautionary measure)</LI></UL></OL>
+<P><CODE>HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\MSDTC<BR>
+HKEY_CLASSES_ROOT\CID<BR>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSDTC</CODE></P>
+<UL>
+  <LI style="text-align: justify;">Executed “msdtc -install” command in the 
+  Command Prompt</LI>
+  <LI style="text-align: justify;">Rebooted the server</LI></UL>
+<P>After reboot, the linked server queries returned the expected results.</P>
+<P style="text-align: center;">
+<SCRIPT type="text/javascript"><!--
+google_ad_client = "ca-pub-8436077793824109";
+/* SingleAD */
+google_ad_slot = "3592589567";
+google_ad_width = 250;
+google_ad_height = 30;
+//-->
+</SCRIPT>
+ 
+<SCRIPT src="No%20transaction%20is%20active%20message%20when%20accessing%20Linked%20Server%20%20SQL%20Server%20DBA%20Diaries_archivos/blockpage.gif" type="text/javascript"></SCRIPT>
+</P>
+<DIV class="yarpp-related">
+<P>Related posts:</P>
+<OL>
+  <LI><A title="Generate scripts for Linked Servers" href="http://www.sqldbadiaries.com/2010/10/22/generate-scripts-for-linked-servers/" 
+  rel="bookmark">Generate scripts for Linked Servers </A></LI>
+  <LI><A title="Cannot create an instance of OLE DB provider ‘OraOLEDB.Oracle’ for linked server" 
+  href="http://www.sqldbadiaries.com/2010/12/27/cannot-create-an-instance-of-ole-db-provider-oraoledb-oracle-for-linked-server/" 
+  rel="bookmark">Cannot create an instance of OLE DB provider ‘OraOLEDB.Oracle’ 
+  for linked server </A></LI>
+  <LI><A title="SQL Server does not start | FCB::Open: Operating system error 3(The system cannot find the path specified.)" 
+  href="http://www.sqldbadiaries.com/2011/01/07/sql-server-does-not-start-fcbopen-operating-system-error-3the-system-cannot-find-the-path-specified/" 
+  rel="bookmark">SQL Server does not start | FCB::Open: Operating system error 
+  3(The system cannot find the path specified.) </A></LI>
+  <LI><A title="SQL Server Cluster resource doesn’t come online | Service control: stop before startup" 
+  href="http://www.sqldbadiaries.com/2011/01/25/sql-server-cluster-resource-doesnt-come-online-service-control-stop-before-startup/" 
+  rel="bookmark">SQL Server Cluster resource doesn’t come online | Service 
+  control: stop before startup </A></LI>
+  <LI><A title="Cannot access Agent Jobs when SQL Service is restarted" href="http://www.sqldbadiaries.com/2010/08/12/cannot-access-agent-jobs-when-sql-service-is-restarted/" 
+  rel="bookmark">Cannot access Agent Jobs when SQL Service is restarted 
+</A></LI></OL></DIV></DIV><!-- .entry-content -->				 <FOOTER 
+class="entry-meta">			This entry was posted in <A href="http://www.sqldbadiaries.com/category/sqlserverpedia-syndication/" 
+rel="category tag">SQLServerPedia Syndication</A>, <A href="http://www.sqldbadiaries.com/category/troubleshoot-2/" 
+rel="category tag">Troubleshoot</A> and tagged <A href="http://www.sqldbadiaries.com/tag/configure-2/" 
+rel="tag">configure</A>, <A href="http://www.sqldbadiaries.com/tag/windows/" 
+rel="tag">windows</A> on <A title="5:05 pm" href="http://www.sqldbadiaries.com/2014/09/24/no-transaction-is-active-message-when-accessing-linked-server/" 
+rel="bookmark"><time class="entry-date" 
+datetime="2014-09-24T17:05:19+00:00">September 24, 2014</time></A><SPAN class="by-author"> 
+by <SPAN class="author vcard"><A title="View all posts by PradeepAdiga" class="url fn n" 
+href="http://www.sqldbadiaries.com/author/pradeepadiga/" 
+rel="author">PradeepAdiga</A></SPAN></SPAN>.								</FOOTER><!-- .entry-meta -->
+	 </ARTICLE><!-- #post -->				 <NAV class="nav-single">
+<H3 class="assistive-text">Post navigation</H3><SPAN class="nav-previous"><A 
+href="http://www.sqldbadiaries.com/2014/09/17/application-timing-out-due-to-excessive-blocking-on-tempdb-pfs/" 
+rel="prev"><SPAN class="meta-nav">←</SPAN> Application timing out due to 
+excessive blocking on tempdb PFS</A></SPAN>					 <SPAN class="nav-next"></SPAN>
+				 </NAV><!-- .nav-single -->				 
+<DIV class="comments-area" id="comments">
+<DIV class="comment-respond" id="respond">
+<H3 class="comment-reply-title" id="reply-title">Leave a Reply <SMALL><A id="cancel-comment-reply-link" 
+style="display: none;" href="http://www.sqldbadiaries.com/2014/09/24/no-transaction-is-active-message-when-accessing-linked-server/#respond" 
+rel="nofollow">Cancel reply</A></SMALL></H3>
+<DIV class="comment-form" id="commentform"><IFRAME name="jetpack_remote_comment" 
+id="jetpack_remote_comment" src="No%20transaction%20is%20active%20message%20when%20accessing%20Linked%20Server%20%20SQL%20Server%20DBA%20Diaries_archivos/jetpack-comment.htm" 
+frameborder="0" scrolling="no" style="border: 0px currentColor; border-image: none; width: 100%; height: 430px;" 
+allowtransparency="false"></IFRAME>
+			 </DIV></DIV><INPUT name="comment_parent" id="comment_parent" type="hidden">
+		 </DIV><!-- #comments .comments-area -->					 </DIV><!-- #content -->	 </DIV><!-- #primary -->
+			 
+<DIV class="widget-area" id="secondary" role="complementary"><ASIDE class="widget widget_text" 
+id="text-7">
+<H3 class="widget-title">Search my blog</H3>
+<DIV class="textwidget">
+<SCRIPT src="No%20transaction%20is%20active%20message%20when%20accessing%20Linked%20Server%20%20SQL%20Server%20DBA%20Diaries_archivos/jsapi.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT type="text/javascript">
+  google.load('search', '1');
+  google.setOnLoadCallback(function() {
+    google.search.CustomSearchControl.attachAutoCompletion(
+      'partner-pub-8436077793824109:1tytj3-3rwc',
+      document.getElementById('q'),
+      'cse-search-box');
+  });
+</SCRIPT>
+ 
+<FORM id="cse-search-box" action="http://www.google.com/cse">
+<DIV><INPUT name="cx" type="hidden" value="partner-pub-8436077793824109:1tytj3-3rwc"> 
+    <INPUT name="ie" type="hidden" value="ISO-8859-1">     <INPUT name="q" id="q" type="text" size="20" autocomplete="off"> 
+    <INPUT name="sa" type="submit" value="Search">   </DIV></FORM>
+<SCRIPT src="No%20transaction%20is%20active%20message%20when%20accessing%20Linked%20Server%20%20SQL%20Server%20DBA%20Diaries_archivos/f7A5XKXWI.txt" type="text/javascript"></SCRIPT>
+</DIV></ASIDE><ASIDE class="widget widget_nav_menu" id="nav_menu-4">
+<H3 class="widget-title">My blogs</H3>
+<DIV class="menu-my-blogs-container">
+<UL class="menu" id="menu-my-blogs">
+  <LI class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2552" 
+  id="menu-item-2552"><A href="http://www.pradeepadiga.me/datascience">Data 
+  Science</A></LI></UL></DIV></ASIDE><ASIDE class="widget widget_recent_entries" 
+id="recent-posts-5">
+<H3 class="widget-title">Recent posts</H3>
+<UL>
+  <LI><A href="http://www.sqldbadiaries.com/2014/09/24/no-transaction-is-active-message-when-accessing-linked-server/">No 
+  transaction is active message when accessing Linked Server</A>						 </LI>
+  <LI><A href="http://www.sqldbadiaries.com/2014/09/17/application-timing-out-due-to-excessive-blocking-on-tempdb-pfs/">Application 
+  timing out due to excessive blocking on tempdb PFS</A>						 </LI>
+  <LI><A href="http://www.sqldbadiaries.com/2014/09/10/sql-server-cluster-resource-fails-with-data-source-name-not-found-and-no-default-driver-specified-error/">SQL 
+  Server Cluster resource fails with “Data source name not found and no default 
+  driver specified” error</A>						 </LI>
+  <LI><A href="http://www.sqldbadiaries.com/2014/09/03/cdc-job-failing-with-unable-to-add-entries-to-the-change-data-capture-lsn-time-mapping-table-to-reflect-dml-changes-applied-to-the-tracked-tables-error/">CDC 
+  job failing with “Unable to add entries to the Change Data Capture LSN time 
+  mapping table to reflect dml changes applied to the tracked tables” error</A>
+  						 </LI>
+  <LI><A href="http://www.sqldbadiaries.com/2014/08/27/export-the-event-logs-without-opening-mmc/">Export 
+  the Event Logs without opening MMC</A>						 </LI></UL></ASIDE><ASIDE class="widget widget_tag_cloud" 
+id="tag_cloud-4">
+<H3 class="widget-title">Tags</H3>
+<DIV class="tagcloud"><A title="1 topic" class="tag-link-58" style="font-size: 8pt;" 
+href="http://www.sqldbadiaries.com/tag/azure/">Azure</A> <A title="19 topics" 
+class="tag-link-30" style="font-size: 16.187pt;" href="http://www.sqldbadiaries.com/tag/backup-2/">backup</A> 
+<A title="28 topics" class="tag-link-24" style="font-size: 17.497pt;" href="http://www.sqldbadiaries.com/tag/configure-2/">configure</A> 
+<A title="3 topics" class="tag-link-37" style="font-size: 10.456pt;" href="http://www.sqldbadiaries.com/tag/data-corruption/">data 
+corruption</A> <A title="10 topics" class="tag-link-38" style="font-size: 14.058pt;" 
+href="http://www.sqldbadiaries.com/tag/data-file/">data file</A> <A title="7 topics" 
+class="tag-link-17" style="font-size: 12.912pt;" href="http://www.sqldbadiaries.com/tag/hardware/">hardware</A> 
+<A title="11 topics" class="tag-link-19" style="font-size: 14.385pt;" href="http://www.sqldbadiaries.com/tag/hotfix/">hotfix</A> 
+<A title="5 topics" class="tag-link-31" style="font-size: 11.929pt;" href="http://www.sqldbadiaries.com/tag/index/">index</A> 
+<A title="43 topics" class="tag-link-13" style="font-size: 18.97pt;" href="http://www.sqldbadiaries.com/tag/internals-2/">internals</A> 
+<A title="2 topics" class="tag-link-43" style="font-size: 9.473pt;" href="http://www.sqldbadiaries.com/tag/locks/">locks</A> 
+<A title="22 topics" class="tag-link-10" style="font-size: 16.678pt;" href="http://www.sqldbadiaries.com/tag/maintenance-plan/">maintenance 
+plan</A> <A title="1 topic" class="tag-link-53" style="font-size: 8pt;" href="http://www.sqldbadiaries.com/tag/mirroring/">mirroring</A> 
+<A title="12 topics" class="tag-link-21" style="font-size: 14.631pt;" href="http://www.sqldbadiaries.com/tag/performance/">performance</A> 
+<A title="14 topics" class="tag-link-7" style="font-size: 15.204pt;" href="http://www.sqldbadiaries.com/tag/pradeepadiga/">PradeepAdiga</A> 
+<A title="2 topics" class="tag-link-57" style="font-size: 9.473pt;" href="http://www.sqldbadiaries.com/tag/replication-2/">replication</A> 
+<A title="4 topics" class="tag-link-40" style="font-size: 11.274pt;" href="http://www.sqldbadiaries.com/tag/restore/">restore</A> 
+<A title="6 topics" class="tag-link-52" style="font-size: 12.502pt;" href="http://www.sqldbadiaries.com/tag/rlftw/">RLFTW</A> 
+<A title="55 topics" class="tag-link-25" style="font-size: 19.871pt;" href="http://www.sqldbadiaries.com/tag/scripts/">scripts</A> 
+<A title="17 topics" class="tag-link-46" style="font-size: 15.859pt;" href="http://www.sqldbadiaries.com/tag/security/">security</A> 
+<A title="41 topics" class="tag-link-11" style="font-size: 18.807pt;" href="http://www.sqldbadiaries.com/tag/services/">services</A> 
+<A title="16 topics" class="tag-link-36" style="font-size: 15.614pt;" href="http://www.sqldbadiaries.com/tag/setup/">setup</A> 
+<A title="32 topics" class="tag-link-32" style="font-size: 17.988pt;" href="http://www.sqldbadiaries.com/tag/sql-2000/">sql 
+2000</A> <A title="37 topics" class="tag-link-33" style="font-size: 18.479pt;" 
+href="http://www.sqldbadiaries.com/tag/sql-2005/">sql 2005</A> <A title="34 topics" 
+class="tag-link-34" style="font-size: 18.152pt;" href="http://www.sqldbadiaries.com/tag/sql-2008/">sql 
+2008</A> <A title="5 topics" class="tag-link-47" style="font-size: 11.929pt;" 
+href="http://www.sqldbadiaries.com/tag/sql-2012/">sql 2012</A> <A title="24 topics" 
+class="tag-link-28" style="font-size: 17.005pt;" href="http://www.sqldbadiaries.com/tag/sql-agent-2/">sql 
+agent</A> <A title="4 topics" class="tag-link-35" style="font-size: 11.274pt;" 
+href="http://www.sqldbadiaries.com/tag/ssis/">ssis</A> <A title="7 topics" 
+class="tag-link-45" style="font-size: 12.912pt;" href="http://www.sqldbadiaries.com/tag/system-databases/">system 
+databases</A> <A title="69 topics" class="tag-link-15" style="font-size: 20.69pt;" 
+href="http://www.sqldbadiaries.com/tag/sql-tips-and-tricks/">tips and tricks</A> 
+<A title="29 topics" class="tag-link-41" style="font-size: 17.66pt;" href="http://www.sqldbadiaries.com/tag/tools/">tools</A> 
+<A title="1 topic" class="tag-link-50" style="font-size: 8pt;" href="http://www.sqldbadiaries.com/tag/top-posts/">Top 
+Posts</A> <A title="10 topics" class="tag-link-44" style="font-size: 14.058pt;" 
+href="http://www.sqldbadiaries.com/tag/trace/">trace</A> <A title="2 topics" 
+class="tag-link-39" style="font-size: 9.473pt;" href="http://www.sqldbadiaries.com/tag/transaction-log/">transaction 
+log</A> <A title="101 topics" class="tag-link-5" style="font-size: 22pt;" href="http://www.sqldbadiaries.com/tag/troubleshoot/">troubleshoot</A> 
+<A title="59 topics" class="tag-link-18" style="font-size: 20.116pt;" href="http://www.sqldbadiaries.com/tag/windows/">windows</A></DIV></ASIDE></DIV><!-- #secondary -->
+		 </DIV><!-- #main .wrapper -->	 <FOOTER id="colophon" role="contentinfo">
+<DIV class="site-info"><A title="Semantic Personal Publishing Platform" href="http://wordpress.org/">Proudly 
+powered by WordPress</A>		 </DIV><!-- .site-info -->	 </FOOTER><!-- #colophon --> 
+</DIV><!-- #page -->			 <A id="FollowMeTabRightSm" style="border-bottom-color: currentColor; border-bottom-width: medium; border-bottom-style: none;" 
+onclick="showFollowMe()" href="http://www.sqldbadiaries.com/2014/09/24/no-transaction-is-active-message-when-accessing-linked-server/#"><IMG 
+src="No%20transaction%20is%20active%20message%20when%20accessing%20Linked%20Server%20%20SQL%20Server%20DBA%20Diaries_archivos/rightsm.gif" 
+border="0"></A>		 
+<DIV id="FollowMeBubbleBG" style="visibility: hidden;"></DIV>
+<DIV id="FollowMeBubble" style="border-bottom-color: currentColor; border-bottom-width: medium; border-bottom-style: none; visibility: hidden;">
+<DIV class="top" style='width: 329px; height: 60px; border-bottom-color: currentColor; border-bottom-width: medium; border-bottom-style: none; float: left; display: block; background-image: url("http://sqldbadiaries.blob.core.windows.net/sqldbadiaries/wp-content/plugins/follow-me/images/followme_top.gif");'><A 
+id="close" style="border-bottom-color: currentColor; border-bottom-width: medium; border-bottom-style: none;" 
+onclick="hideFollowMe()" href="http://www.sqldbadiaries.com/2014/09/24/no-transaction-is-active-message-when-accessing-linked-server/#"><IMG 
+src="No%20transaction%20is%20active%20message%20when%20accessing%20Linked%20Server%20%20SQL%20Server%20DBA%20Diaries_archivos/close.png" 
+border="0"> </A> <!-- <a id="grab" target="_blank" title="grab this" href="http://www.ignitesocialmedia.com/tools/follow-me/"><span>grab this</span></a>--></DIV>
+<DIV class="mid" style='width: 329px; float: left; background-image: url("http://sqldbadiaries.blob.core.windows.net/sqldbadiaries/wp-content/plugins/follow-me/images/followme_mid.gif"); background-repeat: repeat-y;'>
+<DIV id="stretch"><SPAN><A title="&#10;RSS" href="http://feeds.feedburner.com/SqlDbaDiaries" 
+target="_blank" rel="me"><IMG width="32" alt="&#10;RSS" src="No%20transaction%20is%20active%20message%20when%20accessing%20Linked%20Server%20%20SQL%20Server%20DBA%20Diaries_archivos/rss.png" 
+border="0"> RSS</A></SPAN> <SPAN><A title="&#10;Email" href="http://feedburner.google.com/fb/a/mailverify?uri=SqlDbaDiaries" 
+target="_blank" rel="me"><IMG width="32" alt="&#10;Email" src="No%20transaction%20is%20active%20message%20when%20accessing%20Linked%20Server%20%20SQL%20Server%20DBA%20Diaries_archivos/email.png" 
+border="0"> Email</A></SPAN> <SPAN><A title="&#10;Twitter" href="http://twitter.com/pradeepadiga" 
+target="_blank" rel="me"><IMG width="32" alt="&#10;Twitter" src="No%20transaction%20is%20active%20message%20when%20accessing%20Linked%20Server%20%20SQL%20Server%20DBA%20Diaries_archivos/twitter.png" 
+border="0"> Twitter</A></SPAN> <SPAN><A title="Facebook" href="https://www.facebook.com/pradeep.adiga" 
+target="_blank" rel="me"><IMG width="32" alt="Facebook" src="No%20transaction%20is%20active%20message%20when%20accessing%20Linked%20Server%20%20SQL%20Server%20DBA%20Diaries_archivos/facebook.png" 
+border="0"> Facebook</A></SPAN> <SPAN><A title="&#10;LinkedIn" href="http://in.linkedin.com/in/pradeepadiga" 
+target="_blank" rel="me"><IMG width="32" alt="&#10;LinkedIn" src="No%20transaction%20is%20active%20message%20when%20accessing%20Linked%20Server%20%20SQL%20Server%20DBA%20Diaries_archivos/linkedin.png" 
+border="0"> LinkedIn</A></SPAN> <SPAN><A title="FourSquare" href="https://foursquare.com/pradeepadiga" 
+target="_blank" rel="me"><IMG width="32" alt="FourSquare" src="No%20transaction%20is%20active%20message%20when%20accessing%20Linked%20Server%20%20SQL%20Server%20DBA%20Diaries_archivos/foursquare.png" 
+border="0"> FourSquare</A></SPAN> </DIV></DIV>
+<DIV class="bottom" style='width: 329px; height: 34px; clear: both; float: left; background-image: url("http://sqldbadiaries.blob.core.windows.net/sqldbadiaries/wp-content/plugins/follow-me/images/followme_bottom.gif");'><A 
+title="grab this" id="grab" style="border-bottom-color: currentColor; border-bottom-width: medium; border-bottom-style: none;" 
+href="http://www.ignitesocialmedia.com/tools/follow-me/" 
+target="_blank"><SPAN>grab this</SPAN></A></DIV>
+<DIV class="grab" style="width: 329px; clear: both; float: left;"><A style="border-bottom-color: currentColor; border-bottom-width: medium; border-bottom-style: none;" 
+href="http://www.ignitesocialmedia.com/tools/follow-me/"><IMG src="No%20transaction%20is%20active%20message%20when%20accessing%20Linked%20Server%20%20SQL%20Server%20DBA%20Diaries_archivos/followme_grab.gif"></A></DIV></DIV><!-- START: Syntax Highlighter ComPress --> 
+<SCRIPT type="text/javascript">
+    SyntaxHighlighter.autoloader(
+        'applescript			http://www.sqldbadiaries.com/wp-content/plugins/syntax-highlighter-compress/scripts/shBrushAppleScript.js',
+        'actionscript3 as3		http://www.sqldbadiaries.com/wp-content/plugins/syntax-highlighter-compress/scripts/shBrushAS3.js',
+        'bash shell				http://www.sqldbadiaries.com/wp-content/plugins/syntax-highlighter-compress/scripts/shBrushBash.js',
+        'coldfusion cf			http://www.sqldbadiaries.com/wp-content/plugins/syntax-highlighter-compress/scripts/shBrushColdFusion.js',
+        'cpp c					http://www.sqldbadiaries.com/wp-content/plugins/syntax-highlighter-compress/scripts/shBrushCpp.js',
+        'c# c-sharp csharp		http://www.sqldbadiaries.com/wp-content/plugins/syntax-highlighter-compress/scripts/shBrushCSharp.js',
+        'css					http://www.sqldbadiaries.com/wp-content/plugins/syntax-highlighter-compress/scripts/shBrushCss.js',
+        'delphi pascal pas		http://www.sqldbadiaries.com/wp-content/plugins/syntax-highlighter-compress/scripts/shBrushDelphi.js',
+        'diff patch			    http://www.sqldbadiaries.com/wp-content/plugins/syntax-highlighter-compress/scripts/shBrushDiff.js',
+        'erl erlang				http://www.sqldbadiaries.com/wp-content/plugins/syntax-highlighter-compress/scripts/shBrushErlang.js',
+        'groovy					http://www.sqldbadiaries.com/wp-content/plugins/syntax-highlighter-compress/scripts/shBrushGroovy.js',
+        'java					http://www.sqldbadiaries.com/wp-content/plugins/syntax-highlighter-compress/scripts/shBrushJava.js',
+        'jfx javafx				http://www.sqldbadiaries.com/wp-content/plugins/syntax-highlighter-compress/scripts/shBrushJavaFX.js',
+        'js jscript javascript	http://www.sqldbadiaries.com/wp-content/plugins/syntax-highlighter-compress/scripts/shBrushJScript.js',
+        'perl pl				http://www.sqldbadiaries.com/wp-content/plugins/syntax-highlighter-compress/scripts/shBrushPerl.js',
+        'php					http://www.sqldbadiaries.com/wp-content/plugins/syntax-highlighter-compress/scripts/shBrushPhp.js',
+        'text plain				http://www.sqldbadiaries.com/wp-content/plugins/syntax-highlighter-compress/scripts/shBrushPlain.js',
+        'powershell ps          http://www.sqldbadiaries.com/wp-content/plugins/syntax-highlighter-compress/scripts/shBrushPowerShell.js',
+        'py python				http://www.sqldbadiaries.com/wp-content/plugins/syntax-highlighter-compress/scripts/shBrushPython.js',
+        'ruby rails ror rb		http://www.sqldbadiaries.com/wp-content/plugins/syntax-highlighter-compress/scripts/shBrushRuby.js',
+        'sass scss              http://www.sqldbadiaries.com/wp-content/plugins/syntax-highlighter-compress/scripts/shBrushSass.js',
+        'scala					http://www.sqldbadiaries.com/wp-content/plugins/syntax-highlighter-compress/scripts/shBrushScala.js',
+        'sql					http://www.sqldbadiaries.com/wp-content/plugins/syntax-highlighter-compress/scripts/shBrushSql.js',
+        'vb vbnet				http://www.sqldbadiaries.com/wp-content/plugins/syntax-highlighter-compress/scripts/shBrushVb.js',
+        'xml xhtml xslt html	http://www.sqldbadiaries.com/wp-content/plugins/syntax-highlighter-compress/scripts/shBrushXml.js'
+    );
+                        SyntaxHighlighter.defaults['tab-size'] = 4;
+    SyntaxHighlighter.all();
+</SCRIPT>
+ <!-- END: Syntax Highlighter ComPress -->		 
+<DIV style="display: none;"></DIV>
+<SCRIPT src="No%20transaction%20is%20active%20message%20when%20accessing%20Linked%20Server%20%20SQL%20Server%20DBA%20Diaries_archivos/form.js.js" type="text/javascript"></SCRIPT>
+ <LINK id="yarppRelatedCss-css" href="No%20transaction%20is%20active%20message%20when%20accessing%20Linked%20Server%20%20SQL%20Server%20DBA%20Diaries_archivos/related.css.css" 
+rel="stylesheet" type="text/css" media="all"> 
+<SCRIPT src="No%20transaction%20is%20active%20message%20when%20accessing%20Linked%20Server%20%20SQL%20Server%20DBA%20Diaries_archivos/devicepx-jetpack.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT src="No%20transaction%20is%20active%20message%20when%20accessing%20Linked%20Server%20%20SQL%20Server%20DBA%20Diaries_archivos/gprofiles.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT type="text/javascript">
+/* <![CDATA[ */
+var WPGroHo = {"my_hash":""};
+/* ]]> */
+</SCRIPT>
+ 
+<SCRIPT src="No%20transaction%20is%20active%20message%20when%20accessing%20Linked%20Server%20%20SQL%20Server%20DBA%20Diaries_archivos/wpgroho.js.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT src="No%20transaction%20is%20active%20message%20when%20accessing%20Linked%20Server%20%20SQL%20Server%20DBA%20Diaries_archivos/comment-reply.min.js.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT src="No%20transaction%20is%20active%20message%20when%20accessing%20Linked%20Server%20%20SQL%20Server%20DBA%20Diaries_archivos/navigation.js.js" type="text/javascript"></SCRIPT>
+		 <!--[if IE]>
+		<script type="text/javascript">
+		if ( 0 === window.location.hash.indexOf( '#comment-' ) ) {
+			// window.location.reload() doesn't respect the Hash in IE
+			window.location.hash = window.location.hash;
+		}
+		</script>
+		<![endif]-->
+		 
+<SCRIPT type="text/javascript">
+			var comm_par_el = document.getElementById( 'comment_parent' ),
+			    comm_par = (comm_par_el && comm_par_el.value) ? comm_par_el.value : '',
+			    frame = document.getElementById( 'jetpack_remote_comment' ),
+			    tellFrameNewParent;
+
+			tellFrameNewParent = function() {
+				if ( comm_par ) {
+					frame.src = "http://jetpack.wordpress.com/jetpack-comment/?blogid=19411607&postid=2615&comment_registration=0&require_name_email=1&stc_enabled=1&stb_enabled=1&show_avatars=1&avatar_default=mystery&greeting=Leave+a+Reply&greeting_reply=Leave+a+Reply+to+%25s&color_scheme=light&lang=en-US&jetpack_version=3.6.1&sig=009594dea75271ba34e156b455d5e7e11e8370c4#parent=http%3A%2F%2Fwww.sqldbadiaries.com%2F2014%2F09%2F24%2Fno-transaction-is-active-message-when-accessing-linked-server%2F" + '&replytocom=' + parseInt( comm_par, 10 ).toString();
+				} else {
+					frame.src = "http://jetpack.wordpress.com/jetpack-comment/?blogid=19411607&postid=2615&comment_registration=0&require_name_email=1&stc_enabled=1&stb_enabled=1&show_avatars=1&avatar_default=mystery&greeting=Leave+a+Reply&greeting_reply=Leave+a+Reply+to+%25s&color_scheme=light&lang=en-US&jetpack_version=3.6.1&sig=009594dea75271ba34e156b455d5e7e11e8370c4#parent=http%3A%2F%2Fwww.sqldbadiaries.com%2F2014%2F09%2F24%2Fno-transaction-is-active-message-when-accessing-linked-server%2F";
+				}
+			};
+
+	
+			if ( 'undefined' !== typeof addComment ) {
+				addComment._Jetpack_moveForm = addComment.moveForm;
+
+				addComment.moveForm = function( commId, parentId, respondId, postId ) {
+					var returnValue = addComment._Jetpack_moveForm( commId, parentId, respondId, postId ), cancelClick, cancel;
+
+					if ( false === returnValue ) {
+						cancel = document.getElementById( 'cancel-comment-reply-link' );
+						cancelClick = cancel.onclick;
+						cancel.onclick = function() {
+							var cancelReturn = cancelClick.call( this );
+							if ( false !== cancelReturn ) {
+								return cancelReturn;
+							}
+
+							if ( !comm_par ) {
+								return cancelReturn;
+							}
+
+							comm_par = 0;
+
+							tellFrameNewParent();
+
+							return cancelReturn;
+						};
+					}
+
+					if ( comm_par == parentId ) {
+						return returnValue;
+					}
+
+					comm_par = parentId;
+
+					tellFrameNewParent();
+
+					return returnValue;
+				};
+			}
+
+	
+			if ( window.postMessage ) {
+				if ( document.addEventListener ) {
+					window.addEventListener( 'message', function( event ) {
+						if ( "http:\/\/jetpack.wordpress.com" !== event.origin ) {
+							return;
+						}
+
+						jQuery( frame ).height( event.data );
+					} );
+				} else if ( document.attachEvent ) {
+					window.attachEvent( 'message', function( event ) {
+						if ( "http:\/\/jetpack.wordpress.com" !== event.origin ) {
+							return;
+						}
+
+						jQuery( frame ).height( event.data );
+					} );
+				}
+			}
+		</SCRIPT>
+	 
+<SCRIPT src="No%20transaction%20is%20active%20message%20when%20accessing%20Linked%20Server%20%20SQL%20Server%20DBA%20Diaries_archivos/blockpage.htm" defer="" type="text/javascript" async=""></SCRIPT>
+ 
+<SCRIPT type="text/javascript">
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:3.6.1',blog:'19411607',post:'2615',tz:'5.5',srv:'www.sqldbadiaries.com'} ]);
+	_stq.push([ 'clickTrackerInit', '19411607', '2615' ]);
+</SCRIPT>
+ </BODY></HTML><!-- Performance optimized by W3 Total Cache. Learn more: http://www.w3-edge.com/wordpress-plugins/
+
+Page Caching using disk: enhanced
+Content Delivery Network via Windows Azure Storage: sqldbadiaries.blob.core.windows.net
+
+ Served from: www.sqldbadiaries.com @ 2015-08-05 14:38:32 by W3 Total Cache -->

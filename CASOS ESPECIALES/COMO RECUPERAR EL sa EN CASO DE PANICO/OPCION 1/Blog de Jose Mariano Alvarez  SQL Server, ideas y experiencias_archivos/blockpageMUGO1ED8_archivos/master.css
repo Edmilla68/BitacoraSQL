@@ -1,0 +1,9 @@
+.black_overlay {
+	HEIGHT: 100%; WIDTH: 100%; POSITION: absolute; LEFT: 0%; FILTER: alpha(opacity=80); Z-INDEX: 1001; DISPLAY: none; TOP: 0%; BACKGROUND-COLOR: black; -moz-opacity: 0.8; opacity: .80
+}
+.white_content {
+	OVERFLOW: auto; HEIGHT: 260px; WIDTH: 50%; POSITION: absolute; LEFT: 25%; Z-INDEX: 1002; DISPLAY: none; TOP: 25%; BACKGROUND-COLOR: white
+}
+.header {
+	BACKGROUND: black; FONT-WEIGHT: bold; COLOR: white; PADDING-BOTTOM: 4px; PADDING-TOP: 4px; PADDING-LEFT: 4px; PADDING-RIGHT: 4px
+}

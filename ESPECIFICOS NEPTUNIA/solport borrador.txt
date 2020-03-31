@@ -1,0 +1,29 @@
+DECLARE @CODIGO VARCHAR (400)
+SET @CODIGO = ''
+
+select 
+loginame, status, login_time, last_batch, hostname,
+DATEDIFF ( MINUTE , last_batch , GETDATE() ) as en_minutos, 
+DATEDIFF ( HOUR , last_batch , GETDATE() ) as en_horas, 
+DATEDIFF ( DAY, last_batch , GETDATE() ) as en_dias, 
+spid,
+'kill '+ convert(varchar,spid) + CHAR(13)
+--DATEADD(MINUTE, 30, last_batch)
+from master..sysprocesses
+where loginame LIKE '%'
+--and status = 'sleeping'	
+and DATEDIFF ( MINUTE , last_batch , GETDATE() ) >= 30
+order by login_time desc
+
+--PRINT @CODIGO
+
+
+/*
+select loginame, status, login_time, last_batch from master..sysprocesses
+order by login_time desc
+select * from master..sysprocesses
+select * from sys.dm_exec_requests 
+*/
+
+7
+10

@@ -1,0 +1,21 @@
+0962021887
+
+Argentina:   	10.100.10.90
+				10.100.10.124
+
+
+Paita Garita: 10.140.8.40
+Coordinador:  10.140.9.33 (NO)
+
+Ventanilla Garita: 10.110.2.56.
+Villegas Garita: 10.100.15.25
+
+// faltan...
+
+Neptumovil Garita: 10.145.9.32(NO)
+
+
+
+001867170
+002295008
+001858967

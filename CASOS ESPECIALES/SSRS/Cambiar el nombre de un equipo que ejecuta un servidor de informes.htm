@@ -1,0 +1,664 @@
+﻿<!DOCTYPE HTML>
+<!-- saved from url=(0065)https://msdn.microsoft.com/es-es/library/ms345235(v=sql.105).aspx -->
+<!DOCTYPE html PUBLIC "" ""><HTML lang="es" dir="ltr" xmlns="http://www.w3.org/1999/xhtml"><HEAD><META 
+content="IE=11.0000" http-equiv="X-UA-Compatible">
+<LINK href="https://technet.microsoft.com/es-es/library/ms345235(v=sql.110).aspx" 
+rel="canonical">         
+<META http-equiv="Content-Type" 
+content="text/html; charset=utf-8"><TITLE>Cambiar el nombre de un equipo que 
+ejecuta un servidor de informes</TITLE> 
+<META name="DCS.dcsuri" content="/es-es/library/ms345235(d=default,l=es-es,v=sql.105).aspx"> 
+<META name="NormalizedUrl" content="https://msdn.microsoft.com/es-es/library/ms345235(d=default,l=es-es,v=sql.105).aspx"> 
+<META name="ms.normalizedurl" content="https://msdn.microsoft.com/es-es/library/ms345235(d=default,l=es-es,v=sql.105).aspx"> 
+<META name="VotingContextUrl" content="https://msdn.microsoft.com/es-es/library/ms345235(d=default,l=es-es,v=sql.105).aspx"> 
+<META name="MN" content="FB361396-1:04:33 PM"> 
+<META name="Search.ShortId" content="ms345235"> 
+<META name="ms.shortidmsdn" content="ms345235"> 
+<META name="Ms.Locale" content="es-es"> 
+<META name="ms.prodver" content="SQL.105"> 
+<META name="ms.contentlang" content="ES"> 
+<META name="ms.lang" content="ES"> 
+<META name="ms.loc" content="ES"> 
+<META name="ms.sitever" content="2015.07.28.2"> 
+<META name="ms.assetid" content="82fc4ba2-291a-4939-a025-271b8d687c54"> 
+<META name="ms.auth" content="0">             <LINK href="Cambiar%20el%20nombre%20de%20un%20equipo%20que%20ejecuta%20un%20servidor%20de%20informes_archivos/Combined.css" 
+rel="stylesheet" type="text/css">
+<META name="GENERATOR" content="MSHTML 11.00.9600.17924"></HEAD>     
+<BODY class="library IE IE11">
+<DIV id="page"><LINK rel="stylesheet" type="text/css">         <INPUT id="isHeaderBleeding" type="hidden" value="true"> 
+    
+<DIV class="ltr msdn" id="ux-header" dir="ltr">
+<DIV id="ux-banner">
+<DIV class="banner">
+<DIV class="row">
+<DIV class="left">Al usar este sitio acepta el uso de cookies para análisis, 
+contenido personalizado y publicidad.</DIV>
+<DIV class="middle"><A tabindex="1" href="https://www.microsoft.com/privacystatement/es-es/core/default.aspx">Saber 
+más</A></DIV>
+<DIV class="right"><A tabindex="1" 
+title="Cerrar"></A></DIV></DIV></DIV></DIV><HEADER><SPAN id="singleCol"></SPAN>  
+       <SPAN id="doubleCol"></SPAN>         <SPAN id="isMobile"></SPAN>         
+<DIV>
+<DIV class="row topRow">
+<DIV class="top">
+<DIV class="left"><A class="msdnLogoImg" 
+href="https://msdn.microsoft.com/es-es">
+<DIV class="msft-logo" id="msft-logo"></DIV></A>                 
+<DIV class="GrayPipe"></DIV><A class="DevCenterFullNameNonMegaBlade" href="https://msdn.microsoft.com/es-es">Developer 
+Network</A>                 <A class="DevCenterFullName" href="https://msdn.microsoft.com/es-es">Developer 
+Network</A>                 <A class="DevCenterShortName" href="https://msdn.microsoft.com/es-es">Developer</A> 
+              </DIV>
+<DIV class="right">
+<DIV id="signIn"><IMG class="profileImage" src="Cambiar%20el%20nombre%20de%20un%20equipo%20que%20ejecuta%20un%20servidor%20de%20informes_archivos/profile.jpg"> 
+<A title="Iniciar sesión" class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1438891473&amp;rver=6.0.5276.0&amp;wp=MCMBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=https%3a%2f%2fmsdn.microsoft.com%2fes-es%2flibrary%2fms345235%2528v%3dsql.105%2529.aspx&amp;lc=3082&amp;id=254354&amp;mkt=es-ES">Iniciar 
+sesión</A></DIV>
+<DIV class="auxNav">
+<DIV>
+<DIV id="Fragment_Subscriptions" xmlns="http://www.w3.org/1999/xhtml" 
+data-fragmentname="Subscriptions"><A id="Subscriptions_2153_1" href="https://msdn.microsoft.com/subscriptions/manage/hh442900" 
+xmlns="http://www.w3.org/1999/xhtml">Suscripciones a MSDN</A> </DIV>
+<DIV id="Fragment_GetTools" xmlns="http://www.w3.org/1999/xhtml" 
+data-fragmentname="GetTools"><A id="GetTools_2153_3" href="http://go.microsoft.com/fwlink/?LinkId=309297&amp;clcid=0x40A&amp;slcid=0x40A&amp;campaign=o~msft~msdn~gettools-header~dn308572" 
+xmlns="http://www.w3.org/1999/xhtml">Obtener herramientas</A> </DIV></DIV>
+<DIV>
+<DIV id="Fragment_SocialLinks" xmlns="http://www.w3.org/1999/xhtml" 
+data-fragmentname="SocialLinks">
+<DIV class="linkList">
+<UL class="links horizontal">
+  <LI><A class="facebook" id="SocialLinks_2152_4" href="http://www.facebook.com/microsoftdeveloper" 
+  target="_blank" 
+  xmlns="http://www.w3.org/1999/xhtml">http://www.facebook.com/microsoftdeveloper</A> 
+        </LI>
+  <LI><A class="twitter" id="SocialLinks_2152_5" href="https://twitter.com/msdev_es" 
+  target="_blank" 
+  xmlns="http://www.w3.org/1999/xhtml">https://twitter.com/msdev_es</A>       
+  </LI>
+  <LI><A class="googlePlus" id="SocialLinks_2152_6" href="http://plus.google.com/111221966647232053570/" 
+  target="_blank" 
+  xmlns="http://www.w3.org/1999/xhtml">http://plus.google.com/111221966647232053570/</A> 
+        </LI></UL></DIV></DIV></DIV></DIV></DIV></DIV></DIV>
+<DIV class="row middleRow">
+<DIV class="expandTop">
+<DIV class="left"></DIV>
+<DIV class="right"></DIV></DIV></DIV></DIV>
+<DIV class="bg_default" id="buttomRowWrapper">
+<DIV class="row buttomRow bg_default">
+<DIV class="bottom">
+<DIV class="left"><A class="menu-icon" id="grip" href="javascript:void(0)"></A>  
+                               
+<DIV id="drawer">
+<DIV class="toc"><NAV>
+<UL class="navL1">
+  <LI class="inactive toggle"><A title="Tecnologías" 
+  href="javascript:void(0)">Tecnologías</A>                                 
+  <UL class="navL2">
+    <LI class="inactive"><A title="Nube" href="https://msdn.microsoft.com/cloud-app-development-msdn">Nube</A> 
+                                                                                 
+                  </LI>
+    <LI class="inactive"><A title="Móvil" href="https://msdn.microsoft.com/app-development-msdn">Móvil</A> 
+                                                                                 
+                  </LI>
+    <LI class="inactive"><A title="Web" href="https://msdn.microsoft.com/dn629514">Web</A> 
+                                                                                 
+                  </LI>
+    <LI class="inactive"><A title="Datos" href="https://msdn.microsoft.com/big-data-development-msdn">Datos</A> 
+                                                                                 
+                  </LI>
+    <LI class="inactive"><A title="Juegos" href="https://msdn.microsoft.com/games-development-msdn">Juegos</A> 
+                                                                                 
+                  </LI></UL></LI>
+  <LI class="inactive toggle"><A title="Descargas" 
+  href="javascript:void(0)">Descargas</A>                                 
+  <UL class="navL2">
+    <LI class="inactive"><A title="Visual Studio" href="https://www.visualstudio.com/downloads/download-visual-studio-vs">Visual 
+    Studio</A>                                                                   
+                             </LI>
+    <LI class="inactive"><A title="Acceso a la suscripción de MSDN" href="https://msdn.microsoft.com/subscriptions/">Acceso 
+    a la suscripción de MSDN</A>                                                 
+                                               </LI>
+    <LI class="inactive"><A title="SDK" href="https://msdn.microsoft.com/microsoft-sdks-msdn">SDK</A> 
+                                                                                 
+                  </LI>
+    <LI class="inactive toggle"><A title="Software de prueba" href="javascript:void(0)">Software 
+    de prueba</A>                                                 
+    <UL class="navL3">
+      <LI class="inactive"><A title="Descargas gratutitas" href="https://msdn.microsoft.com/evalcenter">Descargas 
+      gratutitas</A>                                                         
+      </LI>
+      <LI class="inactive"><A title="Recursos de Office" href="https://msdn.microsoft.com/officeevaluationresources">Recursos 
+      de Office</A>                                                         
+</LI>
+      <LI class="inactive"><A title="Recursos de Share Point Server 2013" href="https://msdn.microsoft.com/sharepoint2013resources">Recursos 
+      de Share Point Server 2013</A>                                             
+                  </LI>
+      <LI class="inactive"><A title="Recursos de Windows Server 2012" href="https://msdn.microsoft.com/windowsserver2012r2resources">Recursos 
+      de Windows Server 2012</A>                                                 
+              </LI>
+      <LI class="inactive"><A title="Recursos de SQL Server 2014 Express" href="https://msdn.microsoft.com/sqlserver2014expressresources">Recursos 
+      de SQL Server 2014 Express</A>                                             
+                  </LI></UL></LI></UL></LI>
+  <LI class="inactive toggle"><A title="Programas" 
+  href="javascript:void(0)">Programas</A>                                 
+  <UL class="navL2">
+    <LI class="inactive"><A title="Premios" href="https://rewards.msdn.microsoft.com/">Premios</A> 
+                                                                                 
+                  </LI>
+    <LI class="inactive"><A title="Nuevas empresas" href="https://www.microsoft.com/bizspark">Nuevas 
+    empresas</A>                                                                 
+                               </LI>
+    <LI class="inactive toggle"><A title="Estudiantes" 
+    href="javascript:void(0)">Estudiantes</A>                                    
+                 
+    <UL class="navL3">
+      <LI class="inactive"><A title="Microsoft Imagine" href="https://msdn.microsoft.com/imagine/imagine-home">Microsoft 
+      Imagine</A>                                                         </LI>
+      <LI class="inactive"><A title="Microsoft Student Partners" href="https://msdn.microsoft.com/microsoftstudentpartners">Microsoft 
+      Student Partners</A>                                                       
+        </LI></UL></LI>
+    <LI class="inactive toggle"><A title="Architects" 
+    href="javascript:void(0)">Architects</A>                                     
+                
+    <UL class="navL3">
+      <LI class="inactive"><A title="Descripción general" href="https://msdn.microsoft.com/architects-overview-msdn">Descripción 
+      general</A>                                                         </LI>
+      <LI class="inactive"><A title="Proyectos" href="https://msdn.microsoft.com/architects-blueprints-msdn">Proyectos</A> 
+                                                              </LI>
+      <LI class="inactive"><A title="Casos prácticos" href="https://msdn.microsoft.com/architects-case-studies-msdn">Casos 
+      prácticos</A>                                                         
+</LI>
+      <LI class="inactive"><A title="Blog" href="http://blogs.msdn.com/b/msarchitecture/">Blog</A> 
+                                                              </LI>
+      <LI class="inactive"><A title="Forums" href="http://social.msdn.microsoft.com/forums/en-us/home?brandignore=true&amp;sort=relevancedesc&amp;searchterm=architecture+or+architect">Forums</A> 
+                                                              </LI></UL></LI>
+    <LI class="inactive"><A title="Eventos" href="http://events.msdn.microsoft.com/es-es">Eventos</A> 
+                                                                                 
+                  </LI>
+    <LI class="inactive toggle"><A title="Suscripciones a MSDN" href="javascript:void(0)">Suscripciones 
+    a MSDN</A>                                                 
+    <UL class="navL3">
+      <LI class="inactive"><A title="Administradores" href="https://msdn.microsoft.com/msdn-subscriptions-administration">Administradores</A> 
+                                                              </LI>
+      <LI class="inactive"><A title="Información general" href="https://msdn.microsoft.com/msdn-subscriptions-overview">Información 
+      general</A>                                                         </LI>
+      <LI class="inactive"><A title="Beneficios" href="https://msdn.microsoft.com/benefits-overview">Beneficios</A> 
+                                                              
+  </LI></UL></LI></UL></LI>
+  <LI class="inactive toggle"><A title="Comunidad" 
+  href="javascript:void(0)">Comunidad</A>                                 
+  <UL class="navL2">
+    <LI class="inactive"><A title="Foros" href="https://social.msdn.microsoft.com/forums/">Foros</A> 
+                                                                                 
+                  </LI>
+    <LI class="inactive"><A title="Blogs" href="http://blogs.msdn.com/b/developer-tools/">Blogs</A> 
+                                                                                 
+                  </LI>
+    <LI class="inactive"><A title="Asesores técnicos" href="http://tech-advisors.msdn.microsoft.com/en-us">Asesores 
+    técnicos</A>                                                                 
+                               </LI>
+    <LI class="inactive"><A title="Channel 9" 
+    href="http://channel9.msdn.com/">Channel 9</A>                               
+                                                                 </LI></UL></LI>
+  <LI class="inactive current toggle"><A title="Documentación" href="javascript:void(0)">Documentación</A> 
+                                  
+  <UL class="navL2">
+    <LI class="inactive current"><A title="APIs and reference" href="https://msdn.microsoft.com/library">APIs 
+    and reference</A>                                                            
+                                    </LI>
+    <LI class="inactive"><A title="Centros de desarrollo" href="https://msdn.microsoft.com/developer-centers-msdn">Centros 
+    de desarrollo</A>                                                            
+                                    </LI></UL></LI>
+  <LI class="inactive"><A title="Ejemplos" href="https://code.msdn.microsoft.com/">Ejemplos</A> 
+                          </LI></UL></NAV></DIV></DIV></DIV>
+<DIV class="right">
+<DIV id="Fragment_SearchBox" xmlns="http://www.w3.org/1999/xhtml" 
+data-fragmentname="SearchBox">
+<DIV class="SearchBox">
+<FORM name="HeaderSearchForm" id="HeaderSearchForm" method="get"><BUTTON class="header-search-button" 
+id="FakeHeaderSearchButton" type="submit" value="Search">
+<DIV class="search-finder" id="search-finder"></DIV></BUTTON>       <BUTTON id="HeaderSearchButton" 
+style="display: none;"></BUTTON>       
+<DIV id="searchSplitter"></DIV>
+<DIV class="search-clear-x" id="searchCloseIcon"></DIV>
+<DIV id="searchTextContainer" style="width: 0px;"><INPUT name="query" id="HeaderSearchTextBox" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" type="text" maxlength="200"> 
+      </DIV></FORM></DIV></DIV></DIV></DIV></DIV></DIV></HEADER></DIV>
+<DIV id="skinnyRating">
+<DIV class="rating">
+<DIV id="s_ratingSection1">
+<DIV class="title">                ¿Le resultó útil esta página?             
+</DIV>             
+<DIV class="description">                Sus comentarios sobre este contenido 
+son muy importantes. Háganos saber su opinión.             </DIV>             
+<DIV class="buttons"><BUTTON class="button" id="s_ratingYes">Sí</BUTTON>         
+        <BUTTON class="button" id="s_ratingNo">No</BUTTON>             </DIV>    
+         <INPUT id="s_ratingValue" type="hidden">         </DIV>
+<DIV id="s_ratingSection2">
+<DIV id="s_skinnyRatingForm">
+<DIV class="title">                    ¿Tiene comentarios adicionales?           
+      
+</DIV><TEXTAREA id="ratingText" maxlength="1500" rows="6" cols="20"></TEXTAREA>
+<DIV class="counter right">                    Caracteres restantes: <SPAN id="feedbackTextCounter">1500</SPAN> 
+                </DIV></DIV>
+<DIV class="buttons left"><BUTTON class="button" 
+id="s_ratingSubmit">Enviar</BUTTON>                 <BUTTON class="button" id="s_ratingSkipThis">Pasar 
+por alto</BUTTON>             </DIV></DIV>
+<DIV id="s_ratingSection3" style="display: none;">
+<DIV class="title">                Gracias.             </DIV>             
+<DIV class="description">                Agradecemos mucho su ayuda.             
+</DIV>         </DIV>
+<DIV id="contentFeedbackQAContainer" style="display: none;"></DIV></DIV></DIV>
+<DIV class="printExportMenus ltr"><A id="isd_printABook" href="https://msdn.microsoft.com/es-es/library/export/help/?returnUrl=%2fes-es%2flibrary%2fms345235(v%3dsql.105).aspx"> 
+           Exportar (<SPAN class="count">0</SPAN>)         </A>         <A id="isd_print" 
+href="https://msdn.microsoft.com/es-es/library/ms345235(d=printer,v=sql.105).aspx" 
+rel="nofollow">            Imprimir          </A>         <A id="isd_archiveControl" 
+style="display: none;" data-exclude-archive="Excluir versión anterior" 
+data-include-archive="Incluir versión anterior"></A>     </DIV>
+<DIV class="printExportMenus ltr"><A title="Expand/Collapse all sections by pressing Ctrl + Shift + e" 
+id="expandCollapseAll" accesskey="e" href="javascript:void(0)">Expandir todo</A> 
+    </DIV>
+<DIV id="body">
+<DIV id="leftNav">
+<DIV class="hide-archive" id="tocnav">
+<DIV class="toclevel0 " data-toclevel="0"><A title="MSDN Library" id="ms310241_MSDN.10_es-es" 
+href="https://msdn.microsoft.com/es-es/library/ms123401.aspx" mtpsshortid="ms123401_MSDN.10_es-es" 
+mtpsassetid="5DDC0A78-6B2C-43E3-9C56-55F45C0DFFA5_MSDN.10_es-es" mtpsaliasid="" 
+data-tochassubtree="true">MSDN Library</A></DIV>
+<DIV class="toclevel0 " data-toclevel="0"><A title="Desarrollo de Servidores y Empresarial" 
+id="aa155072_MSDN.10_es-es" href="https://msdn.microsoft.com/es-es/library/aa155072.aspx" 
+mtpsshortid="aa155072_MSDN.10_es-es" mtpsassetid="MSDN|serverentdev|$\serverentdev.hxt@0,0_MSDN.10_es-es" 
+mtpsaliasid="" data-tochassubtree="true">Desarrollo de Servidores y 
+Empresarial</A></DIV>
+<DIV class="toclevel0 " data-toclevel="0"><A title="SQL Server" id="bb418431_SQL.10_es-es" 
+href="https://msdn.microsoft.com/es-es/library/bb545450.aspx" mtpsshortid="bb545450_MSDN.10_es-es" 
+mtpsassetid="9e4042ee-b3a7-4d92-92de-595c87e2eaf2_SQL.10_es-es" mtpsaliasid="" 
+data-tochassubtree="true">SQL Server</A></DIV>
+<DIV class="toclevel0 " data-toclevel="0"><A title="SQL Server 2008 R2" id="ff928358_SQL.10_es-es" 
+href="https://msdn.microsoft.com/es-es/library/ff928358(v=sql.10).aspx" 
+mtpsshortid="ff928358_SQL.10_es-es" mtpsassetid="SQL|SQLTOC|$\sqltoc.hxt@0,0,5_SQL.10_es-es" 
+mtpsaliasid="" data-tochassubtree="true">SQL Server 2008 R2</A></DIV>
+<DIV class="toclevel0 " data-toclevel="0"><A title="Documentación del producto" 
+id="ff928359_SQL.10_es-es" href="https://msdn.microsoft.com/es-es/library/ff928359(v=sql.10).aspx" 
+mtpsshortid="ff928359_SQL.10_es-es" mtpsassetid="SQL|SQLTOC|$\sqltoc.hxt@0,0,5,0_SQL.10_es-es" 
+mtpsaliasid="" data-tochassubtree="true">Documentación del producto</A></DIV>
+<DIV class="toclevel0 " data-toclevel="0"><A title="Libros en pantalla de SQL Server 2008 R2" 
+id="bb543165_SQL.105_es-es" href="https://msdn.microsoft.com/es-es/library/ms130214(v=sql.105).aspx" 
+mtpsshortid="ms130214_SQL.105_es-es" mtpsassetid="674933a8-e423-4d44-a39b-2a997e2c2333_SQL.105_es-es" 
+mtpsaliasid="" data-tochassubtree="true">Libros en pantalla de SQL Server 2008 
+R2</A></DIV>
+<DIV class="toclevel0 " data-toclevel="0"><A title="Reporting Services" id="bb528311_SQL.105_es-es" 
+href="https://msdn.microsoft.com/es-es/library/ms159106(v=sql.105).aspx" 
+mtpsshortid="ms159106_SQL.105_es-es" mtpsassetid="b8d18d3d-9db0-43e7-8286-7b46cc3a37ed_SQL.105_es-es" 
+mtpsaliasid="" data-tochassubtree="true">Reporting Services</A></DIV>
+<DIV class="toclevel0 " data-toclevel="0"><A title="Operaciones" id="bb527684_SQL.105_es-es" 
+href="https://msdn.microsoft.com/es-es/library/bb522794(v=sql.105).aspx" 
+mtpsshortid="bb522794_SQL.105_es-es" mtpsassetid="9e28d2fe-3086-44eb-99c3-a163a1e8d4e6_SQL.105_es-es" 
+mtpsaliasid="" data-tochassubtree="true">Operaciones</A></DIV>
+<DIV class="toclevel0 " data-toclevel="0"><A title="Administración (Reporting Services)" 
+id="bb527689_SQL.105_es-es" href="https://msdn.microsoft.com/es-es/library/bb522825(v=sql.105).aspx" 
+mtpsshortid="bb522825_SQL.105_es-es" mtpsassetid="fa0d84e2-4c21-432c-aa7c-23517da75253_SQL.105_es-es" 
+mtpsaliasid="" data-tochassubtree="true">Administración (Reporting 
+Services)</A></DIV>
+<DIV class="toclevel1 " data-toclevel="1"><A title="Administrar un servidor de informes" 
+id="bb527696_SQL.105_es-es" href="https://msdn.microsoft.com/es-es/library/bb522803(v=sql.105).aspx" 
+mtpsshortid="bb522803_SQL.105_es-es" mtpsassetid="b7b7b0ad-f652-4187-9802-eeffd115834f_SQL.105_es-es" 
+mtpsaliasid="" data-tochassubtree="true">Administrar un servidor de 
+informes</A></DIV>
+<DIV class="toclevel2 " data-toclevel="2"><A title="Operaciones de copias de seguridad y restauración para una instalación de Reporting Services" 
+href="https://msdn.microsoft.com/es-es/library/ms155814(v=sql.105).aspx" 
+mtpsshortid="" mtpsassetid="" mtpsaliasid="">Operaciones de copias de seguridad 
+y restauración para una instalación de Reporting Services</A></DIV>
+<DIV class="toclevel2 " data-toclevel="2"><A title="Iniciar y detener el servicio del servidor de informes" 
+href="https://msdn.microsoft.com/es-es/library/ms157232(v=sql.105).aspx" 
+mtpsshortid="" mtpsassetid="" mtpsaliasid="">Iniciar y detener el servicio del 
+servidor de informes</A></DIV>
+<DIV class="toclevel2 " data-toclevel="2"><A title="Administrar una base de datos del servidor de informes" 
+href="https://msdn.microsoft.com/es-es/library/ms159093(v=sql.105).aspx" 
+mtpsshortid="" mtpsassetid="" mtpsaliasid="">Administrar una base de datos del 
+servidor de informes</A></DIV>
+<DIV class="toclevel2 current " data-toclevel="2"><A title="Cambiar el nombre de un equipo que ejecuta un servidor de informes" 
+href="https://msdn.microsoft.com/es-es/library/ms345235(v=sql.105).aspx" 
+mtpsshortid="" mtpsassetid="" mtpsaliasid="">Cambiar el nombre de un equipo que 
+ejecuta un servidor de informes</A></DIV>
+<DIV class="toclevel2 " data-toclevel="2"><A title="Mover las bases de datos del servidor de informes a otro equipo" 
+href="https://msdn.microsoft.com/es-es/library/ms156421(v=sql.105).aspx" 
+mtpsshortid="" mtpsassetid="" mtpsaliasid="">Mover las bases de datos del 
+servidor de informes a otro equipo</A></DIV>
+<DIV class="toclevel2 " data-toclevel="2"><A title="Cómo crear RSExecRole" href="https://msdn.microsoft.com/es-es/library/cc281308(v=sql.105).aspx" 
+mtpsshortid="" mtpsassetid="" mtpsaliasid="">Cómo crear 
+RSExecRole</A></DIV></DIV>
+<DIV class="toc-resizable-ew" id="toc-resizable-ew"></DIV><A id="NavigationResize" 
+href="javascript:void(0)"><IMG title="Expandir" class="cl_nav_resize_open" alt="Expandir" 
+src="Cambiar%20el%20nombre%20de%20un%20equipo%20que%20ejecuta%20un%20servidor%20de%20informes_archivos/ImageSprite.png"> 
+    <IMG title="Minimizar" class="cl_nav_resize_close" alt="Minimizar" src="Cambiar%20el%20nombre%20de%20un%20equipo%20que%20ejecuta%20un%20servidor%20de%20informes_archivos/ImageSprite.png"> 
+</A>     </DIV>
+<DIV class="content" id="content">
+<DIV class="topic" xmlns="http://www.w3.org/1999/xhtml">
+<H1 class="title">Cambiar el nombre de un equipo que ejecuta un servidor de 
+informes</H1>
+<DIV class="lw_vs">
+<DIV id="curversion"><STRONG>            SQL Server 2008 R2         </STRONG>    
+ </DIV>
+<DIV id="versionclick">
+<DIV class="cl_lw_vs_seperator" id="vsseperator"></DIV>
+<DIV>
+<DIV><A id="vsLink" href="javascript:;">                        Otras versiones  
+                   </A>         </DIV>
+<DIV class="cl_vs_arrow clip10x10"><IMG class="cl_lw_vs_arrow" id="vsArrow" alt="" 
+src="Cambiar%20el%20nombre%20de%20un%20equipo%20que%20ejecuta%20un%20servidor%20de%20informes_archivos/ImageSprite.png"> 
+        </DIV></DIV>
+<UL id="vsPanel">
+  <LI><A href="https://msdn.microsoft.com/es-es/library/ms345235(v=sql.120).aspx">SQL 
+  Server 2014</A>         </LI>
+  <LI><A href="https://msdn.microsoft.com/es-es/library/ms345235(v=sql.100).aspx">SQL 
+  Server 2008</A>         </LI>
+  <LI><A 
+  href="https://msdn.microsoft.com/es-es/library/ms345235(v=sql.90).aspx">SQL 
+  Server 2005</A>         </LI></UL></DIV></DIV>
+<DIV style="clear: both;"></DIV>
+<DIV id="mainSection">
+<DIV id="mainBody">
+<P></P>
+<DIV class="introduction">
+<P>Cambiar el nombre de un equipo conlleva cambiar el nombre del servidor web y 
+la instancia de SQL Server (si está en el mismo equipo). En algunos casos, puede 
+que SQL Server&nbsp;Reporting Services no esté accesible después de un cambio en 
+el nombre de equipo. Siga los pasos que aparecen en este tema para volver a 
+configurar un servidor de informes después de haber cambiado el nombre de un 
+equipo. </P></DIV>
+<DIV>
+<H2 class="LW_CollapsibleArea_TitleDiv">
+<DIV><A title="Contraer" class="LW_CollapsibleArea_TitleAhref" role="button" 
+href="javascript:void(0)"><SPAN class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></SPAN><SPAN 
+class="LW_CollapsibleArea_Title">Cambiar el nombre de un motor de base de datos 
+de SQL Server</SPAN></A>
+<DIV class="LW_CollapsibleArea_HrDiv">
+<HR class="LW_CollapsibleArea_Hr">
+</DIV></DIV></H2>
+<DIV class="sectionblock"><A id="sectionToggle0"></A>
+<P>Si cambia el nombre de la instancia de SQL Server Database Engine (Motor de 
+base de datos de SQL Server) que ejecuta la base de datos del servidor de 
+informes, haga lo siguiente:</P>
+<OL>
+  <LI>
+  <P>Inicie la herramienta de configuración de Reporting Services y conéctese al 
+  servidor de informes que utiliza la base de datos en el servidor de informes 
+  que ha cambiado de nombre.</P></LI>
+  <LI>
+  <P>Abra la página Instalación de base de datos.</P></LI>
+  <LI>
+  <P>En <SPAN class="label">Nombre del servidor</SPAN>, escriba o seleccione el 
+  nombre de SQL Server y, a continuación, haga clic en <SPAN 
+  class="label">Conectar</SPAN>.</P></LI>
+  <LI>
+  <P>Haga clic en <SPAN class="label">Aplicar</SPAN>.</P></LI></OL>
+<P>Si el servidor de informes utiliza una instancia local de Motor de base de 
+datos, puede usar <SPAN class="parameter">(local)</SPAN> o <SPAN class="parameter">(local)\nombreDeInstancia</SPAN> 
+para especificar el servidor. Si utiliza <SPAN class="parameter">(local)</SPAN> 
+para referirse al servidor, puede cambiar el nombre del servidor y las 
+conexiones continuarán funcionando. Si usa un servidor remoto o se ha 
+configurado Reporting Services con el nombre del servidor, debe actualizar la 
+información de conexión de la base de datos siempre que cambie el nombre del 
+servidor.</P></DIV></DIV>
+<DIV>
+<H2 class="LW_CollapsibleArea_TitleDiv">
+<DIV><A title="Contraer" class="LW_CollapsibleArea_TitleAhref" role="button" 
+href="javascript:void(0)"><SPAN class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></SPAN><SPAN 
+class="LW_CollapsibleArea_Title">Cambiar el nombre de un equipo que ejecuta un 
+servidor de informes</SPAN></A>
+<DIV class="LW_CollapsibleArea_HrDiv">
+<HR class="LW_CollapsibleArea_Hr">
+</DIV></DIV></H2>
+<DIV class="sectionblock"><A id="sectionToggle1"></A>
+<P>Si cambia el nombre de un equipo que ejecuta un servidor de informes, haga lo 
+siguiente:</P>
+<OL>
+  <LI>
+  <P>Abra el archivo RSReportServer.config en un editor de texto y cambie la 
+  configuración de <SPAN><SPAN class="input">UrlRoot</SPAN></SPAN> para que 
+  refleje el nuevo nombre del servidor. La extensiones de entrega utilizan el 
+  valor <SPAN><SPAN class="input">UrlRoot</SPAN></SPAN> para crear la dirección 
+  URL utilizada para obtener acceso a elementos almacenados en el servidor de 
+  informes. Cambiar la dirección URL del servidor requiere actualizar la 
+  configuración de <SPAN><SPAN class="input">UrlRoot</SPAN></SPAN> para que las 
+  suscripciones sigan entregando informes correctamente.</P></LI>
+  <LI>
+  <P>En el mismo archivo, si se establece, modifique el valor <SPAN><SPAN class="input">ReportServerUrl</SPAN></SPAN> 
+  para reflejar el nuevo nombre del servidor. Observe que esta configuración no 
+  se utiliza en todas las instalaciones. Si está en blanco, no haga nada.</P>
+  <DIV class="alert">
+  <TABLE>
+    <TBODY>
+    <TR>
+      <TH><IMG title="Nota" class="cl_IC101471" id="alert_note" alt="Nota" 
+        src="Cambiar%20el%20nombre%20de%20un%20equipo%20que%20ejecuta%20un%20servidor%20de%20informes_archivos/clear.gif" 
+        xmlns=""><STRONG>Nota</STRONG></TH></TR>
+    <TR>
+      <TD>
+        <P>Si utiliza el Servicio de nombres Internet de Windows (WINS) en su 
+        red corporativa, el servidor de informes y el Administrador de informes 
+        continuarán estando disponibles con el nombre anterior durante algún 
+        tiempo. WINS asigna una dirección IP a cada uno de los equipos a los que 
+        sirve. Después de que WINS actualice la dirección IP para el equipo que 
+        ha cambiado de nombre, el nombre antiguo no podrá utilizarse para 
+        obtener acceso a un servidor de informes ni al Administrador de 
+        informes.</P></TD></TR></TBODY></TABLE></DIV></LI></OL></DIV></DIV>
+<DIV>
+<H2 class="LW_CollapsibleArea_TitleDiv">
+<DIV><A title="Contraer" class="LW_CollapsibleArea_TitleAhref" role="button" 
+href="javascript:void(0)"><SPAN class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></SPAN><SPAN 
+class="LW_CollapsibleArea_Title">Vea también</SPAN></A>
+<DIV class="LW_CollapsibleArea_HrDiv">
+<HR class="LW_CollapsibleArea_Hr">
+</DIV></DIV></H2>
+<DIV class="sectionblock"><A id="seeAlsoToggle"></A>
+<H4 class="subHeading">Tasks</H4>
+<DIV class="seeAlsoStyle"><SPAN><A href="https://msdn.microsoft.com/es-es/library/ms159644(v=sql.105).aspx">Iniciar 
+la herramienta Configuración de Reporting Services</A></SPAN></DIV>
+<DIV class="seeAlsoStyle"><SPAN><A href="https://msdn.microsoft.com/es-es/library/ms157232(v=sql.105).aspx">Iniciar 
+y detener el servicio del servidor de informes</A></SPAN></DIV>
+<H4 class="subHeading">Referencia</H4>
+<DIV class="seeAlsoStyle"><SPAN><A href="https://msdn.microsoft.com/es-es/library/ms162837(v=sql.105).aspx">rsconfig 
+(utilidad)</A></SPAN></DIV>
+<H4 class="subHeading">Conceptos</H4>
+<DIV class="seeAlsoStyle"><SPAN><A href="https://msdn.microsoft.com/es-es/library/ms157273(v=sql.105).aspx">Archivo 
+de configuración RSReportServer</A></SPAN></DIV>
+<DIV class="seeAlsoStyle"><SPAN><A href="https://msdn.microsoft.com/es-es/library/bb522791(v=sql.105).aspx">Implementar 
+(Reporting Services en modo nativo)</A></SPAN></DIV>
+<DIV class="seeAlsoStyle"><SPAN><A href="https://msdn.microsoft.com/es-es/library/bb522825(v=sql.105).aspx">Administración 
+(Reporting Services)</A></SPAN></DIV></DIV></DIV></DIV></DIV></DIV>
+<SCRIPT id="CommentTemplate" type="text/x-jquery-tmpl">
+    <div class="communityContentAnnotation">
+        <a name="${Index}"></a>
+        <h3>
+            ${Title}
+        </h3>
+        <div class="communityContentAnnotationBody">
+            {{html Body}}
+        </div>
+        <div class="communityContentAnnotationInfo">
+            <div class="communityContentAnnotationAvatarContainer">
+                <a href="${UserAvatar.Href}" title="${UserAvatar.ToolTip}" class="communityContentAnnotationAvatar"><img src="${UserAvatar.ImageUrl}" alt="${UserAvatar.ImageAltText}" width="34" height="34" /></a>
+            </div>
+            <div class="communityContentAnnotationUserDateContainer">
+                <div class="communityContentAnnotationUserContainer">
+                    <a href="${UserAvatar.Href}">
+                        ${User}
+                    </a>
+                </div>
+                <div class="communityContentAnnotationDateContainer">
+                    <span>${Date}</span>
+                    
+                    {{if EditLink}}
+                        <span>
+                            <a href="${EditLink.Href}" title="${EditLink.ToolTip}" class="communityContentCommentEditLink">${EditLink.Title}</a>
+                        </span>
+                    {{/if}}
+
+                    {{if DeleteLink}}
+                        <span>
+                            <a href="${DeleteLink.Href}" title="${DeleteLink.ToolTip}" class="communityContentDeleteLink">${DeleteLink.Title}</a>
+                        </span>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+</SCRIPT>
+ 
+<DIV class="communityContentContainer">
+<DIV class="communityContentHeader" id="CommunityContentHeader">
+<DIV class="communityContentHeaderTitleContainer">
+<H2>Adiciones de comunidad</H2><A class="communityContentAddLink" href="https://msdn.microsoft.com/es-es/library/community/add/ms345235(v=sql.105).aspx"><SPAN 
+title="Agregar" class="communityContentAddButton">                        
+AGREGAR                     </SPAN>                 </A></DIV>
+<DIV style="clear: both;"></DIV></DIV>
+<DIV id="CommunityComments" data-url="/es-es/library/community/comments/ms345235(v=sql.105).aspx"></DIV></DIV>
+<DIV class="libraryMemberFilter">
+<DIV class="filterContainer"><SPAN>Mostrar:</SPAN>         <LABEL><INPUT class="libraryFilterInherited" 
+type="checkbox" checked="checked" value="Inherit">Heredado         </LABEL>      
+   <LABEL><INPUT class="libraryFilterProtected" type="checkbox" checked="checked" 
+value="Protected">Protegido         </LABEL>     </DIV></DIV><INPUT id="libraryMemberFilterEmptyWarning" type="hidden" value="No hay miembros disponibles que coincidan con la configuración de filtro actual."> 
+ </DIV></DIV>
+<DIV 
+class="clear"></DIV><INPUT name="__RequestVerificationToken" type="hidden" value="qfdV7p0nbFpcTCs6A3JnneN6G6RxG-WMKWYob2eAaBEJBMNP7HZbc7xe4CDosIUnOOXe1p-70qdvM2fYaCg_Rcsov581"> 
+<INPUT id="ratingSubmitUrl" type="hidden" value="https://msdn.microsoft.com/es-es/library/feedback/add/ms345235(v=sql.105).aspx"> 
+<INPUT id="isTopicRated" type="hidden" value="false">             <LINK rel="stylesheet" 
+type="text/css">         
+<DIV id="ux-footer" dir="ltr">
+<DIV class="librarySock" id="footerSock">
+<DIV id="footerSockInner"><A name="feedback"></A> 
+<DIV class="rating">
+<DIV id="ratingSection1">
+<DIV class="title">            ¿Le resultó útil esta página?         </DIV>
+<DIV class="description">            Sus comentarios sobre este contenido son 
+muy importantes.<BR>Háganos saber su opinión.         </DIV>
+<DIV class="buttons"><BUTTON class="button" id="ratingYes">Sí</BUTTON>           
+  <BUTTON class="button" id="ratingNo">No</BUTTON>         </DIV><INPUT id="ratingValue" type="hidden"> 
+    </DIV>
+<DIV id="ratingSection2">
+<DIV class="title">            ¿Tiene comentarios adicionales?         
+</DIV><TEXTAREA id="ratingText" maxlength="1500" rows="6" cols="20"></TEXTAREA>  
+       
+<DIV class="counter right">            Caracteres restantes: <SPAN id="feedbackTextCounter">1500</SPAN> 
+        </DIV>
+<DIV class="buttons left"><BUTTON class="button" 
+id="ratingSubmit">Enviar</BUTTON>             <BUTTON class="button" id="ratingSkipThis">Pasar 
+por alto</BUTTON>         </DIV></DIV>
+<DIV id="ratingSection3">
+<DIV class="title">            Gracias.         </DIV>
+<DIV class="description">            Agradecemos mucho su ayuda.         
+</DIV></DIV>
+<DIV id="contentFeedbackQAContainer" style="display: none;"></DIV></DIV>
+<DIV class="clear"></DIV></DIV></DIV><FOOTER class="top">
+<DIV id="Fragment_LeftLinks" xmlns="http://www.w3.org/1999/xhtml" 
+data-fragmentname="LeftLinks">
+<DIV class="linkList">
+<DIV class="linkListTitle">Centros de desarrollo</DIV>
+<UL class="links">
+  <LI><A class="windowsBlue" id="LeftLinks_2148_1" href="https://dev.windows.com/" 
+  xmlns="http://www.w3.org/1999/xhtml">Windows</A>       </LI>
+  <LI><A class="office" id="LeftLinks_2148_3" href="http://dev.office.com/" 
+  xmlns="http://www.w3.org/1999/xhtml">Office</A>       </LI>
+  <LI><A class="visualStudio" id="LeftLinks_2148_4" href="https://msdn.microsoft.com/vstudio" 
+  xmlns="http://www.w3.org/1999/xhtml">Visual Studio</A>       </LI>
+  <LI><A id="LeftLinks_2148_12" href="http://azure.microsoft.com/es-es/documentation/" 
+  target="_blank" xmlns="http://www.w3.org/1999/xhtml">Microsoft Azure</A>       
+  </LI>
+  <LI><A id="LeftLinks_2148_5" href="https://msdn.microsoft.com/aa937802" xmlns="http://www.w3.org/1999/xhtml">Más...</A> 
+        </LI></UL></DIV></DIV>
+<DIV id="rightLinks">
+<DIV id="Fragment_CenterLinks1" xmlns="http://www.w3.org/1999/xhtml" 
+data-fragmentname="CenterLinks1">
+<DIV class="linkList">
+<DIV class="linkListTitle">Recursos de aprendizaje</DIV>
+<UL class="links">
+  <LI><A id="CenterLinks1_2151_4" href="http://www.microsoftvirtualacademy.com/" 
+  xmlns="http://www.w3.org/1999/xhtml">Microsoft Virtual Academy</A>       </LI>
+  <LI><A id="CenterLinks1_2151_5" href="http://channel9.msdn.com/" xmlns="http://www.w3.org/1999/xhtml">Channel 
+  9</A>       </LI>
+  <LI><A id="CenterLinks1_2151_6" href="http://www.interoperabilitybridges.com/" 
+  xmlns="http://www.w3.org/1999/xhtml">Puentes de interoperabilidad</A>       
+  </LI>
+  <LI><A id="CenterLinks1_2151_7" href="https://msdn.microsoft.com/magazine/" 
+  xmlns="http://www.w3.org/1999/xhtml">MSDN Magazine</A>       
+</LI></UL></DIV></DIV>
+<DIV id="Fragment_CenterLinks2" xmlns="http://www.w3.org/1999/xhtml" 
+data-fragmentname="CenterLinks2">
+<DIV class="linkList">
+<DIV class="linkListTitle">Comunidad</DIV>
+<UL class="links">
+  <LI><A id="CenterLinks2_2151_8" href="https://social.msdn.microsoft.com/forums/es-es/home" 
+  xmlns="http://www.w3.org/1999/xhtml">Foros</A>       </LI>
+  <LI><A id="CenterLinks2_2151_9" href="http://blogs.msdn.com/b/developer-tools/" 
+  xmlns="http://www.w3.org/1999/xhtml">Blogs</A>       </LI>
+  <LI><A id="CenterLinks2_2151_10" href="http://www.codeplex.com/" xmlns="http://www.w3.org/1999/xhtml">Codeplex</A> 
+        </LI></UL></DIV></DIV>
+<DIV id="Fragment_CenterLinks3" xmlns="http://www.w3.org/1999/xhtml" 
+data-fragmentname="CenterLinks3">
+<DIV class="linkList">
+<DIV class="linkListTitle">Soporte técnico</DIV>
+<UL class="links">
+  <LI><A id="CenterLinks3_2151_11" href="https://msdn.microsoft.com/hh361695" 
+  xmlns="http://www.w3.org/1999/xhtml">Autosoporte</A>       
+</LI></UL></DIV></DIV>
+<DIV id="Fragment_CenterLinks4" xmlns="http://www.w3.org/1999/xhtml" 
+data-fragmentname="CenterLinks4">
+<DIV class="linkList">
+<DIV class="linkListTitle">Programas</DIV>
+<UL class="links">
+  <LI><A id="CenterLinks4_2151_13" href="https://www.microsoft.com/bizspark/" 
+  xmlns="http://www.w3.org/1999/xhtml">BizSpark (para nuevas empresas)</A>       
+  </LI>
+  <LI><A id="CenterLinks4_2151_14" href="https://www.dreamspark.com/" xmlns="http://www.w3.org/1999/xhtml">DreamSpark</A> 
+        </LI>
+  <LI><A id="CenterLinks4_2151_17" href="http://www.imaginecup.com/" xmlns="http://www.w3.org/1999/xhtml">Imagine 
+  Cup</A>       </LI></UL></DIV></DIV></DIV></FOOTER><FOOTER class="bottom"><SPAN 
+class="localeContainer">
+<FORM class="selectLocale" id="selectLocaleForm" action="https://msdn.microsoft.com/es-es/selectlocale-dmc"><INPUT name="fromPage" type="hidden" value="https%3a%2f%2fmsdn.microsoft.com%2fes-es%2flibrary%2fms345235(v%3dsql.105).aspx"> 
+        <A title="Cambie su idioma" onclick="$('#selectLocaleForm').submit();return false;" 
+href="https://msdn.microsoft.com/es-es/library/ms345235(v=sql.105).aspx#">España 
+(Español)</A>     </FORM></SPAN>                     
+<DIV id="Fragment_BottomLinks" xmlns="http://www.w3.org/1999/xhtml" 
+data-fragmentname="BottomLinks">
+<DIV class="linkList">
+<UL class="links horizontal">
+  <LI><A id="BottomLinks_2148_7" href="https://msdn.microsoft.com/newsletter.aspx" 
+  xmlns="http://www.w3.org/1999/xhtml">Boletín</A>       </LI>
+  <LI><A id="BottomLinks_2148_8" href="https://msdn.microsoft.com/dn529288" 
+  xmlns="http://www.w3.org/1999/xhtml">Privacidad y cookies</A>       </LI>
+  <LI><A id="BottomLinks_2148_9" href="https://msdn.microsoft.com/cc300389" 
+  xmlns="http://www.w3.org/1999/xhtml">Términos de uso</A>       </LI>
+  <LI><A id="BottomLinks_2148_10" href="https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/EN-US.aspx" 
+  xmlns="http://www.w3.org/1999/xhtml">Marcas comerciales</A>       
+</LI></UL></DIV></DIV><SPAN class="logoLegal"><SPAN class="logo"></SPAN>         
+        <SPAN class="copyright">© 2015 Microsoft</SPAN>             </SPAN>      
+   </FOOTER></DIV>
+<DIV class="footerPrintView">
+<DIV class="footerCopyrightPrintView">© 2015 Microsoft</DIV></DIV><INPUT id="tocPaddingPerLevel" type="hidden" value="17"> 
+            <INPUT id="MtpsDevice" type="hidden" value="Default"> <!--[CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]--> 
+                                                            
+<NOSCRIPT>&lt;div&gt;&lt;img alt="DCSIMG" id="Img1" width="1" height="1" 
+src="https://m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njs.gif?dcsuri=/nojavascript&amp;amp;WT.js=No" 
+/&gt;&lt;/div&gt;</NOSCRIPT> 
+<DIV 
+id="globalRequestVerification"><INPUT name="__RequestVerificationToken" type="hidden" value="clZ7pAM-r14XM7YptbMN8UAGru76YqfsHM-VITJogps2Nfm_Nn--K22oHxl9NWvqQ61gaikLXE_5Mh2omj9cCRHOG9g1"> 
+</DIV></DIV>
+<SCRIPT class="mtps-injected" type="text/javascript">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"https://i-msdn.sec.s-msft.com\", \r\n\t\"js\": \"https://i2-msdn.sec.s-msft.com\", \r\n\t\"css\": \"https://i-msdn.sec.s-msft.com\", \r\n\t\"xap\": \"https://msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/es-es/library/ms345235(l=es-es,v=sql.105).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027es-es\u0027;\n  var wtsp = \u0027_msdn_library_sqlserver_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "//\n\n            window.appInsightsId = \u002760854590-027a-4ae4-98be-2741a40f355f\u0027;\n            //" },
+	{ url: "https://i2-msdn.sec.s-msft.com/Combined.js?resources=0:Utilities,1:Banner,2:Layout,3:Header,4:SkinnyRating,2:Rating,3:Footer,0:Topic,5:webtrendsscript,6:WEDCS,0:AppInsightsPerf,7:Toc,2:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Epx/Shared/Content:1,/Areas/Epx/Themes/Base/Content:2,/Areas/Centers/Themes/StandardDevCenter/Content:3,/Areas/Library/Themes/Msdn/Content:4,/Areas/Global/Content/Webtrends/resources:5,/Areas/Library/Themes/Base/Content:6,/Areas/Library/Content:7\u0026amp;hashKey=9B27415B70C59F7A42DB6FB84DCD33A2\u0026amp;v=195E11FBE586C7796AACE058034B6B6C" },
+	{ url: "https://i1.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=Msdn\u0026loc=es-es\u0026focusOnInit=false\u0026emptyWatermark=true\u0026searchButtonTooltip=Buscar en MSDN" },
+	{ url: "https://i2-msdn.sec.s-msft.com/Combined.js?resources=0:PrintExportButton,1:NavigationResize;/Areas/Library/Themes/Base/Content:0,/Areas/Library/Content:1\u0026amp;hashKey=86914F35EE0A9731DDD02541EA123CEF\u0026amp;v=195E11FBE586C7796AACE058034B6B6C" },
+	{ txt: "MTPS = window.MTPS || {}; MTPS.LocalizedStrings = window.MTPS.LocalizedStrings || {}; MTPS.LocalizedStrings.ExpandButtonTooltip = \u0027Expandir\u0027; MTPS.LocalizedStrings.CollapseButtonTooltip = \u0027Contraer\u0027; MTPS.LocalizedStrings.EnhancedExpandTooltip = \u0027Haga clic para expandir. Haga doble clic para expandir todo.\u0027; MTPS.LocalizedStrings.EnhancedCollapseTooltip = \u0027Haga clic para contraer. Haga doble clic para contraer todo.\u0027; MTPS.LocalizedStrings.ExpandAllButtonTooltip = \u0027Expandir todo\u0027; MTPS.LocalizedStrings.CollapseAllButtonTooltip = \u0027Contraer todo\u0027;" },
+	{ url: "https://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js" },
+	{ url: "https://i2-msdn.sec.s-msft.com/Combined.js?resources=0:CommunityContent,0:LibraryMemberFilter,1:Toc_Fixed,1:CodeSnippet,1:TopicNotInScope,1:CollapsibleArea,1:VersionSelector,1:SurveyBroker;/Areas/Library/Content:0,/Areas/Epx/Content/Scripts:1\u0026amp;hashKey=EB298C838117D9E7008C7CC11E7732E3\u0026amp;v=195E11FBE586C7796AACE058034B6B6C" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</SCRIPT>
+ </BODY></HTML>

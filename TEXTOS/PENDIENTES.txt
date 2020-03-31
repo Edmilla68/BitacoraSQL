@@ -1,0 +1,37 @@
+*******************************************************
+PENDIENTES AL 03 FEBRERO 2016
+*******************************************************
+1. PLAN DE MIGRACION BD 2005 A 2012
+2. DEFINIR QUE HACEMOS CON NEPTUNIA53, NEPTUNIA9, Y  NEPTUNIA31 (MSSQL 2000)
+
+
+**************************************************************
+TERMINADOS
+**************************************************************
+
+1. NEPTUNIA31 APAGADO
+2. 
+
+
+
+*******************************************************
+PENDIENTES AL 21 ENERO 2016
+*******************************************************
+2. ACTUALIZAR SOHO
+3. PLAN DE MIGRACION BD 2005 A 2012
+5. MEJORAR AUDITORIA DE CREACION DE USUARIOS
+8. INVESTIGAR REPLICA DE BDS
+
+
+
+
+
+
+
+**************************************************************
+TERMINADOS
+**************************************************************
+
+1. MONITOREO DE AUDITORIA PEDIDO POR MANUEL GAMARRA (INFORME)
+4. TERMINAR SP FRAGMENTACION DINAMICA
+7. LISTADO COMPLETO Y REAL DE SERVIDORES DE BD SQL.

@@ -1,0 +1,6 @@
+YCFHQ9DWCYDKV88T2TMHG7BHP
+
+Abrimos el editor de registro de Windows (regedit).
+Ubicamos la siguiente entrada del registro de Windows
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services
+En la entrada anterior podemos encontrar un listado de todos los servicios de Windows que se encuentran instalados, basta con identificar el que queremos modificar o eliminar.

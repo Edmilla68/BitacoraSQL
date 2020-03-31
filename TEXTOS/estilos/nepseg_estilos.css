@@ -1,0 +1,45 @@
+div {
+   position:relative; 
+     
+}
+
+.Vehiculo {
+   
+    width:300px;
+    top:0;
+    bottom:0;
+    left:400px;
+    right:0;
+    background:#0ff;
+    border: 2px #000 solid;
+    
+    padding-top: 10px;
+	padding-left: 10px;
+	padding-bottom: 60px;
+	padding-right: 10px;
+
+}
+
+.Conductor {
+   
+    width:350px;
+    top:-200px;
+    bottom:0;
+    left:0;
+    right:0;
+    background:#ffd800;
+     border: 2px #000 solid;
+    padding-top: 10px;
+	padding-left: 10px;
+	padding-bottom: 10px;
+	padding-right: 10px;
+
+}
+
+.Carga {
+    top:-200px;
+    bottom:0;
+    left:0;
+    right:0;
+	// background:#b6ff00;
+}

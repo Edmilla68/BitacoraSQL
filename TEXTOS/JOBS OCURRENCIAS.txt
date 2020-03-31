@@ -1,0 +1,25 @@
+
+JOB: SSCO_JOB_DepuraTkt
+CADA 1 MINUTO, SE CAMBIO CADA 58 MINUTOS PARA PROBAR...
+
+NEPTUNIA1
+SCOT_Interfaces_Grupo1
+SCOT_Interfaces_Grupo2
+CADA 10 MIN  SE CAMBIO A CADA 2 HORAS
+
+
+SAASA
+JOB SCOT_Interfaces_Grupo1
+JOB SCOT_Interfaces_Grupo2
+CADA 10 MIN SE CAMBIO A CADA 45 MIN
+se unificaron y solo quedo  JOB SCOT_Interfaces_Grupo2
+PASO 7 PROBLEMAS ....
+
+
+SCOT_INTERFACES_TKT
+CADA 2 MIN SE CAMBIO A CADA 15 MIN
+
+NEPTUNIA2
+SCOT_Interfaces_Grupo1
+SCOT_Interfaces_Grupo2
+se unificaron y solo quedo  JOB SCOT_Interfaces_Grupo1

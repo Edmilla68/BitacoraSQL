@@ -1,0 +1,9 @@
+(*) Importante: Si el sistema operativo tiene User Account Control (UAC), y está activado,  
+    a pesar de pertenecer al grupo de administradores locales, 
+    no es posible conectarse al SQL Server con privilegios de administrador local a menos 
+    que la consola se abra con la opción de “ejecutar como administrador” 
+    utilizando el menú de contesto que aparece presionando el botón derecho sobre el icono del CMD.EXE.
+    
+    
+  SE RECALCA>
+  OJO> a menos que la consola se abra con la opción de “ejecutar como administrador” 

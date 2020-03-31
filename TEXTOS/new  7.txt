@@ -1,0 +1,9 @@
+pr mzn
+pr cmt
+arabe
+
+
+pb = new ProgressBar();
+			pb.Value = 60;
+			pb.Maximum = 100;
+			this.glacialList1.Items[0].SubItems[2].Control = pb;

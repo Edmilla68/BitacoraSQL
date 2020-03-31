@@ -1,0 +1,2 @@
+GRANT ALTER TRACE TO "ofisis"
+REVOKE ALTER TRACE TO "ofisis"

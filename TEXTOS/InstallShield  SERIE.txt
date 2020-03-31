@@ -1,0 +1,19 @@
+
+Your Serial Number for InstallShield Limited Edition for Visual Studio:
+
+3D3EAQW-D2B-5037DB953N
+
+Save or print this page for your records. You will need this serial number and instructions to activate your copy of InstallShield Limited Edition.
+
+Download InstallShield Limited Edition for Microsoft Visual Studio 2010, 2012, 2013 and 2015
+
+
+Instructions for installing and activating InstallShield Limited Edition for Visual Studio
+*InstallShield Limited Edition for Visual Studio is included with Visual Studio 2010 and newer versions.
+
+InstallShield Limited Edition for Visual Studio supports the following Visual Studio editions:
+
+Professional
+Premium
+Enterprise
+Ultimate

@@ -1,0 +1,27 @@
+USE msdb
+GO
+
+declare @tabla table(campo1 varchar(1), campo2 money)
+declare @gb money
+declare @cuerpoMail nvarchar(100)
+
+insert into @tabla
+exec xp_fixeddrives
+
+select @gb =(campo2/1024) from @tabla where campo1='F'
+
+if @gb<=90 begin
+
+	set @cuerpoMail = 'Servidor 46: la Unidad F solo tiene ' + cast(@gb as nvarchar(10)) + ' gb, realizar limpieza.'
+
+	EXEC sp_send_dbmail 
+	@profile_name='SQL Server',
+	@importance='High',
+	@recipients='soporte@globalrisk.pe;rpalomino@globalrisk.pe',
+	@copy_recipients='mcardenas@globalrisk.pe',
+	@subject='Servidor 46 - Verificación urgente de espacio en Disco Duro',
+	@body=@cuerpoMail
+end 
+
+
+

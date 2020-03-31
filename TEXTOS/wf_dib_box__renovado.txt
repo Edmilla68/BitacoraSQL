@@ -1,0 +1,91 @@
+DataStore ds_puestos_dib
+ds_puestos_dib = CREATE DataStore
+ds_puestos_dib.DataObject = 'ds_puestos_dib'
+ds_puestos_dib.SetTransObject(sqlca)
+
+Integer li_ly_n1
+Integer li_lx_n1
+Integer li_ly_n2
+Integer li_lx_n2
+Integer li_ly_n3
+Integer li_lx_n3
+
+Integer li_ly_n4
+Integer li_lx_n4
+
+Integer li_ly_n5
+Integer li_lx_n5
+
+
+Integer li_ocurr_n1 = 0
+Long row,nrows
+Integer bloque = 0
+Integer bloque2 = 0
+
+
+	if ar_flg = 0 then
+		nrows = ds_puestos_dib.Retrieve(g_param.s_empresa , is_area)
+	else
+		nrows = ds_puestos_dib.Retrieve(g_param.s_empresa , '%')
+	end if	
+
+li_ly_n1 = 10
+li_lx_n1 = 0
+li_ly_n2 = 0
+li_lx_n2 = 10
+li_ly_n3 = 0
+li_lx_n3 = 10
+li_ly_n4 = 0
+li_lx_n4 = 10
+li_ly_n5 = 0
+li_lx_n5 = 10
+
+
+//*****************************************************************************
+FOR row = 1 to nrows     
+	IF ds_puestos_dib.GetItemNumber(row,'nivel') = 1 Then
+      	li_ocurr_n1 = li_ocurr_n1  + 1
+		li_lx_n1 = (uo_cont01.Width - 517 ) /  2
+		 OBJ_CUADRO[row] =  f_dib_cuadro(uo_cont01,li_ly_n1,li_lx_n1,trim(ds_puestos_dib.GetItemString(row,'Nombre')) + ' : '+trim(ds_puestos_dib.GetItemString(row,'personal')))	
+		 OBJ_CUADRO[row].tag = ds_puestos_dib.GetItemString(row,'cod_puesto')
+	     	li_ly_n1 = li_ly_n1 + 500
+			li_ly_n2 = bloque + (li_ocurr_n1 *  250)
+			bloque= bloque + 250
+  		li_lx_n2 = 10
+    end if
+
+	IF ds_puestos_dib.GetItemNumber(row,'nivel') = 2 Then
+		 OBJ_CUADRO[row] = f_dib_cuadro(uo_cont01,li_ly_n2,  li_lx_n2,  ds_puestos_dib.GetItemString(row,'Nombre') + ' : '+trim(ds_puestos_dib.GetItemString(row,'personal')) )	
+		 OBJ_CUADRO[row].tag = ds_puestos_dib.GetItemString(row,'cod_puesto')
+		li_lx_n2 = li_lx_n2 + 600		 
+    end if
+	 
+	 IF ds_puestos_dib.GetItemNumber(row,'nivel') = 3 Then
+		li_ly_n3 = li_ly_n2 + 250
+		 OBJ_CUADRO[row] = f_dib_cuadro(uo_cont01,li_ly_n3,  li_lx_n3 ,  ds_puestos_dib.GetItemString(row,'Nombre') + ' : '+trim(ds_puestos_dib.GetItemString(row,'personal')) )	
+		 OBJ_CUADRO[row].tag = ds_puestos_dib.GetItemString(row,'cod_puesto')
+		li_lx_n3 = li_lx_n3 + 600		 
+    end if
+
+ IF ds_puestos_dib.GetItemNumber(row,'nivel') = 4 Then
+		li_ly_n4 = li_ly_n3 + 250
+		 OBJ_CUADRO[row] = f_dib_cuadro(uo_cont01,li_ly_n4,  li_lx_n4 ,  ds_puestos_dib.GetItemString(row,'Nombre') + ' : '+trim(ds_puestos_dib.GetItemString(row,'personal')) )	
+		 OBJ_CUADRO[row].tag = ds_puestos_dib.GetItemString(row,'cod_puesto')
+		li_lx_n4 = li_lx_n4 + 600		 
+    end if
+
+ IF ds_puestos_dib.GetItemNumber(row,'nivel') = 5 Then
+		li_ly_n5 = li_ly_n4 + 250
+		 OBJ_CUADRO[row] = f_dib_cuadro(uo_cont01,li_ly_n5,  li_lx_n5 ,  ds_puestos_dib.GetItemString(row,'Nombre') + ' : '+trim(ds_puestos_dib.GetItemString(row,'personal')) )	
+		 OBJ_CUADRO[row].tag = ds_puestos_dib.GetItemString(row,'cod_puesto')
+		li_lx_n5 = li_lx_n5 + 600		 
+    end if
+
+
+
+
+NEXT
+
+
+
+RETURN 1

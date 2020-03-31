@@ -1,0 +1,104 @@
+ALTER DATABASE sofya_fleybus2018   
+  SET PARTNER =   
+    'TCP://lisvrapp.minatoro.com:5022'  
+GO
+--REPLISVRAPP
+
+192.168.255.96
+ALTER ENDPOINT Endpoint_Mirroring STATE = STARTED
+
+select * from sys.endpoints
+USE master;  
+GO  
+CREATE LOGIN [MINATORO\admin_mirror] FROM WINDOWS;  
+GO 
+ 
+GRANT CONNECT ON ENDPOINT::Endpoint_Mirroring TO [MINATORO\admin_mirror]
+/*
+cmd
+
+telnet repLISVRAPP.minatoro.com 5022
+.trm
+ALTER DATABASE sofya_CDM15_tst   
+    SET PARTNER =   
+    'TCP://LISVRAPP:5022'  
+GO 
+appwiz.cpl
+CMD
+PING REPLISVRAPP
+
+
+ALTER DATABASE sofya_CDM15_tst   
+    SET PARTNER = 'TCP://REPLISVRAPP.minatoro.com:5022'  
+GO  
+
+
+
+-------------------------------------------------------------------------------
+
+principal
+
+-------------------------------------------------------------------------------
+
+ALTER DATABASE sofya_fleybus2018   
+    SET PARTNER = 'TCP://replisvrapp.minatoro.com:5023'  
+GO  
+
+--GRANT CONNECT ON ENDPOINT::Endpoint_Mirroring TO ALL
+
+
+
+ALTER DATABASE sofya_fleybus2018   
+    SET WITNESS =   
+    'TCP://TESlisvrapp.minatoro.com:5024'  
+GO  
+
+
+/*
+SELECT * FROM sys.database_mirroring_endpoints 
+ALTER ENDPOINT Endpoint_Mirroring STATE = 
+
+--STOPPED
+*/
+
+
+
+
+
+BACKUP DATABASE sofya_andes  TO DISK = 'D:\bkp\sofya_andes.Bak';
+BACKUP LOG sofya_andes  TO DISK = 'D:\bkp\sofya_andes.TRN';
+
+BACKUP DATABASE sofya_cdc  TO DISK = 'D:\bkp\sofya_cdc.Bak';
+BACKUP LOG sofya_cdc  TO DISK = 'D:\bkp\sofya_cdc.TRN';
+
+
+BACKUP DATABASE sofya_fleybus  TO DISK = 'D:\bkp\sofya_fleybus.Bak';
+BACKUP LOG sofya_fleybus  TO DISK = 'D:\bkp\sofya_fleybus.TRN';
+
+BACKUP DATABASE sofya_MSM  TO DISK = 'D:\bkp\sofya_MSM.Bak';
+BACKUP LOG sofya_MSM  TO DISK = 'D:\bkp\sofya_MSM.TRN';
+
+
+BACKUP DATABASE sofya_cdc_17  TO DISK = 'D:\bkp\sofya_cdc_17.Bak';
+BACKUP LOG sofya_cdc_17  TO DISK = 'D:\bkp\sofya_cdc_17.TRN';
+
+
+BACKUP DATABASE sofya_fleybus2018  TO DISK = 'D:\bkp\sofya_fleybus2018.Bak';
+BACKUP LOG sofya_fleybus2018  TO DISK = 'D:\bkp\sofya_fleybus2018.TRN';
+--456465032
+
+
+
+
+
+
+BACKUP DATABASE sofya_CDM15  TO DISK = 'D:\bkp\sofya_CDM15.Bak';
+
+
+
+
+
+BACKUP LOG sofya_CDM15  TO DISK = 'D:\bkp\sofya_CDM15.TRN';
+
+
+

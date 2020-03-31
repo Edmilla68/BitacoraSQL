@@ -1,0 +1,110 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0070)http://10.90.1.4:15871/cgi-bin/blockOptions.cgi -->
+<!--/////////////////////////////////////////////////////////////////////////
+//
+//    Description: This fills in the bottom portion of the Websense block page
+//		      when the site is blocked without Confirm or Quota override
+//                       options.
+//    See Help Documentation for information about the tokens contained on this page
+//
+/////////////////////////////////////////////////////////////////////////////
+//
+//    Copyright (c) 1996 - 2014, Websense, Inc.    All Rights Reserved
+//    See WebsenseCopyright.txt for copyright information
+//
+///////////////////////////////////////////////////////////////////////////--><HTML><HEAD><META 
+content="IE=7.0000" http-equiv="X-UA-Compatible">
+<!-- A particular character set can be specified by assigning "charset".-->
+<META content="text/html; charset=UTF-8" http-equiv=Content-Type><LINK 
+rel=stylesheet type=text/css href="blockOptions_archivos/blockStyle.css">
+<SCRIPT language=javascript type=text/javascript 
+src="blockOptions_archivos/security.js"></SCRIPT>
+
+<SCRIPT language=javascript type=text/javascript 
+src="blockOptions_archivos/base64.js"></SCRIPT>
+
+<SCRIPT type=text/javascript>
+var securityFlag="false";
+var WS_MOREINFOCGIDATA = "d3MlMkRzZXNzaW9uPSUyRDE1MDg5NDk5NjImd3MlMkR1c2VyaXA9MTAlMkUxMDAlMkU5JTJFMzcmd3MlMkRjYXQ9MTUwMCZ3cyUyRHJlYXNvbj0xMDI1";
+var WS_ACEINSIGHT_LINK_URL = "https://aceinsight.websense.com/blockpage.aspx?url=http://www.facebook.com/plugins/like.php?locale=es_AR&href=http%3a%2f%2fblog.josemarianoalvarez.com%2fpost%2f2010%2f11%2f25%2fFIX-para-el-Error-315-The-backup-set-holds-backup-of-a-database-other-than-the-existing-database.aspx&layout=standard&show_faces=true&width=450&action=recommend&font=verdana&colorscheme=light&height=80&lang=en&blockcat=1500&cat1=1500-1&cat2=151-2";
+</SCRIPT>
+
+<META name=GENERATOR content="MSHTML 11.00.9600.17924"></HEAD>
+<BODY style="BACKGROUND-IMAGE: none">
+<DIV id=options>
+<P class=label>Options:</P><!-- MORE INFO section -->
+<TABLE id=more_info_container class=first-option>
+  <TBODY>
+  <TR>
+    <TD><INPUT onclick="return goToMoreInfo();" class=ws_btn type=button value="More Information" name=ws-more-info> 
+    </TD>
+    <TD><SPAN class=ws_btn_desc>Learn more about your Web filtering 
+      policy.</SPAN> </TD></TR></TBODY></TABLE><!--
+
+		<table class="first-option" id="site_details_container" style="display:none;">
+			<tr>
+				<td>
+					<input type="button" onclick="return goToSiteDetails();" value="Go to ACEInsight" id="site_details_link" class="ws_btn">
+				</td>
+				<td>
+					<span class="ws_btn_desc">ACEInsight analysis may categorize the site differently than your organization.</span>
+				</td>
+			</tr>
+		</table>
+		
+--><!--
+
+		<form class="option" action="/cgi-bin/password_overrider.cgi" method="POST" target="_top" name="OverrideForm" onsubmit="encodePW();">
+			<input type="HIDDEN" name="ws-encdata" value="d3MlMkRzZXNzaW9uPSUyRDE1MDg5NDk5NjImd3MlMkR1c2VyaXA9MTAlMkUxMDAlMkU5JTJFMzcmd3MlMkRjYXQ9MTUwMCZ3cyUyRHJlYXNvbj0xMDI1JndzJTJEdXNlcmlwPTEwJTJFMTAwJTJFOSUyRTM3">
+            <input type="HIDDEN" id="ws-password" name="ws-password" value="">
+            <p id="password-text">Enter your Websense password, and then click the <b>Password Override</b> button to view this site. <script type="text/javascript">writeWarning1()</script></p>
+			<p>Password: <input type="password" id="ws-entered-password" name="ws-entered-password" value="" size="20" maxlength="55"> <input TYPE="SUBMIT" VALUE="Password Override" name="ws-override"><script type="text/javascript">writeWarning()</script></p>
+		</form>
+		
+--><!--
+
+		<table class="option">
+			<tr>
+				<td>
+					<input TYPE="SUBMIT" VALUE="Enter New Credentials"  name="ws-credentials-button" onclick="return openPopup();" class="ws_btn">
+				</td>
+				<td>
+					<span class="ws_btn_desc">Use a different user name and password to attempt to access this page.</span>
+				</td>
+			</tr>
+		</table>
+		
+		<div id="light" class="white_content">
+			<form action="/cgi-bin/useraccount_overrider.cgi" method="POST" target="_top" name="UAOverrideForm" onsubmit="encode();">
+				<input type="HIDDEN" name="ws-session" value="-1508949962">
+				<input type="HIDDEN" id="ws-credentials" name="ws-credentials" value="">
+				<div id="titlebar" class="header">Switch Credentials</div>
+				<div style="padding:10px 16px">
+					<p id="reauth-text">Enter the user name and password for an account with a more permissive filtering policy to attempt to access this site.</p>
+					<p id="reauth-text-timeout">If access is permitted, the new policy will be applied to Internet requests for  minutes.</p>
+					<p>User name: 
+						<input type="text" id="ws-credentials-user" name="ws-credentials-user" size="55" maxlength="65"> 
+					</p>
+					<p>Password: 
+						<input type="password" id="ws-credentials-pass" name="ws-credentials-pass" size="55" maxlength="65"> 
+					</p>
+					<div style="float:right">
+						<input TYPE="SUBMIT" VALUE="Switch Credentials" name="ws-credentials-button">
+						<input TYPE="SUBMIT" VALUE="Cancel"  name="ws-credentials-cancel-button" onclick="return closePopup();">
+					</div>
+				</div>
+			</form>
+		</div>		
+		<div id="fade" class="black_overlay"></div>
+		
+--><!-- BACK section -->
+<TABLE class=option>
+  <TBODY>
+  <TR>
+    <TD>
+      <FORM name=BackForm action=""><INPUT onclick="return goBack();" class=ws_btn type=button value="Go Back" name=ws-back> 
+      </FORM></TD>
+    <TD><SPAN class=ws_btn_desc>Click <B>Go Back</B> or use the browser's Back 
+      button to return to the previous page.</SPAN> </TD></TR></TBODY></TABLE>
+<DIV 
+style="OVERFLOW: hidden; HEIGHT: 1px; CLEAR: both"></DIV></DIV></BODY></HTML>

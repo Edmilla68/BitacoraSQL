@@ -1,0 +1,13 @@
+
+
+8 bits= 1 byte
+1024 bytes= 1 kilobyte
+1024 kilobytes= 1 megabyte
+1024 megabytes= 1 gigabyte
+1024 gigabytes= 1 terabyte
+
+Y por ahora, ahi termina.
+Ahora paso a resolverte la duda:
+
+1 gigabyte---------------1024 megabytes
+12 gigabytes------------- X = 12 * 1024 / 1 = 12288 / 1 = 12288

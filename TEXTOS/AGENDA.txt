@@ -1,0 +1,8 @@
+
+
+AGENDA:
+
+1. Dimensionar Backups
+2. Alertas de Bloqueos
+3. Fotografia de Status de Bd grabable.... incluye usuarios y logins creados
+4.

@@ -1,0 +1,135 @@
+USE [master]
+GO
+
+/* For security reasons the login is created disabled and with a random password. */
+/****** Object:  Login [##MS_PolicyEventProcessingLogin##]    Script Date: 20/07/2016 12:12:19 p.m. ******/
+CREATE LOGIN [##MS_PolicyEventProcessingLogin##] WITH PASSWORD=N'tdVZ7ucSNGJfqBxQpkP6z0JBd8PDkTI1YEyu2Xsv1X4=', DEFAULT_DATABASE=[master], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=ON
+GO
+
+ALTER LOGIN [##MS_PolicyEventProcessingLogin##] DISABLE
+GO
+
+/* For security reasons the login is created disabled and with a random password. */
+/****** Object:  Login [##MS_PolicyTsqlExecutionLogin##]    Script Date: 20/07/2016 12:12:20 p.m. ******/
+CREATE LOGIN [##MS_PolicyTsqlExecutionLogin##] WITH PASSWORD=N'4OI2oGeGpYSOsBdZmOMBtwqb18DXMDUqtgTr9nGCBBQ=', DEFAULT_DATABASE=[master], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=ON
+GO
+
+ALTER LOGIN [##MS_PolicyTsqlExecutionLogin##] DISABLE
+GO
+
+/* For security reasons the login is created disabled and with a random password. */
+/****** Object:  Login [cosmos]    Script Date: 20/07/2016 12:12:20 p.m. ******/
+CREATE LOGIN [cosmos] WITH PASSWORD=N'VTJ/bP5njSsL/Ffdt0Xm1l4q0Lfg81gPM7QSmyA8HbQ=', DEFAULT_DATABASE=[master], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
+GO
+
+ALTER LOGIN [cosmos] DISABLE
+GO
+
+/****** Object:  Login [DOMNEP\adminazrtest]    Script Date: 20/07/2016 12:12:20 p.m. ******/
+CREATE LOGIN [DOMNEP\adminazrtest] FROM WINDOWS WITH DEFAULT_DATABASE=[master], DEFAULT_LANGUAGE=[us_english]
+GO
+
+/****** Object:  Login [DOMNEP\adminofisis]    Script Date: 20/07/2016 12:12:20 p.m. ******/
+CREATE LOGIN [DOMNEP\adminofisis] FROM WINDOWS WITH DEFAULT_DATABASE=[master], DEFAULT_LANGUAGE=[us_english]
+GO
+
+/****** Object:  Login [DOMNEP\GBProyectos]    Script Date: 20/07/2016 12:12:20 p.m. ******/
+CREATE LOGIN [DOMNEP\GBProyectos] FROM WINDOWS WITH DEFAULT_DATABASE=[master], DEFAULT_LANGUAGE=[us_english]
+GO
+
+/****** Object:  Login [DOMNEP\jecarrasco]    Script Date: 20/07/2016 12:12:20 p.m. ******/
+CREATE LOGIN [DOMNEP\jecarrasco] FROM WINDOWS WITH DEFAULT_DATABASE=[master], DEFAULT_LANGUAGE=[us_english]
+GO
+
+/****** Object:  Login [DOMNEP\ofisis]    Script Date: 20/07/2016 12:12:20 p.m. ******/
+CREATE LOGIN [DOMNEP\ofisis] FROM WINDOWS WITH DEFAULT_DATABASE=[master], DEFAULT_LANGUAGE=[us_english]
+GO
+
+/****** Object:  Login [DOMNEP\ofisis2]    Script Date: 20/07/2016 12:12:20 p.m. ******/
+CREATE LOGIN [DOMNEP\ofisis2] FROM WINDOWS WITH DEFAULT_DATABASE=[master], DEFAULT_LANGUAGE=[us_english]
+GO
+
+/****** Object:  Login [DOMNEP\ofisis3]    Script Date: 20/07/2016 12:12:20 p.m. ******/
+CREATE LOGIN [DOMNEP\ofisis3] FROM WINDOWS WITH DEFAULT_DATABASE=[master], DEFAULT_LANGUAGE=[us_english]
+GO
+
+/****** Object:  Login [DOMNEP\ofisis4]    Script Date: 20/07/2016 12:12:20 p.m. ******/
+CREATE LOGIN [DOMNEP\ofisis4] FROM WINDOWS WITH DEFAULT_DATABASE=[master], DEFAULT_LANGUAGE=[us_english]
+GO
+
+/* For security reasons the login is created disabled and with a random password. */
+/****** Object:  Login [georepositorio]    Script Date: 20/07/2016 12:12:20 p.m. ******/
+CREATE LOGIN [georepositorio] WITH PASSWORD=N'5FD0EQ6T7DQ2rIBcFJ4Nn8iHUqnV668qQ3au+q6Hcns=', DEFAULT_DATABASE=[master], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
+GO
+
+ALTER LOGIN [georepositorio] DISABLE
+GO
+
+/* For security reasons the login is created disabled and with a random password. */
+/****** Object:  Login [gwc_user]    Script Date: 20/07/2016 12:12:20 p.m. ******/
+CREATE LOGIN [gwc_user] WITH PASSWORD=N'szlLXYuiVZJay34w7TKvMLZeX0qlobTgQZvDez7gl6U=', DEFAULT_DATABASE=[master], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=ON
+GO
+
+ALTER LOGIN [gwc_user] DISABLE
+GO
+
+/* For security reasons the login is created disabled and with a random password. */
+/****** Object:  Login [Ofisis]    Script Date: 20/07/2016 12:12:20 p.m. ******/
+CREATE LOGIN [Ofisis] WITH PASSWORD=N'ipUcW1MgRBBa30VG0WKgTiEt0tpv+xGc6NdfpZvjXCA=', DEFAULT_DATABASE=[master], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
+GO
+
+ALTER LOGIN [Ofisis] DISABLE
+GO
+
+/* For security reasons the login is created disabled and with a random password. */
+/****** Object:  Login [ofisis3]    Script Date: 20/07/2016 12:12:20 p.m. ******/
+CREATE LOGIN [ofisis3] WITH PASSWORD=N'cUwkjo2P7vWC4qyPgEPIPJM/tXGyQGkvViGD1JfHOxM=', DEFAULT_DATABASE=[master], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
+GO
+
+ALTER LOGIN [ofisis3] DISABLE
+GO
+
+/* For security reasons the login is created disabled and with a random password. */
+/****** Object:  Login [qa_ofisis]    Script Date: 20/07/2016 12:12:20 p.m. ******/
+CREATE LOGIN [qa_ofisis] WITH PASSWORD=N'CTthqT/6cTPA10zcXY6rYo5/J1bwc/pxvIneDF1zpuU=', DEFAULT_DATABASE=[master], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
+GO
+
+ALTER LOGIN [qa_ofisis] DISABLE
+GO
+
+ALTER SERVER ROLE [sysadmin] ADD MEMBER [cosmos]
+GO
+
+ALTER SERVER ROLE [sysadmin] ADD MEMBER [DOMNEP\adminazrtest]
+GO
+
+ALTER SERVER ROLE [sysadmin] ADD MEMBER [DOMNEP\adminofisis]
+GO
+
+ALTER SERVER ROLE [sysadmin] ADD MEMBER [DOMNEP\ofisis]
+GO
+
+ALTER SERVER ROLE [sysadmin] ADD MEMBER [DOMNEP\ofisis2]
+GO
+
+ALTER SERVER ROLE [sysadmin] ADD MEMBER [DOMNEP\ofisis3]
+GO
+
+ALTER SERVER ROLE [sysadmin] ADD MEMBER [DOMNEP\ofisis4]
+GO
+
+ALTER SERVER ROLE [sysadmin] ADD MEMBER [georepositorio]
+GO
+
+ALTER SERVER ROLE [sysadmin] ADD MEMBER [gwc_user]
+GO
+
+ALTER SERVER ROLE [sysadmin] ADD MEMBER [Ofisis]
+GO
+
+ALTER SERVER ROLE [securityadmin] ADD MEMBER [Ofisis]
+GO
+
+ALTER SERVER ROLE [sysadmin] ADD MEMBER [ofisis3]
+GO
+

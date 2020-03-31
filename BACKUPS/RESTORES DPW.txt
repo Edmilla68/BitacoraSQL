@@ -1,0 +1,141 @@
+
+Forwarders
+Logistica
+OrdenesServicio
+Seguridad
+Tarifario
+Triton
+dbneptunia
+AuditDB
+
+
+USE [master]
+
+
+RESTORE DATABASE Depositos FROM  DISK = N'\\CALW12ARCSRV\BackupSQL$\Depositos.Bak' WITH  FILE = 1,  
+MOVE N'depositos2datData'  TO N'D:\DATA\Depositos.mdf',  
+MOVE N'depositolog'   TO N'E:\LOG\Depositos.ldf', 
+NOUNLOAD,  REPLACE,  STATS = 5
+
+ALTER DATABASE Depositos SET MULTI_USER
+
+GO
+
+
+	D:\DataSql\Forwarders.MDF
+	E:\LogSql\Forwarders.LDF
+
+
+USE [master]
+
+
+RESTORE DATABASE Forwarders FROM  DISK = N'\\CALW12ARCSRV\BackupSQL$\Forwarders.Bak' WITH  FILE = 1,  
+MOVE N'Forwarders_Data'  TO N'D:\DATA\Forwarders.mdf',  
+MOVE N'Forwarders_Log'   TO N'E:\LOG\Forwarders.ldf', 
+NOUNLOAD,  REPLACE,  STATS = 5
+
+ALTER DATABASE Forwarders SET MULTI_USER
+
+GO
+
+
+--*************************************************************************
+USE [master]
+
+
+RESTORE DATABASE Logistica FROM  DISK = N'\\CALW12ARCSRV\BackupSQL$\Logistica.Bak' WITH  FILE = 1,  
+MOVE N'SBDBNEW_dat'  TO N'D:\DATA\Logistica.mdf',  
+MOVE N'SBDBNEW_log'   TO N'E:\LOG\Logistica.ldf', 
+NOUNLOAD,  REPLACE,  STATS = 5
+
+ALTER DATABASE Logistica SET MULTI_USER
+
+GO
+
+
+
+
+USE [master]
+
+
+RESTORE DATABASE OrdenesServicio FROM  DISK = N'\\CALW12ARCSRV\BackupSQL$\OrdenesServicio.Bak' WITH  FILE = 1,  
+MOVE N'OrdenServicio_Data'  TO N'D:\DATA\OrdenesServicio.mdf',  
+MOVE N'OrdenServicio_Log'   TO N'E:\LOG\OrdenesServicio.ldf', 
+NOUNLOAD,  REPLACE,  STATS = 5
+
+ALTER DATABASE OrdenesServicio SET MULTI_USER
+
+GO
+
+
+
+USE [master]
+
+
+RESTORE DATABASE Seguridad FROM  DISK = N'\\CALW12ARCSRV\BackupSQL$\Seguridad.Bak' WITH  FILE = 1,  
+MOVE N'Seguridad_New_Data'  TO N'D:\DATA\Seguridad.mdf',  
+MOVE N'Seguridad_New_Log'   TO N'E:\LOG\Seguridad_0.ldf', 
+NOUNLOAD,  REPLACE,  STATS = 5
+
+ALTER DATABASE Seguridad SET MULTI_USER
+
+GO
+
+
+
+
+
+USE [master]
+
+
+RESTORE DATABASE Tarifario FROM  DISK = N'\\CALW12ARCSRV\BackupSQL$\Tarifario.Bak' WITH  FILE = 1,  
+MOVE N'Tarifario_Desarrollo_Data'  TO N'D:\DATA\Tarifario.mdf',  
+MOVE N'Tarifario_Data'  TO N'D:\DATA\Tarifario_1.ndf',  
+MOVE N'Tarifario_Desarrollo_Log'   TO N'E:\LOG\Tarifario.ldf', 
+NOUNLOAD,  REPLACE,  STATS = 5
+
+ALTER DATABASE Tarifario SET MULTI_USER
+
+GO
+
+
+
+
+
+USE [master]
+
+
+RESTORE DATABASE Triton FROM  DISK = N'\\CALW12ARCSRV\BackupSQL$\Triton.Bak' WITH  FILE = 1,  
+MOVE N'Triton_Data'  TO N'D:\DATA\Triton.mdf',  
+MOVE N'Triton_Log'   TO N'E:\LOG\Triton.ldf', 
+NOUNLOAD,  REPLACE,  STATS = 5
+
+ALTER DATABASE Triton SET MULTI_USER
+
+GO
+
+
+USE [master]
+
+
+RESTORE DATABASE dbneptunia FROM  DISK = N'\\CALW12ARCSRV\BackupSQL$\dbneptunia.Bak' WITH  FILE = 1,  
+MOVE N'dbneptunia'  TO N'D:\DATA\dbneptunia.mdf',  
+MOVE N'dbneptunia_log'   TO N'E:\LOG\dbneptunia_log.ldf', 
+NOUNLOAD,  REPLACE,  STATS = 5
+
+ALTER DATABASE dbneptunia SET MULTI_USER
+
+
+
+
+USE [master]
+
+
+RESTORE DATABASE AuditDB FROM  DISK = N'\\CALW12ARCSRV\BackupSQL$\AuditDB.Bak' WITH  FILE = 1,  
+MOVE N'AuditDB'  TO N'D:\DATA\AuditDB.mdf',  
+MOVE N'AuditDB_log'   TO N'E:\LOG\AuditDB_log.ldf', 
+NOUNLOAD,  REPLACE,  STATS = 5
+
+ALTER DATABASE AuditDB SET MULTI_USER
+
+

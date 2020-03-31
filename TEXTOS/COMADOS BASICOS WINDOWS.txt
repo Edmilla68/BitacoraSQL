@@ -1,0 +1,31 @@
+
+winmsd.exe			Informacion SO
+msinfo32.exe		Informacion SO
+compmgmt.msc		Administracion del Equipo
+perfmon.exe			Monitor de Performance
+
+appwiz.cpl			Desinstalar Apps
+regedit				Registro de Win
+drivers				Abre carpeta drivers
+
+ncpa.cpl			conexiones de RED
+sysdm.cpl			Propiedades del Sistema
+msconfig			Inicion de windows... y otros
+
+
+para backup de sistema....
+wbAdmin start backup -backupTrget:E: -include:C: -allCritical -quiet
+
+
+limpia clipboard
+cmd.exe /c "echo off|clip"
+
+
+nbtstat -R
+ipconfig /flushdns
+
+SOFTWARES
+
+lansweeper full
+
+

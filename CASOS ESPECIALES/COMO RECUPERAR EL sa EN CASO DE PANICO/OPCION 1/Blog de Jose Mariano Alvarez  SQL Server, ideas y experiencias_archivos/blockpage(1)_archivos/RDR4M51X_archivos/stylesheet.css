@@ -1,0 +1,12 @@
+@font-face {
+	font-family: frutigerbold;
+	src: url(frutigerbold.eot?#iefix) format("embedded-opentype"), url(frutigerbold.woff) format("woff"), url(frutigerbold.ttf) format("truetype"), url(frutigerbold.svg#frutigerbold) format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: frutiger65;
+	src: url(frutiger65.eot?#iefix) format("embedded-opentype"), url(frutiger65.woff) format("woff"), url(frutiger65.ttf) format("truetype"), url(frutiger65.svg#frutiger65) format("svg");
+	font-weight: normal;
+	font-style: normal;
+}

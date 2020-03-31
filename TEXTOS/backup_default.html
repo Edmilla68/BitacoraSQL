@@ -1,0 +1,168 @@
+  <%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="AdmUserWeb.WebForm1" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    
+    <style type="text/css">
+        .auto-style5 {
+            width: 417px;
+            height: 30px;
+        }
+        .auto-style6 {
+            width: 688px;
+            height: 30px;
+        }
+        .auto-style7 {
+            height: 40px;
+        }
+        .auto-style9 {
+            height: 40px;
+            width: 753px;
+        }
+        .auto-style10 {
+            height: 40px;
+            width: 417px;
+        }
+
+        
+       body {  background: url("http://calw12monitor/AdmPass/imagenes/candado4.jpg"); background-repeat: no-repeat; background-size: 80px 80px; background-position:left top;}
+
+     
+        
+        .auto-style11 {
+            width: 753px;
+            height: 4px;
+        }
+        .auto-style12 {
+            width: 1310px;
+            height: 4px;
+        }
+        .auto-style13 {
+            height: 49px;
+            width: 753px;
+        }
+        .auto-style14 {
+            height: 49px;
+            width: 1310px;
+        }
+
+     
+        
+        .auto-style15 {
+            width: 1310px;
+            height: 30px;
+        }
+        .auto-style16 {
+            height: 40px;
+            width: 1310px;
+        }
+        .auto-style17 {
+            width: 753px;
+            height: 30px;
+        }
+
+     
+        
+    </style>
+</head>
+
+  
+
+<body>
+
+    
+    <h2 align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mantenimiento: Contraseñas Neptunia</h2>
+    <form id="form1" runat="server">
+    <div>
+<table border="0" bordercolor = "yellow" cellpadding="0" cellspacing="0" style="width: 41%" >
+
+
+    <tr>
+       <th class="auto-style13">  <asp:Label ID="Label7" runat="server" Text="Localidad       " style="text-align: left"></asp:Label>  </th>  
+        <td class="auto-style14">
+            <asp:DropDownList ID="DropDownList1" runat="server" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" Width="218px" AutoPostBack="True" Height="21px">
+                <asp:ListItem Value="1">Callao</asp:ListItem>
+                <asp:ListItem Value="2">Paita</asp:ListItem>
+            </asp:DropDownList>
+        </td>       
+    </tr>
+
+
+     <tr>
+       <td class="auto-style11">  <asp:Label ID="Label1" runat="server" Text="Servidores afectados       "></asp:Label>  </td>  
+       <td class="auto-style12">  
+           <asp:TextBox ID="txb_listaserver" runat="server" Enabled="False" Height="53px" TextMode="MultiLine" Width="212px"></asp:TextBox>  </td> 
+        <td  >  <asp:TextBox ID="tbx_server" runat="server" Enabled="False" Height="16px" Visible="False" Width="16px">Neptunia1</asp:TextBox>            </td> 
+    </tr>
+  
+     <tr>
+       <td class="auto-style17">  <asp:Label ID="Label2" runat="server" Text="Base de Datos" Visible="False"></asp:Label>  </td>  
+       <td class="auto-style15">  <asp:TextBox ID="tbx_bd" runat="server" Enabled="False" Visible="False" Width="207px">master</asp:TextBox>            </td> 
+    </tr>
+
+     <tr>
+       <td class="auto-style17">  <asp:Label ID="Label3" runat="server" Text="Usuario"></asp:Label>  </td>  
+       <td class="auto-style15">  <asp:TextBox ID="tbx_user" runat="server" Width="205px"></asp:TextBox>            </td> 
+    </tr>
+
+      <tr>
+       <td class="auto-style17">  <asp:Label ID="Label4" runat="server" Text="Contraseña"></asp:Label>  </td>  
+       <td class="auto-style15">  <asp:TextBox ID="tbx_pass" runat="server" TextMode="Password" Width="210px"></asp:TextBox>            </td> 
+    </tr>
+
+     <tr>
+       <td class="auto-style9"> </td>  
+       <td class="auto-style16" >
+           <asp:Button ID="Button1" runat="server" Text="Conectar" Width="100px" aling="Rigth" OnClick="Button1_Click"/>
+         </td> 
+    </tr>
+
+</table>
+
+
+
+</div>        
+        
+    <div>
+<table border="0" bordercolor = "yellow" cellpadding="0" cellspacing="0" style="width: 41%" >
+     <tr>
+       <td class="auto-style5">  <asp:Label ID="Label5" runat="server" Text="Nueva contraseña       "></asp:Label>  </td>  
+       <td class="auto-style6">  <asp:TextBox ID="txb_newpass1" runat="server" style="margin-left: 0px" TextMode="Password" Enabled="False" Width="240px"></asp:TextBox>            </td> 
+    </tr>
+  
+     <tr>
+       <td class="auto-style5">  <asp:Label ID="Label6" runat="server" Text="Confirmar contraseña "></asp:Label>  </td>  
+       <td class="auto-style6"> 
+           
+            <asp:TextBox ID="txb_newpass2" runat="server" TextMode="Password" Enabled="False" Width="237px"></asp:TextBox>           
+
+       </td> 
+    </tr>
+
+     <tr>
+       <td class="auto-style10"> </td>  
+       <td class="auto-style7" >
+           <asp:Button ID="Button2" runat="server" Text="Cambiar contraseña" Width="147px" aling="Rigth" OnClick="Button2_Click"/>
+         </td> 
+    </tr>
+
+</table>
+
+
+
+</div>        
+        
+        <asp:TextBox ID="txb_msg3" runat="server" Height="136px" TextMode="MultiLine" Width="489px"></asp:TextBox>
+
+
+        </form>
+
+</body>
+</html>
+
+
+

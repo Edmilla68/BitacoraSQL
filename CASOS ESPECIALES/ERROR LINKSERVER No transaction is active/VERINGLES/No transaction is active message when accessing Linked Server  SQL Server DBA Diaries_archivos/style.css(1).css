@@ -1,0 +1,48 @@
+#FollowMeBubble {
+	left: 38% !important; top: 200px !important; width: 331px !important; border-bottom-color: currentColor !important; border-bottom-width: medium !important; border-bottom-style: none !important; position: absolute !important; z-index: 10000 !important;
+}
+a#close {
+	border-bottom-color: currentColor; border-bottom-width: medium; border-bottom-style: none;
+}
+#FollowMeBubble #bubblewrap {
+	width: 331px !important;
+}
+#FollowMeBubble #stretch {
+	margin-top: 10px; margin-bottom: 10px;
+}
+#FollowMeBubble span {
+	text-transform: capitalize !important; padding-top: 1px !important; clear: both; margin-top: 4px; margin-left: 34px !important; float: left !important;
+}
+#FollowMeBubble span a {
+	font: 15pt/normal "Lucida Grande",Verdana,Arial,Sans-Serif !important; border: currentColor; border-image: none; color: rgb(161, 159, 160) !important; text-decoration: none !important; display: inline !important; font-size-adjust: none !important; font-stretch: normal !important; -x-system-font: none;
+}
+#FollowMeBubble span a img {
+	border: currentColor !important; border-image: none !important; padding-right: 2px !important; vertical-align: middle !important;
+}
+#FollowMeBubbleBG {
+	margin: 0px !important; left: 0px !important; top: 0px !important; width: 100% !important; height: 100% !important; border-bottom-color: currentColor; border-bottom-width: medium; border-bottom-style: none; position: fixed !important; z-index: 9000 !important; opacity: 0.6 !important; background-color: rgb(0, 0, 0) !important;
+}
+#FollowMeBubble #grab {
+	left: 190px !important; width: 130px !important; height: 39px !important; font-size: 150% !important; margin-top: 10px !important; display: block !important; position: relative !important;
+}
+#FollowMeBubble #grab span {
+	visibility: hidden !important;
+}
+#FollowMeBubble a#grab:hover {
+	text-decoration: none !important;
+}
+#FollowMeBubble #close {
+	left: 50% !important; top: -10px !important; width: 40px !important; height: 39px !important; margin-left: 135px !important; position: absolute !important; z-index: 20000 !important;
+}
+#FollowMeTabLeftSm {
+	left: 0px !important; top: 50% !important; margin-top: -61px !important; position: fixed !important; z-index: 20000 !important;
+}
+#FollowMeTabLeftLg {
+	left: 0px !important; top: 50% !important; margin-top: -121px !important; position: fixed !important; z-index: 20000 !important;
+}
+#FollowMeTabRightSm {
+	top: 50% !important; right: 0px !important; margin-top: -61px !important; position: fixed !important; z-index: 20000 !important;
+}
+#FollowMeTabRightLg {
+	top: 50% !important; right: 0px !important; margin-top: -121px !important; position: fixed !important; z-index: 20000 !important;
+}

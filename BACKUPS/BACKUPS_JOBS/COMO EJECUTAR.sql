@@ -1,0 +1,1 @@
+EXEC CreateBackUpFromAllJob 'D:\BKP_JOBS\'

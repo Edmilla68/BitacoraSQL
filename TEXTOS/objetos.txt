@@ -1,0 +1,12 @@
+txb_pro_grado
+txb_pro_anio_lect
+txb_pro_colegio
+txb_pro_dist
+cbx_proc_situ
+txb_pro_ccargo
+nud_proc_matric
+txb_pro_obmatric
+nud_proc_admi
+txb_pro_obadmin
+nud_proc_pension
+txb_pro_obpension

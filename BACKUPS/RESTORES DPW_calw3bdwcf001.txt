@@ -1,0 +1,42 @@
+--	C:\TARJA_PRIMARY\BD_WMS_FWD_PROD_PRIMARY.mdf
+		--F:\TARJA_LOG\BD_WMS_FWD_PROD_LOG.ldf
+--	E:\TARJA_DATA\BD_WMS_FWD_PROD_DATA.ndf
+--	F:\TARJA_INDICES\BD_WMS_FWD_PROD_INDICES.ndf
+
+
+USE [master]
+
+
+RESTORE DATABASE BD_WMS_FWD_PROD FROM  DISK = N'\\CALW12ARCSRV\BackupSQL$\BD_WMS_FWD_PROD.Bak' WITH  FILE = 1,  
+MOVE N'BD_WMS_FWD_PROD_PRIMARY'  TO N'D:\DATA\BD_WMS_FWD_PROD_PRIMARY.mdf',  
+MOVE N'BD_WMS_FWD_PROD_DATA'  TO N'D:\DATA\BD_WMS_FWD_PROD_DATA.ndf',  
+MOVE N'BD_WMS_FWD_PROD_INDICES'  TO N'D:\DATA\BD_WMS_FWD_PROD_INDICES.ndf',  
+MOVE N'BD_WMS_FWD_PROD_LOG'   TO N'E:\LOG\BD_WMS_FWD_PROD_LOG.ldf', 
+NOUNLOAD,  REPLACE,  STATS = 5
+
+ALTER DATABASE BD_WMS_FWD_PROD SET MULTI_USER
+
+GO
+
+
+
+--	C:\BUSSERVICIOS_PRIMARY\BusServicios_Primary.mdf
+--	F:\BUSSERVICIOS_LOG\BusServicios_log.ldf
+
+--	E:\BUSSERVICIOS_DATA\BusServicios_Data.ndf
+--	F:\BUSSERVICIOS_INDICES\BusServicios_Indices.ndf
+
+
+USE [master]
+
+
+RESTORE DATABASE BusServicios FROM  DISK = N'\\CALW12ARCSRV\BackupSQL$\BusServicios.Bak' WITH  FILE = 1,  
+MOVE N'BusServicios_Primary'  TO N'D:\DATA\BusServicios_Primary.mdf',  
+MOVE N'BusServicios_Data'  TO N'D:\DATA\BusServicios_Data.ndf',  
+MOVE N'BusServicios_Indices'  TO N'D:\DATA\BusServicios_Indices.ndf',  
+MOVE N'BusServicios_log'   TO N'E:\LOG\BusServicios_log.ldf', 
+NOUNLOAD,  REPLACE,  STATS = 5
+
+ALTER DATABASE BusServicios SET MULTI_USER
+
+GO

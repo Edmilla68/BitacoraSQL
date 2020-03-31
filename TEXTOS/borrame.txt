@@ -1,0 +1,80 @@
+fr_tablero
+ /*
+            Tacometro_dyn tac0 = new Tacometro_dyn();
+            Tacometro_dyn tac1 = new Tacometro_dyn();
+            Tacometro_dyn tac2 = new Tacometro_dyn();
+            Tacometro_dyn tac3 = new Tacometro_dyn();
+            Tacometro_dyn tac4 = new Tacometro_dyn();
+            Tacometro_dyn tac5 = new Tacometro_dyn();
+            Tacometro_dyn tac6 = new Tacometro_dyn();
+            Tacometro_dyn tac7 = new Tacometro_dyn();
+            Tacometro_dyn tac8 = new Tacometro_dyn();
+            Tacometro_dyn tac9 = new Tacometro_dyn();
+            Tacometro_dyn tac10 = new Tacometro_dyn();
+            Tacometro_dyn tac11 = new Tacometro_dyn();
+            Tacometro_dyn tac12 = new Tacometro_dyn();
+            */
+            InitializeComponent();
+            Int32 ColInc = 0;
+            for (int i = 0; i <= 3; i++)
+            {
+                medidor(0, ColInc, "Neptunia1", i);
+                ColInc = ColInc + 150;
+             //   medidor(0, 150, "Neptunia2", 1);
+            } 
+            
+            
+
+            /*
+            servidor[0] = "Neptunia1";
+            tac0.add_tacom(0, 0, servidor[0]);
+            tac0.fijar_pant(this);
+
+            servidor[1] = "Neptunia2";
+            tac1.add_tacom(0, 150, servidor[1]);
+            tac1.fijar_pant(this);
+
+            servidor[2] = "Oceanica1";
+            tac2.add_tacom(0, 300, servidor[2]);
+            tac2.fijar_pant(this);
+
+            servidor[3] = "CALW8BDSCOT";
+            tac3.add_tacom(0, 450, servidor[3]);
+            tac3.fijar_pant(this);
+
+            servidor[4] = "CALW3ERP001";
+            tac4.add_tacom(200, 0, servidor[4]);
+            tac4.fijar_pant(this);
+
+            servidor[5] = "FACTNPT";
+            tac5.add_tacom(200, 150, servidor[5]);
+            tac5.fijar_pant(this);
+
+            servidor[6] = "CALW3BDLOG";
+            tac6.add_tacom(200, 300, servidor[6]);
+            tac6.fijar_pant(this);
+
+            servidor[7] = "CALW12BDSOLPORT";
+            tac7.add_tacom(200, 450, servidor[7]);
+            tac7.fijar_pant(this);
+
+            servidor[8] = "CALW12SQLCORP";
+            tac8.add_tacom(400, 0, servidor[8]);
+            tac8.fijar_pant(this);
+
+            servidor[9] = "";
+            tac9.add_tacom(0, 450, servidor[9]);
+            tac9.fijar_pant(this);
+
+            servidor[10] = "";
+            tac10.add_tacom(0, 450, servidor[10]);
+            tac10.fijar_pant(this);
+
+            servidor[11] = "";
+            tac11.add_tacom(0, 450, servidor[11]);
+            tac11.fijar_pant(this);
+
+            servidor[12] = "";
+            tac12.add_tacom(0, 450, servidor[11]);
+            tac12.fijar_pant(this);
+            */

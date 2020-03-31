@@ -1,0 +1,18 @@
+EXEC master.dbo.xp_smtp_sendmail 
+        @TO = 'eduardo.milla@gmail.com', 
+        @from = 'aneptunia@neptunia.com.pe', 
+        @message = 'fgsdjfgsd sdfsdgfsdg sdjfdsjgh', 
+        @subject = 'foo was fired.', 
+        @server = 'correo.neptunia.com.pe' 
+		
+		
+		
+		
+		
+		USE msdb ;  
+GO  
+
+EXECUTE dbo.sysmail_start_sp ;  
+GO  
+
+http://lulas-system001:8123/iwc/licenseActivation.iwc

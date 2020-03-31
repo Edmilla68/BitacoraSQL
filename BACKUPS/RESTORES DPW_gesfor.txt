@@ -1,0 +1,37 @@
+
+
+
+--GO.SGC_Neptunia	D:\Microsoft SQL Server\Databases\Neptunia_SGC.mdf
+--GO.SGC_Neptunia_log	E:\Microsoft SQL Server\Datalog\Neptunia_SGC_1.ldf
+
+
+USE [master]
+
+
+RESTORE DATABASE SGC_Neptunia FROM  DISK = N'\\CALW12ARCSRV\BackupSQL$\SGC_Neptunia.Bak' WITH  FILE = 1,  
+MOVE N'GO.SGC_Neptunia'  TO N'D:\DATA\SGC_Neptunia.mdf',  
+MOVE N'GO.SGC_Neptunia_log'   TO N'E:\LOG\Neptunia_SGC_1.ldf', 
+NOUNLOAD,  REPLACE,  STATS = 5
+
+ALTER DATABASE SGC_Neptunia SET MULTI_USER
+
+GO
+
+
+
+--GO.SGC_Neptunia	D:\Microsoft SQL Server\Databases\Neptunia_SGC_Produccion.mdf
+--GO.SGC_Neptunia_log	E:\Microsoft SQL Server\Datalog\Neptunia_SGC_Produccion_1.ldf
+
+
+
+USE [master]
+
+
+RESTORE DATABASE Neptunia_SGC_Produccion FROM  DISK = N'\\CALW12ARCSRV\BackupSQL$\Neptunia_SGC_Produccion.Bak' WITH  FILE = 1,  
+MOVE N'GO.SGC_Neptunia'  TO N'D:\DATA\Neptunia_SGC_Produccion.mdf',  
+MOVE N'GO.SGC_Neptunia_log'   TO N'E:\LOG\Neptunia_SGC_Produccion_1.ldf', 
+NOUNLOAD,  REPLACE,  STATS = 5
+
+ALTER DATABASE Neptunia_SGC_Produccion SET MULTI_USER
+
+GO

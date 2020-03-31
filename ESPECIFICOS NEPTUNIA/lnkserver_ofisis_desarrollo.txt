@@ -1,0 +1,141 @@
+USE [master]
+GO
+
+/****** Object:  LinkedServer [CALW3ERP001]    Script Date: 20/07/2016 12:14:48 p.m. ******/
+EXEC master.dbo.sp_addlinkedserver @server = N'CALW3ERP001', @srvproduct=N'SQL Server'
+ /* For security reasons the linked server remote logins password is changed with ######## */
+EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'CALW3ERP001',@useself=N'False',@locallogin=NULL,@rmtuser=N'OFISIS',@rmtpassword='########'
+
+GO
+
+EXEC master.dbo.sp_serveroption @server=N'CALW3ERP001', @optname=N'collation compatible', @optvalue=N'false'
+GO
+
+EXEC master.dbo.sp_serveroption @server=N'CALW3ERP001', @optname=N'data access', @optvalue=N'true'
+GO
+
+EXEC master.dbo.sp_serveroption @server=N'CALW3ERP001', @optname=N'dist', @optvalue=N'false'
+GO
+
+EXEC master.dbo.sp_serveroption @server=N'CALW3ERP001', @optname=N'pub', @optvalue=N'false'
+GO
+
+EXEC master.dbo.sp_serveroption @server=N'CALW3ERP001', @optname=N'rpc', @optvalue=N'true'
+GO
+
+EXEC master.dbo.sp_serveroption @server=N'CALW3ERP001', @optname=N'rpc out', @optvalue=N'true'
+GO
+
+EXEC master.dbo.sp_serveroption @server=N'CALW3ERP001', @optname=N'sub', @optvalue=N'false'
+GO
+
+EXEC master.dbo.sp_serveroption @server=N'CALW3ERP001', @optname=N'connect timeout', @optvalue=N'0'
+GO
+
+EXEC master.dbo.sp_serveroption @server=N'CALW3ERP001', @optname=N'collation name', @optvalue=null
+GO
+
+EXEC master.dbo.sp_serveroption @server=N'CALW3ERP001', @optname=N'lazy schema validation', @optvalue=N'false'
+GO
+
+EXEC master.dbo.sp_serveroption @server=N'CALW3ERP001', @optname=N'query timeout', @optvalue=N'0'
+GO
+
+EXEC master.dbo.sp_serveroption @server=N'CALW3ERP001', @optname=N'use remote collation', @optvalue=N'true'
+GO
+
+EXEC master.dbo.sp_serveroption @server=N'CALW3ERP001', @optname=N'remote proc transaction promotion', @optvalue=N'true'
+GO
+
+/****** Object:  LinkedServer [OFISIS_COSMOS3]    Script Date: 20/07/2016 12:14:48 p.m. ******/
+EXEC master.dbo.sp_addlinkedserver @server = N'OFISIS_COSMOS3', @srvproduct=N'SQL', @provider=N'SQLNCLI', @datasrc=N'192.168.0.49', @catalog=N'OFIASIS'
+ /* For security reasons the linked server remote logins password is changed with ######## */
+EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'OFISIS_COSMOS3',@useself=N'True',@locallogin=NULL,@rmtuser=NULL,@rmtpassword=NULL
+
+GO
+
+EXEC master.dbo.sp_serveroption @server=N'OFISIS_COSMOS3', @optname=N'collation compatible', @optvalue=N'false'
+GO
+
+EXEC master.dbo.sp_serveroption @server=N'OFISIS_COSMOS3', @optname=N'data access', @optvalue=N'true'
+GO
+
+EXEC master.dbo.sp_serveroption @server=N'OFISIS_COSMOS3', @optname=N'dist', @optvalue=N'false'
+GO
+
+EXEC master.dbo.sp_serveroption @server=N'OFISIS_COSMOS3', @optname=N'pub', @optvalue=N'false'
+GO
+
+EXEC master.dbo.sp_serveroption @server=N'OFISIS_COSMOS3', @optname=N'rpc', @optvalue=N'true'
+GO
+
+EXEC master.dbo.sp_serveroption @server=N'OFISIS_COSMOS3', @optname=N'rpc out', @optvalue=N'true'
+GO
+
+EXEC master.dbo.sp_serveroption @server=N'OFISIS_COSMOS3', @optname=N'sub', @optvalue=N'false'
+GO
+
+EXEC master.dbo.sp_serveroption @server=N'OFISIS_COSMOS3', @optname=N'connect timeout', @optvalue=N'0'
+GO
+
+EXEC master.dbo.sp_serveroption @server=N'OFISIS_COSMOS3', @optname=N'collation name', @optvalue=null
+GO
+
+EXEC master.dbo.sp_serveroption @server=N'OFISIS_COSMOS3', @optname=N'lazy schema validation', @optvalue=N'false'
+GO
+
+EXEC master.dbo.sp_serveroption @server=N'OFISIS_COSMOS3', @optname=N'query timeout', @optvalue=N'0'
+GO
+
+EXEC master.dbo.sp_serveroption @server=N'OFISIS_COSMOS3', @optname=N'use remote collation', @optvalue=N'true'
+GO
+
+EXEC master.dbo.sp_serveroption @server=N'OFISIS_COSMOS3', @optname=N'remote proc transaction promotion', @optvalue=N'true'
+GO
+
+/****** Object:  LinkedServer [SQLCOSMOS]    Script Date: 20/07/2016 12:14:48 p.m. ******/
+EXEC master.dbo.sp_addlinkedserver @server = N'SQLCOSMOS', @srvproduct=N'SQL Server'
+ /* For security reasons the linked server remote logins password is changed with ######## */
+EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'SQLCOSMOS',@useself=N'False',@locallogin=NULL,@rmtuser=N'usrofisisnep',@rmtpassword='########'
+
+GO
+
+EXEC master.dbo.sp_serveroption @server=N'SQLCOSMOS', @optname=N'collation compatible', @optvalue=N'false'
+GO
+
+EXEC master.dbo.sp_serveroption @server=N'SQLCOSMOS', @optname=N'data access', @optvalue=N'true'
+GO
+
+EXEC master.dbo.sp_serveroption @server=N'SQLCOSMOS', @optname=N'dist', @optvalue=N'false'
+GO
+
+EXEC master.dbo.sp_serveroption @server=N'SQLCOSMOS', @optname=N'pub', @optvalue=N'false'
+GO
+
+EXEC master.dbo.sp_serveroption @server=N'SQLCOSMOS', @optname=N'rpc', @optvalue=N'false'
+GO
+
+EXEC master.dbo.sp_serveroption @server=N'SQLCOSMOS', @optname=N'rpc out', @optvalue=N'false'
+GO
+
+EXEC master.dbo.sp_serveroption @server=N'SQLCOSMOS', @optname=N'sub', @optvalue=N'false'
+GO
+
+EXEC master.dbo.sp_serveroption @server=N'SQLCOSMOS', @optname=N'connect timeout', @optvalue=N'0'
+GO
+
+EXEC master.dbo.sp_serveroption @server=N'SQLCOSMOS', @optname=N'collation name', @optvalue=null
+GO
+
+EXEC master.dbo.sp_serveroption @server=N'SQLCOSMOS', @optname=N'lazy schema validation', @optvalue=N'false'
+GO
+
+EXEC master.dbo.sp_serveroption @server=N'SQLCOSMOS', @optname=N'query timeout', @optvalue=N'0'
+GO
+
+EXEC master.dbo.sp_serveroption @server=N'SQLCOSMOS', @optname=N'use remote collation', @optvalue=N'true'
+GO
+
+EXEC master.dbo.sp_serveroption @server=N'SQLCOSMOS', @optname=N'remote proc transaction promotion', @optvalue=N'true'
+GO
+

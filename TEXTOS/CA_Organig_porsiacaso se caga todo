@@ -1,0 +1,111 @@
+////***************************************************
+//////LIMPIAR OBJETO
+//long         ll_upper_bound
+//long         ll_upper_bound_li
+//Integer ll_row 
+//
+//ll_upper_bound = UpperBound(OBJ_CUADRO[])
+//if ll_upper_bound <= 50 then
+//   for ll_row = 1 to ll_upper_bound
+//		OBJ_CUADRO[ll_row].visible = false
+//		destroy OBJ_CUADRO[ll_row]
+//	next
+//end if
+//OBJ_CUADRO[] = OBJ_limpia[]
+//ll_row = 0
+//
+//ll_upper_bound_li = UpperBound(linea[])
+//   for ll_row = 1 to ll_upper_bound_li 
+//		linea[ll_row].visible = false
+//	next
+//linea[] = linea_limpia[]
+//
+//
+////**************************************************
+////
+//DataStore ds_puestos_dib
+//ds_puestos_dib = CREATE DataStore
+//ds_puestos_dib.DataObject = 'ds_puestos_dib'
+//ds_puestos_dib.SetTransObject(sqlca)
+//
+//Integer li_ly_n1
+//Integer li_lx_n1
+//
+//Integer li_ly_n2
+//Integer li_lx_n2
+//
+//Integer li_ocurr_n1 = 0
+//Integer li_ly_n2_corrector
+//Long row,nrows
+//Integer bloque
+//bloque=0
+//nrows = ds_puestos_dib.Retrieve(g_param.s_empresa , is_area)
+//li_ly_n1 = 10
+//li_ly_n2 = 0
+//li_lx_n2 = 10
+//li_ly_n2_corrector = 0
+//FOR row = 1 to nrows     
+//	IF ds_puestos_dib.GetItemNumber(row,'nivel') = 1 Then
+//      	li_ocurr_n1 = li_ocurr_n1  + 1
+//		li_lx_n1 = (uo_cont01.Width - 517 ) /  2
+//		 OBJ_CUADRO[row] =  f_dib_cuadro(uo_cont01,li_ly_n1,li_lx_n1,trim(ds_puestos_dib.GetItemString(row,'Nombre')) + ' : '+trim(ds_puestos_dib.GetItemString(row,'personal')))	
+//		 OBJ_CUADRO[row].tag = ds_puestos_dib.GetItemString(row,'cod_puesto')
+//	     	li_ly_n1 = li_ly_n1 + 500
+//
+////	li_ly_n2 = li_ly_n2  + bloque
+////	li_ly_n2 = li_ly_n2  + (li_ocurr_n1 *  250)
+//li_ly_n2 = bloque + (li_ocurr_n1 *  250)
+//bloque= bloque + 250
+////		li_ly_n2 = (li_ocurr_n1 *  bloque)
+//	//	MessageBOx('li_ly_n2  = ' + string(li_ly_n2),'li_ocurr_n1 = ' +string(li_ocurr_n1) + ' - '+'li_ocurr_n1 *  bloque  =  ' +string (li_ocurr_n1 *  bloque)  )
+//		
+//  		li_lx_n2 = 10
+//    end if
+//
+//
+//	IF ds_puestos_dib.GetItemNumber(row,'nivel') = 2 Then
+//	li_ly_n2_corrector = li_ly_n2_corrector + 250
+////	MessageBox('li_ly_n2_corrector ',li_ly_n2_corrector )
+//		 OBJ_CUADRO[row] = f_dib_cuadro(uo_cont01,li_ly_n2,li_lx_n2,ds_puestos_dib.GetItemString(row,'Nombre') + ' : '+trim(ds_puestos_dib.GetItemString(row,'personal')) )	
+//		 OBJ_CUADRO[row].tag = ds_puestos_dib.GetItemString(row,'cod_puesto')
+//		li_lx_n2 = li_lx_n2 + 600		 
+//    end if
+//	 
+//	 
+//
+//NEXT
+////*****************************************************************************
+//
+//Integer LI_NIVEL[]
+//Integer flg_NIVEL
+//
+//long         ll_upper_bound_LIN
+//ll_row = 0 
+//Integer ll_row_temp
+//ll_upper_bound_LIN = UpperBound(OBJ_CUADRO[])
+//integer ll_nivconta
+//
+//for ll_row = 1 to ll_upper_bound_LIN
+//	If Len(trim(OBJ_CUADRO[ll_row].tag)) = 2 then
+//		ll_nivconta = ll_nivconta + 1
+//		LI_NIVEL[ll_nivconta] = ll_row
+//	end if	
+//		
+//Next 
+//
+//ll_row =0
+//ll_nivconta = 0
+//
+//
+//for ll_row = 1 to ll_upper_bound_LIN -1
+//	If Len(trim(OBJ_CUADRO[ll_row].tag)) = 2 then
+//		ll_nivconta = ll_nivconta + 1
+//	end if	
+//	linea[ll_row] = Create uo_linea 
+//	uo_cont01.OpenUserObject(linea[ll_row]) 
+//		linea[ll_row].ln_1.BeginX =  OBJ_CUADRO[LI_NIVEL[ll_nivconta ]].X + (OBJ_CUADRO[LI_NIVEL[ll_nivconta]].width/2)
+//		linea[ll_row].ln_1.BeginY =  OBJ_CUADRO[LI_NIVEL[ll_nivconta ]].Y
+//		linea[ll_row].ln_1.EndX   =  OBJ_CUADRO[ll_row+1].X + (OBJ_CUADRO[ll_row+1].width/2)
+//		linea[ll_row].ln_1.EndY    = OBJ_CUADRO[ll_row+1].Y
+//next
+////******************** end

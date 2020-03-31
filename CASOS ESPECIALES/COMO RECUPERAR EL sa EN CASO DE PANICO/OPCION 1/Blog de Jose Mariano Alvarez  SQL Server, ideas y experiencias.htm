@@ -1,0 +1,1151 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0035)http://blog.josemarianoalvarez.com/ -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><HTML 
+xml:lang="en" xmlns="http://www.w3.org/1999/xhtml"><HEAD profile="http://gmpg.org/xfn/11"><META 
+content="IE=11.0000" http-equiv="X-UA-Compatible">
+
+<META name="verify-v1" 
+content="870pTrVTLb5wIqkA0BZ2u85TsWtQesV+Zwv0ihyzrSQ="><LINK href="Blog%20de%20Jose%20Mariano%20Alvarez%20%20SQL%20Server,%20ideas%20y%20experiencias_archivos/style.css" 
+rel="stylesheet" type="text/css"><LINK href="Blog%20de%20Jose%20Mariano%20Alvarez%20%20SQL%20Server,%20ideas%20y%20experiencias_archivos/code.css" 
+rel="stylesheet" type="text/css"><LINK href="/pics/JMA.ico" rel="shortcut icon" 
+type="image/x-icon">    	 
+<SCRIPT src="Blog%20de%20Jose%20Mariano%20Alvarez%20%20SQL%20Server,%20ideas%20y%20experiencias_archivos/cufon-yui.js" type="text/javascript"></SCRIPT>
+	 
+<SCRIPT src="Blog%20de%20Jose%20Mariano%20Alvarez%20%20SQL%20Server,%20ideas%20y%20experiencias_archivos/YTC.js" type="text/javascript"></SCRIPT>
+	 
+<SCRIPT src="Blog%20de%20Jose%20Mariano%20Alvarez%20%20SQL%20Server,%20ideas%20y%20experiencias_archivos/PB.js" type="text/javascript"></SCRIPT>
+     
+<SCRIPT type="text/javascript">
+        Cufon.replace('.siteName', { fontFamily: 'YTC' });
+        Cufon.replace('h1',            { fontFamily: 'PB' });
+        Cufon.replace('.widgettittle', { fontFamily: 'PB' });
+        
+	</SCRIPT>
+ 
+<META name="keywords" content="Actualizaciones,Art&amp;#237;culos,Comunidad,Documentos,Eventos y conferencias,Ideas y nociones,Novedades">
+<META name="description" content="SQL Server, ideas y experiencias">
+<META name="author" content="Jose Mariano Alvarez"><LINK title="Archive" href="/archive.aspx" 
+rel="contents"><LINK title="Blog de Jose Mariano Alvarez " href="/" 
+rel="start"><LINK title="SIOC" href="http://blog.josemarianoalvarez.com/sioc.axd" 
+rel="meta" type="application/rdf+xml"><LINK title="APML" href="http://blog.josemarianoalvarez.com/apml.axd" 
+rel="meta" type="application/apml+xml"><LINK title="FOAF" href="http://blog.josemarianoalvarez.com/foaf.axd" 
+rel="meta" type="application/rdf+xml"><LINK title="Blog de Jose Mariano Alvarez " 
+href="http://feeds.feedburner.com/BlogJoseMarianoAlvarez" rel="alternate" type="application/rss+xml"><LINK 
+title="RSD" href="http://blog.josemarianoalvarez.com/rsd.axd" rel="edituri" 
+type="application/rsd+xml">
+<META http-equiv="content-type" content="text/html; charset=utf-8"> <!-- Start custom code --> 
+<META name="blogcatalog" content="9BC9337860"> 
+<META name="msvalidate.01" content="23F5A69DC08C28119134A3694DE11A2F"> 
+<META name="y_key" content="e894e88ae30853b2"> 
+<META content="1164978683" property="fb:admins"> 
+<SCRIPT type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7590925-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</SCRIPT>
+ <!-- End custom code --> <LINK title="Previous page" href="/?page=2" 
+rel="prev"><TITLE>	Blog de Jose Mariano Alvarez  | SQL Server, ideas y 
+experiencias </TITLE>
+<META name="GENERATOR" content="MSHTML 11.00.9600.17924"></HEAD> 
+<BODY>
+<DIV id="wrapper">
+<DIV class="header">
+<DIV class="siteName"><A href="http://blog.josemarianoalvarez.com/">Blog de Jose 
+Mariano Alvarez </A></DIV>
+<DIV class="subtitle">SQL Server, ideas y experiencias</DIV>
+<DIV class="SearchBox">
+<DIV id="searchbox"><LABEL style="display: none;" 
+for="searchfield">Search</LABEL><INPUT id="searchfield" onkeypress="if(event.keyCode==13) return BlogEngine.search('/')" onfocus="BlogEngine.searchClear('Texto a buscar')" onblur="BlogEngine.searchClear('Texto a buscar')" type="text" value="Texto a buscar"><INPUT id="searchbutton" onkeypress="BlogEngine.search('/');" onclick="BlogEngine.search('/');" type="button" value="Buscar"><BR><INPUT 
+id="searchcomments" type="checkbox"><LABEL for="searchcomments">Buscar en 
+comentarios</LABEL></DIV></DIV></DIV>
+<DIV id="menu"><A class="apmlfilter" 
+href="javascript:void(filterByAPML())">Filtrar por APML</A>     
+<UL>
+  <LI><A href="http://blog.josemarianoalvarez.com/" rel="home">Inicio</A></LI>   
+      
+  <LI><A href="http://blog.josemarianoalvarez.com/archive.aspx">Archivo</A></LI> 
+        
+  <LI><A 
+  href="http://blog.josemarianoalvarez.com/contact.aspx">Contacto</A></LI>       
+  <LI><A class="feed" 
+  href="http://feeds.feedburner.com/BlogJoseMarianoAlvarez"><IMG alt="Feed" src="Blog%20de%20Jose%20Mariano%20Alvarez%20%20SQL%20Server,%20ideas%20y%20experiencias_archivos/rssButton.gif">Subscribir</A></LI> 
+        
+  <LI><A id="ctl00_aLogin" 
+  href="http://blog.josemarianoalvarez.com/login.aspx">Iniciar sesión</A></LI>   
+    </UL></DIV><!-- div class="headershadow"></div -->    
+<FORM name="aspnetForm" class="frmbody" id="aspnetForm" action="/default.aspx" 
+method="post">
+<DIV><INPUT name="__EVENTTARGET" id="__EVENTTARGET" type="hidden"> <INPUT name="__EVENTARGUMENT" id="__EVENTARGUMENT" type="hidden"> 
+<INPUT name="__VIEWSTATE" id="__VIEWSTATE" type="hidden" value="/wEPDwUKLTYwMTA0MjAxNw9kFgJmD2QWAgICDxYEHgRocmVmBQsvbG9naW4uYXNweB4JaW5uZXJodG1sBRNJbmljaWFyIHNlc2kmIzI0MztuZGQZXjOBdsNPq9q5IH0SsbmOfLUgFw=="> 
+</DIV>
+<SCRIPT type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</SCRIPT>
+ 
+<SCRIPT src="Blog%20de%20Jose%20Mariano%20Alvarez%20%20SQL%20Server,%20ideas%20y%20experiencias_archivos/WebResource.js" type="text/javascript"></SCRIPT>
+         
+<DIV id="content">
+<DIV id="ctl00_cphBody_divError"></DIV>
+<DIV class="posts" id="ctl00_cphBody_PostList1_posts">
+<DIV class="post xfolkentry">
+<H1><A class="taggedlink" href="http://blog.josemarianoalvarez.com/post/2011/02/25/Como-recuperar-la-contrasena-del-SA-si-se-perdio-o-se-olvido.aspx">Como 
+recuperar la contraseña del SA si se perdió o se olvidó</A></H1><SPAN class="author">por 
+<A href="http://blog.josemarianoalvarez.com/author/jmalvarez.aspx">Jose Mariano 
+Alvarez</A></SPAN>   <SPAN class="pubDate">25. febrero 2011</SPAN>     
+<DIV class="text">
+<P><A 
+href="http://blog.josemarianoalvarez.com/image.axd?picture=Panico.jpg"><IMG 
+width="244" height="204" title="Panico" align="right" style="border-width: 0px; margin: 5px 0px 0px 10px; padding-top: 0px; padding-right: 0px; padding-left: 0px; float: right; display: inline; background-image: none;" 
+alt="Panico" src="Blog%20de%20Jose%20Mariano%20Alvarez%20%20SQL%20Server,%20ideas%20y%20experiencias_archivos/image.jpg" 
+border="0"></A>Como los instaladores del SQL Server de las últimas versiones, no 
+incorporan automáticamente al grupo de administradores de Windows 
+(builtin\Administrators) como administradores del SQL Server (y tampoco es una 
+buena práctica hacerlo), es bastante probable que ocurran este tipo de problemas 
+o accidentes si los procedimientos para la generación, protección y guardado de 
+contraseñas no están documentados y no son estrictos.</P>
+<P>A veces, durante los procesos de operación y administración de los 
+servidores, o instalación y configuración, puede suceder que se pierden las 
+contraseñas o los privilegios de los administradores de un motor de base de 
+datos de SQL Server. Entre los casos más habituales se encuentran por 
+ejemplo:</P>
+<UL>
+  <LI>Se han quitado todos los inicios de sesión o todos los grupos de Windows 
+  que son miembros del rol fijo de servidor sysadmin,      <BR></LI>
+  <LI>Los inicios de sesión que son miembros del rol fijo de servidor sysadmin 
+  son personas que no están disponibles porque han dejado la empresa o están de 
+  vacaciones por ejemplo      <BR></LI>
+  <LI>Se pierde la contraseña, ya sea del SA o de un inicio de sesión creado 
+  como administrador de SQL Server. </LI></UL>
+<P>Una manera de solucionar este problema es reinstalar SQL Server. Sin embargo 
+este procedimiento tiene algunas consecuencias ya que más allá del tiempo 
+necesario para realizar la reinstalación se pierden en este proceso datos que 
+están grabados en las bases del sistema, como por ejemplo los inicios de sesión 
+(o logins) y por lo tanto se deberá recuperar estos datos desde una copia de 
+seguridad. Se debe tener en cuenta que al realizar este proceso de restauración 
+se vuelve al estado anterior al proceso de instalación porque se reescribe la 
+base de datos del sistema con una copia previa y dependiendo del caso, podría 
+tener los mismos inicios de sesión que antes de la reinstalación y por 
+consiguiente, los administradores aún no tendrán acceso. </P>
+<H2>Solución </H2>
+<P>Para resolver este problema, lo mejor es aprovechar las propiedades que 
+tienen los administradores de Windows luego de iniciar la instancia de SQL 
+Server en modo de usuario único utilizando la opción -m. Después de iniciar la 
+instancia del SQL Server en modo de usuario único, cualquier miembro del grupo 
+local de administradores del equipo puede conectarse a la instancia de SQL 
+Server como miembro del rol fijo de servidor sysadmin y realizar tareas 
+administrativas como cambiar permisos. Se debe tener en cuenta que en este modo 
+no se pueden realizar todos los cambios posibles. Esto previene que los 
+administradores de Windows abusen de los privilegios de actuar como un 
+administrador de SQL Server.</P>
+<P>Los pasos a seguir son los siguientes:</P>
+<OL>
+  <LI>Abrir el SQL Server Configuration Manager desde el menú de Windows y 
+  detener el servicio de la instancia del SQL Server involucrada.      <BR></LI>
+  <LI>En la solapa de “Avanzado” (Advanced), en el cuadro de texto propiedades 
+  (Properties), agregar “;–m” al final de la lista en la opción de parámetros de 
+  arranque “Startup parameters”. Debe tenerse en cuenta que no haya espacios 
+  entre “;” y “-m” porque si no va a dar error.      <BR></LI>
+  <LI>Aceptar los cambios presionando “OK”.      <BR></LI>
+  <LI>Reiniciar la instancia del SQL Server. En este instante se debe verificar 
+  que el resto de los servicios que componen el SQL Server están de detenidos, 
+  especialmente si alguno de esos corre con una cuenta de servicio que es 
+  administrador local, porque estos servicios podrían conectarse utilizando la 
+  única conexión disponible antes de que lográramos conectarnos para realizar 
+  los cambios necesarios, y ya no sería posible que nos conectáramos porque 
+  sería una segunda conexión.      <BR></LI>
+  <LI>Conectarse al sql server utilizando autenticación Windows mediante la 
+  herramienta de línea de comandos “sqlcmd”. El usuario de Windows debe ser 
+  administrador local. (*)      <BR><BR>Por ejemplo:<STRONG><BR><BR>SQLCMD –S 
+  Localhost –E         <BR></STRONG></LI>
+  <LI>Ejecutar por ejemplo un comando TSQL como "sp_addsrvrolemember" para 
+  agregar un inicio de sesión existente (o uno nuevo recién creado con CREATE 
+  LOGIN) como administrador del sql server o cambiar la contraseña de inicio de 
+  sesión con ALTER LOGIN.      <BR><BR>Por ejemplo:       <BR>
+<PRE class="csharpcode"><SPAN class="kwrd">CREATE</SPAN> LOGIN [Dominio\usuario] <SPAN class="kwrd">FROM</SPAN> WINDOWS <SPAN class="kwrd">WITH</SPAN> DEFAULT_DATABASE=[master]
+<SPAN class="kwrd">GO</SPAN>
+<SPAN class="kwrd">EXEC</SPAN> master..sp_addsrvrolemember             <BR>               @loginame = N<SPAN class="str">'Dominio\usuario'</SPAN>,             <BR>               @rolename = N<SPAN class="str">'sysadmin'</SPAN>
+GO</PRE></LI>
+  <LI>Luego de que se tiene acceso al sql server como administrador, eliminar el 
+  “;-m” como parámetro de arranque utilizando el configuration manager y 
+  reiniciar la instancia del sql server. </LI></OL>
+<P><EM><FONT style="background-color: rgb(255, 255, 255);"><STRONG>(*) 
+Importante:</STRONG> Si el sistema operativo tiene User Account Control (UAC), y 
+está activado,&nbsp; a pesar de pertenecer al grupo de administradores locales, 
+no es posible conectarse al SQL Server con privilegios de administrador local 
+<U>a menos que la consola se abra con la opción de “ejecutar como 
+administrador”</U> utilizando el menú de contesto que aparece presionando el 
+botón derecho sobre el icono del CMD.EXE.</FONT></EM></P>
+<H2>Referencias:</H2>
+<P>Solucionar problemas: conectarse a SQL Server cuando los administradores del 
+sistema no tienen acceso</P>
+<P><A title="Solucionar problemas: conectarse a SQL Server cuando los administradores del sistema no tienen acceso" 
+href="http://msdn.microsoft.com/es-ar/library/dd207004.aspx" target="_blank" 
+rel="nofollow">http://msdn.microsoft.com/es-ar/library/dd207004.aspx</A></P>
+<P>Iniciar SQL Server en modo de usuario único</P>
+<P><A title="Iniciar SQL Server en modo de usuario único" href="http://msdn.microsoft.com/es-ar/library/ms188236.aspx" 
+target="_blank" 
+rel="nofollow">http://msdn.microsoft.com/es-ar/library/ms188236.aspx</A></P></DIV>
+<DIV class="bottom">
+<DIV class="ratingcontainer" 
+style="visibility: hidden;">33bbdd39-f314-4873-abe8-75e6b31dde24|0|.0</DIV>
+<P class="tags">Tags: <A href="http://blog.josemarianoalvarez.com/?tag=/administraci%c3%b3n" 
+rel="tag">administración</A>, <A href="http://blog.josemarianoalvarez.com/?tag=/seguridad" 
+rel="tag">seguridad</A></P>
+<P class="categories"><A href="http://blog.josemarianoalvarez.com/category/Articulos.aspx">Artículos</A></P></DIV>
+<DIV class="footer">
+<DIV><IFRAME src="Blog%20de%20Jose%20Mariano%20Alvarez%20%20SQL%20Server,%20ideas%20y%20experiencias_archivos/blockpage.htm" 
+frameborder="0" scrolling="no" style="border: currentColor; border-image: none; width: 450px; height: 80px; overflow: hidden;" 
+allowtransparency="true"></IFRAME>					 </DIV>
+<DIV class="bookmarks"><A href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fblog.josemarianoalvarez.com%2fpost%2f2011%2f02%2f25%2fComo-recuperar-la-contrasena-del-SA-si-se-perdio-o-se-olvido.aspx&amp;title=Como+recuperar+la+contrase%c3%b1a+del+SA+si+se+perdi%c3%b3+o+se+olvid%c3%b3" 
+target='“_blank"' rel="nofollow"><IMG title="“LinkedIn”" alt="“Compartir" src="Blog%20de%20Jose%20Mariano%20Alvarez%20%20SQL%20Server,%20ideas%20y%20experiencias_archivos/LinedinLogo1003_30_25_cache.png" 
+border="0" linkedin”="" en="">Compartir</A>|       <A href="mailto:?subject=Creo que este post puede ser interesante &amp;body=Como recuperar la contraseña del SA si se perdió o se olvidó:  http://blog.josemarianoalvarez.com/post/2011/02/25/Como-recuperar-la-contrasena-del-SA-si-se-perdio-o-se-olvido.aspx" 
+rel="nofollow">E-mail</A> |        <A href="http://www.dotnetkicks.com/submit?url=http%3a%2f%2fblog.josemarianoalvarez.com%2fpost%2f2011%2f02%2f25%2fComo-recuperar-la-contrasena-del-SA-si-se-perdio-o-se-olvido.aspx&amp;title=Como+recuperar+la+contrase%c3%b1a+del+SA+si+se+perdi%c3%b3+o+se+olvid%c3%b3" 
+rel="nofollow">Kick it!</A> |        <A href="http://www.dzone.com/links/add.html?url=http%3a%2f%2fblog.josemarianoalvarez.com%2fpost%2f2011%2f02%2f25%2fComo-recuperar-la-contrasena-del-SA-si-se-perdio-o-se-olvido.aspx&amp;title=Como+recuperar+la+contrase%c3%b1a+del+SA+si+se+perdi%c3%b3+o+se+olvid%c3%b3" 
+rel="nofollow">DZone it!</A> |        <A href="http://del.icio.us/post?url=http%3a%2f%2fblog.josemarianoalvarez.com%2fpost%2f2011%2f02%2f25%2fComo-recuperar-la-contrasena-del-SA-si-se-perdio-o-se-olvido.aspx&amp;title=Como+recuperar+la+contrase%c3%b1a+del+SA+si+se+perdi%c3%b3+o+se+olvid%c3%b3" 
+rel="nofollow">del.icio.us</A>          </DIV><A href="http://blog.josemarianoalvarez.com/post.aspx?id=33bbdd39-f314-4873-abe8-75e6b31dde24" 
+rel="bookmark">Permalink</A> |     <A href="http://blog.josemarianoalvarez.com/post/2011/02/25/Como-recuperar-la-contrasena-del-SA-si-se-perdio-o-se-olvido.aspx#comment" 
+rel="nofollow">Comentarios (0)</A> |     <A href="http://blog.josemarianoalvarez.com/post/feed/2011/02/25/Como-recuperar-la-contrasena-del-SA-si-se-perdio-o-se-olvido.aspx" 
+rel="nofollow">Post RSS<IMG style="margin-left: 3px;" alt="RSS comment feed" 
+src="Blog%20de%20Jose%20Mariano%20Alvarez%20%20SQL%20Server,%20ideas%20y%20experiencias_archivos/rssButton.gif"></A> 
+     </DIV></DIV>
+<DIV class="post xfolkentry">
+<H1><A class="taggedlink" href="http://blog.josemarianoalvarez.com/post/2010/12/27/Paquete-de-actualizacion-acumulativa-1-para-SQL-Server-2005-Service-Pack-4.aspx">Paquete 
+de actualización acumulativa 1 para SQL Server 2005 Service Pack 4</A></H1><SPAN 
+class="author">por <A href="http://blog.josemarianoalvarez.com/author/jmalvarez.aspx">Jose 
+Mariano Alvarez</A></SPAN>   <SPAN class="pubDate">27. diciembre 2010</SPAN>     
+<DIV class="text">
+<P><A href="http://blog.josemarianoalvarez.com/image.axd?picture=sql2005logoEnlosado.jpg"><IMG 
+width="244" height="123" title="sql2005logoEnlosado" align="right" style="margin: 10px 0px 10px 10px; border: 0px currentColor; padding-top: 0px; padding-right: 0px; padding-left: 0px; float: right; display: inline;" 
+alt="sql2005logoEnlosado" src="Blog%20de%20Jose%20Mariano%20Alvarez%20%20SQL%20Server,%20ideas%20y%20experiencias_archivos/image(1).jpg" 
+border="0"></A>Microsoft ha liberado el 24 de diciembre de 2010 la actualización 
+acumulativa 1 del Microsoft SQL Server 2005 (build 9.00.5254) que solo se debe 
+aplicar a una revisión de SQL Server 2005 Service Pack 4 (build 9.00.5000). Esta 
+actualización contiene soluciones para problemas que han sido corregidos desde 
+el lanzamiento de SQL Server 2005 Service Pack 4.</P>
+<P>Es importante tener en cuenta que es recomendable instalar esta actualización 
+solo en sistemas que experimenten los problemas específicos que corrige este 
+paquete y solo si estos sistemas se ven muy afectados por dichos 
+problemas.&nbsp; El próximo service pack del SQL Server 2005 va a contener los 
+hotfix de este paquete de actualización.</P>
+<P>Pueden encontrar los detalles de la actualización (incluidos los problemas 
+resueltos) y el enlace de descarga en:</P>
+<P><A title="Paquete de actualización acumulativa 1 para SQL Server 2005 Service Pack 4" 
+href="http://support.microsoft.com/kb/2464079" target="_blank" 
+rel="nofollow">http://support.microsoft.com/kb/2464079</A>    <BR></P>
+<P>También pueden encontrar el paquete como Cumulative update package 1 for SQL 
+Server 2005 Service Pack 4 o CU1 for SQL Server 2005 Service Pack 4</P></DIV>
+<DIV class="bottom">
+<DIV class="ratingcontainer" 
+style="visibility: hidden;">600f2c69-36e0-4487-a1f1-da5e0511e64f|0|.0</DIV>
+<P class="tags">Tags: <A href="http://blog.josemarianoalvarez.com/?tag=/actualizaciones" 
+rel="tag">actualizaciones</A>, <A href="http://blog.josemarianoalvarez.com/?tag=/descargas" 
+rel="tag">descargas</A>, <A href="http://blog.josemarianoalvarez.com/?tag=/instalaci%c3%b3n" 
+rel="tag">instalación</A>, <A href="http://blog.josemarianoalvarez.com/?tag=/mantenimiento" 
+rel="tag">mantenimiento</A>, <A href="http://blog.josemarianoalvarez.com/?tag=/seguridad" 
+rel="tag">seguridad</A>, <A href="http://blog.josemarianoalvarez.com/?tag=/service+pack" 
+rel="tag">service pack</A></P>
+<P class="categories"><A href="http://blog.josemarianoalvarez.com/category/Actualizaciones.aspx">Actualizaciones</A></P></DIV>
+<DIV class="footer">
+<DIV><IFRAME src="Blog%20de%20Jose%20Mariano%20Alvarez%20%20SQL%20Server,%20ideas%20y%20experiencias_archivos/blockpage(1).htm" 
+frameborder="0" scrolling="no" style="border: currentColor; border-image: none; width: 450px; height: 80px; overflow: hidden;" 
+allowtransparency="true"></IFRAME>					 </DIV>
+<DIV class="bookmarks"><A href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fblog.josemarianoalvarez.com%2fpost%2f2010%2f12%2f27%2fPaquete-de-actualizacion-acumulativa-1-para-SQL-Server-2005-Service-Pack-4.aspx&amp;title=Paquete+de+actualizaci%c3%b3n+acumulativa+1+para+SQL+Server+2005+Service+Pack+4" 
+target='“_blank"' rel="nofollow"><IMG title="“LinkedIn”" alt="“Compartir" src="Blog%20de%20Jose%20Mariano%20Alvarez%20%20SQL%20Server,%20ideas%20y%20experiencias_archivos/LinedinLogo1003_30_25_cache.png" 
+border="0" linkedin”="" en="">Compartir</A>|       <A href="mailto:?subject=Creo que este post puede ser interesante &amp;body=Paquete de actualización acumulativa 1 para SQL Server 2005 Service Pack 4:  http://blog.josemarianoalvarez.com/post/2010/12/27/Paquete-de-actualizacion-acumulativa-1-para-SQL-Server-2005-Service-Pack-4.aspx" 
+rel="nofollow">E-mail</A> |        <A href="http://www.dotnetkicks.com/submit?url=http%3a%2f%2fblog.josemarianoalvarez.com%2fpost%2f2010%2f12%2f27%2fPaquete-de-actualizacion-acumulativa-1-para-SQL-Server-2005-Service-Pack-4.aspx&amp;title=Paquete+de+actualizaci%c3%b3n+acumulativa+1+para+SQL+Server+2005+Service+Pack+4" 
+rel="nofollow">Kick it!</A> |        <A href="http://www.dzone.com/links/add.html?url=http%3a%2f%2fblog.josemarianoalvarez.com%2fpost%2f2010%2f12%2f27%2fPaquete-de-actualizacion-acumulativa-1-para-SQL-Server-2005-Service-Pack-4.aspx&amp;title=Paquete+de+actualizaci%c3%b3n+acumulativa+1+para+SQL+Server+2005+Service+Pack+4" 
+rel="nofollow">DZone it!</A> |        <A href="http://del.icio.us/post?url=http%3a%2f%2fblog.josemarianoalvarez.com%2fpost%2f2010%2f12%2f27%2fPaquete-de-actualizacion-acumulativa-1-para-SQL-Server-2005-Service-Pack-4.aspx&amp;title=Paquete+de+actualizaci%c3%b3n+acumulativa+1+para+SQL+Server+2005+Service+Pack+4" 
+rel="nofollow">del.icio.us</A>          </DIV><A href="http://blog.josemarianoalvarez.com/post.aspx?id=600f2c69-36e0-4487-a1f1-da5e0511e64f" 
+rel="bookmark">Permalink</A> |     <A href="http://blog.josemarianoalvarez.com/post/2010/12/27/Paquete-de-actualizacion-acumulativa-1-para-SQL-Server-2005-Service-Pack-4.aspx#comment" 
+rel="nofollow">Comentarios (0)</A> |     <A href="http://blog.josemarianoalvarez.com/post/feed/2010/12/27/Paquete-de-actualizacion-acumulativa-1-para-SQL-Server-2005-Service-Pack-4.aspx" 
+rel="nofollow">Post RSS<IMG style="margin-left: 3px;" alt="RSS comment feed" 
+src="Blog%20de%20Jose%20Mariano%20Alvarez%20%20SQL%20Server,%20ideas%20y%20experiencias_archivos/rssButton.gif"></A> 
+     </DIV></DIV>
+<DIV class="post xfolkentry">
+<H1><A class="taggedlink" href="http://blog.josemarianoalvarez.com/post/2010/12/25/SQL-Server-2005-Service-Pack-4-SP4.aspx">SQL 
+Server 2005 Service Pack 4 - SP4</A></H1><SPAN class="author">por <A href="http://blog.josemarianoalvarez.com/author/jmalvarez.aspx">Jose 
+Mariano Alvarez</A></SPAN>   <SPAN class="pubDate">25. diciembre 2010</SPAN>     
+<DIV class="text">
+<P>Microsoft ha liberado el 17 de diciembre 2010 el Service Pack 4 del SQL 
+Server 2005 (BUILD 9.00.5000). El SQL Server 2005 SP4 incluye las 
+actualizaciones acumulativas del SQL Server 2005 SP3 desde la 1 a la 11, además 
+de otras correcciones solicitadas por los clientes.</P>
+<P>Debido a que las compilaciones de estas actualizaciones son acumulativas, 
+cada nueva actualización contiene todas las mejoras anteriores y por lo tanto no 
+es necesario instalarla antes de esta actualización.</P>
+<P>En el SQL Server 2005 las actualizaciones no son multilenguaje. Por lo tanto 
+debe ser utilizado el paquete del idioma que coincide con la instalación que se 
+desea actualizar. Este service pack 4 incluye actualizaciones de todos los 
+componentes del SQL Server, pero solo se instalarán los correspondientes a los 
+componentes que ya están instalados en el sistema.</P>
+<P>Esta actualización se puede utilizar para actualizar las siguientes ediciones 
+de SQL Server 2005:</P>
+<UL>
+  <LI>Enterprise </LI>
+  <LI>Developer </LI>
+  <LI>Standard </LI>
+  <LI>Workgroup </LI></UL>
+<P>Para obtener SQL Server 2005 Express Edition , se debe descargar la versión 
+SP4 del SQL Server 2005 Express o el SQL Server 2005 Express Edition con 
+Advanced Services.</P>
+<P>Para obtener más información, puede ver los siguientes links:</P>
+<P><A title="http://social.technet.microsoft.com/wiki/contents/articles/microsoft-sql-server-2005-sp4-release-notes.aspx" 
+href="http://social.technet.microsoft.com/wiki/contents/articles/microsoft-sql-server-2005-sp4-release-notes.aspx" 
+target="_blank" rel="nofollow">Microsoft SQL Server 2005 SP4 Release Notes</A>   
+  <BR><A title="http://social.technet.microsoft.com/wiki/contents/articles/notas-de-la-versi-243-n-de-microsoft-sql-server-2005-sp4-es-es.aspx" 
+href="http://social.technet.microsoft.com/wiki/contents/articles/notas-de-la-versi-243-n-de-microsoft-sql-server-2005-sp4-es-es.aspx" 
+target="_blank" rel="nofollow">Notas de la versión de Microsoft SQL Server 2005 
+SP4 (es-ES)</A></P>
+<P>Lista de los errores corregidos en SQL Server 2005 Service Pack 4    <BR><A 
+href="http://support.microsoft.com/kb/2463332">http://support.microsoft.com/kb/2463332</A></P>
+<H2>Descargas del Service Pack 4 de Microsoft SQL Server 2005</H2><BR>
+<P><A title="http://www.microsoft.com/downloads/en/details.aspx?FamilyID=b953e84f-9307-405e-bceb-47bd345baece&amp;displaylang=en" 
+href="http://www.microsoft.com/downloads/en/details.aspx?FamilyID=b953e84f-9307-405e-bceb-47bd345baece&amp;displaylang=en" 
+target="_blank" rel="nofollow">Service Pack 4 de Microsoft SQL Server 2005 
+(Inglés)</A></P>
+<P><A title="http://www.microsoft.com/downloads/details.aspx?FamilyID=b953e84f-9307-405e-bceb-47bd345baece&amp;displayLang=es" 
+href="http://www.microsoft.com/downloads/details.aspx?FamilyID=b953e84f-9307-405e-bceb-47bd345baece&amp;displayLang=es" 
+target="_blank" rel="nofollow">Service Pack 4 de Microsoft SQL Server 2005 
+(Español)</A></P>
+<H2>SQL Server 2005 Express Edition SP4</H2>
+<P><A title="http://www.microsoft.com/downloads/details.aspx?FamilyID=26435597-b28e-4568-9d16-017bdf47abdc&amp;displayLang=es" 
+href="http://www.microsoft.com/downloads/details.aspx?FamilyID=26435597-b28e-4568-9d16-017bdf47abdc&amp;displayLang=es" 
+target="_blank" rel="nofollow">Service Pack 4 de Microsoft SQL Server 2005 
+Express Edition (Español)</A></P>
+<P><A title="http://www.microsoft.com/downloads/en/details.aspx?FamilyID=26435597-b28e-4568-9d16-017bdf47abdc" 
+href="http://www.microsoft.com/downloads/en/details.aspx?FamilyID=26435597-b28e-4568-9d16-017bdf47abdc" 
+target="_blank" rel="nofollow">Microsoft SQL Server 2005 Express Edition Service 
+Pack 4 (Inglés)</A></P>
+<P><A title="http://www.microsoft.com/downloads/en/details.aspx?FamilyID=76ea83da-4797-4f11-a834-456ee9dc3764" 
+href="http://www.microsoft.com/downloads/en/details.aspx?FamilyID=76ea83da-4797-4f11-a834-456ee9dc3764" 
+target="_blank" rel="nofollow">Microsoft SQL Server Management Studio Express 
+Service Pack 4 (Inglés)</A></P>
+<P><A title="http://www.microsoft.com/downloads/details.aspx?FamilyID=76ea83da-4797-4f11-a834-456ee9dc3764&amp;displayLang=es" 
+href="http://www.microsoft.com/downloads/details.aspx?FamilyID=76ea83da-4797-4f11-a834-456ee9dc3764&amp;displayLang=es" 
+target="_blank" rel="nofollow">Service Pack 4 de Microsoft SQL Server Management 
+Studio Express (Español)</A></P>
+<H2>Otras descargas</H2>
+<P><A title="http://www.microsoft.com/downloads/en/details.aspx?FamilyID=7768393b-71fa-4281-83eb-cab08be4fb76" 
+href="http://www.microsoft.com/downloads/en/details.aspx?FamilyID=7768393b-71fa-4281-83eb-cab08be4fb76" 
+target="_blank" rel="nofollow">Feature Pack for Microsoft SQL Server 2005 SP4 
+(Inglés)</A></P>
+<P><A title="http://www.microsoft.com/downloads/details.aspx?FamilyID=7768393b-71fa-4281-83eb-cab08be4fb76&amp;displayLang=es" 
+href="http://www.microsoft.com/downloads/details.aspx?FamilyID=7768393b-71fa-4281-83eb-cab08be4fb76&amp;displayLang=es" 
+target="_blank" rel="nofollow">Feature Pack de Microsoft SQL Server 2005 SP4 
+(Español)</A></P>
+<H2>Sistemas operativos compatibles: </H2>
+<UL>
+  <LI>Windows 7 </LI>
+  <LI>Windows Server 2003 </LI>
+  <LI>Windows Server 2008 </LI>
+  <LI>Windows Server 2008 R2 </LI>
+  <LI>Windows Vista </LI>
+  <LI>Windows XP </LI></UL>
+<P><FONT color="#c0504d"><STRONG>NOTA: Siempre es recomendable que pruebe las 
+actualizaciones antes de implementarlas en un entorno de producción. 
+</STRONG></FONT></P></DIV>
+<DIV class="bottom">
+<DIV class="ratingcontainer" 
+style="visibility: hidden;">4d45c193-08b7-4dde-bb84-16962094e969|0|.0</DIV>
+<P class="tags">Tags: <A href="http://blog.josemarianoalvarez.com/?tag=/actualizaciones" 
+rel="tag">actualizaciones</A>, <A href="http://blog.josemarianoalvarez.com/?tag=/descargas" 
+rel="tag">descargas</A>, <A href="http://blog.josemarianoalvarez.com/?tag=/instalaci%c3%b3n" 
+rel="tag">instalación</A>, <A href="http://blog.josemarianoalvarez.com/?tag=/mantenimiento" 
+rel="tag">mantenimiento</A>, <A href="http://blog.josemarianoalvarez.com/?tag=/seguridad" 
+rel="tag">seguridad</A>, <A href="http://blog.josemarianoalvarez.com/?tag=/service+pack" 
+rel="tag">service pack</A></P>
+<P class="categories"><A href="http://blog.josemarianoalvarez.com/category/Actualizaciones.aspx">Actualizaciones</A></P></DIV>
+<DIV class="footer">
+<DIV><IFRAME src="Blog%20de%20Jose%20Mariano%20Alvarez%20%20SQL%20Server,%20ideas%20y%20experiencias_archivos/blockpageW0GN2HBG.htm" 
+frameborder="0" scrolling="no" style="border: currentColor; border-image: none; width: 450px; height: 80px; overflow: hidden;" 
+allowtransparency="true"></IFRAME>					 </DIV>
+<DIV class="bookmarks"><A href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fblog.josemarianoalvarez.com%2fpost%2f2010%2f12%2f25%2fSQL-Server-2005-Service-Pack-4-SP4.aspx&amp;title=SQL+Server+2005+Service+Pack+4+-+SP4" 
+target='“_blank"' rel="nofollow"><IMG title="“LinkedIn”" alt="“Compartir" src="Blog%20de%20Jose%20Mariano%20Alvarez%20%20SQL%20Server,%20ideas%20y%20experiencias_archivos/LinedinLogo1003_30_25_cache.png" 
+border="0" linkedin”="" en="">Compartir</A>|       <A href="mailto:?subject=Creo que este post puede ser interesante &amp;body=SQL Server 2005 Service Pack 4 - SP4:  http://blog.josemarianoalvarez.com/post/2010/12/25/SQL-Server-2005-Service-Pack-4-SP4.aspx" 
+rel="nofollow">E-mail</A> |        <A href="http://www.dotnetkicks.com/submit?url=http%3a%2f%2fblog.josemarianoalvarez.com%2fpost%2f2010%2f12%2f25%2fSQL-Server-2005-Service-Pack-4-SP4.aspx&amp;title=SQL+Server+2005+Service+Pack+4+-+SP4" 
+rel="nofollow">Kick it!</A> |        <A href="http://www.dzone.com/links/add.html?url=http%3a%2f%2fblog.josemarianoalvarez.com%2fpost%2f2010%2f12%2f25%2fSQL-Server-2005-Service-Pack-4-SP4.aspx&amp;title=SQL+Server+2005+Service+Pack+4+-+SP4" 
+rel="nofollow">DZone it!</A> |        <A href="http://del.icio.us/post?url=http%3a%2f%2fblog.josemarianoalvarez.com%2fpost%2f2010%2f12%2f25%2fSQL-Server-2005-Service-Pack-4-SP4.aspx&amp;title=SQL+Server+2005+Service+Pack+4+-+SP4" 
+rel="nofollow">del.icio.us</A>          </DIV><A href="http://blog.josemarianoalvarez.com/post.aspx?id=4d45c193-08b7-4dde-bb84-16962094e969" 
+rel="bookmark">Permalink</A> |     <A href="http://blog.josemarianoalvarez.com/post/2010/12/25/SQL-Server-2005-Service-Pack-4-SP4.aspx#comment" 
+rel="nofollow">Comentarios (0)</A> |     <A href="http://blog.josemarianoalvarez.com/post/feed/2010/12/25/SQL-Server-2005-Service-Pack-4-SP4.aspx" 
+rel="nofollow">Post RSS<IMG style="margin-left: 3px;" alt="RSS comment feed" 
+src="Blog%20de%20Jose%20Mariano%20Alvarez%20%20SQL%20Server,%20ideas%20y%20experiencias_archivos/rssButton.gif"></A> 
+     </DIV></DIV>
+<DIV class="post xfolkentry">
+<H1><A class="taggedlink" href="http://blog.josemarianoalvarez.com/post/2010/11/25/FIX-para-el-Error-315-The-backup-set-holds-backup-of-a-database-other-than-the-existing-database.aspx">FIX 
+para el Error 315 The backup set holds backup of a database other than the 
+existing database</A></H1><SPAN class="author">por <A href="http://blog.josemarianoalvarez.com/author/jmalvarez.aspx">Jose 
+Mariano Alvarez</A></SPAN>   <SPAN class="pubDate">25. noviembre 2010</SPAN>     
+<DIV class="text">
+<P>Hace poco migrando de equipo y edición (pero no de versión) una base de datos 
+de SQL Server utilizada por Blackberry que estaba en un SQL Server 2005 SP3 me 
+dio un error al realizar un RESTORE con el siguiente comando en el nuevo 
+servidor:</P>
+<PRE class="csharpcode"><SPAN class="kwrd"><BR>RESTORE</SPAN> <SPAN class="kwrd">DATABASE</SPAN> [BESMgmt] 
+<SPAN class="kwrd">FROM</SPAN>  <SPAN class="kwrd">DISK</SPAN> = N<SPAN class="str">'O:\MSSQL\Blackberry\BESMgmt20101125.bak'</SPAN> 
+<SPAN class="kwrd">WITH</SPAN> MOVE N<SPAN class="str">'BESMgmt_data'</SPAN> 
+<SPAN class="kwrd">TO</SPAN> N<SPAN class="str">'O:\MSSQL\Blackberry\BESMgmt.mdf'</SPAN>,  
+MOVE N<SPAN class="str">'BESMgmt_log'</SPAN>      
+<SPAN class="kwrd">TO</SPAN> N<SPAN class="str">'O:\MSSQL\Blackberry\BESMgmt.ldf'</SPAN>,  
+NOUNLOAD,  STATS = 10
+<SPAN class="kwrd">GO<BR></SPAN></PRE>
+<P>El error fue el siguiente</P>
+<P><FONT style="background-color: rgb(192, 80, 77);"></FONT><FONT color="#c0504d" 
+size="1"><STRONG>Error 3154: The backup set holds a backup of a database other 
+than the existing database.</STRONG></FONT></P>
+<P>Lo extraño fue que había hecho el Backup con el siguiente comando con lo cual 
+estaba totalmente seguro que el archivo de Backup contenía la base de datos 
+correcta.</P>
+<PRE class="csharpcode"><SPAN class="kwrd">BACKUP</SPAN> <SPAN class="kwrd">DATABASE</SPAN> [BESMgmt] 
+<SPAN class="kwrd">TO</SPAN>  <SPAN class="kwrd">DISK</SPAN> = N<SPAN class="str">'C:\Backup\BESMgmt20101125.bak'</SPAN> 
+<SPAN class="kwrd">WITH</SPAN> NOFORMAT, NOINIT,  
+NAME = N<SPAN class="str">'BESMgmt-Full Database Backup'</SPAN>, 
+SKIP, NOREWIND, NOUNLOAD,  STATS = 10
+<SPAN class="kwrd">GO</SPAN></PRE>
+<H2>La solución</H2>
+<P>La solución es simple e ingeniosa. Únicamente debemos “mentirle” para que 
+crea que debe sobrescribir una base de datos existente utilizando<STRONG> WITH 
+REPLACE</STRONG>. Aunque la base de datos no existe la ejecución es exitosa y 
+resuelve el problema, permitiendo realizar el RESTORE. </P>
+<P>Ejemplo </P>
+<PRE class="csharpcode"><SPAN class="kwrd">RESTORE</SPAN> <SPAN class="kwrd">DATABASE</SPAN> [BESMgmt] 
+<SPAN class="kwrd">FROM</SPAN>  <SPAN class="kwrd">DISK</SPAN> = N<SPAN class="str">'O:\MSSQL\Blackberry\BESMgmt20101125.bak'</SPAN> 
+<SPAN class="kwrd">WITH</SPAN> REPLACE,  
+MOVE N<SPAN class="str">'BESMgmt_data'</SPAN> 
+<SPAN class="kwrd">TO</SPAN> N<SPAN class="str">'O:\MSSQL\Blackberry\BESMgmt.mdf'</SPAN>,  
+MOVE N<SPAN class="str">'BESMgmt_log'</SPAN>      
+<SPAN class="kwrd">TO</SPAN> N<SPAN class="str">'O:\MSSQL\Blackberry\BESMgmt.ldf'</SPAN>,  
+NOUNLOAD,  STATS = 10
+<SPAN class="kwrd">GO</SPAN></PRE></DIV>
+<DIV class="bottom">
+<DIV class="ratingcontainer" 
+style="visibility: hidden;">2bd077a3-ae29-4298-82e4-e1fbb3d04af3|0|.0</DIV>
+<P class="tags">Tags: <A href="http://blog.josemarianoalvarez.com/?tag=/administraci%c3%b3n" 
+rel="tag">administración</A>, <A href="http://blog.josemarianoalvarez.com/?tag=/backup" 
+rel="tag">backup</A>, <A href="http://blog.josemarianoalvarez.com/?tag=/error" 
+rel="tag">error</A></P>
+<P class="categories"><A href="http://blog.josemarianoalvarez.com/category/Articulos.aspx">Artículos</A></P></DIV>
+<DIV class="footer">
+<DIV><IFRAME src="Blog%20de%20Jose%20Mariano%20Alvarez%20%20SQL%20Server,%20ideas%20y%20experiencias_archivos/blockpageQ6TL86VX.htm" 
+frameborder="0" scrolling="no" style="border: currentColor; border-image: none; width: 450px; height: 80px; overflow: hidden;" 
+allowtransparency="true"></IFRAME>					 </DIV>
+<DIV class="bookmarks"><A href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fblog.josemarianoalvarez.com%2fpost%2f2010%2f11%2f25%2fFIX-para-el-Error-315-The-backup-set-holds-backup-of-a-database-other-than-the-existing-database.aspx&amp;title=FIX+para+el+Error+315+The+backup+set+holds+backup+of+a+database+other+than+the+existing+database" 
+target='“_blank"' rel="nofollow"><IMG title="“LinkedIn”" alt="“Compartir" src="Blog%20de%20Jose%20Mariano%20Alvarez%20%20SQL%20Server,%20ideas%20y%20experiencias_archivos/LinedinLogo1003_30_25_cache.png" 
+border="0" linkedin”="" en="">Compartir</A>|       <A href="mailto:?subject=Creo que este post puede ser interesante &amp;body=FIX para el Error 315 The backup set holds backup of a database other than the existing database:  http://blog.josemarianoalvarez.com/post/2010/11/25/FIX-para-el-Error-315-The-backup-set-holds-backup-of-a-database-other-than-the-existing-database.aspx" 
+rel="nofollow">E-mail</A> |        <A href="http://www.dotnetkicks.com/submit?url=http%3a%2f%2fblog.josemarianoalvarez.com%2fpost%2f2010%2f11%2f25%2fFIX-para-el-Error-315-The-backup-set-holds-backup-of-a-database-other-than-the-existing-database.aspx&amp;title=FIX+para+el+Error+315+The+backup+set+holds+backup+of+a+database+other+than+the+existing+database" 
+rel="nofollow">Kick it!</A> |        <A href="http://www.dzone.com/links/add.html?url=http%3a%2f%2fblog.josemarianoalvarez.com%2fpost%2f2010%2f11%2f25%2fFIX-para-el-Error-315-The-backup-set-holds-backup-of-a-database-other-than-the-existing-database.aspx&amp;title=FIX+para+el+Error+315+The+backup+set+holds+backup+of+a+database+other+than+the+existing+database" 
+rel="nofollow">DZone it!</A> |        <A href="http://del.icio.us/post?url=http%3a%2f%2fblog.josemarianoalvarez.com%2fpost%2f2010%2f11%2f25%2fFIX-para-el-Error-315-The-backup-set-holds-backup-of-a-database-other-than-the-existing-database.aspx&amp;title=FIX+para+el+Error+315+The+backup+set+holds+backup+of+a+database+other+than+the+existing+database" 
+rel="nofollow">del.icio.us</A>          </DIV><A href="http://blog.josemarianoalvarez.com/post.aspx?id=2bd077a3-ae29-4298-82e4-e1fbb3d04af3" 
+rel="bookmark">Permalink</A> |     <A href="http://blog.josemarianoalvarez.com/post/2010/11/25/FIX-para-el-Error-315-The-backup-set-holds-backup-of-a-database-other-than-the-existing-database.aspx#comment" 
+rel="nofollow">Comentarios (1)</A> |     <A href="http://blog.josemarianoalvarez.com/post/feed/2010/11/25/FIX-para-el-Error-315-The-backup-set-holds-backup-of-a-database-other-than-the-existing-database.aspx" 
+rel="nofollow">Post RSS<IMG style="margin-left: 3px;" alt="RSS comment feed" 
+src="Blog%20de%20Jose%20Mariano%20Alvarez%20%20SQL%20Server,%20ideas%20y%20experiencias_archivos/rssButton.gif"></A> 
+     </DIV></DIV>
+<DIV class="post xfolkentry">
+<H1><A class="taggedlink" href="http://blog.josemarianoalvarez.com/post/2010/11/18/Truco-para-disenar-una-dimension-tiempo-de-un-Data-Warehouse.aspx">Truco 
+para diseñar una dimensión tiempo de un Data Warehouse</A></H1><SPAN class="author">por 
+<A href="http://blog.josemarianoalvarez.com/author/JMAlvarez.aspx">Jose Mariano 
+Alvarez</A></SPAN>   <SPAN class="pubDate">18. noviembre 2010</SPAN>     
+<DIV class="text">
+<P><A 
+href="http://blog.josemarianoalvarez.com/image.axd?picture=Calendario.jpg"><IMG 
+width="244" height="189" title="Calendario" align="right" style="margin: 0px 0px 15px 15px; border: 0px currentColor; padding-top: 0px; padding-right: 0px; padding-left: 0px; float: right; display: inline; background-image: none;" 
+alt="Calendario" src="Blog%20de%20Jose%20Mariano%20Alvarez%20%20SQL%20Server,%20ideas%20y%20experiencias_archivos/image(2).jpg" 
+border="0"></A>La dimensión de tiempo existe habitualmente en cada data 
+warehouse y la granularidad más usada es el día. Generalmente tiene muchos 
+atributos pero solo algunos de estos atributos como por ejemplo el nombre del 
+mes y el año pueden ser obtenidos fácilmente usando una expresión SQL aplicada a 
+la fecha. Si la dimensión tiene atributos para dar soporte a múltiples lenguajes 
+resulta a veces complicado construirla con el lenguaje SQL. Otros atributos no 
+se pueden obtener mediante SQL ya que no hay mecanismos predecibles y dependen 
+de decisiones humanas.</P>
+<P>Otra característica de la dimensión tiempo es que suele tener muchos 
+atributos como por ejemplo marcas de días feriados o no laborables, atributos de 
+períodos fiscales o de temporadas, atributos relacionados a la fecha como el 
+número de semana, la marca de último día del mes, y otros atributos muy útiles 
+usados especialmente para la navegación y que deben estar integrados en la 
+dimensión fecha mediante atributos dimensionales.</P>
+<P>La gran ventaja de esta dimensión es que está completamente definida y 
+especificada desde el inicio del proyecto del data warehouse. Pero la desventaja 
+es que no tiene una fuente de datos convencional sino que se suele generar 
+mediante algún mecanismo como una planilla o tabla cargada manualmente o 
+mediante algún proceso.</P>
+<H2>La clave de la dimensión fecha</H2>
+<P>Todas las dimensiones fecha necesitan un atributo que representa a la fecha y 
+un atributo para relacionar con la tabla de hechos. Debe haber al menos un 
+registro que permita representar situaciones especiales como una fecha no 
+aplicable o no informada o que no ha ocurrido aún y además es posible que desee 
+distinguir varias de estas condiciones inusuales.</P>
+<P>En estos casos en que se deben representar hechos relacionados a estas 
+“fechas especiales”, las referencias foreign key en la tabla de hechos deben 
+permitir referenciar a estos registros con “fechas inusuales” en la tabla de la 
+dimensión fecha. Recordemos que el valor de estos atributos en los campos de la 
+tabla de hechos no puede ser nulo, ya que debe estar relacionado con la tabla de 
+la dimensión tiempo.</P>
+<P>La clave principal de la dimensión fecha ideal debería ser una clave 
+subrogada sin representación semántica, como por ejemplo un numero entero (que 
+no representa una fecha), pero muchos diseñadores no pueden resistir la 
+tentación de hacer que la clave sea legible como por ejemplo 20101116 
+significando el 16 de noviembre de 2010. Sin embargo, como con todas las claves 
+inteligentes, los pocos registros especiales en la dimensión fecha harán que el 
+diseñador utilice trucos para representarlas. Por ejemplo, la clave inteligente 
+para una fecha “no aplicable” tendría que ser un valor sin sentido como por 
+ejemplo 99999999, y esto trae aparejado que las aplicaciones que tratan de 
+interpretar la fecha directamente para obtener información (como por ejemplo el 
+mes) sin usar los atributos de la dimensión tengan inconvenientes porque no es 
+una fecha válida.</P>
+<H2>Conclusión</H2>
+<P>En definitiva utilizar un tipo de dato fecha para el atributo clave de la 
+dimensión fecha no es una buena elección y conviene que el valor este subrogado 
+utilizando una clave entera que está oculto al usuario dentro de la meta data. 
+El atributo representativo de la fecha debe ser un atributo que acepte 
+representaciones especiales y no solamente representación de fechas válidas.</P>
+<P><STRONG>Referencia:</STRONG></P>
+<P>[PDF] Kimball Design Tip #51: Latest Thinking On Time Dimension Tables   
+<BR><A title="[PDF] Kimball Design Tip #51: Latest Thinking On Time Dimension Tables" 
+href="http://www.rkimball.com/html/designtipsPDF/KimballDT51LatestThinking.pdf" 
+target="_blank" 
+rel="nofollow">http://www.rkimball.com/html/designtipsPDF/KimballDT51LatestThinking.pdf</A></P></DIV>
+<DIV class="bottom">
+<DIV class="ratingcontainer" 
+style="visibility: hidden;">8a8628dc-ab78-46c1-8e60-c0c9c0eae05f|2|5.0</DIV>
+<P class="tags">Tags: <A href="http://blog.josemarianoalvarez.com/?tag=/analysis+services" 
+rel="tag">analysis services</A>, <A href="http://blog.josemarianoalvarez.com/?tag=/data+warehouse" 
+rel="tag">data warehouse</A></P>
+<P class="categories"><A href="http://blog.josemarianoalvarez.com/category/Ideas-y-nociones.aspx">Ideas 
+y nociones</A> | <A href="http://blog.josemarianoalvarez.com/category/Articulos.aspx">Artículos</A></P></DIV>
+<DIV class="footer">
+<DIV><IFRAME src="Blog%20de%20Jose%20Mariano%20Alvarez%20%20SQL%20Server,%20ideas%20y%20experiencias_archivos/blockpageMUGO1ED8.htm" 
+frameborder="0" scrolling="no" style="border: currentColor; border-image: none; width: 450px; height: 80px; overflow: hidden;" 
+allowtransparency="true"></IFRAME>					 </DIV>
+<DIV class="bookmarks"><A href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fblog.josemarianoalvarez.com%2fpost%2f2010%2f11%2f18%2fTruco-para-disenar-una-dimension-tiempo-de-un-Data-Warehouse.aspx&amp;title=Truco+para+dise%c3%b1ar+una+dimensi%c3%b3n+tiempo+de+un+Data+Warehouse" 
+target='“_blank"' rel="nofollow"><IMG title="“LinkedIn”" alt="“Compartir" src="Blog%20de%20Jose%20Mariano%20Alvarez%20%20SQL%20Server,%20ideas%20y%20experiencias_archivos/LinedinLogo1003_30_25_cache.png" 
+border="0" linkedin”="" en="">Compartir</A>|       <A href="mailto:?subject=Creo que este post puede ser interesante &amp;body=Truco para diseñar una dimensión tiempo de un Data Warehouse:  http://blog.josemarianoalvarez.com/post/2010/11/18/Truco-para-disenar-una-dimension-tiempo-de-un-Data-Warehouse.aspx" 
+rel="nofollow">E-mail</A> |        <A href="http://www.dotnetkicks.com/submit?url=http%3a%2f%2fblog.josemarianoalvarez.com%2fpost%2f2010%2f11%2f18%2fTruco-para-disenar-una-dimension-tiempo-de-un-Data-Warehouse.aspx&amp;title=Truco+para+dise%c3%b1ar+una+dimensi%c3%b3n+tiempo+de+un+Data+Warehouse" 
+rel="nofollow">Kick it!</A> |        <A href="http://www.dzone.com/links/add.html?url=http%3a%2f%2fblog.josemarianoalvarez.com%2fpost%2f2010%2f11%2f18%2fTruco-para-disenar-una-dimension-tiempo-de-un-Data-Warehouse.aspx&amp;title=Truco+para+dise%c3%b1ar+una+dimensi%c3%b3n+tiempo+de+un+Data+Warehouse" 
+rel="nofollow">DZone it!</A> |        <A href="http://del.icio.us/post?url=http%3a%2f%2fblog.josemarianoalvarez.com%2fpost%2f2010%2f11%2f18%2fTruco-para-disenar-una-dimension-tiempo-de-un-Data-Warehouse.aspx&amp;title=Truco+para+dise%c3%b1ar+una+dimensi%c3%b3n+tiempo+de+un+Data+Warehouse" 
+rel="nofollow">del.icio.us</A>          </DIV><A href="http://blog.josemarianoalvarez.com/post.aspx?id=8a8628dc-ab78-46c1-8e60-c0c9c0eae05f" 
+rel="bookmark">Permalink</A> |     <A href="http://blog.josemarianoalvarez.com/post/2010/11/18/Truco-para-disenar-una-dimension-tiempo-de-un-Data-Warehouse.aspx#comment" 
+rel="nofollow">Comentarios (1)</A> |     <A href="http://blog.josemarianoalvarez.com/post/feed/2010/11/18/Truco-para-disenar-una-dimension-tiempo-de-un-Data-Warehouse.aspx" 
+rel="nofollow">Post RSS<IMG style="margin-left: 3px;" alt="RSS comment feed" 
+src="Blog%20de%20Jose%20Mariano%20Alvarez%20%20SQL%20Server,%20ideas%20y%20experiencias_archivos/rssButton.gif"></A> 
+     </DIV></DIV>
+<DIV class="post xfolkentry">
+<H1><A class="taggedlink" href="http://blog.josemarianoalvarez.com/post/2010/11/13/Libros-en-linea-de-SQL-Server-2011-e2809cDenalie2809d.aspx">Libros 
+en linea de SQL Server 2011 “Denali”</A></H1><SPAN class="author">por <A href="http://blog.josemarianoalvarez.com/author/jmalvarez.aspx">Jose 
+Mariano Alvarez</A></SPAN>   <SPAN class="pubDate">13. noviembre 2010</SPAN>     
+<DIV class="text">
+<P>Quienes quieran ver las novedades disponibles en la próxima versión de SQL 
+Server 2011 “DENALI” además de poder descargar el CTP1 que ya está disponible 
+pueden acceder en línea a los libros en línea disponibles en inglés.</P>
+<P>Books Online for SQL Server "Denali"   <BR><A title='Books Online for SQL Server "Denali"' 
+href="http://msdn.microsoft.com/en-us/library/ms130214(SQL.110).aspx" target="_blank" 
+rel="nofollow">http://msdn.microsoft.com/en-us/library/ms130214(SQL.110).aspx</A></P>
+<P>Novedades</P>
+<P>What's New (SQL Server "Denali")   <BR><A title="What's New (SQL Server &quot;Denali&quot;)" 
+href="http://msdn.microsoft.com/en-us/library/bb500435(SQL.110).aspx" target="_blank" 
+rel="nofollow">http://msdn.microsoft.com/en-us/library/bb500435(SQL.110).aspx</A></P></DIV>
+<DIV class="bottom">
+<DIV class="ratingcontainer" 
+style="visibility: hidden;">15fc0d2a-96ef-42a4-9c54-5daee15e461f|0|.0</DIV>
+<P class="tags">Tags: <A href="http://blog.josemarianoalvarez.com/?tag=/denali" 
+rel="tag">denali</A></P>
+<P class="categories"><A href="http://blog.josemarianoalvarez.com/category/Novedades.aspx">Novedades</A></P></DIV>
+<DIV class="footer">
+<DIV><IFRAME src="Blog%20de%20Jose%20Mariano%20Alvarez%20%20SQL%20Server,%20ideas%20y%20experiencias_archivos/blockpageQZCYXJZN.htm" 
+frameborder="0" scrolling="no" style="border: currentColor; border-image: none; width: 450px; height: 80px; overflow: hidden;" 
+allowtransparency="true"></IFRAME>					 </DIV>
+<DIV class="bookmarks"><A href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fblog.josemarianoalvarez.com%2fpost%2f2010%2f11%2f13%2fLibros-en-linea-de-SQL-Server-2011-e2809cDenalie2809d.aspx&amp;title=Libros+en+linea+de+SQL+Server+2011+%e2%80%9cDenali%e2%80%9d" 
+target='“_blank"' rel="nofollow"><IMG title="“LinkedIn”" alt="“Compartir" src="Blog%20de%20Jose%20Mariano%20Alvarez%20%20SQL%20Server,%20ideas%20y%20experiencias_archivos/LinedinLogo1003_30_25_cache.png" 
+border="0" linkedin”="" en="">Compartir</A>|       <A href="mailto:?subject=Creo que este post puede ser interesante &amp;body=Libros en linea de SQL Server 2011 “Denali”:  http://blog.josemarianoalvarez.com/post/2010/11/13/Libros-en-linea-de-SQL-Server-2011-e2809cDenalie2809d.aspx" 
+rel="nofollow">E-mail</A> |        <A href="http://www.dotnetkicks.com/submit?url=http%3a%2f%2fblog.josemarianoalvarez.com%2fpost%2f2010%2f11%2f13%2fLibros-en-linea-de-SQL-Server-2011-e2809cDenalie2809d.aspx&amp;title=Libros+en+linea+de+SQL+Server+2011+%e2%80%9cDenali%e2%80%9d" 
+rel="nofollow">Kick it!</A> |        <A href="http://www.dzone.com/links/add.html?url=http%3a%2f%2fblog.josemarianoalvarez.com%2fpost%2f2010%2f11%2f13%2fLibros-en-linea-de-SQL-Server-2011-e2809cDenalie2809d.aspx&amp;title=Libros+en+linea+de+SQL+Server+2011+%e2%80%9cDenali%e2%80%9d" 
+rel="nofollow">DZone it!</A> |        <A href="http://del.icio.us/post?url=http%3a%2f%2fblog.josemarianoalvarez.com%2fpost%2f2010%2f11%2f13%2fLibros-en-linea-de-SQL-Server-2011-e2809cDenalie2809d.aspx&amp;title=Libros+en+linea+de+SQL+Server+2011+%e2%80%9cDenali%e2%80%9d" 
+rel="nofollow">del.icio.us</A>          </DIV><A href="http://blog.josemarianoalvarez.com/post.aspx?id=15fc0d2a-96ef-42a4-9c54-5daee15e461f" 
+rel="bookmark">Permalink</A> |     <A href="http://blog.josemarianoalvarez.com/post/2010/11/13/Libros-en-linea-de-SQL-Server-2011-e2809cDenalie2809d.aspx#comment" 
+rel="nofollow">Comentarios (1)</A> |     <A href="http://blog.josemarianoalvarez.com/post/feed/2010/11/13/Libros-en-linea-de-SQL-Server-2011-e2809cDenalie2809d.aspx" 
+rel="nofollow">Post RSS<IMG style="margin-left: 3px;" alt="RSS comment feed" 
+src="Blog%20de%20Jose%20Mariano%20Alvarez%20%20SQL%20Server,%20ideas%20y%20experiencias_archivos/rssButton.gif"></A> 
+     </DIV></DIV>
+<DIV class="post xfolkentry">
+<H1><A class="taggedlink" href="http://blog.josemarianoalvarez.com/post/2010/11/09/Ya-se-puede-descargar-el-CTP1-de-SQL-Server-2011-e2809cDenalie2809d.aspx">Ya 
+se puede descargar el CTP1 de SQL Server 2011 “Denali”</A></H1><SPAN class="author">por 
+<A href="http://blog.josemarianoalvarez.com/author/jmalvarez.aspx">Jose Mariano 
+Alvarez</A></SPAN>   <SPAN class="pubDate">9. noviembre 2010</SPAN>     
+<DIV class="text">
+<P>Ayer fue anunciado en la conferencia PASS que está disponible para descargar 
+el CTP1 de la próxima versión del SQL Server 2011 cuyo nombre de proyecto es 
+"Denali". Si bien falta algo de tiempo para que este entre nosotros la versión 
+final, se pueden ver y probar algunas de las nuevas características. </P>
+<P>El CTP1 de “Denali”, está disponible para el que quiera probarlo. Sus 
+objetivos son proporcionar una plataforma altamente disponible y escalable con 
+una mayor flexibilidad, facilidad de uso, menor coste total de propiedad, y el 
+rendimiento requerido por la mayoría de las aplicaciones de misión crítica.</P>
+<P>Siempre debe tenerse en cuenta que en el proceso de desarrollo pueden 
+cambiar, o desaparecer algunas de las características que tiene durante el 
+proceso de pruebas.</P>
+<P>&nbsp;</P>
+<H2>Les dejo algunos links:</H2>
+<P>Información de SQL Server 2011 “Denali”: </P>
+<P><A title="Información de SQL Server 2011 “Denali" href="http://www.microsoft.com/sqlserver/en/us/product-info/future-editions.aspx" 
+target="_blank" 
+rel="nofollow">http://www.microsoft.com/sqlserver/en/us/product-info/future-editions.aspx</A>, 
+</P>
+<P>Anuncio del Parallel Data Warehouse 2008 R2:</P>
+<P><A title="Anuncio del Parallel Data Warehouse 2008 R2" href="http://www.microsoft.com/Presspass/press/2010/nov10/11-09PASS10PR.mspx" 
+target="_blank" 
+rel="nofollow">http://www.microsoft.com/Presspass/press/2010/nov10/11-09PASS10PR.mspx</A>.</P>
+<P>Descarga del Microsoft® SQL Server® code-named 'Denali' - Community 
+Technology Preview 1 (CTP1)</P>
+<P><A title="Descarga del Microsoft® SQL Server® code-named 'Denali' - Community Technology Preview 1 (CTP1)" 
+href="http://www.microsoft.com/downloads/en/details.aspx?FamilyID=6a04f16f-f6be-4f92-9c92-f7e5677d91f9" 
+target="_blank" 
+rel="nofollow">http://www.microsoft.com/downloads/en/details.aspx?FamilyID=6a04f16f-f6be-4f92-9c92-f7e5677d91f9</A></P>
+<H2>&nbsp;</H2>
+<H2>Algunas novedades que tendrá</H2>
+<UL>
+  <LI>SQL Server AlwaysOn (Siempre activo), proporciona un conjunto de 
+  capacidades para ayudar a las empresas a maximizar el tiempo de funcionamiento 
+  de sus aplicaciones de misión crítica, simplificar las implementaciones de 
+  alta disponibilidad y ofrecer un mejor rendimiento de las inversiones de 
+  hardware. </LI>
+  <LI>Acelerador de consultas basado en columnas, ayudará a aumentar 
+  drásticamente el rendimiento de consultas (~ 10x) y reducir las tareas de 
+  optimización del rendimiento a través de experiencias interactivas con los 
+  datos y eliminar la necesidad de construir agregaciones. </LI>
+  <LI>Mejorar el cumplimiento mediante la auditoría en todas las ediciones de 
+  SQL Server </LI>
+  <LI>Gestionar eficazmente la separación de funciones con las funciones de 
+  servidor de grano fino. </LI>
+  <LI>Las mejoras de compatibilidad ayudarán a simplificar las pruebas de 
+  aplicaciones y reducir los errores con los cambios en las aplicaciones y las 
+  actualizaciones distribuidas utilizando Replay. </LI>
+  <LI>Un rendimiento más rápido de FileStream y búsqueda de texto completo, el 
+  apoyo espaciales 2D y FileTable. </LI>
+  <LI>Experiencia unificada de desarrollo, herramientas de SQL Server con nombre 
+  en código " " </LI>
+  <LI>Entorno único para el desarrollo de bases de datos, BI y soluciones web. 
+  </LI>
+  <LI>Ampliación del alcance de BI a través de la visualización basada en web 
+  altamente interactivas y storyboard. </LI>
+  <LI>Exploración de datos en Internet y soluciones de visualización. </LI>
+  <LI>Análisis en memoria y disco para toda la organización </LI>
+  <LI>Proporcionar el mayor rendimiento de análisis desde el desktop al centro 
+  de datos a través de la tecnología Vertipaq </LI>
+  <LI>Modelo semántico, tanto para la presentación de informes y análisis. </LI>
+  <LI>Integración de datos empresariales </LI>
+  <LI>Dos componentes nuevos para la gestión de datos, servicios de datos de 
+  calidad de la limpieza de datos basada en el conocimiento y análisis de 
+  impacto y linaje. </LI></UL></DIV>
+<DIV class="bottom">
+<DIV class="ratingcontainer" 
+style="visibility: hidden;">73767cea-c58c-4fbb-bab9-6423a4a3980d|0|.0</DIV>
+<P class="tags">Tags: <A href="http://blog.josemarianoalvarez.com/?tag=/descargas" 
+rel="tag">descargas</A>, <A href="http://blog.josemarianoalvarez.com/?tag=/general" 
+rel="tag">general</A>, <A href="http://blog.josemarianoalvarez.com/?tag=/denali" 
+rel="tag">denali</A></P>
+<P class="categories"><A href="http://blog.josemarianoalvarez.com/category/Novedades.aspx">Novedades</A></P></DIV>
+<DIV class="footer">
+<DIV><IFRAME src="Blog%20de%20Jose%20Mariano%20Alvarez%20%20SQL%20Server,%20ideas%20y%20experiencias_archivos/blockpageC3X90ICK.htm" 
+frameborder="0" scrolling="no" style="border: currentColor; border-image: none; width: 450px; height: 80px; overflow: hidden;" 
+allowtransparency="true"></IFRAME>					 </DIV>
+<DIV class="bookmarks"><A href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fblog.josemarianoalvarez.com%2fpost%2f2010%2f11%2f09%2fYa-se-puede-descargar-el-CTP1-de-SQL-Server-2011-e2809cDenalie2809d.aspx&amp;title=Ya+se+puede+descargar+el+CTP1+de+SQL+Server+2011+%e2%80%9cDenali%e2%80%9d" 
+target='“_blank"' rel="nofollow"><IMG title="“LinkedIn”" alt="“Compartir" src="Blog%20de%20Jose%20Mariano%20Alvarez%20%20SQL%20Server,%20ideas%20y%20experiencias_archivos/LinedinLogo1003_30_25_cache.png" 
+border="0" linkedin”="" en="">Compartir</A>|       <A href="mailto:?subject=Creo que este post puede ser interesante &amp;body=Ya se puede descargar el CTP1 de SQL Server 2011 “Denali”:  http://blog.josemarianoalvarez.com/post/2010/11/09/Ya-se-puede-descargar-el-CTP1-de-SQL-Server-2011-e2809cDenalie2809d.aspx" 
+rel="nofollow">E-mail</A> |        <A href="http://www.dotnetkicks.com/submit?url=http%3a%2f%2fblog.josemarianoalvarez.com%2fpost%2f2010%2f11%2f09%2fYa-se-puede-descargar-el-CTP1-de-SQL-Server-2011-e2809cDenalie2809d.aspx&amp;title=Ya+se+puede+descargar+el+CTP1+de+SQL+Server+2011+%e2%80%9cDenali%e2%80%9d" 
+rel="nofollow">Kick it!</A> |        <A href="http://www.dzone.com/links/add.html?url=http%3a%2f%2fblog.josemarianoalvarez.com%2fpost%2f2010%2f11%2f09%2fYa-se-puede-descargar-el-CTP1-de-SQL-Server-2011-e2809cDenalie2809d.aspx&amp;title=Ya+se+puede+descargar+el+CTP1+de+SQL+Server+2011+%e2%80%9cDenali%e2%80%9d" 
+rel="nofollow">DZone it!</A> |        <A href="http://del.icio.us/post?url=http%3a%2f%2fblog.josemarianoalvarez.com%2fpost%2f2010%2f11%2f09%2fYa-se-puede-descargar-el-CTP1-de-SQL-Server-2011-e2809cDenalie2809d.aspx&amp;title=Ya+se+puede+descargar+el+CTP1+de+SQL+Server+2011+%e2%80%9cDenali%e2%80%9d" 
+rel="nofollow">del.icio.us</A>          </DIV><A href="http://blog.josemarianoalvarez.com/post.aspx?id=73767cea-c58c-4fbb-bab9-6423a4a3980d" 
+rel="bookmark">Permalink</A> |     <A href="http://blog.josemarianoalvarez.com/post/2010/11/09/Ya-se-puede-descargar-el-CTP1-de-SQL-Server-2011-e2809cDenalie2809d.aspx#comment" 
+rel="nofollow">Comentarios (1)</A> |     <A href="http://blog.josemarianoalvarez.com/post/feed/2010/11/09/Ya-se-puede-descargar-el-CTP1-de-SQL-Server-2011-e2809cDenalie2809d.aspx" 
+rel="nofollow">Post RSS<IMG style="margin-left: 3px;" alt="RSS comment feed" 
+src="Blog%20de%20Jose%20Mariano%20Alvarez%20%20SQL%20Server,%20ideas%20y%20experiencias_archivos/rssButton.gif"></A> 
+     </DIV></DIV></DIV>
+<DIV id="postPaging"><A id="ctl00_cphBody_PostList1_hlPrev" style="float: left;" 
+href="http://blog.josemarianoalvarez.com/?page=2">&lt;&lt; Publicaciones 
+Anteriores</A>   </DIV>
+<P class="powered">        Powered by <A href="http://www.sqltotalconsulting.com/">SQL 
+Total Consulting</A>              </P></DIV>
+<DIV id="sidepanel">
+<DIV class="widgetzone" id="widgetzone_be_WIDGET_ZONE">
+<DIV class="widget textbox" id="widget9f6db248-23da-42d5-9a6a-d600529ea405"><BR>
+<DIV class="content">
+<P align="center"><A title="Jose Mariano Alvarez - Contacto" href="http://blog.josemarianoalvarez.com/page/Acerca-de-Jose-Mariano-Alvarez.aspx"><IMG 
+width="100" height="130" alt="" src="Blog%20de%20Jose%20Mariano%20Alvarez%20%20SQL%20Server,%20ideas%20y%20experiencias_archivos/JMAlvarez_100X130.jpg"></A></P>
+<P align="center"><A href="http://www.linkedin.com/in/josemarianoalvarez" 
+target="_blank"><IMG width="120" height="33" alt="View Jose Mariano Alvarez's profile on LinkedIn" 
+src="Blog%20de%20Jose%20Mariano%20Alvarez%20%20SQL%20Server,%20ideas%20y%20experiencias_archivos/blockpage.gif" 
+border="0"></A></P>
+<P align="center"><A title="Jose Mariano Alvarez - Facebook" href="http://es-la.facebook.com/people/Jose-Mariano-Alvarez/1164978683" 
+target="_blank"><IMG width="111" height="34" alt="" src="Blog%20de%20Jose%20Mariano%20Alvarez%20%20SQL%20Server,%20ideas%20y%20experiencias_archivos/Facebook.jpg"></A></P>
+<P align="center"><A title="Jose Mariano Alvarez - Contacto" href="http://blog.josemarianoalvarez.com/page/Acerca-de-Jose-Mariano-Alvarez.aspx">&nbsp;</A><A 
+href="http://technorati.com/faves?sub=addfavbtn&amp;add=http://blog.josemarianoalvarez.com"><IMG 
+alt="Add to Technorati Favorites" src=""></A>&nbsp;</P></DIV></DIV>
+<DIV class="widget pagelist" id="widgetdc246169-0320-459f-a181-0f7f423dfbb5">
+<H4 class="widgettittle">Paginas</H4>
+<DIV class="content">
+<UL class="pagelist" id="pagelist">
+  <LI><A href="http://blog.josemarianoalvarez.com/page/Acerca-de-Jose-Mariano-Alvarez.aspx">Acerca 
+  de Jose Mariano Alvarez</A></LI>
+  <LI><A title="Detalle de las condiciones de uso del blog orientado a la difusión de contenidos relacionados con las tecnologías del SQL Server y las opiniones o trabajos personales del autor." 
+  href="http://blog.josemarianoalvarez.com/page/Condiciones-de-Uso.aspx">Condiciones 
+  de Uso</A></LI>
+  <LI><A title="The description is used as meta description" href="http://blog.josemarianoalvarez.com/page/Example-page.aspx">Example 
+  page</A></LI></UL></DIV></DIV>
+<DIV class="widget recentposts" id="widgetdae6d011-d49d-46a9-8b56-f601a12d6071">
+<H4 class="widgettittle">Post Recientes</H4>
+<DIV class="content">
+<UL class="recentPosts" id="recentPosts">
+  <LI><A href="http://blog.josemarianoalvarez.com/post/2011/02/25/Como-recuperar-la-contrasena-del-SA-si-se-perdio-o-se-olvido.aspx">Como 
+  recuperar la contraseña del SA si se perdió o se olvidó</A></LI>
+  <LI><A href="http://blog.josemarianoalvarez.com/post/2010/12/27/Paquete-de-actualizacion-acumulativa-1-para-SQL-Server-2005-Service-Pack-4.aspx">Paquete 
+  de actualización acumulativa 1 para SQL Server 2005 Service Pack 4</A></LI>
+  <LI><A href="http://blog.josemarianoalvarez.com/post/2010/12/25/SQL-Server-2005-Service-Pack-4-SP4.aspx">SQL 
+  Server 2005 Service Pack 4 - SP4</A></LI>
+  <LI><A href="http://blog.josemarianoalvarez.com/post/2010/11/25/FIX-para-el-Error-315-The-backup-set-holds-backup-of-a-database-other-than-the-existing-database.aspx">FIX 
+  para el Error 315 The backup set holds backup of a database other than the 
+  existing database</A></LI>
+  <LI><A href="http://blog.josemarianoalvarez.com/post/2010/11/18/Truco-para-disenar-una-dimension-tiempo-de-un-Data-Warehouse.aspx">Truco 
+  para diseñar una dimensión tiempo de un Data Warehouse</A></LI>
+  <LI><A href="http://blog.josemarianoalvarez.com/post/2010/11/13/Libros-en-linea-de-SQL-Server-2011-e2809cDenalie2809d.aspx">Libros 
+  en linea de SQL Server 2011 “Denali”</A></LI>
+  <LI><A href="http://blog.josemarianoalvarez.com/post/2010/11/09/Ya-se-puede-descargar-el-CTP1-de-SQL-Server-2011-e2809cDenalie2809d.aspx">Ya 
+  se puede descargar el CTP1 de SQL Server 2011 “Denali”</A></LI>
+  <LI><A href="http://blog.josemarianoalvarez.com/post/2010/08/13/Como-transferir-los-roles-de-servidor-entre-instancias-de-SQL-Server-2005-o-2008.aspx">Como 
+  transferir los roles de servidor entre instancias de SQL Server 2005 o 
+  2008</A></LI>
+  <LI><A href="http://blog.josemarianoalvarez.com/post/2010/08/09/Como-transferir-los-inicios-de-sesion-y-las-contrasenas-entre-instancias-de-SQL-Server.aspx">Cómo 
+  transferir los inicios de sesión y las contraseñas entre instancias de SQL 
+  Server</A></LI>
+  <LI><A href="http://blog.josemarianoalvarez.com/post/2010/08/03/Cifrado-Blackberry-Cloud-Computing-y-Seguridad-Nacional.aspx">Cifrado, 
+  Blackberry, Cloud Computing y Seguridad Nacional</A></LI></UL></DIV></DIV>
+<DIV class="widget tagcloud" id="widget76dfb6eb-1931-47b6-bece-167a7d0a0b79">
+<H4 class="widgettittle">Etiquetas</H4>
+<DIV class="content">
+<UL id="ctl00_76dfb6eb193147b6bece167a7d0a0b79_ulTags">
+  <LI><A title="Tag: actualizaciones" class="biggest" href="http://blog.josemarianoalvarez.com/?tag=/actualizaciones">actualizaciones</A> 
+  </LI>
+  <LI><A title="Tag: administración" class="big" href="http://blog.josemarianoalvarez.com/?tag=/administracion">administración</A> 
+  </LI>
+  <LI><A title="Tag: ado.net" class="smallest" href="http://blog.josemarianoalvarez.com/?tag=/adonet">ado.net</A> 
+  </LI>
+  <LI><A title="Tag: alta disponibilidad" class="smallest" href="http://blog.josemarianoalvarez.com/?tag=/alta-disponibilidad">alta 
+  disponibilidad</A> </LI>
+  <LI><A title="Tag: analysis services" class="smallest" href="http://blog.josemarianoalvarez.com/?tag=/analysis-services">analysis 
+  services</A> </LI>
+  <LI><A title="Tag: azure" class="small" href="http://blog.josemarianoalvarez.com/?tag=/azure">azure</A> 
+  </LI>
+  <LI><A title="Tag: backup" class="smallest" href="http://blog.josemarianoalvarez.com/?tag=/backup">backup</A> 
+  </LI>
+  <LI><A title="Tag: books on line" class="smallest" href="http://blog.josemarianoalvarez.com/?tag=/books-on-line">books 
+  on line</A> </LI>
+  <LI><A title="Tag: capacitación" class="medium" href="http://blog.josemarianoalvarez.com/?tag=/capacitacion">capacitación</A> 
+  </LI>
+  <LI><A title="Tag: cdc" class="smallest" href="http://blog.josemarianoalvarez.com/?tag=/cdc">cdc</A> 
+  </LI>
+  <LI><A title="Tag: cifrado" class="smallest" href="http://blog.josemarianoalvarez.com/?tag=/cifrado">cifrado</A> 
+  </LI>
+  <LI><A title="Tag: cloud" class="smallest" href="http://blog.josemarianoalvarez.com/?tag=/cloud">cloud</A> 
+  </LI>
+  <LI><A title="Tag: cluster" class="smallest" href="http://blog.josemarianoalvarez.com/?tag=/cluster">cluster</A> 
+  </LI>
+  <LI><A title="Tag: compatibilidad" class="smallest" href="http://blog.josemarianoalvarez.com/?tag=/compatibilidad">compatibilidad</A> 
+  </LI>
+  <LI><A title="Tag: concurrencia" class="smallest" href="http://blog.josemarianoalvarez.com/?tag=/concurrencia">concurrencia</A> 
+  </LI>
+  <LI><A title="Tag: configuración" class="smallest" href="http://blog.josemarianoalvarez.com/?tag=/configuracion">configuración</A> 
+  </LI>
+  <LI><A title="Tag: cpu" class="smallest" href="http://blog.josemarianoalvarez.com/?tag=/cpu">cpu</A> 
+  </LI>
+  <LI><A title="Tag: data warehouse" class="smallest" href="http://blog.josemarianoalvarez.com/?tag=/data-warehouse">data 
+  warehouse</A> </LI>
+  <LI><A title="Tag: denali" class="smallest" href="http://blog.josemarianoalvarez.com/?tag=/denali">denali</A> 
+  </LI>
+  <LI><A title="Tag: desarrollo" class="medium" href="http://blog.josemarianoalvarez.com/?tag=/desarrollo">desarrollo</A> 
+  </LI>
+  <LI><A title="Tag: descargas" class="big" href="http://blog.josemarianoalvarez.com/?tag=/descargas">descargas</A> 
+  </LI>
+  <LI><A title="Tag: discos" class="smallest" href="http://blog.josemarianoalvarez.com/?tag=/discos">discos</A> 
+  </LI>
+  <LI><A title="Tag: dmv" class="smallest" href="http://blog.josemarianoalvarez.com/?tag=/dmv">dmv</A> 
+  </LI>
+  <LI><A title="Tag: error" class="smallest" href="http://blog.josemarianoalvarez.com/?tag=/error">error</A> 
+  </LI>
+  <LI><A title="Tag: etl" class="small" href="http://blog.josemarianoalvarez.com/?tag=/etl">etl</A> 
+  </LI>
+  <LI><A title="Tag: eventos" class="smallest" href="http://blog.josemarianoalvarez.com/?tag=/eventos">eventos</A> 
+  </LI>
+  <LI><A title="Tag: genera" class="smallest" href="http://blog.josemarianoalvarez.com/?tag=/genera">genera</A> 
+  </LI>
+  <LI><A title="Tag: general" class="small" href="http://blog.josemarianoalvarez.com/?tag=/general">general</A> 
+  </LI>
+  <LI><A title="Tag: herramientas" class="small" href="http://blog.josemarianoalvarez.com/?tag=/herramientas">herramientas</A> 
+  </LI>
+  <LI><A title="Tag: indices" class="smallest" href="http://blog.josemarianoalvarez.com/?tag=/indices">indices</A> 
+  </LI>
+  <LI><A title="Tag: índices" class="smallest" href="http://blog.josemarianoalvarez.com/?tag=/indices">índices</A> 
+  </LI>
+  <LI><A title="Tag: instalación" class="medium" href="http://blog.josemarianoalvarez.com/?tag=/instalacion">instalación</A> 
+  </LI>
+  <LI><A title="Tag: integration services" class="smallest" href="http://blog.josemarianoalvarez.com/?tag=/integration-services">integration 
+  services</A> </LI>
+  <LI><A title="Tag: mantenimiento" class="smallest" href="http://blog.josemarianoalvarez.com/?tag=/mantenimiento">mantenimiento</A> 
+  </LI>
+  <LI><A title="Tag: mejores practicas" class="smallest" href="http://blog.josemarianoalvarez.com/?tag=/mejores-practicas">mejores 
+  practicas</A> </LI>
+  <LI><A title="Tag: mejores prácticas" class="medium" href="http://blog.josemarianoalvarez.com/?tag=/mejores-practicas">mejores 
+  prácticas</A> </LI>
+  <LI><A title="Tag: memoria" class="smallest" href="http://blog.josemarianoalvarez.com/?tag=/memoria">memoria</A> 
+  </LI>
+  <LI><A title="Tag: migración" class="small" href="http://blog.josemarianoalvarez.com/?tag=/migracion">migración</A> 
+  </LI>
+  <LI><A title="Tag: nube" class="smallest" href="http://blog.josemarianoalvarez.com/?tag=/nube">nube</A> 
+  </LI>
+  <LI><A title="Tag: particionamiento" class="smallest" href="http://blog.josemarianoalvarez.com/?tag=/particionamiento">particionamiento</A> 
+  </LI>
+  <LI><A title="Tag: performance" class="medium" href="http://blog.josemarianoalvarez.com/?tag=/performance">performance</A> 
+  </LI>
+  <LI><A title="Tag: profiler" class="smallest" href="http://blog.josemarianoalvarez.com/?tag=/profiler">profiler</A> 
+  </LI>
+  <LI><A title="Tag: rendimiento" class="medium" href="http://blog.josemarianoalvarez.com/?tag=/rendimiento">rendimiento</A> 
+  </LI>
+  <LI><A title="Tag: reporting services" class="smallest" href="http://blog.josemarianoalvarez.com/?tag=/reporting-services">reporting 
+  services</A> </LI>
+  <LI><A title="Tag: resource governor" class="smallest" href="http://blog.josemarianoalvarez.com/?tag=/resource-governor">resource 
+  governor</A> </LI>
+  <LI><A title="Tag: seguridad" class="big" href="http://blog.josemarianoalvarez.com/?tag=/seguridad">seguridad</A> 
+  </LI>
+  <LI><A title="Tag: service broker" class="smallest" href="http://blog.josemarianoalvarez.com/?tag=/service-broker">service 
+  broker</A> </LI>
+  <LI><A title="Tag: service pack" class="medium" href="http://blog.josemarianoalvarez.com/?tag=/service-pack">service 
+  pack</A> </LI>
+  <LI><A title="Tag: sitios" class="smallest" href="http://blog.josemarianoalvarez.com/?tag=/sitios">sitios</A> 
+  </LI>
+  <LI><A title="Tag: sql azure" class="smallest" href="http://blog.josemarianoalvarez.com/?tag=/sql-azure">sql 
+  azure</A> </LI>
+  <LI><A title="Tag: sql azure database" class="smallest" href="http://blog.josemarianoalvarez.com/?tag=/sql-azure-database">sql 
+  azure database</A> </LI>
+  <LI><A title="Tag: transaction log" class="smallest" href="http://blog.josemarianoalvarez.com/?tag=/transaction-log">transaction 
+  log</A> </LI>
+  <LI><A title="Tag: tsql" class="small" href="http://blog.josemarianoalvarez.com/?tag=/tsql">tsql</A> 
+  </LI>
+  <LI><A title="Tag: virtualización" class="smallest" href="http://blog.josemarianoalvarez.com/?tag=/virtualizacion">virtualización</A> 
+  </LI>
+  <LI><A title="Tag: visual studio" class="smallest" href="http://blog.josemarianoalvarez.com/?tag=/visual-studio">visual 
+  studio</A> </LI></UL></DIV></DIV>
+<DIV class="widget categorylist" 
+id="widgete08a8667-6082-4cd6-8024-dad496408edd">
+<H4 class="widgettittle">Categorías</H4>
+<DIV class="content">
+<UL id="categorylist">
+  <LI><A href="http://blog.josemarianoalvarez.com/category/feed/Actualizaciones.aspx" 
+  rel="nofollow"><IMG class="rssButton" alt="RSS feed for Actualizaciones" src="Blog%20de%20Jose%20Mariano%20Alvarez%20%20SQL%20Server,%20ideas%20y%20experiencias_archivos/rssButton.gif"></A><A 
+  title="Category: Actualizaciones" href="http://blog.josemarianoalvarez.com/category/Actualizaciones.aspx">Actualizaciones 
+  (15)</A></LI>
+  <LI><A href="http://blog.josemarianoalvarez.com/category/feed/Articulos.aspx" 
+  rel="nofollow"><IMG class="rssButton" alt="RSS feed for Artículos" src="Blog%20de%20Jose%20Mariano%20Alvarez%20%20SQL%20Server,%20ideas%20y%20experiencias_archivos/rssButton.gif"></A><A 
+  title="Category: Artículos" href="http://blog.josemarianoalvarez.com/category/Articulos.aspx">Artículos 
+  (22)</A></LI>
+  <LI><A href="http://blog.josemarianoalvarez.com/category/feed/Comunidad.aspx" 
+  rel="nofollow"><IMG class="rssButton" alt="RSS feed for Comunidad" src="Blog%20de%20Jose%20Mariano%20Alvarez%20%20SQL%20Server,%20ideas%20y%20experiencias_archivos/rssButton.gif"></A><A 
+  title="Category: Comunidad" href="http://blog.josemarianoalvarez.com/category/Comunidad.aspx">Comunidad 
+  (2)</A></LI>
+  <LI><A href="http://blog.josemarianoalvarez.com/category/feed/Documentos.aspx" 
+  rel="nofollow"><IMG class="rssButton" alt="RSS feed for Documentos" src="Blog%20de%20Jose%20Mariano%20Alvarez%20%20SQL%20Server,%20ideas%20y%20experiencias_archivos/rssButton.gif"></A><A 
+  title="Category: Documentos" href="http://blog.josemarianoalvarez.com/category/Documentos.aspx">Documentos 
+  (9)</A></LI>
+  <LI><A href="http://blog.josemarianoalvarez.com/category/feed/Eventos-y-conferencias.aspx" 
+  rel="nofollow"><IMG class="rssButton" alt="RSS feed for Eventos y conferencias" 
+  src="Blog%20de%20Jose%20Mariano%20Alvarez%20%20SQL%20Server,%20ideas%20y%20experiencias_archivos/rssButton.gif"></A><A 
+  title="Category: Eventos y conferencias" href="http://blog.josemarianoalvarez.com/category/Eventos-y-conferencias.aspx">Eventos 
+  y conferencias (8)</A></LI>
+  <LI><A href="http://blog.josemarianoalvarez.com/category/feed/Ideas-y-nociones.aspx" 
+  rel="nofollow"><IMG class="rssButton" alt="RSS feed for Ideas y nociones" src="Blog%20de%20Jose%20Mariano%20Alvarez%20%20SQL%20Server,%20ideas%20y%20experiencias_archivos/rssButton.gif"></A><A 
+  title="Category: Ideas y nociones" href="http://blog.josemarianoalvarez.com/category/Ideas-y-nociones.aspx">Ideas 
+  y nociones (2)</A></LI>
+  <LI><A href="http://blog.josemarianoalvarez.com/category/feed/Novedades.aspx" 
+  rel="nofollow"><IMG class="rssButton" alt="RSS feed for Novedades" src="Blog%20de%20Jose%20Mariano%20Alvarez%20%20SQL%20Server,%20ideas%20y%20experiencias_archivos/rssButton.gif"></A><A 
+  title="Category: Novedades" href="http://blog.josemarianoalvarez.com/category/Novedades.aspx">Novedades 
+  (17)</A></LI></UL></DIV></DIV>
+<DIV class="widget monthlist" id="widgetab2b8c27-02c4-46ab-a78f-28939c2a1a09">
+<H4 class="widgettittle">Month List</H4>
+<DIV class="content">
+<UL id="monthList">
+  <LI class="year" onclick="BlogEngine.toggleMonth('year2011')">2011
+  <UL id="year2011">
+    <LI><A 
+    href="http://blog.josemarianoalvarez.com/2011/02/default.aspx">febrero 
+    (1)</A></LI></UL></LI>
+  <LI class="year" onclick="BlogEngine.toggleMonth('year2010')">2010
+  <UL id="year2010">
+    <LI><A 
+    href="http://blog.josemarianoalvarez.com/2010/12/default.aspx">diciembre 
+    (2)</A></LI>
+    <LI><A 
+    href="http://blog.josemarianoalvarez.com/2010/11/default.aspx">noviembre 
+    (4)</A></LI>
+    <LI><A href="http://blog.josemarianoalvarez.com/2010/08/default.aspx">agosto 
+    (3)</A></LI>
+    <LI><A href="http://blog.josemarianoalvarez.com/2010/07/default.aspx">julio 
+    (5)</A></LI></UL></LI>
+  <LI class="year" onclick="BlogEngine.toggleMonth('year2009')">2009
+  <UL id="year2009">
+    <LI><A 
+    href="http://blog.josemarianoalvarez.com/2009/11/default.aspx">noviembre 
+    (1)</A></LI>
+    <LI><A 
+    href="http://blog.josemarianoalvarez.com/2009/10/default.aspx">octubre 
+    (2)</A></LI>
+    <LI><A 
+    href="http://blog.josemarianoalvarez.com/2009/09/default.aspx">septiembre 
+    (1)</A></LI>
+    <LI><A href="http://blog.josemarianoalvarez.com/2009/08/default.aspx">agosto 
+    (3)</A></LI>
+    <LI><A href="http://blog.josemarianoalvarez.com/2009/07/default.aspx">julio 
+    (11)</A></LI>
+    <LI><A href="http://blog.josemarianoalvarez.com/2009/06/default.aspx">junio 
+    (7)</A></LI>
+    <LI><A href="http://blog.josemarianoalvarez.com/2009/05/default.aspx">mayo 
+    (2)</A></LI>
+    <LI><A href="http://blog.josemarianoalvarez.com/2009/04/default.aspx">abril 
+    (4)</A></LI>
+    <LI><A href="http://blog.josemarianoalvarez.com/2009/03/default.aspx">marzo 
+    (12)</A></LI>
+    <LI><A 
+    href="http://blog.josemarianoalvarez.com/2009/02/default.aspx">febrero 
+    (9)</A></LI></UL></LI></UL></DIV></DIV>
+<DIV class="widget calendar" id="widget5aa7dc9d-49f6-4a6a-adb6-f82b6e1dd887">
+<H4 class="widgettittle">Calendar</H4>
+<DIV class="content">
+<DIV style="text-align: center;">
+<DIV id="calendarContainer">
+<TABLE class="calendar" style="border-collapse: collapse;" summary="">
+  <TBODY>
+  <TR>
+    <TD><A 
+      href="javascript:BlogEngine.Calendar.nav('2015-07-03')">&lt;&lt;</A>&nbsp;&nbsp;</TD>
+    <TD style="width: 100px; text-align: center;">agosto 2015</TD>
+    <TD align="right">&nbsp;&nbsp;&gt;&gt;</TD></TR></TBODY></TABLE>
+<TABLE title="Calendar" class="calendar" id="ctl00_5aa7dc9d49f64a6aadb6f82b6e1dd887_PostCalendar1" 
+style="border-width: 0px; border-collapse: collapse;" border="0" cellspacing="0" 
+cellpadding="2" summary="Post calendar">
+  <TBODY>
+  <TR>
+    <TH align="center" abbr="lunes" scope="col">lu</TH>
+    <TH align="center" abbr="martes" scope="col">ma</TH>
+    <TH align="center" abbr="miércoles" scope="col">mi</TH>
+    <TH align="center" abbr="jueves" scope="col">ju</TH>
+    <TH align="center" abbr="viernes" scope="col">vi</TH>
+    <TH align="center" abbr="sábado" scope="col">sá</TH>
+    <TH align="center" abbr="domingo" scope="col">do</TH></TR>
+  <TR>
+    <TD align="center" class="other" style="width: 14%;">27</TD>
+    <TD align="center" class="other" style="width: 14%;">28</TD>
+    <TD align="center" class="other" style="width: 14%;">29</TD>
+    <TD align="center" class="other" style="width: 14%;">30</TD>
+    <TD align="center" class="other" style="width: 14%;">31</TD>
+    <TD align="center" class="weekend" style="width: 14%;">1</TD>
+    <TD align="center" class="weekend" style="width: 14%;">2</TD></TR>
+  <TR>
+    <TD align="center" id="today" style="width: 14%;">3</TD>
+    <TD align="center" style="width: 14%;">4</TD>
+    <TD align="center" style="width: 14%;">5</TD>
+    <TD align="center" style="width: 14%;">6</TD>
+    <TD align="center" style="width: 14%;">7</TD>
+    <TD align="center" class="weekend" style="width: 14%;">8</TD>
+    <TD align="center" class="weekend" style="width: 14%;">9</TD></TR>
+  <TR>
+    <TD align="center" style="width: 14%;">10</TD>
+    <TD align="center" style="width: 14%;">11</TD>
+    <TD align="center" style="width: 14%;">12</TD>
+    <TD align="center" style="width: 14%;">13</TD>
+    <TD align="center" style="width: 14%;">14</TD>
+    <TD align="center" class="weekend" style="width: 14%;">15</TD>
+    <TD align="center" class="weekend" style="width: 14%;">16</TD></TR>
+  <TR>
+    <TD align="center" style="width: 14%;">17</TD>
+    <TD align="center" style="width: 14%;">18</TD>
+    <TD align="center" style="width: 14%;">19</TD>
+    <TD align="center" style="width: 14%;">20</TD>
+    <TD align="center" style="width: 14%;">21</TD>
+    <TD align="center" class="weekend" style="width: 14%;">22</TD>
+    <TD align="center" class="weekend" style="width: 14%;">23</TD></TR>
+  <TR>
+    <TD align="center" style="width: 14%;">24</TD>
+    <TD align="center" style="width: 14%;">25</TD>
+    <TD align="center" style="width: 14%;">26</TD>
+    <TD align="center" style="width: 14%;">27</TD>
+    <TD align="center" style="width: 14%;">28</TD>
+    <TD align="center" class="weekend" style="width: 14%;">29</TD>
+    <TD align="center" class="weekend" style="width: 14%;">30</TD></TR>
+  <TR>
+    <TD align="center" style="width: 14%;">31</TD>
+    <TD align="center" class="other" style="width: 14%;">1</TD>
+    <TD align="center" class="other" style="width: 14%;">2</TD>
+    <TD align="center" class="other" style="width: 14%;">3</TD>
+    <TD align="center" class="other" style="width: 14%;">4</TD>
+    <TD align="center" class="other" style="width: 14%;">5</TD>
+    <TD align="center" class="other" 
+style="width: 14%;">6</TD></TR></TBODY></TABLE></DIV>
+<SCRIPT type="text/javascript">
+function setupBlogEngineCalendar() {
+  BlogEngine.Calendar = {
+  	  months: {},
+	  nav: function(date) {
+		  var m = BlogEngine.Calendar.months;
+		  if (m[date] == null || m[date] == 'undefined')  {
+		  	  WebForm_DoCallback('ctl00$5aa7dc9d49f64a6aadb6f82b6e1dd887$PostCalendar1',date,BlogEngine.updateCalendar,date,null,false)
+		  } else {
+			  BlogEngine.updateCalendar(m[date], date);
+		  }
+	  }
+  };
+}
+</SCRIPT>
+   <BR><A href="http://blog.josemarianoalvarez.com/calendar/default.aspx">View 
+posts in large calendar</A> </DIV></DIV></DIV>
+<DIV class="widget linklist" id="widgete6541239-ac3c-43e9-84dc-48e2008cadff">
+<H4 class="widgettittle">Links</H4>
+<DIV class="content">
+<UL id="ctl00_e6541239ac3c43e984dc48e2008cadff_ulLinks">
+  <LI><A href="http://www.mug.org.ar/" target="_blank">Mug</A></LI>
+  <LI><A href="http://www.sqltotalconsulting.com/" target="_blank">SQL Total 
+  Consulting</A></LI></UL></DIV></DIV>
+<DIV class="widget blogroll" id="widget774fdbe8-0a33-4b66-8683-f4ad63162a92">
+<H4 class="widgettittle">BlogRoll</H4>
+<DIV class="content">
+<DIV id="blogroll">
+<UL class="xoxo">
+  <LI><A href="http://blog.maxiaccotto.com/syndication.axd"><IMG alt="RSS feed for Maxi Accotto" 
+  src="Blog%20de%20Jose%20Mariano%20Alvarez%20%20SQL%20Server,%20ideas%20y%20experiencias_archivos/rssButton.gif"></A><A 
+  href="http://blog.maxiaccotto.com/" rel="friend  colleague ">Maxi 
+  Accotto</A></LI>
+  <LI><A href="http://blogs.msdn.com/masaez/rss.xml"><IMG alt="RSS feed for Miguel Saez" 
+  src="Blog%20de%20Jose%20Mariano%20Alvarez%20%20SQL%20Server,%20ideas%20y%20experiencias_archivos/rssButton.gif"></A><A 
+  href="http://blogs.msdn.com/masaez/" rel="friend  colleague ">Miguel 
+  Saez</A></LI>
+  <LI><A href="http://blogs.technet.com/ponicke/rss.xml"><IMG alt="RSS feed for Alejandro Ponicke" 
+  src="Blog%20de%20Jose%20Mariano%20Alvarez%20%20SQL%20Server,%20ideas%20y%20experiencias_archivos/rssButton.gif"></A><A 
+  href="http://blogs.technet.com/ponicke/default.aspx" 
+  rel="friend  colleague ">Alejandro Ponicke</A></LI>
+  <LI><A href="http://blogs.msdn.com/mvplead/rss.xml"><IMG alt="RSS feed for Fernando Garcia Loera" 
+  src="Blog%20de%20Jose%20Mariano%20Alvarez%20%20SQL%20Server,%20ideas%20y%20experiencias_archivos/rssButton.gif"></A><A 
+  href="http://blogs.msdn.com/mvplead/" rel="friend  colleague ">Fernando Garcia 
+  Loera</A></LI>
+  <LI><A href="http://msmvps.com/blogs/lopez/rss.aspx"><IMG alt="RSS feed for Angel Java Lopez" 
+  src="Blog%20de%20Jose%20Mariano%20Alvarez%20%20SQL%20Server,%20ideas%20y%20experiencias_archivos/rssButton.gif"></A><A 
+  href="http://msmvps.com/blogs/lopez/Default.aspx" 
+  rel="friend  colleague ">Angel Java Lopez</A></LI>
+  <LI><A href="http://www.vemn.com.ar/blog/rss.aspx"><IMG alt="RSS feed for Daniel Laco - Vemn" 
+  src="Blog%20de%20Jose%20Mariano%20Alvarez%20%20SQL%20Server,%20ideas%20y%20experiencias_archivos/rssButton.gif"></A><A 
+  href="http://www.vemn.com.ar/blog/" rel="friend  colleague ">Daniel Laco - 
+  Vemn</A></LI></UL></DIV><A title="Download OPML file" style="text-align: right; display: block;" 
+href="http://blog.josemarianoalvarez.com/opml.axd">Download OPML file <IMG alt="OPML" 
+src="Blog%20de%20Jose%20Mariano%20Alvarez%20%20SQL%20Server,%20ideas%20y%20experiencias_archivos/opml.png"></A></DIV></DIV>
+<DIV class="widget textbox" id="widget5020cb69-3e2a-42e7-b5e7-fc48bde4561b"><BR>
+<DIV class="content">
+<DIV style="text-align: center;"><A id="clustrMapsLink" href="http://www3.clustrmaps.com/counter/maps.php?url=http://blog.josemarianoalvarez.com/"><IMG 
+title="Locations of visitors to this page" id="clustrMapsImg" style="border-width: 0px;" 
+alt="Locations of visitors to this page" src="Blog%20de%20Jose%20Mariano%20Alvarez%20%20SQL%20Server,%20ideas%20y%20experiencias_archivos/blockpage90ULKBCX.htm"></A>
+<SCRIPT type="text/javascript">function cantload() {img = document.getElementById("clustrMapsImg");img.onerror = null;img.src="http://www2.clustrmaps.com/images/clustrmaps-back-soon.jpg";document.getElementById("clustrMapsLink").href="http://www2.clustrmaps.com";}img = document.getElementById("clustrMapsImg");img.onerror = cantload;</SCRIPT>
+</DIV></DIV></DIV>
+<P style="color: red;">Widget Twitter not found.
+<P>Root element is missing.<A title="Borrar widget" class="delete" onclick="BlogEngine.widgetAdmin.removeWidget('da1b2724-c3c5-4aa2-9701-1c72c3dc635e');return false" 
+href="javascript:void(0)">X</A>
+<DIV class="widget textbox" id="widgetf15e1e29-431e-4677-873d-c96587a1a926"><BR>
+<DIV class="content">
+<P style="text-align: center;"><A href="http://mon.itor.us/?ref=button17"><IMG 
+title="Mon.itor.us - Free website, server &amp; network monitoring tool" alt="" 
+src="Blog%20de%20Jose%20Mariano%20Alvarez%20%20SQL%20Server,%20ideas%20y%20experiencias_archivos/blockpage(1).gif" 
+border="0"></A></P></DIV></DIV></DIV>
+<P align="center"><A href="http://validator.w3.org/check?uri=referer"><IMG 
+width="88" height="31" alt="Valid XHTML 1.0 Transitional" src="Blog%20de%20Jose%20Mariano%20Alvarez%20%20SQL%20Server,%20ideas%20y%20experiencias_archivos/valid-xhtml10.png"></A>
+	   </P>
+<P align="center"><A 
+href="http://jigsaw.w3.org/css-validator/check/referer"><IMG style="border: 0px currentColor; border-image: none; width: 88px; height: 31px;" 
+alt="Valid CSS!" src="Blog%20de%20Jose%20Mariano%20Alvarez%20%20SQL%20Server,%20ideas%20y%20experiencias_archivos/vcss.gif"> 
+    </A> </P>
+<SCRIPT type="text/javascript">        Cufon.now(); </SCRIPT>
+     <!--ONESTAT SCRIPTCODE START--> <!--
+// Modification of this code is not allowed and will permanently disable your account!
+// Account ID : 510577
+// Website URL: http://blog.josemarianoalvarez.com/
+// Copyright (C) 2002-2007 OneStat.com All Rights Reserved
+--> 
+<DIV id="OneStatTag">
+<TABLE border="0" cellspacing="0" cellpadding="0">
+  <TBODY>
+  <TR>
+    <TD align="center">
+<SCRIPT type="text/javascript">
+<!--
+    function OneStat_Pageview() {
+        var d = document;
+        var sid = "510577";
+        var CONTENTSECTION = "";
+        var osp_URL = d.URL;
+        var osp_Title = d.title;
+        var t = new Date();
+        var p = "http" + (d.URL.indexOf('https:') == 0 ? 's' : '') + "://stat.onestat.com/stat.aspx?tagver=2&sid=" + sid;
+        p += "&url=" + escape(osp_URL);
+        p += "&ti=" + escape(osp_Title);
+        p += "&section=" + escape(CONTENTSECTION);
+        p += "&rf=" + escape(parent == self ? document.referrer : top.document.referrer);
+        p += "&tz=" + escape(t.getTimezoneOffset());
+        p += "&ch=" + escape(t.getHours());
+        p += "&js=1";
+        p += "&ul=" + escape(navigator.appName == "Netscape" ? navigator.language : navigator.userLanguage);
+        if (typeof (screen) == "object") {
+            p += "&sr=" + screen.width + "x" + screen.height; p += "&cd=" + screen.colorDepth;
+            p += "&jo=" + (navigator.javaEnabled() ? "Yes" : "No");
+        }
+        d.write('<a href="http://www.onestatfree.com/aspx/login.aspx?sid=' + sid + '" target=_blank><img id="ONESTAT_TAG" border="0" src="' + p + '" alt="This site tracked by OneStatFree.com. Get your own free site tracker."></' + 'a>');
+    }
+
+    OneStat_Pageview();
+//-->
+</SCRIPT>
+       <NOSCRIPT>&lt;a href="http://www.onestatfree.com"&gt;&lt;img border="0" 
+      src="http://stat.onestat.com/stat.aspx?tagver=2&amp;amp;sid=510577&amp;amp;js=No&amp;amp;" 
+      alt="web analytics solutions" /&gt;&lt;/a&gt; </NOSCRIPT> </TD></TR>
+  <TR>
+    <TD align="center">
+      <DIV style='color: black; font-family: "Verdana"; display: none;'><A 
+      style="text-decoration: none;" href="http://www.onestat.com/">web 
+      analytics solutions</A><BR></DIV></TD></TR></TBODY></TABLE></DIV><!--ONESTAT SCRIPTCODE END--> 
+    </DIV>
+<DIV><INPUT name="__EVENTVALIDATION" id="__EVENTVALIDATION" type="hidden" value="/wEWKwKVg+X2CgLP0pC+DALP0uTbBwLP0riyAgLP0ozfDQLq+7r2DgLq+46TBgLq++K4AQLq+/blCALq+8oCAur73q8LAur7sssCAur7hvANAur72sgIAur7rvQDAqeY74MGAqeYw6gBAqeY19UIAqeYq/EDAqeYv54LAqeYk7sCAqeY5+ANAqeY+40FAqeYj+QDAqeY44ELAsKhkZgMAsKh5cUHAsKh+eIOAsKhzY8GAsKhoasBAsKhtdAIAsKhif0DAsKhnZoLAsKhsfEJAsKhhZ4BAtm2s7UCAtm2h9INAtm2m/8EAtm276QMAtm2w8EHAtm21+4OAtm2q4oGAtm2v7cBgKznUeh8UXaFGw5DH5ZlFH0rgH4="> 
+</DIV>
+<SCRIPT type="text/javascript">
+//<![CDATA[
+function registerVariables(){BlogEngine.webRoot='/';BlogEngine.i18n.hasRated='Ya ha calificado esta publicación';BlogEngine.i18n.savingTheComment='Guardando el comentario...';BlogEngine.i18n.comments='Comentarios';BlogEngine.i18n.commentWasSaved='El comentario se ha guardado . Gracias por su respuesta';BlogEngine.i18n.commentWaitingModeration='Gracias por tu comentario. Se publicará en cuanto sea moderado.';BlogEngine.i18n.cancel='Cancelar';BlogEngine.i18n.filter='Filter';BlogEngine.i18n.apmlDescription='Entre la URL a su sitio web o a su documento APML';BlogEngine.i18n.beTheFirstToRate='Sea el primero en calificar este post';BlogEngine.i18n.currentlyRated='Actualmente calificado con {0} por {1} personas';BlogEngine.i18n.ratingHasBeenRegistered='Your rating has been registered. Thank you!';BlogEngine.i18n.rateThisXStars='Rate this {0} star{1} out of 5';};//]]>
+</SCRIPT>
+ 
+<SCRIPT src="Blog%20de%20Jose%20Mariano%20Alvarez%20%20SQL%20Server,%20ideas%20y%20experiencias_archivos/js.js" defer="defer" type="text/javascript"></SCRIPT>
+ <!-- script type="text/javascript" src="http://shots.snap.com/ss/26444dd511bfe90c102ef392c7e48331/snap_shots.js"></script --> 
+<SCRIPT type="text/javascript">
+//<![CDATA[
+
+WebForm_InitCallback();//]]>
+</SCRIPT>
+ </FORM></DIV></BODY></HTML>

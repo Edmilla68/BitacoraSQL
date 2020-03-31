@@ -1,0 +1,41 @@
+hola
+
+ te recomiendo que uses la logica del null, es muy buena
+
+SELECT * 
+ FROM Productos
+ WHERE ((@refer is null) OR (referencia = @refer))
+ AND ((@categ is null) OR (categoria = @categ)) 
+
+
+
+aqui no deberias armar string contatenado ni nada similar, pegas esta consulta en tu metodo, y le pasa los parametros
+
+ solito sabra si debe filtrar por el campo o no, solo pasandole null sino quieres que filtre por ese campo
+
+SqlCommand. Parameters 
+
+ como veras en el link explica como crear parametros para tu comand, que luego usaras en tu DataAdapter para hacer el Fill() del datatable
+
+ para pasar parametros en null podrias hacer
+
+if (txtCateroria.Text != "")
+{
+   sqlCmd.Parameters.AddWithValue(" @categ", txtCateroria.Text);
+ }
+ else
+ {
+   sqlCmd.Parameters.AddWithValue(" @categ", DbNull.Value);
+ } 
+
+
+ si le pasas DbNull.Value, entonces no aplicara ese filtro
+
+ yo lo uso mucho y nunca he tenido problemas
+
+ la idea es que en el where agregues todo los filtros que necesites
+
+ bueno espero me haya explciado bien, en todo caso consulta, y amplio con detalles
+
+ saludos 
+Leandro Tuttini

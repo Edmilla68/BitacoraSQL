@@ -1,0 +1,42 @@
+//::::
+//::::
+//::::########     ###     ######  ##    ## ##     ## ########  
+//::::##     ##   ## ##   ##    ## ##   ##  ##     ## ##     ## 
+//::::##     ##  ##   ##  ##       ##  ##   ##     ## ##     ## 
+//::::########  ##     ## ##       #####    ##     ## ########  
+//::::##     ## ######### ##       ##  ##   ##     ## ##        
+//::::##     ## ##     ## ##    ## ##   ##  ##     ## ##        
+//::::########  ##     ##  ######  ##    ##  #######  ##        
+//::::                     
+//::::                     
+//::::                     
+
+1.	FUENTES COMPLETAS PB12.5  	ARCHIVO:	1.FUENTES_125.rar
+2.	FUENTES COMPLETAS PB12.6	ARCHIVO:	2.FUENTES_126.rar
+3.	BACKUP BD ERH_DESARROLLO	ARCHIVO:	3.ERH_DESARROLLO.rar
+4.	SCRIPTS OBJETOS DE LA BD	ARCHIVO:	4.SCRIPTS_OBJS_SQL.rar
+5.	IMAGENES USADAS				ARCHIVO:	5.IMAGENES_USADAS.rar
+
+//::::                     
+//::::                     
+
+
+NOTA:  	SE HA MIGRADO A LA VERSION POWER BUILDER 12.6, SE ENVIA AMBAS VERSIONES.
+		LAS IMAGENES USADAS PONERLAS EN LAS CARPETAS RESPECTIVAMENTE: (EN EL RAR ESTAN EN SUS CARPETAS)
+		C:\IMAGES\
+		C:\IMAGESP1\
+		
+		
+//::::
+//::::
+//::::########     ###     ######  ##    ## ##     ## ########  
+//::::##     ##   ## ##   ##    ## ##   ##  ##     ## ##     ## 
+//::::##     ##  ##   ##  ##       ##  ##   ##     ## ##     ## 
+//::::########  ##     ## ##       #####    ##     ## ########  
+//::::##     ## ######### ##       ##  ##   ##     ## ##        
+//::::##     ## ##     ## ##    ## ##   ##  ##     ## ##        
+//::::########  ##     ##  ######  ##    ##  #######  ##        
+//::::                     
+//::::                     
+//::::                     
+		

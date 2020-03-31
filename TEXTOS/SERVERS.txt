@@ -1,0 +1,63 @@
+
+*****************************************************************************************************
+APAGADO DE SERVIDORES
+*****************************************************************************************************
+CALW8IS001			APAGADO		25/ENE/2016		16:43
+NEPTUNIA31			APAGADO		27/ENE/2016		08:34
+*****************************************************************************************************
+
+
+
+
+
+*****************************************************************************************************
+SERVER
+*****************************************************************************************************
+
+Id	SERVIDOR	USUARIO1				CLAVE
+1	CALW3MAP003				sa			neptunias10
+2	NEPTUNIA1 				sa			$upportSql09
+3	NEPTUNIA2				sa			$upportSql09
+4	OCEANICA1				sa			$upportSql09
+5	CALW8BDSCOT				sa			$upportSql09
+6	CALW3MFS001				sa			12345678
+7	CALW3WAR001\SQL2005		sa			123qwe
+8	CALW3OTBDTST			sa			$upportSql11
+9	CALW3ERP001				sa			ofisis
+10	CALW3BDSGC				sa			sgc2009
+11	CALW3IDXWMS				sa			idx@21
+12	CALW3BDLOG				sa			neptunia2009
+13	CALW3BDPOR				sa			neptunia2009
+14	NEPTUNIA31				sa			junio
+15	NEPTUNIA9				sa			junio
+16	CALW3BDCRM				sa			crmneptunia2009
+17	CALW3BDWMS001			sa			n3ptunia
+18	CALW3BDCRM002 (BD SQL)	sa			neptuniacrm
+19	NEPTUNIA53				sa			iso14000
+20	CALW3BDWCF001			sa			neptunia2012
+21	CALW8BDALMAF			sa			$upportSql09
+22	CALW3PNT002				sa			pagonet
+23	CALW8BDSPS				sa			$upportSql09
+25	CALW3OTBDTST			sa			$upportSql11
+26	CALW8SITEOMAT			sa			NO SABER
+27	CALW3BDSGC2				sa			sgc2009
+28	CALW3ISO001				sa			isosystem
+29	DVW8GESFOR				sa			N3ptunia
+30	DVW12SQL12TEST			sa			N3ptunia
+38	CALW12SQLCORP			sa 			@dminSQLC0rp
+39	DVW12OFISIS001			sa			N3ptunia
+41	CALW8BDFCT001			sa			N3ptunia
+
+
+
+24	CALW8BDSOLPORT			root		sp131205
+31	CALSULIVCSA				M@ilTest	M@ilTest
+40	CALW8BDFCT001			factAdm		F@ct@dm
+
+
+32	CALW3BDWCF001		
+33	CALW3CGWMS		
+34	NEPTUNIA14		
+35	NEPTUNIA16		
+36	NEPTUNIA3		
+37	NEPTUNIA4		

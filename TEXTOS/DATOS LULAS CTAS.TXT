@@ -1,0 +1,32 @@
+DATOS DE PROVEEDOR
+********************************************************
+RAZON SOCIAL:	LULA'S SYSTEM E.I.R.L.										
+RUC:			20600365925										
+DIRECCION:		Jr. Moquegua 3822 										
+DISTRITO:		San Martin de Porras									
+PROVINCIA:		LIMA									
+DEPARTAMENTO:	LIMA									
+
+
+
+DATOS BANCARIOS:											
+***************************************************************
+BANCO:					BCP
+MONEDA:					SOLES								
+CUENTA BANCARIA:		191-2550489-0-13								
+COD CTA INTERBANCARIA:	00219100255048901355								
+
+
+
+CUENTA DE DETRACCIONES:										
+***************************************************************
+BANCO:				BANCO DE LA NACION								
+MONEDA:				SOLES								
+CUENTA BANCARIA:	00-030-061349								
+
+
+
+CONTACTO
+***************************************************************
+PERSONA CONTACTO:	EDUARDO MILLA MARQUEZ									
+TELEFONO:			980628716									

@@ -1,0 +1,1 @@
+C:\CARPETAACTUAL>for %f in (*.sql) do type "%f" >> D:\RUTA\ARCHIVO.sql

@@ -1,0 +1,5 @@
+
+ALTER procedure sp_RptOS_ListaFacturasxCliente            
+ALTER procedure sp_RptOS_ListaFacturasxCentroCosto    
+ALTER procedure SIG_DEUDA_PENDIENTE_CLIENTE_BACKUP
+ALTER procedure SIG_DEUDA_PENDIENTE_CLIENTE 

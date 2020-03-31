@@ -1,0 +1,25 @@
+USE TERMINAL
+GO
+--alter TABLE ddcontar63 add codimo_cat00 VARCHAR(4)
+--alter TABLE DDCONTEN04 add codimo_cat00 VARCHAR(4)
+
+--alter TABLE ddcontar63 add codUN VARCHAR(4)
+--alter TABLE DDCONTEN04 add codUN VARCHAR(4)
+
+/*
+CREATE TABLE LOGINTN4_SENDBL
+(ID INT IDENTITY (1,1),
+Navvia11 VARCHAR(6),
+NumeroDocumentoTransporte VARCHAR(25),
+ERROR VARCHAR(MAX),
+FLGSEND INT,
+OCCURRENCE DATETIME)
+*/
+
+ALTER TABLE FQCONTAR14 ADD codcon14_N4 VARCHAR(50)
+GO
+
+USE BD_WMS_FWD_PROD
+GO
+--alter TABLE TIMPO_TB_TARJA_CAB add int_EmptyCntr int
+--alter TABLE TIMPO_TB_TARJA_CAB add dt_FechaEnvioEmptyCntr datetime

@@ -1,0 +1,45 @@
+long         ll_upper_bound
+Integer ll_row 
+Integer ll_row_temp
+ll_upper_bound = UpperBound(OBJ_CUADRO[])
+integer ll_nivconta
+
+for ll_row = 1 to ll_upper_bound
+	If Len(trim(OBJ_CUADRO[ll_row].tag)) = 2 then
+		ll_nivconta = ll_nivconta + 1
+		LI_NIVEL[ll_nivconta] = ll_row
+	end if	
+Next 
+
+ll_row =0
+ll_nivconta = 0
+
+
+for ll_row = 1 to ll_upper_bound -1
+	If Len(trim(OBJ_CUADRO[ll_row].tag)) = 2 then
+		ll_nivconta = ll_nivconta + 1
+	end if	
+	linea[ll_row] = Create uo_linea 
+	uo_cont01.OpenUserObject(linea[ll_row]) 
+		linea[ll_row].ln_1.BeginX =  OBJ_CUADRO[LI_NIVEL[ll_nivconta ]].X + (OBJ_CUADRO[LI_NIVEL[ll_nivconta]].width/2)
+		linea[ll_row].ln_1.BeginY =  OBJ_CUADRO[LI_NIVEL[ll_nivconta ]].Y
+		linea[ll_row].ln_1.EndX   =  OBJ_CUADRO[ll_row+1].X + (OBJ_CUADRO[ll_row+1].width/2)
+		linea[ll_row].ln_1.EndY    = OBJ_CUADRO[ll_row+1].Y
+//MessageBox('','stepbystep')
+next
+
+
+/* SOLO PARA DEBUG
+
+			li_BegX = OBJ_CUADRO[LI_NIVEL[ll_nivconta ]].X + (OBJ_CUADRO[LI_NIVEL[ll_nivconta]].width/2)
+			li_BegY = OBJ_CUADRO[LI_NIVEL[ll_nivconta ]].Y
+			
+			li_EndX =  OBJ_CUADRO[ll_row+1].X + (OBJ_CUADRO[ll_row+1].width/2)
+			li_EndY = OBJ_CUADRO[ll_row+1].Y
+
+		linea[ll_row].ln_1.BeginX =  li_BegX
+		linea[ll_row].ln_1.BeginY =  li_BegY
+		linea[ll_row].ln_1.EndX   =  li_EndX
+		linea[ll_row].ln_1.EndY    = li_EndY
+
+*/

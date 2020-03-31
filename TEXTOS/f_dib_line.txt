@@ -1,0 +1,40 @@
+long     ll_upper_bound
+integer ll_nivconta
+
+Integer li_begX[]
+Integer li_begY[]
+Integer li_finX[]
+Integer li_finY[]
+
+ll_row = 0 
+ll_upper_bound = UpperBound(OBJ_CUADRO[])
+
+
+for ll_row = 1 to ll_upper_bound -1
+	If Len(trim(OBJ_CUADRO[ll_row].tag)) = 2 then
+		ll_nivconta = ll_nivconta + 1
+		LI_NIVEL[ll_nivconta] = ll_row
+	end if	
+
+	
+		li_begX[ll_row] 	=  OBJ_CUADRO[LI_NIVEL[ll_nivconta ]].X + (OBJ_CUADRO[LI_NIVEL[ll_nivconta]].width/2)
+		li_begY[ll_row] 	=  OBJ_CUADRO[LI_NIVEL[ll_nivconta ]].Y
+
+		li_finX [ll_row]		=  OBJ_CUADRO[ll_row+1].X + (OBJ_CUADRO[ll_row+1].width/2)
+		li_finY [ll_row] 		= 	OBJ_CUADRO[ll_row+1].Y
+Next 
+
+ll_row =0
+ll_nivconta = 0
+
+
+
+
+
+		ll_row =0
+		ll_nivconta = 0
+		for ll_row = 1 to ll_upper_bound -1
+			linea[ll_row] = f_dib_line(uo_cont01,li_begX[ll_row], li_begY[ll_row], li_finX[ll_row], li_finY[ll_row])
+		next
+
+Return 1

@@ -1,0 +1,26 @@
+SELECT  
+DB_NAME(database_id) AS DatabaseName, 
+CAST(Name AS VARCHAR(20)) AS NameofFile, 
+CAST(physical_name AS VARCHAR(100)) AS PhysicalFile, 
+type_desc AS FileType, 
+size * 8 / 1024 AS FileSize, 
+CASE WHEN max_size = - 1 OR
+		  max_size = 268435456 THEN 'UNLIMITED' WHEN max_size = 0 THEN 'NO_GROWTH' WHEN max_size <> - 1 OR
+          max_size <> 0 THEN CAST(((max_size * 8) / 1024) AS VARCHAR(15)) ELSE 'Unknown' END AS MaxFileSize, CASE WHEN max_size = - 1 OR
+          max_size = 268435456 THEN 'UNLIMITED' WHEN max_size <> - 1 OR
+          max_size = 268435456 THEN CAST((((max_size - size) * 8) / 1024) AS VARCHAR(10)) ELSE 'Unknown' END AS SpaceRemainingMB,
+SUBSTRING(CAST(physical_name AS VARCHAR(100)),1) AS UNIDAD
+--          growth, 
+--CASE WHEN growth = 0 THEN 'FIXED_SIZE' WHEN growth > 0 THEN convert(varchar,((growth * 8) / 1024)) ELSE 'Unknown' END AS Growth,
+--CASE WHEN is_percent_growth = 1 THEN 'PERCENTAGE' WHEN is_percent_growth = 0 THEN 'MBs' ELSE 'Unknown' END AS GrowthType
+FROM            sys.master_files
+WHERE        type_desc = 'LOG' 
+
+
+--(state = 0) AND (type_desc IN ('LOG', 'ROWS'))
+--ORDER BY database_id, file_id 
+
+CALW3BDWCF001
+
+
+//exec TIMPO_SP_BUSCAR_ORDENSALIDA_CRITERIOS @pvch_NumOrdenSalida=N'    16',@pvch_CodigoNave=default,@pvch_NumeroViaje=default,@pvch_NumTicketSalida=default,@pvch_NumOrdenRetiro=default

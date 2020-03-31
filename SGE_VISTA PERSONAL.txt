@@ -1,0 +1,47 @@
+SELECT        
+
+	dbo.SGE_Personal.cod_trabajador AS codigo, 
+	dbo.SGE_Datos_Personales.Apellido_P + ' ' + dbo.SGE_Datos_Personales.Apellido_M + ' ' + dbo.SGE_Datos_Personales.Nombres AS trabajador, 
+
+	dbo.SGE_Personal.Fecha_ingreso, dbo.SGE_Cargo.nombre AS cargo, 
+	dbo.SGE_Personal.cod_tipo_planilla AS cod_planilla, 
+	dbo.SGE_Tipo_planilla.Nombre AS nom_planilla, 
+	dbo.SGE_Personal.cod_proyecto, 
+	dbo.SGE_Proyectos.Nombre AS nom_proyecto, 
+	dbo.SGE_Personal.cod_unidad_negocio AS cod_unegocio, 
+	dbo.SGE_Unidades_Negocio.Descripcion AS nom_unegocio, 
+	dbo.SGE_Personal.cod_centro_costo AS cod_ccosto, 
+	dbo.SGE_Centro_Costo_master.Descripcion AS nom_ccosto, 
+	dbo.SGE_Personal.cod_area, dbo.SGE_Areas.Descripcion AS nom_area, 
+	dbo.SGE_Personal.cod_localidad, 
+	dbo.SGE_Localidades.Descripcion AS nom_localidad, 
+	dbo.SGE_Personal.Cod_Empresa,
+	day(sge_datos_personales.fecha_nacimiento) 'dia',
+    sge_datos_personales.fecha_nacimiento 'fecha_nacimiento'
+
+
+FROM    dbo.SGE_Personal 
+
+		INNER JOIN dbo.SGE_Datos_Personales 
+		ON dbo.SGE_Datos_Personales.Cod_Tipo_Entidad = dbo.SGE_Personal.cod_tipo_entidad AND dbo.SGE_Datos_Personales.Cod_entidad = dbo.SGE_Personal.Cod_entidad 
+	   
+	   INNER JOIN dbo.SGE_Cargo 
+	   ON dbo.SGE_Cargo.cod_cargo = dbo.SGE_Personal.cod_cargo 
+
+	   INNER JOIN dbo.SGE_Tipo_planilla 
+	   ON dbo.SGE_Tipo_planilla.cod_tipo_planilla = dbo.SGE_Personal.cod_tipo_planilla 
+
+	   LEFT OUTER JOIN	   dbo.SGE_Proyectos 
+	   ON dbo.SGE_Proyectos.Cod_empresa = dbo.SGE_Personal.Cod_Empresa AND dbo.SGE_Proyectos.Cod_proyecto = dbo.SGE_Personal.cod_proyecto 
+	   
+	   LEFT OUTER JOIN dbo.SGE_Unidades_Negocio 
+	   ON dbo.SGE_Unidades_Negocio.Cod_empresa = dbo.SGE_Personal.Cod_Empresa AND dbo.SGE_Unidades_Negocio.Cod_unidad_negocio = dbo.SGE_Personal.cod_unidad_negocio 
+	   
+	   LEFT OUTER JOIN  dbo.SGE_Centro_Costo_master 
+		ON dbo.SGE_Centro_Costo_master.Cod_empresa = dbo.SGE_Personal.Cod_Empresa AND dbo.SGE_Centro_Costo_master.Cod_centro_costo = dbo.SGE_Personal.cod_centro_costo 
+		
+		LEFT OUTER JOIN dbo.SGE_Areas 
+		ON dbo.SGE_Areas.Cod_empresa = dbo.SGE_Personal.Cod_Empresa AND dbo.SGE_Areas.Cod_area = dbo.SGE_Personal.cod_area 
+		
+		LEFT OUTER JOIN dbo.SGE_Localidades 
+		ON dbo.SGE_Localidades.Cod_empresa = dbo.SGE_Personal.Cod_Empresa AND dbo.SGE_Localidades.Cod_localidad = dbo.SGE_Personal.cod_localidad

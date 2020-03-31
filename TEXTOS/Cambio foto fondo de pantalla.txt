@@ -1,0 +1,2 @@
+Cambio foto fondo de pantalla en registro.....:
+HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\System 

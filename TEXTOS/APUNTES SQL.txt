@@ -1,0 +1,53 @@
+
+APUNTES.............
+
+
+*******************************************************************************************************************
+JUEVES 21 ABRIL 2016
+14:25
+SE RESTAURA BD: SCPRD.BK
+
+
+
+
+
+
+
+*******************************************************************************************************************
+VIERNES 15 ABRIL 2016
+TEXTO PORSIACA.......
+
+
+/*  "Select  syp.spid,  syp.blocked as [Bloqueado por:], syp.cpu, syp.physical_io, syp.hostname as NombreHost, sdb.name as BaseDatos, " +
+                           "syp.program_name as [Programa], syp.loginame, datediff(mi,syp.login_time, syp.last_batch)  as [Tiempo en Minutos], waitresource as [Esperando A:] " +
+                           "from master..sysprocesses syp " +
+                           "left join master..sysdatabases sdb on syp.dbid = sdb.dbid " +
+                        */
+
+
+
+*******************************************************************************************************************
+JUEVES 14 ABRIL 2016
+
+EN CALW12SQLCORP NO SE PODIA CREAR LOGINS..... ERROR 1934
+
+	Msg 1934, Level 16, State 1, Procedure XXXX
+		 INSERT failed because the following SET options have incorrect settings: ‘QUOTED_IDENTIFIER’. 
+		 Verify that SET options are correct for use with indexed views and/or indexes on computed 
+		 columns and/or filtered indexes and/or query notifications and/or XML data type methods 
+		 and/or spatial index operations.
+		 
+PROBLEMA 
+
+
+HAY UN DDL TRIGGER QUE TENIA EL CODIGO:
+
+	SET QUOTED_IDENTIFIER OFF
+
+Y ESTO GENERABA EL ERROR SE SOLUCIONO MODIFICANDO EL CODIGO A ON....
+
+SOLUCION 
+
+MODIFICAR CODIGO A :  SET QUOTED_IDENTIFIER ON	
+*********************************************************************************************************************	
+	

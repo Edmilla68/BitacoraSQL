@@ -1,0 +1,47 @@
+//::::
+//::::
+//::::########     ###     ######  ##    ## ##     ## ########  
+//::::##     ##   ## ##   ##    ## ##   ##  ##     ## ##     ## 
+//::::##     ##  ##   ##  ##       ##  ##   ##     ## ##     ## 
+//::::########  ##     ## ##       #####    ##     ## ########  
+//::::##     ## ######### ##       ##  ##   ##     ## ##        
+//::::##     ## ##     ## ##    ## ##   ##  ##     ## ##        
+//::::########  ##     ##  ######  ##    ##  #######  ##        
+//::::                     
+//::::                     
+//::::                     Yo sueño que estoy aquí,
+//::::                     destas prisiones cargado;
+//::::                     y soñé que en otro estado
+//::::                     más lisonjero me vi.
+//::::                     ¿Qué es la vida? Un frenesí.
+//::::                     ¿Qué es la vida? Una ilusión,
+//::::                     una sombra, una ficción,
+//::::                     y el mayor bien es pequeño;
+//::::                     que toda la vida es sueño,
+//::::                     y los sueños, sueños son
+//::::
+//::::
+//::::########     ###     ######  ##    ## ##     ## ########  
+//::::##     ##   ## ##   ##    ## ##   ##  ##     ## ##     ## 
+//::::##     ##  ##   ##  ##       ##  ##   ##     ## ##     ## 
+//::::########  ##     ## ##       #####    ##     ## ########  
+//::::##     ## ######### ##       ##  ##   ##     ## ##        
+//::::##     ## ##     ## ##    ## ##   ##  ##     ## ##        
+//::::########  ##     ##  ######  ##    ##  #######  ##        
+//::::                     
+//::::
+//::::               Caminante, son tus huellas
+//::::               el camino y nada más;
+//::::               Caminante, no hay camino,
+//::::               se hace camino al andar.
+//::::               Al andar se hace el camino,
+//::::               y al volver la vista atrás
+//::::               se ve la senda que nunca
+//::::               se ha de volver a pisar.
+//::::               Caminante no hay camino
+//::::               sino estelas en la mar.
+
+
+
+
+

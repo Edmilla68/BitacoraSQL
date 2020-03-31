@@ -1,0 +1,233 @@
+USE [SICOS_CONTROL]
+GO
+
+/****** Object:  StoredProcedure [dbo].[INSERT_STA_REG_OCURRENCIAS]    Script Date: 26/08/2019 12:15:07  ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[INSERT_STA_REG_OCURRENCIAS]
+@CONCEPTO varchar(50)
+,@ESTADO  varchar(20)
+,@FECHA   datetime
+,@DETALLE varchar(500)
+
+AS
+
+BEGIN
+
+INSERT INTO [dbo].[STA_REG_OCURRENCIAS]
+           ([CONCEPTO]
+           ,[ESTADO]
+           ,[FECHA]
+           ,[DETALLE])
+     VALUES
+           (@CONCEPTO
+           ,@ESTADO
+           ,@FECHA
+           ,@DETALLE
+		   )
+
+END
+GO
+
+/****** Object:  StoredProcedure [dbo].[SPA_INSERT_STA_TEMP_ICMA]    Script Date: 26/08/2019 12:15:07  ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+---USE [SICOS_CONTROL]
+--GO
+
+CREATE PROCEDURE [dbo].[SPA_INSERT_STA_TEMP_ICMA]
+
+@IT int,
+@RAZSOC varchar(200),
+@RUC varchar(200),
+@RUBRO varchar(200),
+@NOMBRES varchar(200),
+@TPDOC varchar(200),
+@NRDOC varchar(200),
+@CARGO varchar(200),
+@EMISION datetime,
+@CADUCIDAD datetime,
+@MODALIDAD varchar(200),
+@ESTADO int
+
+AS
+BEGIN
+
+--TRUNCATE TABLE [STA_TEMP_ICMA]
+INSERT INTO [dbo].[STA_TEMP_ICMA]
+           ([IT]
+           ,[RAZSOC]
+           ,[RUC]
+           ,[RUBRO]
+           ,[NOMBRES]
+           ,[TPDOC]
+           ,[NRDOC]
+           ,[CARGO]
+           ,[EMISION]
+           ,[CADUCIDAD]
+           ,[MODALIDAD]
+           ,[ESTADO])
+     VALUES
+           (@IT 
+           ,@RAZSOC
+           ,@RUC 
+           ,@RUBRO 
+           ,@NOMBRES
+           ,@TPDOC
+           ,@NRDOC
+           ,@CARGO
+           ,@EMISION
+           ,@CADUCIDAD
+           ,@MODALIDAD
+           ,@ESTADO
+		   )
+END
+GO
+
+/****** Object:  StoredProcedure [dbo].[spa_rcupera_cod_clie]    Script Date: 26/08/2019 12:15:07  ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE procedure [dbo].[spa_rcupera_cod_clie]
+@dni varchar(20),
+@cod varchar(20) out
+as
+
+begin
+SELECT @cod = codi_clie_prov FROM EMPRESAS_2014 WHERE RUC = @dni 
+end
+GO
+
+
+/****** Object:  StoredProcedure [dbo].[TRANSFIERE_DATA_TEMP_ICMA]    Script Date: 26/08/2019 12:15:07  ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[TRANSFIERE_DATA_TEMP_ICMA]
+AS
+
+BEGIN
+
+declare @FOTO_CODIGO int
+select @FOTO_CODIGO = MAX(FOTO_CODIGO) from CURS_FOTOCONTROL 
+
+INSERT INTO [dbo].[CURS_FOTOCONTROL]
+				(
+					[FOTO_CODIGO],
+					[CUFI_ID],
+					[PART_CODIGO],
+					[CODI_CLIE_PROV],
+					[FOTO_FECHA_EMISION],
+					[FOTO_FECHA_CADUCA],
+					[FOTO_CODIGO_BARRA],
+					[FOTO_TIPO_ACCESO],
+					[FOTO_VERSION],
+					[FOTO_ESTADO],
+					[MOBL_CODIGO],
+					RUC, 
+					FCH_MIGRA, 
+					NRODOC
+				)
+	
+SELECT 
+		--@FOTO_CODIGO + getrow as ftcod,
+		@FOTO_CODIGO + ROW_NUMBER() OVER(ORDER BY PART_COD) AS Row,
+		0,
+		PART_COD, 
+		(SELECT MAX(codi_clie_prov) FROM EMPRESAS_2014 WHERE RUC = VW1.RUC) AS COD_CLIENTE ,
+		EMISION, 
+		CADUCIDAD, 
+		'', 	   --[FOTO_CODIGO_BARRA]
+		'E', 	   --[FOTO_TIPO_ACCESO],
+		'O', 	   --[FOTO_VERSION],
+		'I', 	   --[FOTO_ESTADO],
+		0, 		   --[MOBL_CODIGO],
+		RUC, 
+		GETDATE(), 
+		NRDOC
+FROM
+		(
+			SELECT IT, RUC, TPDOC, NOMBRES, NRDOC, EMISION, CADUCIDAD
+			,(SELECT MAX(PART_CODIGO_ICMA) FROM PERSONAL_2014  WHERE dni_personal = STA_TEMP_ICMA.NRDOC) as PART_COD
+			FROM STA_TEMP_ICMA
+		)VW1
+		WHERE PART_COD IS NOT NULL
+		AND PART_COD NOT IN (
+
+
+		SELECT PART_COD
+		FROM
+		(
+		SELECT IT, RUC, TPDOC, NOMBRES, NRDOC, EMISION, PART_COD
+		FROM
+		(
+			SELECT IT, RUC, TPDOC, NOMBRES, NRDOC, EMISION 
+			,(SELECT MAX(PART_CODIGO_ICMA) FROM PERSONAL_2014  WHERE dni_personal = STA_TEMP_ICMA.NRDOC) as PART_COD
+			FROM STA_TEMP_ICMA
+		)VW1
+		WHERE PART_COD IS NOT NULL
+		)VW2
+
+		INNER JOIN CURS_FOTOCONTROL FT ON FT.PART_CODIGO = VW2.PART_COD AND FT.FOTO_FECHA_EMISION = VW2.EMISION
+		)
+
+		
+	ORDER BY row
+
+
+	END
+
+	
+
+
+
+
+
+
+
+
+/*
+--CONSULTA ORIGINAL
+
+SELECT IT, RUC, TPDOC, NOMBRES, NRDOC, EMISION, PART_COD
+FROM
+(
+SELECT IT, RUC, TPDOC, NOMBRES, NRDOC, EMISION, PART_COD
+FROM
+(
+	SELECT IT, RUC, TPDOC, NOMBRES, NRDOC, EMISION 
+	,(SELECT MAX(PART_CODIGO_ICMA) FROM PERSONAL_2014  WHERE dni_personal = STA_TEMP_ICMA.NRDOC) as PART_COD
+	FROM STA_TEMP_ICMA
+)VW1
+WHERE PART_COD IS NOT NULL
+)VW2
+
+INNER JOIN CURS_FOTOCONTROL FT ON FT.PART_CODIGO = VW2.PART_COD AND FT.FOTO_FECHA_EMISION = VW2.EMISION
+ORDER BY IT
+*/
+--WHERE PART_COD NOT IN (SELECT PART_CODIGO FROM CURS_FOTOCONTROL)
+--SELECT PART_CODIGO ,  FOTO_FECHA_EMISION , PART_CODIGO +  FOTO_FECHA_EMISION FROM CURS_FOTOCONTROL
+GO
+
+
+/****** Object:  StoredProcedure [dbo].[TRUNCATE_STA_TEMP_ICMA]    Script Date: 26/08/2019 12:15:07  ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[TRUNCATE_STA_TEMP_ICMA]
+AS
+BEGIN
+	TRUNCATE TABLE [STA_TEMP_ICMA]
+END 
+GO
+
+
+

@@ -1,0 +1,33 @@
+ ProgressBar dynamicPB = new ProgressBar();
+            
+            //dynamicPB.Location = new Point(button3.Location.X + button3.Size.Width, button3.Location.Y + button3.Size.Height);
+            dynamicPB.Location = new Point(button3.Location.X, button3.Location.Y + button3.Size.Height);
+            
+            dynamicPB.Text = "qweqe";
+            dynamicPB.Value = 95;
+            dynamicPB.Maximum = 100;
+            panel1.Controls.Add(dynamicPB);
+          //  listView1.Controls.Add(dynamicPB);
+		  
+		  
+		  
+		  
+		  
+	Select *
+	--syp.spid,  syp.blocked as [Bloqueado por:], syp.cpu, syp.physical_io, syp.hostname as NombreHost, sdb.name as BaseDatos, syp.program_name as [Programa], syp.hostprocess,datediff(mi,syp.login_time, syp.last_batch)  as [Tiempo en Minutos], waitresource as [Esperando A:] 
+	from master..sysprocesses syp 
+	left join sysdatabases sdb on syp.dbid = sdb.dbid 
+
+	where 
+	 len(hostname) >= 0  --TODO
+	 --len(hostname) > 0  	and syp.status <> 'sleeping'  -- SOLO ACTIVOS
+ 
+ -- FILTROS
+	 --AND syp.blocked > 0
+	 AND syp.hostname like '%%'
+ 
+ 
+	ORDER BY 
+	syp.spid DESC
+	--cpu DESC
+	--physical_io DESC

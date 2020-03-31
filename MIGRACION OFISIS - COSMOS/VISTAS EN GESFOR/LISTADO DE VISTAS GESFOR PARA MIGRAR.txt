@@ -1,0 +1,68 @@
+/************************************************************************************************************************/
+/****			BITACORA CAMBIO SOLICITADOS MIGRACION OFISIS - COSMOS-DATA											 ****/
+/************************************************************************************************************************/
+PUNTO 1: GESFOR  CC
+		 GESFOR  SERVICIOS
+
+JOB						:	CargaTarifarioServicio_Produccion
+JOB STEP1 APUNTA ETL	: 	CargaTarifarioServico.dtsx
+		 
+	OBJETOS ORIGINALES 
+		(APUNTABAN A CALW3ERP001.....)
+		TTUNINEGO_POR_DIVISION
+		TTUNID_NEGO 			--centro de costo
+		TMUNID_RECA  			--sucursal  
+		TMTIEN 				    --Local
+		TTSERV 					--servicio
+		TRUNNE_SERV 			--Detalle del servicio
+
+	OBJETOS NUEVOS
+		(APUNTAN A  COSMOS-DATA)
+		TTUNINEGO_POR_DIVISION_MGRCMS		OK
+		TTUNID_NEGO_MGRCMS 					OK
+		TMUNID_RECA_MGRCMS  				OK
+		TMTIEN_MGRCMS 				    	OK
+		TTSERV_MGRCMS 						OK
+		TRUNNE_SERV_MGRCMS 					OK
+
+	
+MODIFICACION ETL	:	CargaTarifarioServico.dtsx
+NUEVO ETL			:	CargaTarifarioServicIo_NEWMGR_DESA.dtsx
+UBICACION TEMPORAL	:	CALW12MONITOR
+							UPDATE A GESFOR...
+							CAMBIO CADENA DE CONEXION 
+							MOMENTANEAMENTE Y PARA PRUEBAS SE HA DIRECCIONADO PACKAGE A DVW12MGRSQL12\Neptunia_SGC_Produccion
+
+
+
+/************************************************************************************************************************/
+
+PUNTO 2: CALW12SQLCORP\NPT9_Datawarehouse
+		 LCRE,Razón Social....
+SP ORIGINAL : [SIG_DEUDA_PENDIENTE_CLIENTE]					(APUNTA A CALW3ERP001.....)
+SP NUEVO	: [SIG_DEUDA_PENDIENTE_CLIENTE_MGRCMS]			(APUNTA A COSMOS-DATA.....)
+
+
+/************************************************************************************************************************/
+
+PUNTO 3: NEPTUNIA1\TERMINAL
+
+CREACION SP MODIFICADO	: 				SP_UpdateTablesOfisis_MGRCMS
+CREACION JOB MODIFICADO	:				Actualiza Tablas Ofisis_MGRCMS
+MODIFICACION DE TRIGGER	:				TRIGGER [dbo].[DDCABMAN11_I] ON [dbo].[DDCABMAN11]
+										Se agrego linea comentada.......
+										
+/************************************************************************************************************************/
+
+sp_TR_ReporteCamionajeCalle
+sp_TR_ReporteCamionajeCalle_MGRCMS
+
+Camionaje_InsertaListaResumenbyCircuitosCamionaje_ofisis
+Camionaje_InsertaListaResumenbyCircuitosCamionaje_ofisis_MGRCMS
+
+Camionaje_EliminaNoContabilizadasCircuitosCamionaje_ofisis
+Camionaje_EliminaNoContabilizadasCircuitosCamionaje_ofisis_MGRCMS
+							
+							
+
+

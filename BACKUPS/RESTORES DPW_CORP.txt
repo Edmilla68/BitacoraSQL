@@ -1,0 +1,274 @@
+/*
+BDGWC
+	D:\Microsoft SQL Server\MSSQL11.NPTSQLSERVER\MSSQL\DATA\BDGWC.mdf
+	E:\Microsoft SQL Server\MSSQL11.NPTSQLSERVER\MSSQL\Data\BDGWC_log.ldf
+*/
+USE [master]
+
+
+RESTORE DATABASE BDGWC FROM  DISK = N'\\CALW12ARCSRV\BackupSQL$\BDGWC.Bak' WITH  FILE = 1,  
+MOVE N'BDGWC'  TO N'D:\DATA\BDGWC.mdf',  
+MOVE N'BDGWC_log'   TO N'E:\LOG\BDGWC_log.ldf', 
+NOUNLOAD,  REPLACE,  STATS = 5
+
+ALTER DATABASE BDGWC SET MULTI_USER
+
+GO
+
+
+
+/*
+NPT53_DESCARGA
+	D:\Microsoft SQL Server\MSSQL11.NPTSQLSERVER\MSSQL\DATA\NPT53_DESCARGA.mdf
+	E:\Microsoft SQL Server\MSSQL11.NPTSQLSERVER\MSSQL\Data\NPT53_DESCARGA.ldf
+*/
+
+USE [master]
+
+
+RESTORE DATABASE NPT53_DESCARGA FROM  DISK = N'\\CALW12ARCSRV\BackupSQL$\NPT53_DESCARGA.Bak' WITH  FILE = 1,  
+MOVE N'descarga_Data'  TO N'D:\DATA\NPT53_DESCARGA.mdf',  
+MOVE N'descarga_Log'   TO N'E:\LOG\NPT53_DESCARGA.ldf', 
+NOUNLOAD,  REPLACE,  STATS = 5
+
+ALTER DATABASE NPT53_DESCARGA SET MULTI_USER
+
+GO
+
+
+/*
+CROLADD
+CROLAD	D:\Microsoft SQL Server\MSSQL11.NPTSQLSERVER\MSSQL\DATA\CROLADD.mdf
+CROLAD_log	E:\Microsoft SQL Server\MSSQL11.NPTSQLSERVER\MSSQL\Data\CROLADD_1.ldf
+*/
+
+
+USE [master]
+
+
+RESTORE DATABASE CROLADD FROM  DISK = N'\\CALW12ARCSRV\BackupSQL$\CROLADD.Bak' WITH  FILE = 1,  
+MOVE N'CROLAD'  TO N'D:\DATA\CROLADD.mdf',  
+MOVE N'CROLAD_log'   TO N'E:\LOG\CROLADD_1.ldf', 
+NOUNLOAD,  REPLACE,  STATS = 5
+
+ALTER DATABASE CROLADD SET MULTI_USER
+
+GO
+
+
+/*
+NPT53_PAITA
+PAITA_Data	D:\Microsoft SQL Server\MSSQL11.NPTSQLSERVER\MSSQL\DATA\PAITA.mdf
+PAITA_Log	E:\Microsoft SQL Server\MSSQL11.NPTSQLSERVER\MSSQL\Data\PAITA_1.ldf
+*/
+
+USE [master]
+RESTORE DATABASE NPT53_PAITA FROM  DISK = N'\\CALW12ARCSRV\BackupSQL$\NPT53_PAITA.Bak' WITH  FILE = 1,  
+MOVE N'PAITA_Data'  TO N'D:\DATA\PAITA.mdf',  
+MOVE N'PAITA_Log'   TO N'E:\LOG\PAITA_1.ldf', 
+NOUNLOAD,  REPLACE,  STATS = 5
+
+ALTER DATABASE NPT53_PAITA SET MULTI_USER
+GO
+
+/*
+NPT9_bd_actf
+bd_actf_Data	D:\Microsoft SQL Server\MSSQL11.NPTSQLSERVER\MSSQL\DATA\NPT9_bd_actf_Data.mdf
+bd_actf_Log	E:\Microsoft SQL Server\MSSQL11.NPTSQLSERVER\MSSQL\Data\NPT9_bd_actf_Log.ldf
+*/
+
+USE [master]
+RESTORE DATABASE NPT9_bd_actf FROM  DISK = N'\\CALW12ARCSRV\BackupSQL$\NPT9_bd_actf.Bak' WITH  FILE = 1,  
+MOVE N'bd_actf_Data'  TO N'D:\DATA\NPT9_bd_actf_Data.mdf',  
+MOVE N'bd_actf_Log'   TO N'E:\LOG\NPT9_bd_actf_Log.ldf', 
+NOUNLOAD,  REPLACE,  STATS = 5
+
+ALTER DATABASE NPT9_bd_actf SET MULTI_USER
+GO
+
+
+
+
+
+/*
+NPT9_bd_fulp
+NPT9_bd_fulp	data_mscc	D:\Microsoft SQL Server\MSSQL11.NPTSQLSERVER\MSSQL\DATA\NPT9_bd_fulp.mdf
+NPT9_bd_fulp	log_mscc	E:\Microsoft SQL Server\MSSQL11.NPTSQLSERVER\MSSQL\Data\NPT9_log_fulp.ldf
+NPT9_bd_fulp	bd_nept2	D:\Microsoft SQL Server\MSSQL11.NPTSQLSERVER\MSSQL\DATA\NPT9_bd_fulp2.mdf
+*/
+USE [master]
+RESTORE DATABASE NPT9_bd_fulp FROM  DISK = N'\\CALW12ARCSRV\BackupSQL$\NPT9_bd_fulp.Bak' WITH  FILE = 1,  
+MOVE N'data_mscc'  TO N'D:\DATA\NPT9_bd_fulp.mdf',  
+MOVE N'bd_nept2'  TO N'D:\DATA\NPT9_bd_fulp2.mdf',  
+MOVE N'log_mscc'   TO N'E:\LOG\NPT9_log_fulp.ldf', 
+NOUNLOAD,  REPLACE,  STATS = 5
+
+ALTER DATABASE NPT9_bd_fulp SET MULTI_USER
+GO
+
+
+/*
+NPT9_bd_hist_nept
+NPT9_bd_hist_nept	bd_hist_Data	D:\Microsoft SQL Server\MSSQL11.NPTSQLSERVER\MSSQL\DATA\NPT9_bd_hist_Data.mdf
+NPT9_bd_hist_nept	bd_hist_Log	E:\Microsoft SQL Server\MSSQL11.NPTSQLSERVER\MSSQL\Data\NPT9_bd_hist_Log.ldf
+*/
+USE [master]
+RESTORE DATABASE NPT9_bd_hist_nept FROM  DISK = N'\\CALW12ARCSRV\BackupSQL$\NPT9_bd_hist_nept.Bak' WITH  FILE = 1,  
+MOVE N'bd_hist_Data'  TO N'D:\DATA\NPT9_bd_hist_Data.mdf',  
+MOVE N'bd_hist_Log'   TO N'E:\LOG\NPT9_bd_hist_Log.ldf', 
+NOUNLOAD,  REPLACE,  STATS = 5
+
+ALTER DATABASE NPT9_bd_hist_nept SET MULTI_USER
+GO
+
+
+/*
+NPT9_bd_kint
+NPT9_bd_kint	bd_kint_Data	D:\Microsoft SQL Server\MSSQL11.NPTSQLSERVER\MSSQL\DATA\NPT9_bd_kint_Data.mdf
+NPT9_bd_kint	bd_kint_Log	E:\Microsoft SQL Server\MSSQL11.NPTSQLSERVER\MSSQL\Data\NPT9_bd_kint_Log.ldf
+*/
+
+USE [master]
+RESTORE DATABASE NPT9_bd_kint FROM  DISK = N'\\CALW12ARCSRV\BackupSQL$\NPT9_bd_kint.Bak' WITH  FILE = 1,  
+MOVE N'bd_kint_Data'  TO N'D:\DATA\NPT9_bd_kint_Data.mdf',  
+MOVE N'bd_kint_Log'   TO N'E:\LOG\NPT9_bd_kint_Log.ldf', 
+NOUNLOAD,  REPLACE,  STATS = 5
+
+ALTER DATABASE NPT9_bd_kint SET MULTI_USER
+GO
+
+/*
+NPT9_bd_trit
+NPT9_bd_trit	data_mscc	D:\Microsoft SQL Server\MSSQL11.NPTSQLSERVER\MSSQL\DATA\NPT9_bd_trit.mdf
+NPT9_bd_trit	log_mscc	E:\Microsoft SQL Server\MSSQL11.NPTSQLSERVER\MSSQL\Data\NPT9_log_trit.ldf
+NPT9_bd_trit	bd_nept2	D:\Microsoft SQL Server\MSSQL11.NPTSQLSERVER\MSSQL\DATA\NPT9_bd_trit2.mdf
+*/
+USE [master]
+RESTORE DATABASE NPT9_bd_trit FROM  DISK = N'\\CALW12ARCSRV\BackupSQL$\NPT9_bd_trit.Bak' WITH  FILE = 1,  
+MOVE N'data_mscc'  TO N'D:\DATA\NPT9_bd_trit.mdf',  
+MOVE N'bd_nept2'  TO N'D:\DATA\NPT9_bd_trit2.mdf',  
+MOVE N'log_mscc'   TO N'E:\LOG\NPT9_log_trit.ldf', 
+NOUNLOAD,  REPLACE,  STATS = 5
+
+ALTER DATABASE NPT9_bd_trit SET MULTI_USER
+GO
+
+/*
+NPT9_Datawarehouse
+NPT9_Datawarehouse	Datawarehouse_Data	D:\Microsoft SQL Server\MSSQL11.NPTSQLSERVER\MSSQL\DATA\NPT9_Datawarehouse_Data.mdf
+NPT9_Datawarehouse	Datawarehouse_Log	E:\Microsoft SQL Server\MSSQL11.NPTSQLSERVER\MSSQL\Data\NPT9_Datawarehouse_Log.ldf
+NPT9_Datawarehouse	Datawarehouse_Log2	E:\Microsoft SQL Server\MSSQL11.NPTSQLSERVER\MSSQL\Data\NPT9_Datawarehouse_Log2.ldf
+*/
+
+USE [master]
+RESTORE DATABASE NPT9_Datawarehouse FROM  DISK = N'\\CALW12ARCSRV\BackupSQL$\NPT9_Datawarehouse.Bak' WITH  FILE = 1,  
+MOVE N'Datawarehouse_Data'  TO N'D:\DATA\NPT9_Datawarehouse_Data.mdf',  
+MOVE N'Datawarehouse_Log'  TO N'E:\LOG\NPT9_Datawarehouse_Log.ldf',  
+MOVE N'Datawarehouse_Log2'   TO N'E:\LOG\NPT9_Datawarehouse_Log2.ldf', 
+NOUNLOAD,  REPLACE,  STATS = 5
+
+ALTER DATABASE NPT9_Datawarehouse SET MULTI_USER
+GO
+
+
+
+
+/*
+NPT9_bd_inst
+NPT9_bd_inst	data_inst	D:\Microsoft SQL Server\MSSQL11.NPTSQLSERVER\MSSQL\DATA\NPT9_data_inst.mdf
+NPT9_bd_inst	data_instLog	E:\Microsoft SQL Server\MSSQL11.NPTSQLSERVER\MSSQL\Data\NPT9_log_inst.ldf
+*/
+USE [master]
+RESTORE DATABASE NPT9_bd_inst FROM  DISK = N'\\CALW12ARCSRV\BackupSQL$\NPT9_bd_inst.Bak' WITH  FILE = 1,  
+MOVE N'data_inst'  TO N'D:\DATA\NPT9_data_inst.mdf',  
+MOVE N'data_instLog'   TO N'E:\LOG\NPT9_log_inst.ldf', 
+NOUNLOAD,  REPLACE,  STATS = 5
+
+ALTER DATABASE NPT9_bd_inst SET MULTI_USER
+GO
+
+
+/*
+NPT9_bd_nep2
+NPT9_bd_nep2	data_mscc	D:\Microsoft SQL Server\MSSQL11.NPTSQLSERVER\MSSQL\DATA\NPT9_data_mscc_2.mdf
+NPT9_bd_nep2	log_mscc	E:\Microsoft SQL Server\MSSQL11.NPTSQLSERVER\MSSQL\Data\NPT9_log_mscc_2.ldf
+NPT9_bd_nep2	bd_nept2	D:\Microsoft SQL Server\MSSQL11.NPTSQLSERVER\MSSQL\DATA\NPT9_bd_nept2_2.mdf
+*/
+
+
+USE [master]
+RESTORE DATABASE NPT9_bd_nep2 FROM  DISK = N'\\CALW12ARCSRV\BackupSQL$\NPT9_bd_nep2.Bak' WITH  FILE = 1,  
+MOVE N'data_mscc'  TO N'D:\DATA\NPT9_data_mscc_2.mdf',  
+MOVE N'bd_nept2'  TO N'D:\DATA\NPT9_bd_nept2_2.mdf',  
+MOVE N'log_mscc'   TO N'E:\LOG\NPT9_log_mscc_2.ldf', 
+NOUNLOAD,  REPLACE,  STATS = 5
+
+ALTER DATABASE NPT9_bd_nep2 SET MULTI_USER
+GO
+
+
+
+
+/*
+NPT9_bd_seguridad
+NPT9_bd_seguridad	data_seguridad	D:\Microsoft SQL Server\MSSQL11.NPTSQLSERVER\MSSQL\DATA\NPT9_data_seguridad.mdf
+NPT9_bd_seguridad	data_seguridadLog	E:\Microsoft SQL Server\MSSQL11.NPTSQLSERVER\MSSQL\Data\NPT9_data_seguridadLog.ldf
+*/
+USE [master]
+RESTORE DATABASE NPT9_bd_seguridad FROM  DISK = N'\\CALW12ARCSRV\BackupSQL$\NPT9_bd_seguridad.Bak' WITH  FILE = 1,  
+MOVE N'data_seguridad'  TO N'D:\DATA\NPT9_data_seguridad.mdf',  
+MOVE N'data_seguridadLog'   TO N'E:\LOG\NPT9_data_seguridadLog.ldf', 
+NOUNLOAD,  REPLACE,  STATS = 5
+
+ALTER DATABASE NPT9_bd_seguridad SET MULTI_USER
+GO
+
+
+/*
+SICOS_CONTROL
+SICOS_CONTROL	SICOS_CONTROL_2014	D:\Microsoft SQL Server\MSSQL11.NPTSQLSERVER\MSSQL\DATA\SICOS_CONTROL_2014.mdf
+SICOS_CONTROL	SICOS_CONTROL_2014_log	E:\Microsoft SQL Server\MSSQL11.NPTSQLSERVER\MSSQL\Data\SICOS_CONTROL_2014_log.ldf
+*/
+
+USE [master]
+RESTORE DATABASE SICOS_CONTROL FROM  DISK = N'\\CALW12ARCSRV\BackupSQL$\SICOS_CONTROL.Bak' WITH  FILE = 1,  
+MOVE N'SICOS_CONTROL_2014'  TO N'D:\DATA\SICOS_CONTROL_2014.mdf',  
+MOVE N'SICOS_CONTROL_2014_log'   TO N'E:\LOG\SICOS_CONTROL_2014_log.ldf', 
+NOUNLOAD,  REPLACE,  STATS = 5
+
+ALTER DATABASE SICOS_CONTROL SET MULTI_USER
+GO
+
+/*
+NPT9_bd_nept
+NPT9_bd_nept	data_mscc	D:\Microsoft SQL Server\MSSQL11.NPTSQLSERVER\MSSQL\DATA\NPT9_data_mscc.mdf
+NPT9_bd_nept	log_mscc	E:\Microsoft SQL Server\MSSQL11.NPTSQLSERVER\MSSQL\Data\NPT9_log_mscc.ldf
+NPT9_bd_nept	bd_nept2	D:\Microsoft SQL Server\MSSQL11.NPTSQLSERVER\MSSQL\DATA\NPT9_bd_nept2.mdf
+*/
+
+
+USE [master]
+RESTORE DATABASE NPT9_bd_nept FROM  DISK = N'\\CALW12ARCSRV\BackupSQL$\NPT9_bd_nept.Bak' WITH  FILE = 1,  
+MOVE N'data_mscc'  TO N'D:\DATA\NPT9_data_mscc.mdf',  
+MOVE N'bd_nept2'  TO N'D:\DATA\NPT9_bd_nept2.mdf',  
+MOVE N'log_mscc'   TO N'E:\LOG\NPT9_log_mscc.ldf', 
+NOUNLOAD,  REPLACE,  STATS = 5
+
+ALTER DATABASE NPT9_bd_nept SET MULTI_USER
+GO
+
+
+
+/*
+NEPT3_Depositos
+NEPT3_Depositos	depositos2datData	D:\DataSql\MSSQL\Data\Depositos.MDF
+NEPT3_Depositos	depositolog	e:\LogSql\depositos_log.LDF
+*/
+USE [master]
+RESTORE DATABASE NEPT3_Depositos FROM  DISK = N'\\CALW12ARCSRV\BackupSQL$\NEPT3_Depositos.Bak' WITH  FILE = 1,  
+MOVE N'depositos2datData'  TO N'D:\DATA\Depositos.mdf',  
+MOVE N'depositolog'   TO N'E:\LOG\depositos_log.ldf', 
+NOUNLOAD,  REPLACE,  STATS = 5
+
+ALTER DATABASE NEPT3_Depositos SET MULTI_USER
+GO

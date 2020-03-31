@@ -1,0 +1,218 @@
+**********************************************
+REPORTE AUDITORIA
+**********************************************
+
+SERVIDOR: 	CALW8BDFCT001
+ALIAS	:	FACTNPT
+APP		:	GESFOR
+
+FCHINI	:	2016-01-11 14:52:54.590
+FCHFIN	:	2016-01-19 18:27:20.273
+**********************************************
+USUARIO: GOREPOSITORIO
+REGISTROS AUDITADOS : 9,922,053
+
+
+************************************************
+ACCESOS DESDE HOST DE IVAN MARTINEZ
+************************************************
+NPTDSKAX43167	84945
+
+************************************************
+ACCESOS DESDE HOST
+************************************************
+HostName		ACCESOS
+CALW3APPSGC001	976113
+NPTDSKAX43096	818774
+CALDK587642		601128
+CALDK15453020	484663
+NPTDSKAX43070	480732
+NPTDSKAX43078	445186
+NPTDSKAX43074	428606
+NPTDSKAX43033	283364
+NPTDSKAX43037	256484
+CALDK4684		254383
+PAIDKGAPAITA3	225989
+PAIDK70061		223263
+CALDK154530		211067
+NPTDSKAX43166	200214
+CALDK6422		196367
+CALDK31451		188687
+NPTDSKAX43207	186889
+CALDK7848		176527
+NPTDSKAX43025	168968
+CALDK7596		142894
+NPTDSKAX43217	138986
+CAKL291312		136589
+CALDK9462		135084
+NPTDSKAX43336	132831
+CALDK13471		128898
+NPTDSKAX43209	117803
+CALDK4192		94336
+CALLP55633		94146
+PAIDKANALISTA	91381
+CALDK418148		90400
+NPTDSKAX43324	88900
+CALDK5248		88838
+NPTDSKAX43159	88338
+CALKD131021		87216
+CALDK47976		85382
+NPTDSKAX43167	84945
+NPTLPTAX44038	84725
+NPTDSKAX43231	76436
+PAIDK700612		75331
+PAIDKREOTAYZA	74551
+NPTDSKAX43182	68052
+NPTLPTAX44023	62302
+CALDK41342		62067
+NPTDSKAX43088	60556
+NPTDSKAX43129	60541
+NPTDSKAX43054	56647
+EPNU			56077
+PAIDK55544		53407
+NPTDSKAX43289	43300
+CALDK3146		40871
+NPTDSKAX43183	40337
+NPTDSKAX43090	39786
+PAIDKCOMPRASPAI	38702
+NPTDSKAX43179	33458
+NPTLPTAXAA009	22945
+CALDK00271		20255
+PAIDK41132		17798
+TIW7TEST006		15512
+NPTLPTAX436401	13133
+NPTLPTAX44009	12350
+CALLP4378		11708
+TIW8APP001		11703
+NPTDSKAX43295	11183
+NPTLPTAX43019	10915
+CALLP1969		10324
+NPTDSKAX43157	10104
+CALDK198715		9618
+NPTDSKAX43138	9356
+NPTDSKAX43111	7862
+NPTLPTAX44005	7077
+NPTDSKAX43311	6370
+CALDK9807		5098
+NPTDSKAX43046	5030
+CALDK175902		4296
+CALW3APPWCF001	3704
+NPTDSKAX43072	3286
+CALLP6953		3284
+NPTDSKAX43211	2788
+NPTLTPAX44008	2732
+NPTDSKAX43322	2131
+NPTDSKAX43283	1744
+CALW3BDSGC2		1656
+NPTDSKAX43219	1448
+NPTDSKAX43161	1302
+CALLP3425		1238
+XTREME-PC		1226
+NPTDSKAX43259A	1147
+CALDK061801		1144
+CALDK7421		1098
+CALDK025478		1073
+NPTLPTAX44004	998
+CALDK344428		691
+NPTLPTAX43001A	641
+NPTDSKAX43261	540
+NPTDSKAX43057	479
+CALLP3561		421
+NPTDSKAX43194	420
+NPTLPTAX44030	386
+CALDK00236		364
+CALDK012811		329
+CALDK879653		300
+PAILP2090		275
+CALW12WEBNOL	172
+NPTDSKAX43003	163
+NPTLPTAXAA010	134
+NPTDSKAX43290	95
+MXL41814B6		95
+CALDK5050		95
+NPTDSKAX43203	95
+NEPTUNIAP16		78
+PAIDK43207		44
+ANSDSK4128		32
+PAIDK03092		30
+CALW12APP001	10
+NPTDSKAX43168	3
+
+
+
+************************************************
+25 CONSULTAS MAS USADAS
+************************************************
+exec sp_executesql N'SELECT   [Extent2].[Ident_Campo] AS [Ident_Campo],   [Extent2].[CodlCampo] AS [CodlCampo],   [Extent2].[CodcCampo] AS [CodcCampo],   [Extent2].[DescmCampo] AS [DescmCampo],   [Extent2].[CantCampo] AS [CantCampo],   [Extent2].[ValoCampo] AS [ValoCampo],   [Extent2].[Ident_Tabla] 
+exec sp_executesql N'SELECT   1 AS [C1],   [Extent2].[Ident_Condicion] AS [Ident_Condicion],   [Extent2].[Ident_Tarifario] AS [Ident_Tarifario],   [Extent2].[Usuario] AS [Usuario],   [Extent2].[Nombre] AS [Nombre],   [Extent2].[Activo] AS [Activo],   [Extent2].[ReglaFacturacion] AS [ReglaFacturacion
+exec sp_executesql N'SELECT   [Extent2].[Ident_TipoFacturacion] AS [Ident_TipoFacturacion],   [Extent2].[Nombre] AS [Nombre],   [Extent2].[Usuario] AS [Usuario],   [Extent2].[Descripcion] AS [Descripcion]  FROM  [dbo].[FAC_Configuracion] AS [Extent1]  INNER JOIN [dbo].[FAC_TipoFacturacion] AS [Exten
+exec sp_executesql N'SELECT   [Extent2].[Cod_CentroCosto] AS [Cod_CentroCosto],   [Extent2].[Nombre] AS [Nombre],   [Extent2].[Cod_Ofisis] AS [Cod_Ofisis],   [Extent2].[Cod_Division] AS [Cod_Division],   [Extent2].[Iniciales] AS [Iniciales]  FROM  [dbo].[FAC_Configuracion] AS [Extent1]  INNER JOIN [
+exec sp_executesql N'SELECT   1 AS [C1],   [Extent2].[Ident_ValorCondicion] AS [Ident_ValorCondicion],   [Extent2].[Codigo] AS [Codigo],   [Extent2].[Nombre] AS [Nombre],   [Extent2].[Activo] AS [Activo],   [Extent2].[Ident_Condicion] AS [Ident_Condicion]  FROM  [dbo].[FAC_CntOperacionXCondicion] AS
+exec sp_executesql N'SELECT   1 AS [C1],   [Join1].[Ident_Configuracion1] AS [Ident_Configuracion],   [Join1].[Ident_Formato1] AS [Ident_Formato],   [Join1].[Ident_Condicion1] AS [Ident_Condicion],   [Join1].[Ident_ValorCondicion1] AS [Ident_ValorCondicion]  FROM  [dbo].[FAC_FormatoXCondicion] AS [E
+exec sp_executesql N'SELECT   1 AS [C1],   [Extent2].[Ident_Servicio] AS [Ident_Servicio],   [Extent2].[NombreServicio] AS [NombreServicio],   [Extent2].[Cod_OrigenServicio] AS [Cod_OrigenServicio],   [Extent2].[Cod_OrigenOfisis] AS [Cod_OrigenOfisis],   [Extent2].[I003_Moneda] AS [I003_Moneda]  FRO
+exec sp_executesql N'SELECT   1 AS [C1],   [Extent1].[Ident_Configuracion] AS [Ident_Configuracion],   [Extent1].[Ident_Formato] AS [Ident_Formato],   [Extent1].[Prioridad] AS [Prioridad]  FROM [dbo].[FAC_ConfiguracionXFormato] AS [Extent1]  WHERE [Extent1].[Ident_Formato] = @EntityKeyValue1',N'@Ent
+exec sp_executesql N'SELECT   [Extent2].[Ident_TipoDocumento] AS [Ident_TipoDocumento],   [Extent2].[Nombre] AS [Nombre],   [Extent2].[Facturacion] AS [Facturacion],   [Extent2].[Usuario] AS [Usuario]  FROM  [dbo].[FAC_Formato] AS [Extent1]  INNER JOIN [dbo].[FAC_TipoDocumento] AS [Extent2] ON [Exte
+exec sp_executesql N'SELECT   1 AS [C1],   [Join1].[Ident_Configuracion1] AS [Ident_Configuracion],   [Join1].[Ident_Serie1] AS [Ident_Serie],   [Join1].[Ident_Condicion1] AS [Ident_Condicion],   [Join1].[Ident_ValorCondicion1] AS [Ident_ValorCondicion]  FROM  [dbo].[FAC_SerieXCondicion] AS [Extent1
+exec sp_executesql N'SELECT   1 AS [C1],   [Extent2].[Ident_ValorCondicion] AS [Ident_ValorCondicion],   [Extent2].[Codigo] AS [Codigo],   [Extent2].[Nombre] AS [Nombre],   [Extent2].[Activo] AS [Activo],   [Extent2].[Ident_Condicion] AS [Ident_Condicion]  FROM  [dbo].[FAC_CntDocumentoXCondicion] AS
+exec FAC_ObtenerParametro_Nombre @Nombre='IdentMoneda_Soles'
+exec FAC_ObtenerParametro_Nombre @Nombre='IdentMoneda_Dolares'
+exec FAC_ObtenerLocal_IdentLocal @IdentLocal=1
+exec FAC_ObtenerUnidadNegocio_CodCentroCosto @Cod_CentroCosto=13
+exec sp_executesql N'SELECT   [Extent2].[Ident_TipoDocumento] AS [Ident_TipoDocumento],   [Extent2].[Nombre] AS [Nombre],   [Extent2].[Facturacion] AS [Facturacion],   [Extent2].[Usuario] AS [Usuario]  FROM  [dbo].[FAC_Serie] AS [Extent1]  INNER JOIN [dbo].[FAC_TipoDocumento] AS [Extent2] ON [Extent
+exec FAC_ObtenerParametro_Nombre @Nombre='IdentTipoDocumento_Factura'
+exec sp_executesql N'SELECT   [Extent2].[Ident_Usuario] AS [Ident_Usuario],   [Extent2].[Nombre] AS [Nombre],   [Extent2].[Password] AS [Password],   [Extent2].[Activo] AS [Activo],   [Extent2].[Correo] AS [Correo],   [Extent2].[Login] AS [Login]  FROM  [dbo].[FAC_UsuarioXLocal] AS [Extent1]  INNER 
+exec sp_executesql N'SELECT   1 AS [C1],   [Extent1].[Ident_Configuracion] AS [Ident_Configuracion],   [Extent1].[Ident_Serie] AS [Ident_Serie],   [Extent1].[Prioridad] AS [Prioridad]  FROM [dbo].[FAC_ConfiguracionXSerie] AS [Extent1]  WHERE [Extent1].[Ident_Serie] = @EntityKeyValue1',N'@EntityKeyVa
+exec FAC_ObtenerParametro_Nombre @Nombre='IdentTipoOperacion_Produccion'
+exec [FAC_ObtenerGenerico_IdentCampo] @Ident_Campo=10
+exec [FAC_ObtenerGenerico_IdentCampo] @Ident_Campo=12
+exec [FAC_ObtenerGenerico_IdentCampo] @Ident_Campo=114
+
+
+
+
+**********************************************
+VERSION SISTEMA OPERATIVO
+**********************************************
+Microsoft Windows Server 2008 R2 Datacenter 
+ARQUITECTURA SO	: 64-bit
+VERSION			: 6.1.7601
+
+**********************************************
+PROCESADORES
+**********************************************
+Nro Procesador: 0 Intel(R) Xeon(R) CPU E5-2690 v3 @ 2.60GHz  Cores: 2
+Nro Procesador: 1 Intel(R) Xeon(R) CPU E5-2690 v3 @ 2.60GHz  Cores: 2
+Nro Procesador: 2 Intel(R) Xeon(R) CPU E5-2690 v3 @ 2.60GHz  Cores: 2
+Nro Procesador: 3 Intel(R) Xeon(R) CPU E5-2690 v3 @ 2.60GHz  Cores: 2
+TOTAL PROCESADORES:               8
+
+**********************************************
+MEMORIA FISICA
+**********************************************
+Physical Memory 0:     8192 MB
+Physical Memory 1:     4096 MB
+Total Memoria Instalada:               12288 MB
+
+**********************************************
+UNIDADES ALMACENAMIENTO DISCOS
+**********************************************
+C:
+	Size : 59.90 -    100.00%
+	Libre : 27.42 -   45.78%
+	Usado : 32.48 -   54.22%
+D:
+	Size : 79.87 -    100.00%
+	Libre : 40.96 -   51.28%
+	Usado : 38.91 -   48.72%
+E:
+	Size : 39.87 -    100.00%
+	Libre : 24.16 -   60.60%
+	Usado : 15.71 -   39.40%
+
+*************************************************
+VERSION MOTOR DE BASE DE DATOS
+*************************************************
+Microsoft SQL Server 2008 R2 (SP3) - 10.50.6220.0 (X64) 
+Standard Edition (64-bit) on Windows NT 6.1 <X64> (Build 7601: Service Pack 1) 
+
+

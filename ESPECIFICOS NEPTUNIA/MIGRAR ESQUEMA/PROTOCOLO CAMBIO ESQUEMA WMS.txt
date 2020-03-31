@@ -1,0 +1,53 @@
+**************************************************************************************************************************************
+* PROTOCOLO CAMBIO ESQUEMA WMS
+**************************************************************************************************************************************
+0.	PASO PREVIO VERIFICAR ESQUEMAS Y SUS IDS:   select name, schema_id from sys.schemas WHERE name in ('wmwhse1','wmwhse2')
+	RESULTADO PARA ESTA OCURRENCIA:
+										name		schema_id
+										wmwhse1		13
+										wmwhse2		14
+**************************************************************************************************************************************
+1.	BACKUP GENERAL
+2.	GENERAR SCRIPTS CREACION DE TABLAS wmwhse2
+3.	GENERAR SCRIPTS DE ALTER'S... wmwhse2
+4.	GENERAR SCRIPTS DE INSERT DE DATOS wmwhse2
+5.	REEMPLAZAR NOMBRE DE ESQUEMAS EN LOS TRES ARCHIVOS
+6.	DESACTIVAR RELACIONES
+7.	ELIMINAR TABLAS DE ESQUEMA wmwhse1
+	7.1	ELIMINAR REGISTROS
+	7.2 ELIMINAR TABLAS 
+	7.2 REPETIR PROCEDIMIENTO HASTA QUE NO QUEDE NINGUNA TABLA
+	7.3 EN ALGUNOS CASOS BORRAR DE FORMA MANUAL SI ES NECESARIO
+8.	EJECUTAR SCRIPTS EL EL SIGUIENTE ORDEN
+	8.1 CREACION
+	8.2 DATA
+	8.3 ALTERS
+9.	VERIFICAR REGISTROS TABLA POR TABLA
+**************************************************************************************************************************************
+** PASOS 2, 3, 4, CON OPCION GENERAR SCRIPTS DE SQL
+** PASO 5 EJECUTAR CON TEXTPAD (POR EL TAMAÑO DE LOS ARCHIVOS)
+** PASO 6:	
+			USE [SCPRD]
+			GO
+			EXEC sp_MSForEachTable 'ALTER TABLE ? NOCHECK CONSTRAINT ALL'
+			GO
+			EXEC sp_MSForEachTable 'ALTER TABLE ? DISABLE TRIGGER ALL'
+			GO
+** PASO 7:	GENERAR SCRIPTS
+			7.1 : select 'TRUNCATE TABLE wmwhse1.'+name from sys.tables where schema_id = 13
+			7.2 : select 'DROP TABLE wmwhse1.'+name from sys.tables where schema_id = 13
+** PASO 8:	EJECUTAR LOS 3 DESDE SQLCMD CON EL SIGUIENTE EJEMPLO
+			C:\WINDOWS\SYSTEM32\sqlcmd -S dvw12mgrsql12 -i D:\RUTA\ARCHIVO.sql
+** PASO 9:	USAR LOS SIGUIENTES SCRIPTS PARA LA COMPARACION			
+				select 'SELECT count(*),'+''''+name+''''+'  FROM  wmwhse1.'+name +CHAR(13) + CHAR(10)+' UNION' from sys.tables  where schema_id = 13
+				select 'SELECT count(*),'+''''+name+''''+'  FROM  wmwhse2.'+name +CHAR(13) + CHAR(10)+' UNION' from sys.tables  where schema_id = 14
+			ENVIAR LOS RESULTADOS A EXCEL Y COMPARAR
+**************************************************************************************************************************************
+** PASOS ADICIONALES
+			DE HABER DIFERENCIAS REAHACER LOS PROCESOS DESDE EL PUNTO 2 PARA CADA TABLA CON DIFERENCIAS
+**************************************************************************************************************************************			
+			
+
+
+
+

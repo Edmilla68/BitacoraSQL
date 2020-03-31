@@ -1,0 +1,103 @@
+**********************************************
+REPORTE STATUS   OK
+**********************************************
+
+SERVIDOR: 	CALW12BDSOLPORT
+ALIAS	:	CALW12BDSOLPORT
+APP		:	SOLPORT
+
+FCHINI	:	2016-03-31 13:02:54.590
+FCHFIN	:	2016-03-31 13:12:20.273
+
+**********************************************
+
+RENDIMIENTO % CPU PROMEDIO :	9.36%
+
+**********************************************
+
+TOTAL RAM		:	12287.550
+MEMORIA USADA	:	 7263.574
+CONSUMO MEM SQL	:	 5645.906
+
+**********************************************
+
+CANT USUARIOS ACTIVOS	:	 2
+CANT USUARIOS WAIT		:	36
+
+**********************************************
+
+CONSUMO CPU MAS ALTO  :
+
+HOST	:	NPTDSKAX43147
+CPU		:	208327
+DB		:	SP_OPERATIONS
+USUARIOS:	ROOT
+
+SCRIPT	:	select *from #CAMIONAJETOTAL where contenedor in
+			('PCIU1462235',
+			'PCIU1688027',
+			'TRLU3964857',
+			'PCIU2856980',
+			'PCIU1677779',
+			'PCIU2196079',
+			'PCIU2728660'
+			)
+**********************************************
+FRAGMENTACION DE INDICES:
+CORREGIDO.
+
+**********************************************
+
+
+
+INFORMACION GENERAL
+**********************************************
+VERSION SISTEMA OPERATIVO
+**********************************************
+Microsoft Windows Server 2012 R2 Standard
+ARQUITECTURA SO	: 64-bit
+VERSION			: 6.3.9600
+
+
+**********************************************
+PROCESADORES
+**********************************************
+Nro Procesador: 0 Intel(R) Xeon(R) CPU E5-2690 v3 @ 2.60GHz  Cores: 3
+Nro Procesador: 1 Intel(R) Xeon(R) CPU E5-2690 v3 @ 2.60GHz  Cores: 3
+TOTAL PROCESADORES:               6
+
+**********************************************
+MEMORIA FISICA
+**********************************************
+Physical Memory 0:     8192 MB
+Physical Memory 1:     4096 MB
+Total Memoria Instalada:               12288 MB
+
+**********************************************
+UNIDADES ALMACENAMIENTO DISCOS
+**********************************************
+
+C:
+Size  : 59.66 -  100.00%
+Libre : 23.35 -   39.14%
+Usado : 36.31 -   60.86%
+
+D:
+Size  : 49.87 -  100.00%
+Libre : 36.48 -   73.15%
+Usado : 13.39 -   26.85%
+
+E:
+Size  : 19.87 -  100.00%
+Libre : 18.92 -   95.22%
+Usado :  0.95 -    4.78%
+
+
+*************************************************
+VERSION MOTOR DE BASE DE DATOS
+*************************************************
+Microsoft SQL Server 2012 (SP3) (KB3072779) - 11.0.6020.0 (X64) 
+		Standard Edition (64-bit) on Windows NT 6.3 <X64> (Build 9600: ) 
+
+
+

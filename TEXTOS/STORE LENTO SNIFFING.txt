@@ -1,0 +1,21 @@
+STORED PROCEDURE LENTO 
+PERO SU SCRIPT ESTA OK................
+
+PROBLEMA  sniffing
+
+El problema con las Stored 'suele' venir por el parameter sniffing:
+
+http://blogs.msdn.com/b/turgays/archive/2013/09/10/parameter-sniffing-problem-and-workarounds.aspx
+
+Yo probaría 2 cosas:
+
+1) Poner WITH RECOMPILE en la STORED.
+
+
+Alter Procedure dbo.NOMBRE_DEL_SP
+@PARAMETROS TIPO
+WITH RECOMPILE
+As
+Begin
+    ...
+End

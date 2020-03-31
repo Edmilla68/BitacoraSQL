@@ -1,0 +1,35 @@
+REPORTING SERVICES
+
+SAS Y GESFOR
+**************************************************************************
+CALW3BDWCF001			http://calw3bdwcf001/Reports/	
+CALW3BDSGC2				http://calw3bdsgc2/Reports/
+*************************************************************************
+
+OTROS
+*************************************************************************
+CALW3BDLOG 				http://calw3bdlog/Reports/
+CALW8REP001				http://calw8rep001/Reports/Pages/Folder.aspx  
+CALW3BDCRM				http://calw3bdcrm/reports/Pages/Folder.aspx
+
+*************************************************************************
+
+
+
+
+calw12wms104bd			http://calw12wms104bd/Reports/Pages/Folder.aspx (no hay elementos)
+calw3erp002				http://calw3erp002/reports/Pages/Folder.aspx
+calw12bdwms001			http://calw12bdwms001/Reports/Pages/Folder.aspx (no hay elementos, serv detenido)
+CALW3BDCRM002			Detenido
+TIW8APP001				DE BAJA
+CALW8BDFCT001(factnpt)	http://CALW8BDFCT001/Reports/   (no hay elementos, serv detenido)
+*************************************************************************
+
+
+SP3PDA-DBSQL1 (PROD)
+SP3PDA-DBSQL1 (PROD)
+SP3TDA-DBSQL01 (UAT)
+SP3DDA-DBSQL01 (DEV)
+
+
+sadfasda

@@ -1,0 +1,34 @@
+
+bueno ahora algo que puedes hacer para saber si funciona o no, es poner el multimetro en la escala de Voltaje alterno, 
+y acercar la punta roja al inverter [sin tocar el inverter solo acercarla lo mas posible] y este debe marcar voltaje 
+bajo [cuanto?? pues no es algun valor exacto solo debe marcar un valor de como unos 5 o 10 v me parece], 
+o la otra que lo pongas en la escala de Hz y hacer el mismo procedimiento solo que en este caso debes de quitar la 
+punta negra del multimetro ya que solo usaras la roja, en este caso te debera marcar 15750 Hz aprox, si al hacer esto 
+te salen los resultados que te mencione, entonces tu inverter esta funcional de lo contrario si no te aparece ningun 
+resultado, significa que esta malo, comenta tu resultado, suerte.
+
+
+Instrucciones
+
+
+Enciende la computadora portátil y permite que el sistema arranque por completo.
+
+2
+Enciende el medidor y mantén las dos sondas bien juntas (una fracción de una pulgada, de 2,5 cm), pero no permitas que se toquen.
+
+
+3
+Mueve las sondas más cercanas al monitor portátil hasta que estén también dentro de una fracción de una pulgada (2,5 cm), pero sin tocar la pantalla.
+
+4
+Mueve las puntas de prueba por toda la pantalla en busca de una lectura en el medidor.
+
+5
+Diagnostica el inversor portátil mientras trabaja para comprobar si el medidor recoge el campo cíclico de la pantalla en tiempo real utilizando el proceso anterior. Si está funcionando,
+ el medidor mostrará una lectura sin hacer contacto con los cables o terminales.
+
+ 
+Consejos y advertencias
+
+Si has probado y determinaste que el inversor está funcionando, ahora deberás examinar las cuestiones relacionadas con los grupos de cables,
+ un conector de video que esté suelto o alguna falla de la luz de la pantalla como posibles razones para que el monitor no esté funcionando.

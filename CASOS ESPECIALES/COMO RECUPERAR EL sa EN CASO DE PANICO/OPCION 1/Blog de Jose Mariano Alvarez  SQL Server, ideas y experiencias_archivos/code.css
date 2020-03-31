@@ -1,0 +1,42 @@
+.csharpcode {
+	padding: 10px; border: 2px solid rgb(176, 176, 176); color: black; font-family: consolas, "Courier New", courier, monospace; font-size: small; background-color: rgb(224, 224, 224);
+}
+.csharpcode pre {
+	padding: 10px; border: 2px solid rgb(176, 176, 176); color: black; font-family: consolas, "Courier New", courier, monospace; font-size: small; background-color: rgb(224, 224, 224);
+}
+.csharpcode pre {
+	margin: 0em;
+}
+.csharpcode .rem {
+	color: rgb(0, 128, 0);
+}
+.csharpcode .kwrd {
+	color: rgb(0, 0, 255);
+}
+.csharpcode .str {
+	color: rgb(0, 96, 128);
+}
+.csharpcode .op {
+	color: rgb(0, 0, 192);
+}
+.csharpcode .preproc {
+	color: rgb(204, 102, 51);
+}
+.csharpcode .asp {
+	background-color: rgb(255, 255, 0);
+}
+.csharpcode .html {
+	color: rgb(128, 0, 0);
+}
+.csharpcode .attr {
+	color: rgb(255, 0, 0);
+}
+.csharpcode .alt {
+	margin: 0em; width: 100%; background-color: rgb(244, 244, 244);
+}
+.csharpcode .lnum {
+	color: rgb(96, 96, 96);
+}
+.resultado {
+	border-width: 1px; border-style: solid; padding: 15px; font-family: "Courier New", Courier, monospace; font-size: small; background-color: rgb(244, 244, 255);
+}

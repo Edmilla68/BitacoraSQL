@@ -1,0 +1,37 @@
+ALTER   procedure sp_ActualizaNroNCReclamo      
+@numReclamo integer,       
+@numNC char(11)       
+as      
+    
+IF ( (SELECT numNCemitidas FROM CALW12SQLCORP.NEPT3_sbsgc.dbo.sgc_reclamocliente WHERE numeroreclamo = @numReclamo) IS NULL )      
+            BEGIN      
+                        UPDATE CALW12SQLCORP.NEPT3_sbsgc.dbo.sgc_reclamocliente      
+                        SET NumNCEmitidas = @numNC,      
+                                ESTADORECLAMO = 'NC'      
+                          WHERE numeroreclamo = @numReclamo      
+              END      
+ELSE       
+              BEGIN      
+                          UPDATE CALW12SQLCORP.NEPT3_sbsgc.dbo.sgc_reclamocliente      
+                          SET NumNCEmitidas = NumNCEmitidas+'   '+@numNC,      
+                                ESTADORECLAMO = 'NC'      
+                          WHERE numeroreclamo = @numReclamo      
+              END      
+return 0  
+
+***********************************************************************************************
+	
+	alter  PROCEDURE [dbo].[sp_ReclamosPorCliente]            
+@FACTURA VARCHAR(11)            
+--Modificado por Eugenia Palao          
+AS            
+SELECT RECLAMOCLIENTEID, NUMERORECLAMO, FECHAREGISTRO,*          
+FROM CALW12SQLCORP.NEPT3_sbsgc.DBO.SGC_RECLAMOCLIENTE            
+where estadoreclamo in('AP', 'NC', 'AT')        
+and NUMFACTURASRECLAMO LIKE '%'+@FACTURA+'%'            
+ORDER BY FECHAREGISTRO DESC            
+return 0  
+  
+****************************************************************************************************
+
+  Adm1n$16$
