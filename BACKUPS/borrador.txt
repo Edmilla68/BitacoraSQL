@@ -1,4 +1,4 @@
-Según las mejores parcaticas la lógica de negocio no debería ir en la capa de datos, y peor aún si se trata en un desencadenador (Trigger), sobre el cual no vamos a tener control de las veces que se ejecute, si este llama a stores 
+﻿Según las mejores parcaticas la lógica de negocio no debería ir en la capa de datos, y peor aún si se trata en un desencadenador (Trigger), sobre el cual no vamos a tener control de las veces que se ejecute, si este llama a stores 
 "Lógica de Negocio incluida en Desencadenadores", también conocido como Triggers, el cual se presenta cuando se utilizan los Triggers para la ejecución de cambios en ciertos datos desencadenadas por inserciones o actualizaciones de otros datos.
 
 Problemas ocasionados 
@@ -10,7 +10,7 @@ Problemas ocasionados
 •	El control de 
 
 
-Soluciones / Alternativas
+Soluciones / Alternativas ---
 
 Entre las alternativas está la implementación de esta lógica de negocio en Procedimientos Almacenados (Stored Procedures) que son más visibles para la aplicación, más fáciles de mantener y encontrar errores. Tanto la primera instrucción de inserción como la desencadenada (incluida originalmente en el Trigger) serán ejecutadas por un Procedimiento (Procedure) invocado desde la aplicación.
 
